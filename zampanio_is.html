@@ -1,0 +1,110 @@
+<html language="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Did you REALLY think it would be that easy??? :) :) ;)">
+
+    <title>JR's Attic :) :) :)</title>
+    <script src="utils.js"></script>
+    <style>
+        body {
+            background-image: url(attic_jr2.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position-x: 0%;
+            cursor: pointer;
+        }
+
+
+
+        #container {
+            margin-left: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            border-radius: 13px;
+            font-size: 13px;
+            padding-left: 31px;
+            padding-right: 31px;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            text-align: left;
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #a10000;
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+    </style>
+
+    <script>
+
+        let audio = new Audio("https://laughing.observer/WeirdSounds/ambient_long_sounds/circusreversuslong.mp3");
+        audio.loop = true;
+        const iNeed = (text, href) => {
+            const ele = createElementWithClassAndParent("a", needfulThings, "thing");
+            ele.innerText = text;
+            ele.href = href;
+        }
+
+        const playOnClick = () => {
+            audio.play();
+        }
+
+        document.addEventListener('click', playOnClick, { once: true });
+
+        window.onload = () => {
+            audio.play().then(() => {
+                removeEventListener(playOnClick);
+            })
+
+
+            injectMuteButton(() => {
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            });
+
+            window.onclick = () => {
+
+
+            }
+
+        }
+
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="jrsays">
+            JR: Observer!!!
+            <br>
+            JR: normally my very favorite thing is explaining what Zampanio is to strangers...
+            <br>
+            JR: BUT!
+            <br>
+            JR: finally defeating https and getting this new domain set up...
+            <br>
+            JR: i am le tired
+            <br>
+            JR: so instead of firing the missles
+            <br>
+            JR: I will let the community explain it to you instead!
+            <br>
+            <a target='_blank'
+                href='http://eyedolgames.com/ZampanioQuizSouth/'>http://eyedolgames.com/ZampanioQuizSouth/</a>
+            <hr>
+        </div>
+    </div>
+</body>
+
+</html>

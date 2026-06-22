@@ -1,0 +1,212 @@
+<html language="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Did you REALLY think it would be that easy??? :) :) ;)">
+
+  <title>JR's Attic :) :) :)</title>
+  <script src="../utils.js"></script>
+  <style>
+    body {
+      background-image: url(attic_jr2.jpg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position-x: 0%;
+      cursor: pointer;
+    }
+
+    .audio-container {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #a10000;
+      padding: 13px;
+      width: 300px;
+      background-color: rgba(255, 255, 255, 0.75);
+
+      textarea {
+        height: 81px;
+      }
+
+      video {
+        max-width: 100%;
+        height: 300px;
+        object-fit: contain;
+      }
+    }
+
+    #free-audio {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+    }
+
+    #container {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: auto;
+      border-radius: 13px;
+      font-size: 13px;
+      padding-left: 31px;
+      padding-right: 31px;
+      padding-top: 13px;
+      padding-bottom: 13px;
+      text-align: left;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.5);
+      color: #a10000;
+      font-family: 'Courier New', Courier, monospace;
+
+    }
+  </style>
+
+  <script>
+    let freeAudioEle;
+    let count = 0;
+
+
+
+
+    //key, value status
+    const cachedAudioFruit = {}
+
+    const audioExtensionsFruit = [
+      "mp4",
+    ];
+    const filePatternAudioFruit = new RegExp('<a href="([^?]*?)">', 'g');
+
+    const extensionPatternAudioFruit = new RegExp(`\\\.(${audioExtensionsFruit.join("|")})\$`);
+
+
+    const getWeirdMusic = async (url) => {
+      if (cachedAudioFruit[url]) {
+        return cachedAudioFruit[url];
+      }
+
+      let promise = new Promise(async (resolve, reject) => {
+        try {
+          const rawText = await httpGetAsync(url);
+
+          let files = [];
+          const match = rawText.matchAll(filePatternAudioFruit);
+          const matches = Array.from(match, (res) => res);
+          for (let m of matches) {
+            const item = m[1];
+            if (item.match(extensionPatternAudioFruit)) {
+              files.push(item);
+            }
+          }
+          cachedAudioFruit[url] = files;
+          //console.log("JR NOTE: returned from network for", url)
+          resolve(files);
+        } catch (e) {
+          console.log("JR NOTE: error", e)
+          reject();
+          return [];
+        }
+      })
+      cachedAudioFruit[url] = promise;
+      return promise;
+    }
+
+    const audioSample = (url, filename) => {
+      count++;
+      const full_path = url + filename;
+      const c = createElementWithClassAndParent("div", freeAudioEle, "audio-container");
+
+      const div = createElementWithClassAndParent("div", c);
+      div.innerText = `${count}) ${filename}`;
+
+      const audio_controls = createElementWithClassAndParent("video", c);
+      audio_controls.src = full_path;
+      audio_controls.controls = true;
+      audio_controls.preload = "none";
+
+      const button = createElementWithClassAndParent("button", c);
+      button.innerText = "Show Website Embed";
+
+
+      const embed = createElementWithClassAndParent("textarea", c);
+      embed.value = audio_controls.outerHTML;
+      embed.style.display = "none";
+      let visible = false;
+
+      button.onclick = () => {
+        visible = !visible;
+        if (visible) {
+          button.innerText = "Hide Website Embed"
+          embed.style.display = "block";
+        } else {
+          button.innerText = "Show Website Embed"
+
+          embed.style.display = "none"
+        }
+      }
+
+
+      const a = createElementWithClassAndParent("a", c);
+      a.style.marginTop = "13px"
+
+
+
+
+      a.href = full_path;
+      a.innerText = "Download ";
+      a.download = filename;
+    }
+
+
+    window.onload = async () => {
+      freeAudioEle = document.querySelector("#free-audio")
+
+
+      const url = "https://laughing.observer/WeirdSounds/weird_video/";
+      const music = await getWeirdMusic(url + "?C=M;O=D");
+      console.log("JR NOTE: music is", music)
+      for (let m of music) {
+        audioSample(url, m);
+      }
+
+    }
+
+
+
+
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="jrsays">
+      <a href='https://laughing.observer'>Home</a><br><br>
+      JR: Observer!!!
+      <br>
+      JR: im so glad you want to re-use audio from my branch of Zampanio!!!
+      <br>
+      JR: let me show you how :) :) :)
+      <br>
+      JR: You can use ANY of the files below for anything you want, commercial or non-comercial, used directly or
+      remixed, just so long as you
+      credit "Zampanio" with it.
+      <br>
+      JR: see, I don't care about my OWN credit.
+      <br>
+      JR: but we all want Zampanio to spread, don't we?
+      <br>
+      This work is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><img
+        src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""
+        style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
+        src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""
+        style="max-width: 1em;max-height:1em;margin-left: .2em;"><img
+        src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""
+        style="max-width: 1em;max-height:1em;margin-left: .2em;">
+      <hr>
+    </div>
+    <div id="free-audio"></div>
+  </div>
+</body>
+
+</html>
