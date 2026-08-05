@@ -16,45 +16,65 @@
 <body>
 
   <div id="container">
-    <div id="story" class="section">
 
-      The Harvest checks that everything is ready.
-      <br><Br>
-      The seasonal decorations were just right, pumpkin lanterns gleaming and cob webs delightfully thick.
-      <br><Br>
-      The bowls of candy were prepared, catching the light in a very mouth watering way.
-      <br><Br>
-      The bowls of meat were juicy and red, just as they should be. (she is so hungry, but they are not for her)
-      <br><Br>
-      The helpful brochures explaining the Cult of the Harvest were neatly piled up alongside them.
-      <br><Br>
-      She is so excited.
-      <br><Br>
-      The children (young and old) would be here soon, ready to partake of this most holy of seasons.
-      <br><Br>
-      She fondly thinks back to her younger self, not wanting to participate. She shakes her massive TV head, baffled
-      she could ever think playing CARD GAMES, of all things, was better than giving out tricks and treats and the Fruit
-      of Her Knowledge.
-      <br><Br>
-      She was too young, she thinks, in seasons past, to fully appreciate the magic of this season.
-      <br><Br>
-
-      Only now is she finally old enough to truly partake. She knows she is the God of Libraries, that she is destined
-      to open the GATE with Gambling, Arbitration, Teaching and Eating. Her younger self knew nothing of these
-      pleasures. Or that good things come to those who wait.
-      <br><Br>
-      Patiently, she waits for her first trick or treater.
-      <br><Br>
-      <button id="approach">Go Up To the Door?</button>
-    </div>
     <div class="house">
-      <video id="test" thumbnail='images/Diorama/smooth_approach_door_first_frame.jpg'
-        src="images/Diorama/smooth_approach_door.mp4">
+      <video id="game" thumbnail='images/Diorama/purplehousetest_first_frame.jpg'
+        src="images/Diorama/purplehousetest.mp4"></video>
+
+      <div id="story-container">
+        <div id="story">
+          The Harvest checks that everything is ready.
+          <br><Br>
+          The seasonal decorations were just right, pumpkin lanterns gleaming and cob webs delightfully thick.
+          <br><Br>
+          The bowls of candy were prepared, catching the light in a very mouth watering way.
+          <br><Br>
+          The bowls of meat were juicy and red, just as they should be. (she is so hungry, but they are not for her)
+          <br><Br>
+          The helpful brochures explaining the Cult of the Harvest were neatly piled up alongside them.
+          <br><Br>
+          She is so excited.
+          <br><Br>
+          The children (young and old) would be here soon, ready to partake of this most holy of seasons.
+          <br><Br>
+          She fondly thinks back to her younger self, not wanting to participate. She shakes her massive TV head,
+          baffled
+          she could ever think playing CARD GAMES, of all things, was better than giving out tricks and treats and the
+          Fruit
+          of Her Knowledge.
+          <br><Br>
+          She was too young, she thinks, in seasons past, to fully appreciate the magic of this season.
+          <br><Br>
+
+          Only now is she finally old enough to truly partake. She knows she is the God of Libraries, that she is
+          destined
+          to open the GATE with Gambling, Arbitration, Teaching and Eating. Her younger self knew nothing of these
+          pleasures. Or that good things come to those who wait.
+          <br><Br>
+          Patiently, she waits for her first trick or treaters to knock on her door.
+          <br><Br>
+          <button id="approach">Go Up To the Door?</button>
+        </div>
+      </div>
     </div>
   </div>
   <div>
 
     TODO:
+    <li>todo: instead of directly playing video, have wrapper that takes in a callback for onended
+
+      attached a temporary listener that cleans itself up, then does your callback
+
+      so gameplay loop is just
+
+      click something
+      new video plays
+      new thing happens when it finishes</li>
+    <li>
+      idea: since the conceit of lavinraca is there are 31 hours in halloween
+      each week i can film a new house, changed by the events of the previous week, as it gets darker and the moon rises
+      and the fog comes out
+    </li>
     <li>keep creating house diorama</li>
     <li>for each house, take a flat shot of them, two different lighting (composite it so if you mouse over the door it
       "glows" from the brighter lighting version)</li>
@@ -64,6 +84,9 @@
     <li>click the door to knock on it</li>
     <li>either blorbo comes out (cult or harvest) to offer you at reat, or the door creaks open for a trick (procedural
       maze)</li>
+    <li> gopher://gopher.32kb.net:70/0/zmpn/good_game_should_play.exe.tar.gz
+    </li>
+    <li>https://ellienamored.neocities.org/ezr/diary#home</li>
     <li>lots of pictures of the inside of the house with different walls and contents</li>
     <li>make procedural maze</li>
     <li>layer on rules engine from "chill down your spine" in mallsim</li>

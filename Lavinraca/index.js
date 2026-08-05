@@ -1,13 +1,13 @@
 window.onload = () => {
   console.log("JR NOTE: hello world")
-  test.onclick = () => {
+  game.onclick = () => {
     test.play();
   }
 
   approach.onclick = () => {
-    test.play();
+    game.play();
   }
-  test.onended = () => {
+  game.onended = () => {
     alert("trick or treat")
   }
 }

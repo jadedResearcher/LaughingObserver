@@ -31,6 +31,7 @@ body {
   --main-font-color: #c40444;
   --bright-font-color: #ff0055;
   background-color: #432a63;
+  background-image: url("images/yellow_wallpaper_subtle.png");
   color: #ff5c39;
   font-weight: bolder;
   left: 0px;
@@ -48,11 +49,23 @@ body {
   height: 100vh;
 }
 
-#story {
-  padding: 31px;
-  margin: 31px;
-  overflow-y: auto;
+#story-container {
+  padding-top: 31px;
+  padding-bottom: 31px;
+  padding-left: 31px;
+  position: absolute;
+  bottom: 0px;
+  height: 200px;
+  border: 5px solid black;
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+#story {
+  overflow-y: auto;
+  height: 200px;
+}
+
+
 
 svg {
   fill: #ff5c39;
@@ -60,10 +73,19 @@ svg {
 }
 
 video {
-  height: 100vh;
+  max-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.house {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  border: 5px solid black;
 }
 
 .ominous {
