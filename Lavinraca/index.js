@@ -41,7 +41,13 @@ const outsideTheDoor = (contentDirectory) => {
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
-  alert("TODO: outside the door")
+  video.src = contentDirectory + "/approach_door.mp4";
+  storyContainer.style.display = "none"
+  video.play();
+  video.onended = () => {
+    storyContainer.style.display = "block"
+    story.innerText = "With beating heart and shaky hands you reach the door. What wonders and horrors will you find within?"
+  }
 }
 const theHarvest = (contentDirectory) => {
   alert("TODO: outside the harvest")
