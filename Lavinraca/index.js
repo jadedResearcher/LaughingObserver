@@ -36,6 +36,7 @@ text is mostly always the same but can vary
 const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Normal") => {
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
   video.thumbnail = contentDirectory + "first.jpg";
+  video.currentTime = 0;
   const obviousExits = [];
   obviousExits.push({ text: "Approach the Door", function: outsideTheDoor })
   obviousExits.push({ text: "Approach the Harvest", function: theHarvest })
