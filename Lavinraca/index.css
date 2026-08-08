@@ -37,7 +37,7 @@ body {
   color: #ff5c39;
   font-weight: bolder;
   left: 0px;
-  overflow: auto;
+  overflow: hidden;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 1px;
@@ -52,20 +52,20 @@ body {
 }
 
 #story-container {
-  padding-top: 31px;
-  padding-bottom: 31px;
-  padding-left: 31px;
   position: absolute;
   bottom: 0px;
   height: 31%;
-  border: 5px solid black;
+  border-top: 5px solid black;
+  padding-top: 31px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 113;
+  width: 100%;
 }
 
 #story {
-  overflow-y: auto;
   height: 100%;
+  width: 100%;
+  padding-left: 31px;
 }
 
 
@@ -100,6 +100,16 @@ video {
   margin: 10%;
 }
 
+#popup {
+  z-index: 1113;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
 .gallery {
   background-color: black;
   color: darkred;
@@ -129,12 +139,22 @@ video {
   cursor: pointer;
 }
 
+.close {
+  outline: none;
+  border: none;
+  color: red;
+  background: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
 .gallery-popup {
   position: fixed;
   background: black;
   top: 5%;
-  width: 90%;
-  height: 90%;
+  width: 69dvw;
+  height: 40dvh;
   overflow-y: auto;
   left: 5%;
   padding: 10%;
@@ -357,7 +377,6 @@ button {
   padding: 7px;
   padding-left: 13px;
   padding-right: 13px;
-  bottom: 13px;
 }
 
 a {

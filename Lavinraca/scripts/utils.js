@@ -50,7 +50,7 @@ const calculatePerformanceInMilliSeconds = (startTime, endTime) => {
 /*
 taking in a content ele is a pattern i learned from work, feels weird using it in vanilla
 */
-const popup = (title, contentEle) => {
+const createPopup = (title, contentEle) => {
   const popupEle = createElementWithClassAndParent("div", document.querySelector("body"), "popup");
 
   popupEle.focus();
