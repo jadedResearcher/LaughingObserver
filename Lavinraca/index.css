@@ -54,9 +54,10 @@ body {
 #storyContainer {
   position: absolute;
   bottom: 0px;
-  height: 31%;
+  height: fit-content;
   border-top: 5px solid black;
   padding-top: 31px;
+  padding-bottom: 31px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 113;
   width: 100%;
