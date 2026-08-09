@@ -17,15 +17,33 @@ window.onload = () => {
   }*/
 }
 
-const attachObviousExits = (contentDirectory, obviousExits) => {
+const attachObviousExits = (contentDirectory, obviousExits, outside = true) => {
   const c = createElementWithClassAndParent("div", story);
   c.innerHTML = "<br>Obvious Exits Are:<br><br>"
-
+  console.log("JR NOTE: don't forget to have outside = false once i have insides")
   for (let exit of obviousExits) {
     const button = createElementWithClassAndParent("button", c);
     button.innerText = exit.text;
-    button.onclick = () => exit.function(contentDirectory);
+    button.onclick = () => movingAroundOutside(exit.function, contentDirectory);
   }
+}
+
+//possibility of interuprtion which might force you to stay where you were
+// or just give you a scene before dumping you in your location (or even in a random location)
+const movingBetweenHallways = (target, contentDirectory) => {
+  if (Math.random() > 0.5) {
+    alert("Something spooky happens while moving, but you make it to your destination okay!")
+  }
+  target(contentDirectory);
+}
+
+//possibility of interuprtion which might force you to stay where you were
+// or just give you a scene before dumping you in your location (or even in a random location)
+const movingAroundOutside = (target, contentDirectory) => {
+  if (Math.random() > 0.5) {
+    alert("Something spooky happens while moving, but you make it to your destination okay!")
+  }
+  target(contentDirectory);
 }
 
 /*
