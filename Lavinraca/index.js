@@ -57,6 +57,7 @@ const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Normal") => 
   video.currentTime = 0;
   const obviousExits = [];
   obviousExits.push({ text: "Approach the Door", function: outsideTheDoor })
+  obviousExits.push({ text: "Approach the Mailbox", function: theMailbox })
   obviousExits.push({ text: "Approach the Harvest", function: theHarvest })
 
   story.innerHTML = `${text}`;
@@ -67,7 +68,7 @@ const outsideTheDoor = (contentDirectory) => {
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
-  video.src = contentDirectory + "/approach_door.mp4";
+  video.src = contentDirectory + "/go_to_door.mp4";
   storyContainer.style.display = "none"
   video.play();
   const obviousExits = [];
@@ -82,13 +83,80 @@ const outsideTheDoor = (contentDirectory) => {
   }
 }
 
-const knockOnDoor = () => {
+const inside = () => {
+  alert("JR NOTE: TODO trick")
+}
+
+const knockOnDoor = (contentDirectory) => {
+  const odds = Math.random();
+  if (odds > .1) {
+    openDoor(contentDirectory);
+  } else {
+    treat();
+  }
+}
+
+const treat = () => {
+  alert("JR NOTE: todo treat instead of trick")
+}
+
+
+const openDoor = (contentDirectory) => {
+  video.src = contentDirectory + "/open_the_door.mp4";
+  storyContainer.style.display = "none"
+  video.play();
+  const obviousExits = [];
+  obviousExits.push({ text: "Flee", function: outsideTheHouse })
+  obviousExits.push({ text: "Go Inside, What's the Worst That Could Happen?", function: inside })
+
+  video.onended = () => {
+    storyContainer.style.display = "block"
+    story.innerText = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. You jump, hoping that half the neighborhood isn't coming to check who is dumb enough to break into the Harvest's House. Maybe you should hide inside before anyone sees you?"
+    attachObviousExits(contentDirectory, obviousExits)
+
+  }
+}
+
+const greetHarvest = () => {
+  alert("JR NOTE: TODO")
+}
+
+const viewMail = () => {
   alert("JR NOTE: TODO")
 }
 
 
 const theHarvest = (contentDirectory) => {
-  alert("TODO: outside the harvest")
+  video.src = contentDirectory + "/go_to_harvest.mp4";
+  storyContainer.style.display = "none"
+  video.play();
+  const obviousExits = [];
+  obviousExits.push({ text: "Flee", function: outsideTheHouse })
+  obviousExits.push({ text: "Greet", function: greetHarvest })
+
+  video.onended = () => {
+    storyContainer.style.display = "block"
+    story.innerText = "You decide its only polite to greet the Statue of the Harvest that sits outside the house."
+    attachObviousExits(contentDirectory, obviousExits)
+
+  }
+}
+
+
+const theMailbox = (contentDirectory) => {
+  video.src = contentDirectory + "/go_to_mailbox.mp4";
+  storyContainer.style.display = "none"
+  video.play();
+  const obviousExits = [];
+  obviousExits.push({ text: "Flee", function: outsideTheHouse })
+  obviousExits.push({ text: "Rifle Through Mail", function: viewMail })
+
+  video.onended = () => {
+    storyContainer.style.display = "block"
+    story.innerText = "Curiosity overrides your better judgement, just what kind of mail can this long abandoned house of a god be getting?"
+    attachObviousExits(contentDirectory, obviousExits)
+
+  }
 }
 
 const wireUpPopupClose = () => {
