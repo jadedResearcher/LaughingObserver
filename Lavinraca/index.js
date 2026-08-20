@@ -125,7 +125,9 @@ const greetHarvest = () => {
 }
 
 const viewMail = () => {
-  alert("JR NOTE: TODO")
+  const mail = fetchPendingCommands();
+  console.log("JR NOTE: here's the mail it never fails", mail);
+  alert("JR NOTE: todo display " + mail.length + mail);
 }
 
 
