@@ -1,3 +1,5 @@
+const bgMusic = new Audio("images/Diorama/foley/ready_effects/Outdoor/web_Music_wind1.mp3");
+bgMusic.loop = true;
 window.onload = () => {
   wireUpPopupClose();
   outsideTheHouse();
@@ -51,7 +53,8 @@ you can approach the door, the harvest, the mailbox or the backyard
 content directory decides if its the normal outside or if its silly/spooky
 text is mostly always the same but can vary
 */
-const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Normal") => {
+const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Final") => {
+  bgMusic.play();
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
   video.thumbnail = contentDirectory + "first.jpg";
   video.currentTime = 0;
@@ -68,7 +71,7 @@ const outsideTheDoor = (contentDirectory) => {
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
-  video.src = contentDirectory + "/go_to_door.mp4";
+  video.src = contentDirectory + "/ApproachDoorFoley.mp4";
   storyContainer.style.display = "none"
   video.play();
   const obviousExits = [];
@@ -127,7 +130,8 @@ const viewMail = () => {
 
 
 const theHarvest = (contentDirectory) => {
-  video.src = contentDirectory + "/go_to_harvest.mp4";
+  //maybe i'll have a blue screen verion at some point, cuz it hadn't occured to me that you can't green screen a green god , lol
+  video.src = contentDirectory + "/HarvestApproach.mp4";
   storyContainer.style.display = "none"
   video.play();
   const obviousExits = [];
@@ -144,7 +148,7 @@ const theHarvest = (contentDirectory) => {
 
 
 const theMailbox = (contentDirectory) => {
-  video.src = contentDirectory + "/go_to_mailbox.mp4";
+  video.src = contentDirectory + "/MailboxApproach.mp4";
   storyContainer.style.display = "none"
   video.play();
   const obviousExits = [];
@@ -162,6 +166,9 @@ const theMailbox = (contentDirectory) => {
 const wireUpPopupClose = () => {
   closePopup.onclick = () => {
     closeThePopup();
+    if (bgMusic.paused) {
+      bgMusic.play();
+    }
   }
 
 }
