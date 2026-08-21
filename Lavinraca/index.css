@@ -51,6 +51,12 @@ body {
   height: 100vh;
 }
 
+.letters {
+  position: fixed;
+  top: 31px;
+  left: 31px;
+}
+
 #storyContainer {
   position: absolute;
   bottom: 0px;

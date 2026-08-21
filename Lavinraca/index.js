@@ -1,5 +1,7 @@
 const bgMusic = new Audio("images/Diorama/foley/ready_effects/Outdoor/web_Music_wind1.mp3");
 bgMusic.loop = true;
+
+const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   wireUpPopupClose();
   outsideTheHouse();
@@ -19,20 +21,20 @@ window.onload = () => {
   }*/
 }
 
-const attachObviousExits = (contentDirectory, obviousExits, outside = true) => {
+const attachObviousExits = (obviousExits, outside = true) => {
   const c = createElementWithClassAndParent("div", story);
   c.innerHTML = "<br>Obvious Exits Are:<br><br>"
   console.log("JR NOTE: don't forget to have outside = false once i have insides")
   for (let exit of obviousExits) {
     const button = createElementWithClassAndParent("button", c);
     button.innerText = exit.text;
-    button.onclick = () => movingAroundOutside(exit.function, contentDirectory);
+    button.onclick = () => movingAroundOutside(exit.function);
   }
 }
 
 //possibility of interuprtion which might force you to stay where you were
 // or just give you a scene before dumping you in your location (or even in a random location)
-const movingBetweenHallways = (target, contentDirectory) => {
+const movingBetweenHallways = (target) => {
   if (Math.random() > 0.5) {
     alert("Something spooky happens while moving, but you make it to your destination okay!")
   }
@@ -41,11 +43,11 @@ const movingBetweenHallways = (target, contentDirectory) => {
 
 //possibility of interuprtion which might force you to stay where you were
 // or just give you a scene before dumping you in your location (or even in a random location)
-const movingAroundOutside = (target, contentDirectory) => {
+const movingAroundOutside = (target) => {
   if (Math.random() > 0.5) {
     alert("Something spooky happens while moving, but you make it to your destination okay!")
   }
-  target(contentDirectory);
+  target();
 }
 
 /*
@@ -53,7 +55,7 @@ you can approach the door, the harvest, the mailbox or the backyard
 content directory decides if its the normal outside or if its silly/spooky
 text is mostly always the same but can vary
 */
-const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Final") => {
+const outsideTheHouse = () => {
   bgMusic.play();
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
   video.thumbnail = contentDirectory + "first.jpg";
@@ -64,10 +66,10 @@ const outsideTheHouse = (contentDirectory = "images/Diorama/Outside/Final") => {
   obviousExits.push({ text: "Approach the Harvest", function: theHarvest })
 
   story.innerHTML = `${text}`;
-  attachObviousExits(contentDirectory, obviousExits)
+  attachObviousExits(obviousExits)
 }
 
-const outsideTheDoor = (contentDirectory) => {
+const outsideTheDoor = () => {
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
@@ -81,7 +83,7 @@ const outsideTheDoor = (contentDirectory) => {
   video.onended = () => {
     storyContainer.style.display = "block"
     story.innerText = "With beating heart and shaky hands you reach the door. What wonders and horrors will you find within?"
-    attachObviousExits(contentDirectory, obviousExits)
+    attachObviousExits(obviousExits)
 
   }
 }
@@ -90,10 +92,10 @@ const inside = () => {
   alert("JR NOTE: TODO trick")
 }
 
-const knockOnDoor = (contentDirectory) => {
+const knockOnDoor = () => {
   const odds = Math.random();
   if (odds > .1) {
-    openDoor(contentDirectory);
+    openDoor();
   } else {
     treat();
   }
@@ -104,7 +106,7 @@ const treat = () => {
 }
 
 
-const openDoor = (contentDirectory) => {
+const openDoor = () => {
   video.src = contentDirectory + "/open_the_door.mp4";
   storyContainer.style.display = "none"
   video.play();
@@ -127,11 +129,30 @@ const greetHarvest = () => {
 const viewMail = () => {
   const mail = fetchPendingCommands();
   console.log("JR NOTE: here's the mail it never fails", mail);
-  alert("JR NOTE: todo display " + mail.length + mail);
+  //alert("JR NOTE: todo display " + mail.length + mail);
+  popup.style.display = "block"
+  popupContents.innerHTML = "You find the following postcards, letters and small pamplets waiting for the Harvest God's perusal.<br><Br> You feel a little uneasy, knowing these messages from the Faithful have not yet been seen by any eyes. The Harvest has not yet judged any of these Worthy and you may find things better left hidden in the void.<br><br>(ooc: This is pending online content submitted by fans and not yet moderated. viewer discretion is advised etc etc but you can also check here to make sure your own Prayers are waiting for the God to be In)<br><br>";
+
+  for (let letter of mail) {
+    console.log("JR NOTE: rendering mail")
+    const c = createElementWithClassAndParent("li", popupContents);
+    c.innerText = letter;
+
+  }
+
+  const c = createElementWithClassAndParent("div", popupContents);
+  c.innerText = "You feel vaguely guilty reading such personal things, before anyone has seen them at all. ";
+  const close = createElementWithClassAndParent("button", popupContents);
+  close.innerText = "Put the Letters Back and Hurry Back To the Door";
+  close.onclick = () => {
+    closeThePopup();
+    outsideTheHouse();
+  }
+
 }
 
 
-const theHarvest = (contentDirectory) => {
+const theHarvest = () => {
   //maybe i'll have a blue screen verion at some point, cuz it hadn't occured to me that you can't green screen a green god , lol
   video.src = contentDirectory + "/HarvestApproach.mp4";
   storyContainer.style.display = "none"
@@ -143,13 +164,13 @@ const theHarvest = (contentDirectory) => {
   video.onended = () => {
     storyContainer.style.display = "block"
     story.innerText = "You decide its only polite to greet the Statue of the Harvest that sits outside the house."
-    attachObviousExits(contentDirectory, obviousExits)
+    attachObviousExits(obviousExits)
 
   }
 }
 
 
-const theMailbox = (contentDirectory) => {
+const theMailbox = () => {
   video.src = contentDirectory + "/MailboxApproach.mp4";
   storyContainer.style.display = "none"
   video.play();
@@ -160,7 +181,7 @@ const theMailbox = (contentDirectory) => {
   video.onended = () => {
     storyContainer.style.display = "block"
     story.innerText = "Curiosity overrides your better judgement, just what kind of mail can this long abandoned house of a god be getting?"
-    attachObviousExits(contentDirectory, obviousExits)
+    attachObviousExits(obviousExits)
 
   }
 }
@@ -168,14 +189,15 @@ const theMailbox = (contentDirectory) => {
 const wireUpPopupClose = () => {
   closePopup.onclick = () => {
     closeThePopup();
-    if (bgMusic.paused) {
-      bgMusic.play();
-    }
+
   }
 
 }
 
 const closeThePopup = () => {
   popup.style.display = "none"
+  if (bgMusic.paused) {
+    bgMusic.play();
+  }
 }
 
