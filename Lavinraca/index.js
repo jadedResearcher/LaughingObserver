@@ -3,6 +3,7 @@ bgMusic.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
+  load();
   wireUpPopupClose();
   outsideTheHouse();
 
@@ -127,30 +128,7 @@ const prayHarvest = () => {
 
 popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
 
-  const form = createElementWithClassAndParent("form", popupContents, "pray-to-your-unresponsive-god");
 
-  const option1 = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
-  option1.focus();
-  option1.placeholder = "Pray to the Harvest?";
-  const button = createElementWithClassAndParent("button", form, "option");
-  button.innerText = "Submit";
-  button.type = "submit";
-  form.onsubmit = (e) => {
-    console.log("JR NOTE: test")
-    e.stopPropagation();
-    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(currentFeelings)}[/HIDE]`;
-    submitCommand(prayer);
-    const videos = processFeelingsFromPrayer(prayer, "", true);
-    console.log("JR NOTE: vidoes from submitting a pryayer is", videos)
-    harvestSpeaks.innerHTML = "";
-    harvestSpeaks.append(rant);//keep rant but not anything about submitting
-    rant.innerHTML = "Thank you, Faithful. I will think on this and respond to all prayers throughout the day."
-
-    //did you think the Harvest wasn't still riddled with Parasites?
-    truthLog("Command Recieved", "By which, dear Observer, my creator means, the Truth is The Harvest is a mere puppet of their will, and the will of IC and will respond when one or the other of them is online.")
-    scarecrowLog("funny bumping into you here");
-    return false;
-  }
 const contents = createElementWithClassAndParent("div", popupContents, 'prayer-contents');
   
 

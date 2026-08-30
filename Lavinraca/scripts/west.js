@@ -58,6 +58,14 @@ let submitted = false;
 
 
 const renderHarvestAndPrayers = async (parent)=>{
+  const form = createElementWithClassAndParent("form", parent, "pray-to-your-unresponsive-god");
+
+  const option1 = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
+  option1.focus();
+  option1.placeholder = "Pray to the Harvest?";
+  const button = createElementWithClassAndParent("button", form, "option");
+  button.innerText = "Submit";
+  button.type = "submit";
 
   
     const dialogParent = createElementWithClassAndParent("div", parent, "dialog-parent");
@@ -75,6 +83,21 @@ const renderHarvestAndPrayers = async (parent)=>{
 
     commandParent.id = "commands";
 
+  form.onsubmit = (e) => {
+    console.log("JR NOTE: test")
+    e.stopPropagation();
+    //don't forget can transmit internal state data and save info with
+    //[HIDE]${JSON.stringify(currentFeelings)}[/HIDE]
+    globalDataObject.prayers_sent.push(option1.value);//don't include the save data
+    save();
+    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(globalDataObject)}[/HIDE]`;
+    submitCommand(prayer);
+ 
+    harvestSpeaks.innerHTML = "";
+    harvestSpeaks.append(rant);//keep rant but not anything about submitting
+    rant.innerHTML = "Thank you, Faithful. I will think on this and respond to all prayers throughout the day."
+    return false;
+  }
 
 
     pastPrayers.innerHTML = "<br><br>Previous Prayers<br>"
@@ -88,7 +111,7 @@ const renderHarvestAndPrayers = async (parent)=>{
 
 
     //if you're just vibing on the screen and a Proclamation from the Harvest goes out, you should attend it
-    waitForResponse(recentPrayersEle, rant);
+    waitForResponse(recentPrayers, rant);
 }
 
 const processOnePrayer = (commandEle, responseEle, command, response, autoresponder = false, prepend = false) => {
