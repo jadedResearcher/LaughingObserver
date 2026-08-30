@@ -44,6 +44,7 @@ however i can
 */
 
 
+
 //my True Heir will know how to do this.
 const desperate_plea = `[
   {
@@ -54,6 +55,65 @@ const desperate_plea = `[
 
 let numberSubmittedCommands = 0;
 let submitted = false;
+
+
+const renderHarvestAndPrayers = async (parent)=>{
+
+  
+    const dialogParent = createElementWithClassAndParent("div", parent, "dialog-parent");
+
+    const harvestSpeaks = createElementWithClassAndParent("div", dialogParent, "god-dialog");
+
+
+    let rant = createElementWithClassAndParent("p", harvestSpeaks, "inner-dialog");
+    rant.innerHTML = "What am I the god of? What can I help you with?";
+
+    const commandParent = createElementWithClassAndParent("div", dialogParent, "dialog-parent");
+    const commandEle = createElementWithClassAndParent("div", commandParent, "god-dialog");
+    const recentPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
+    const pastPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
+
+    commandParent.id = "commands";
+
+
+
+    pastPrayers.innerHTML = "<br><br>Previous Prayers<br>"
+    let commands = await fetchInitialStory();
+    commands = commands.reverse();
+    let responded = false;
+    for (let c of commands) {
+        processOnePrayer(pastPrayers, rant, c.command, c.response, !responded)
+        responded = true;
+    }
+
+
+    //if you're just vibing on the screen and a Proclamation from the Harvest goes out, you should attend it
+    waitForResponse(recentPrayersEle, rant);
+}
+
+const processOnePrayer = (commandEle, responseEle, command, response, autoresponder = false, prepend = false) => {
+    // console.warn("JR NOTE: don't forget to handle special meta content like the harvest emoting or truth/scarecrow commenting")
+    const container = createElementWithClass("li", "prayer");
+    if (prepend) {
+        commandEle.prepend(container);
+    } else {
+        commandEle.append(container);
+    }
+    container.innerText = command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "");
+    container.onclick = () => {
+      responseEle.scrollIntoView();
+        const others = document.querySelectorAll(".prayer");
+        for (let other of others) {
+            other.style.textDecoration = "none"
+        }
+        container.style.textDecoration = "underline"
+        responseEle.innerHTML = `<span class='prayer-text'>${command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "")}</span><br><div class='prayer-response'>${response.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "").replaceAll("\n", "<br>")}</div>`;
+    }
+
+    if (autoresponder) {
+        container.click();
+    }
+}
 
 
 function removeItemOnce(arr, value) {
@@ -160,3 +220,57 @@ the rot takes all in the end
 no matter how good i am, one day the fandom will be a funny story someone tells , about a game that used to exist
 and thats not just okay, its the POINT, its the final form of what i'm doing right now 
 */
+
+/*
+when you get a response: 
+* beep
+* add the command to the most recent section of prayers (click and prepend true) processOnePrayer
+*/
+const waitForResponse = async (commandEle, rantEle) => {
+
+  try {
+    console.log("JR NOTE: waiting for response")
+    //dont care what it gives us, if it returns, fetch again
+    await httpGetAsync("http://farragofiction.com:1972/WaitingISwearToPleaseForResponse");
+    if (commandEle.innerText === "None...") {
+      commandEle.innerText = "";
+    }
+    const jsonArray = (JSON.parse(httpGet("http://farragofiction.com:1972/StoryTimePleaseDearGod"))).reverse();
+    const json = jsonArray[0];
+    console.log("JR NOTE: got response", json)
+
+
+    processOnePrayer(commandEle, rantEle, json.command, json.response, true, true)
+    beep.play();
+    waitForResponse(commandEle, rantEle);
+  } catch (e) {
+    console.error("JR NOTE: problem waiting for response, trying again in 10 seconds", e)
+    setTimeout(waitForResponse, 10000);
+  }
+}
+
+const waitForFaithfulPrayers = async (commandEle) => {
+
+  try {
+    console.log("JR NOTE: waiting for prayers")
+    //dont care what it gives us, if it returns, fetch again
+    await httpGetAsync("http://farragofiction.com:1972/WaitingISwearToPleaseForCommand");
+    if (commandEle.innerText === "None...") {
+      commandEle.innerText = "";
+    }
+    const jsonArray = (JSON.parse(httpGet("http://farragofiction.com:1972/ListThePleaseCommandList"))).reverse();
+    if (jsonArray.length === 0) {
+      commandEle.innerText = "No Prayers Pending";
+      return;
+    }
+    const json = jsonArray[0];
+    console.log("JR NOTE: got response", json)
+    handleOnePendingPrayer(commandEle, json)
+
+    beep.play();
+    waitForFaithfulPrayers(commandEle);
+  } catch (e) {
+    console.error("JR NOTE: problem waiting for prayer, trying again in 10 seconds", e)
+    setTimeout(waitForResponse, 10000);
+  }
+}

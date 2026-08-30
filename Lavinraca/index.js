@@ -1,4 +1,4 @@
-const bgMusic = new Audio("images/Diorama/foley/ready_effects/Outdoor/web_Music_wind1.mp3");
+const bgMusic = new Audio("images/Diorama/foley/ready_effects/Outdoor/wind_loop.mp3");
 bgMusic.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
@@ -34,6 +34,7 @@ const attachObviousExits = (obviousExits, outside = true) => {
 
 //possibility of interuprtion which might force you to stay where you were
 // or just give you a scene before dumping you in your location (or even in a random location)
+//this can't be happening, eternal darkness ref
 const movingBetweenHallways = (target) => {
   if (Math.random() > 0.5) {
     alert("Something spooky happens while moving, but you make it to your destination okay!")
@@ -44,9 +45,7 @@ const movingBetweenHallways = (target) => {
 //possibility of interuprtion which might force you to stay where you were
 // or just give you a scene before dumping you in your location (or even in a random location)
 const movingAroundOutside = (target) => {
-  if (Math.random() > 0.5) {
-    alert("Something spooky happens while moving, but you make it to your destination okay!")
-  }
+  //can enable later but mostly was annoying cuz in practice when you're outside you're just trying to get shit done
   target();
 }
 
@@ -64,6 +63,7 @@ const outsideTheHouse = () => {
   obviousExits.push({ text: "Approach the Door", function: outsideTheDoor })
   obviousExits.push({ text: "Approach the Mailbox", function: theMailbox })
   obviousExits.push({ text: "Approach the Harvest", function: theHarvest })
+  obviousExits.push({ text: "Read the Plaque", function: rollCredits })
 
   story.innerHTML = `${text}`;
   attachObviousExits(obviousExits)
@@ -122,9 +122,48 @@ const openDoor = () => {
   }
 }
 
-const greetHarvest = () => {
-  alert("JR NOTE: TODO")
+const prayHarvest = () => {
+    popup.style.display = "block"
+
+popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
+
+  const form = createElementWithClassAndParent("form", popupContents, "pray-to-your-unresponsive-god");
+
+  const option1 = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
+  option1.focus();
+  option1.placeholder = "Pray to the Harvest?";
+  const button = createElementWithClassAndParent("button", form, "option");
+  button.innerText = "Submit";
+  button.type = "submit";
+  form.onsubmit = (e) => {
+    console.log("JR NOTE: test")
+    e.stopPropagation();
+    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(currentFeelings)}[/HIDE]`;
+    submitCommand(prayer);
+    const videos = processFeelingsFromPrayer(prayer, "", true);
+    console.log("JR NOTE: vidoes from submitting a pryayer is", videos)
+    harvestSpeaks.innerHTML = "";
+    harvestSpeaks.append(rant);//keep rant but not anything about submitting
+    rant.innerHTML = "Thank you, Faithful. I will think on this and respond to all prayers throughout the day."
+
+    //did you think the Harvest wasn't still riddled with Parasites?
+    truthLog("Command Recieved", "By which, dear Observer, my creator means, the Truth is The Harvest is a mere puppet of their will, and the will of IC and will respond when one or the other of them is online.")
+    scarecrowLog("funny bumping into you here");
+    return false;
+  }
+const contents = createElementWithClassAndParent("div", popupContents, 'prayer-contents');
+  
+
+renderHarvestAndPrayers(contents)  ;
+  const close = createElementWithClassAndParent("button", popupContents);
+  close.innerText = "Stop Praying";
+  close.onclick = () => {
+    closeThePopup();
+    outsideTheHouse();
+  }
 }
+
+
 
 const viewMail = () => {
   const mail = fetchPendingCommands();
@@ -159,13 +198,42 @@ const theHarvest = () => {
   video.play();
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
-  obviousExits.push({ text: "Greet", function: greetHarvest })
+  obviousExits.push({ text: "Pray", function: prayHarvest })
 
   video.onended = () => {
     storyContainer.style.display = "block"
-    story.innerText = "You decide its only polite to greet the Statue of the Harvest that sits outside the house."
+    //haha whoops i forgot the harvest was green when i put a green screen behind her....it would Stres Me The Hell Out to film the outside of the house again, so...I'm just going to not. besides, she's a grace now, she teaches everyone to hack reality and step 1 is proving to you that the reality she's in isn't real. so there.
+    story.innerHTML = "You decide its only polite to greet the Statue of the Harvest that sits outside the house. <br><Br>Something...feels off...though. Weird. Almost like...reality is....just a little bit less real here... You've heard the phrase 'the veil is thin here' but you never FELT it before... You can't put your finger on any one thing that's wrong but...<Br><BR>Its unsettling."
     attachObviousExits(obviousExits)
 
+  }
+}
+
+const rollCredits = ()=>{
+    popup.style.display = "block"
+  popupContents.innerHTML = "The small metal plaque welded to the fence seems to be a list of those who have contributed to this game.";
+
+  const credits = {
+    "JR": "Writing, Coding, Filming, Set Making",
+    "BR":"3d Printing, 3d Model Design and Sourcing, Painting Consults, Architecture, Harvest Casing Assembly",
+    "DM":"Electrical Engineering, Harvest Screen Assembly",
+        "IC":"Character Design, Candy Pamphlet Writing",
+        "EmberIsCurious":"Wodin Blender Model",
+    "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations"
+  }
+  for (let [key,value] of Object.entries(credits)) {
+    console.log("JR NOTE: rendering credits")
+    const c = createElementWithClassAndParent("li", popupContents);
+    c.innerText = `${key} : ${value}`;
+
+  }
+
+    const close = createElementWithClassAndParent("button", popupContents);
+    close.style.marginTop="31px"
+  close.innerText = "Stop Looking At Plaque";
+  close.onclick = () => {
+    closeThePopup();
+    outsideTheHouse();
   }
 }
 

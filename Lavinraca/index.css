@@ -1,27 +1,27 @@
 @font-face {
   font-family: bloodscratch;
-  src: url("http://lavinraca.eyedolgames.com/TheHarvestWakes/Fonts/BloodScratchPersonalUse.ttf");
+  src: url("Fonts/BloodScratchPersonalUse.ttf");
 }
 
 @font-face {
   font-family: paincircus;
-  src: url("http://lavinraca.eyedolgames.com/TheHarvestWakes/Fonts/pain_circus/Pain\ Circus.ttf");
+  src: url("Fonts/pain_circus/Pain\ Circus.ttf");
 }
 
 @font-face {
   font-family: GT America;
-  src: url("http://lavinraca.eyedolgames.com/TheHarvestWakes/Fonts/GT-America/GT-America-Compressed-Regular-Trial.otf");
+  src: url("Fonts/GT-America/GT-America-Compressed-Regular-Trial.otf");
 }
 
 @font-face {
   font-family: ouija;
-  src: url("http://lavinraca.eyedolgames.com/TheHarvestWakes/Fonts/ifc_los_banditos/IFC\ LOS\ BANDITOS.ttf");
+  src: url("Fonts/ifc_los_banditos/IFC\ LOS\ BANDITOS.ttf");
 }
 
 
 @font-face {
   font-family: gameboy;
-  src: url("http://lavinraca.eyedolgames.com/TheHarvestWakes/Fonts/early-gameboy/Early%20GameBoy.ttf");
+  src: url("Fonts/early-gameboy/Early%20GameBoy.ttf");
 }
 
 
@@ -157,16 +157,72 @@ video {
   right: 0px;
 }
 
+.prayer-contents{
+  border: 3px solid #677221;
+  color: #677221;
+  font-family: gameboy;
+}
+
+.god-dialog {
+    background-color: #a1b234;
+    color: black;
+    font-family: gameboy;
+    border: 2px solid black;
+    margin: 0px;
+    overflow-x: hidden;
+    transform: none !important;
+    padding: 13px;
+}
+
+.prayer {
+    cursor: pointer;
+    font-size: 8px;
+    margin-top: 13px;
+}
+
+.prayer:hover {
+    text-decoration: underline;
+}
+
+.prayer-container {
+    padding: 0px;
+
+}
+
+.prayer-text {
+    text-decoration: underline;
+    font-size: 10px;
+    font-family: gameboy;
+
+}
+
+.prayer-response {
+    font-size: 8px;
+    margin-top: 13px;
+    font-family: gameboy;
+
+
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
 .gallery-popup {
   position: fixed;
   background: black;
-  top: 5%;
   width: 69dvw;
-  height: 40dvh;
+  height: 80dvh;
   overflow-y: auto;
-  left: 5%;
-  padding: 10%;
+  padding: 13px;
   border: 3px solid var(--main-bg-color);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
 }
 
