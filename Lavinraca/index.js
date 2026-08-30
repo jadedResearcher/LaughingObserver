@@ -79,7 +79,7 @@ const outsideTheDoor = () => {
   video.play();
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
-  obviousExits.push({ text: "Knock", function: knockOnDoor })
+  obviousExits.push({ text: "Knock", function: openDoor })
 
   video.onended = () => {
     storyContainer.style.display = "block"
@@ -93,18 +93,8 @@ const inside = () => {
   alert("JR NOTE: TODO trick")
 }
 
-const knockOnDoor = () => {
-  const odds = Math.random();
-  if (odds > .1) {
-    openDoor();
-  } else {
-    treat();
-  }
-}
 
-const treat = () => {
-  alert("JR NOTE: todo treat instead of trick")
-}
+
 
 
 const openDoor = () => {
@@ -113,23 +103,53 @@ const openDoor = () => {
   video.play();
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
+  obviousExits.push({ text: "Take Meat Pamphlet", function: meatPamphlet })
+  obviousExits.push({ text: "Take Candy Pamphlet", function: candyPamphlet })
   obviousExits.push({ text: "Go Inside, What's the Worst That Could Happen?", function: inside })
 
   video.onended = () => {
+    globalDataObject.opened_the_door = true;
+    save();
     storyContainer.style.display = "block"
-    story.innerText = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. You jump, hoping that half the neighborhood isn't coming to check who is dumb enough to break into the Harvest's House. Maybe you should hide inside before anyone sees you?"
-    attachObviousExits(contentDirectory, obviousExits)
+    story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. You jump, hoping that half the neighborhood isn't coming to check who is dumb enough to break into the Harvest's House. <br><Br>Just inside the door, on paired little tables, you see two neat little piles of ...are those...religious Tracts? One has a little sculpture of Meat weighing it down, and the other a jar of fake Candy. The sign propped up between them proudly reads 'Take One!'"
+    attachObviousExits(obviousExits)
 
   }
 }
 
+const meatPamphlet = () => {
+  globalDataObject.meat++;
+  save();
+  popup.style.display = "block"
+
+  popupContents.innerHTML = "You've always been more  of a meat and potatoes kinda trick or treater.<br><img src='images/meat_pamplet.png'> "
+  const close = createElementWithClassAndParent("button", popupContents);
+  close.innerText = "Pocket Pamphlet";
+  close.onclick = () => {
+    closeThePopup();
+  }
+}
+
+const candyPamphlet = () => {
+  globalDataObject.candy++;
+  save();
+  popup.style.display = "block"
+
+  popupContents.innerHTML = "Halloween is ALL about the Candy!<br><img src='images/churchofcandy.png'>"
+  const close = createElementWithClassAndParent("button", popupContents);
+  close.innerText = "Pocket Pamphlet";
+  close.onclick = () => {
+    closeThePopup();
+  }
+}
+
 const prayHarvest = () => {
-    popup.style.display = "block"
+  popup.style.display = "block"
 
-popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
+  popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
 
 
-  
+
 
   const close = createElementWithClassAndParent("button", popupContents);
   close.innerText = "Stop Praying";
@@ -137,12 +157,12 @@ popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the
     closeThePopup();
     outsideTheHouse();
   }
-  close.style.display="block"
-  close.style.marginTop ="13px"
-  close.style.marginBottom ="13px"
+  close.style.display = "block"
+  close.style.marginTop = "13px"
+  close.style.marginBottom = "13px"
 
   const contents = createElementWithClassAndParent("div", popupContents, 'prayer-contents');
-  renderHarvestAndPrayers(contents)  ;
+  renderHarvestAndPrayers(contents);
 
 }
 
@@ -163,7 +183,7 @@ const viewMail = () => {
   }
 
   const c = createElementWithClassAndParent("div", popupContents);
-  c.style.marginTop="31px"
+  c.style.marginTop = "31px"
   c.innerText = "You feel vaguely guilty reading such personal things, before anyone has seen them at all. ";
   const close = createElementWithClassAndParent("button", popupContents);
   close.innerText = "Put the Letters Back and Hurry Back To the Door";
@@ -193,27 +213,27 @@ const theHarvest = () => {
   }
 }
 
-const rollCredits = ()=>{
-    popup.style.display = "block"
+const rollCredits = () => {
+  popup.style.display = "block"
   popupContents.innerHTML = "The small metal plaque welded to the fence seems to be a list of those who have contributed to this game.";
 
   const credits = {
     "JR": "Writing, Coding, Filming, Set Making",
-    "BR":"3d Printing, 3d Model Design and Sourcing, Painting Consults, Architecture, Harvest Casing Assembly",
-    "DM":"Electrical Engineering, Harvest Screen Assembly",
-        "IC":"Character Design, Candy Pamphlet Writing",
-        "EmberIsCurious":"Wodin Blender Model",
+    "BR": "3d Printing, 3d Model Design and Sourcing, Painting Consults, Architecture, Harvest Casing Assembly",
+    "DM": "Electrical Engineering, Harvest Screen Assembly <a href='https://github.com/mutantbob/diorama-mini-tv' target='_blank'>[Source]</a>",
+    "IC": "Character Design, Candy Pamphlet Writing",
+    "EmberIsCurious": "Wodin Blender Model",
     "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations"
   }
-  for (let [key,value] of Object.entries(credits)) {
+  for (let [key, value] of Object.entries(credits)) {
     console.log("JR NOTE: rendering credits")
     const c = createElementWithClassAndParent("li", popupContents);
-    c.innerText = `${key} : ${value}`;
+    c.innerHTML = `${key} : ${value}`;
 
   }
 
-    const close = createElementWithClassAndParent("button", popupContents);
-    close.style.marginTop="31px"
+  const close = createElementWithClassAndParent("button", popupContents);
+  close.style.marginTop = "31px"
   close.innerText = "Stop Looking At Plaque";
   close.onclick = () => {
     closeThePopup();

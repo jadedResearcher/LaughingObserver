@@ -8,7 +8,8 @@ let globalDataObject = {
          prayers_sent:[],
          inventory:[],
          meat:0,
-         candy:0
+         candy:0,
+         opened_the_door:false
     }
 
 //JR NOTE: add the things you're worried about desyncing here
