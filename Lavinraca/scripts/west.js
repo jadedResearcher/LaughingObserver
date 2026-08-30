@@ -90,8 +90,9 @@ const renderHarvestAndPrayers = async (parent)=>{
     //[HIDE]${JSON.stringify(currentFeelings)}[/HIDE]
     globalDataObject.prayers_sent.push(option1.value);//don't include the save data
     save();
-    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(globalDataObject)}[/HIDE]`;
+    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(truncateJson(globalDataObject,13))}[/HIDE]`;
     submitCommand(prayer);
+    form.remove();
  
     harvestSpeaks.innerHTML = "";
     harvestSpeaks.append(rant);//keep rant but not anything about submitting

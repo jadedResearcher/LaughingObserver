@@ -5,7 +5,10 @@ const SAVE_KEY = 'LAVINRACA_2026_SHESMIDDLEAGEDNOW'
 //https://catalystsbathroomlibrary.neocities.org/
 let globalDataObject = {
          hallways_entered:0,
-         prayers_sent:[]
+         prayers_sent:[],
+         inventory:[],
+         meat:0,
+         candy:0
     }
 
 //JR NOTE: add the things you're worried about desyncing here

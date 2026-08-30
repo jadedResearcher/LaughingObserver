@@ -25,6 +25,26 @@ const isItFriday = () => {
 
 }
 
+
+//i googled this one, didn't write it myself, i woulda done the same in the stack overflow days but this time gemini called dibs
+//don't want our save data to spam the harvest
+function truncateJson(data, maxChars) {
+  if (Array.isArray(data)) {
+    return data.map(item => truncateJson(item, maxChars));
+  } 
+  else if (typeof data === 'object' && data !== null) {
+    const result = {};
+    for (const key in data) {
+      result[key] = truncateJson(data[key], maxChars);
+    }
+    return result;
+  } 
+  else if (typeof data === 'string') {
+    return data.slice(0, maxChars);
+  }
+  return data;
+}
+
 const isItFridayOrMidnight = () => {
   //midnight and fridays are wungle time
   const date = new Date();

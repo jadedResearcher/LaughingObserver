@@ -129,16 +129,21 @@ const prayHarvest = () => {
 popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
 
 
-const contents = createElementWithClassAndParent("div", popupContents, 'prayer-contents');
   
 
-renderHarvestAndPrayers(contents)  ;
   const close = createElementWithClassAndParent("button", popupContents);
   close.innerText = "Stop Praying";
   close.onclick = () => {
     closeThePopup();
     outsideTheHouse();
   }
+  close.style.display="block"
+  close.style.marginTop ="13px"
+  close.style.marginBottom ="13px"
+
+  const contents = createElementWithClassAndParent("div", popupContents, 'prayer-contents');
+  renderHarvestAndPrayers(contents)  ;
+
 }
 
 
@@ -158,6 +163,7 @@ const viewMail = () => {
   }
 
   const c = createElementWithClassAndParent("div", popupContents);
+  c.style.marginTop="31px"
   c.innerText = "You feel vaguely guilty reading such personal things, before anyone has seen them at all. ";
   const close = createElementWithClassAndParent("button", popupContents);
   close.innerText = "Put the Letters Back and Hurry Back To the Door";
