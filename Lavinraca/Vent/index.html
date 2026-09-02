@@ -1,0 +1,161 @@
+<html language="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Vent.">
+  <link rel="icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vent</title>
+  <style>
+    body {
+      margin: 0px;
+      background-color: black;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg) scale(1, 1);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1.3, 1.3);
+      }
+    }
+
+    .spin {
+      transform-origin: center center;
+      animation: spin 5s linear infinite;
+    }
+
+
+
+    #vent {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+
+
+      #wall {
+        position: absolute;
+      }
+
+      #cover {
+        position: absolute;
+      }
+
+      #hole {
+        position: absolute;
+      }
+
+      #one {
+        position: absolute;
+        left: 305px;
+        top: 217px;
+        cursor: pointer;
+      }
+
+      #two {
+        position: absolute;
+        top: 224px;
+        right: 316px;
+        cursor: pointer;
+      }
+
+
+
+      #three {
+        position: absolute;
+        left: 290px;
+        top: 559px;
+        cursor: pointer;
+
+      }
+
+      #four {
+        position: absolute;
+        right: 311px;
+        top: 562px;
+        cursor: pointer;
+
+
+      }
+
+      #ghost {
+        position: absolute;
+        display: none;
+      }
+
+    }
+  </style>
+
+  <script>
+    //maccus had this idea, asked me to make this site, how could i say no?
+    window.onload = () => {
+
+      const unScrewing = [];
+      const unscrewed = [];
+
+      checkIfAllUnscrewed = () => {
+        if (unscrewed.length === 4) {
+          cover.remove();
+          hole.style.cursor = "pointer";
+          const fx = new Audio("wind_loop.mp3");
+          fx.loop = true;
+          fx.play();
+          hole.onclick = () => {
+            window.location.href = "https://discord.gg/xkmCNtCApT";
+          }
+        }
+      }
+
+      const removeScrew = (target) => {
+        target.onclick = () => {
+          if (unScrewing.includes(target)) {
+            return;
+          }
+          unScrewing.push(target);
+          const fx = new Audio("screwsound.mp3");
+          fx.play();
+          target.classList.add("spin")
+          fx.onended = () => {
+            unscrewed.push(target);
+            target.remove();
+            checkIfAllUnscrewed();
+          }
+        }
+      }
+      //it always is so fucky and magic that simple ids are automaticaly global vars
+      removeScrew(one);
+      removeScrew(two);
+      removeScrew(three);
+      removeScrew(four);
+
+    }
+  </script>
+
+
+
+
+
+</head>
+
+<body>
+  <div id="vent">
+    <img id='wall' src="vent-wall.jpg">
+
+    <img id='hole' src="vent-open.png">
+
+    <img id="cover" src="vent-cover.png">
+
+    <img id='one' src="vent-singlebolt.png">
+    <img id='two' src="vent-singlebolt.png">
+    <img id='three' src="vent-singlebolt.png">
+    <img id='four' src="vent-singlebolt.png">
+    <img id='ghost' src="vent.jpg">
+
+
+  </div>
+
+</body>
+
+</html>
