@@ -1,3 +1,14 @@
+9/2/2026 I just finished editing the door opening into the hallway, i.e. the final shot i needed for the outside. Had to wait till the inside was ready, kinda by definition.
+
+Feels weird having it all done, and how little shots it ended up giving me. So so sososos much work compared to how much I plan to milk the hallway for.
+
+Hallway will mostly be , in terms of effort, all the shots i want to get of each hallway and then making any tiny little objects/puzzles.
+
+But I made a whole ass house facade AND harvest statue for the outside, man, and we barely used them.
+
+Harvest statues obvs I'm gonna use more but...its weird.
+
+
 I feel like I info dumped about this somewhere already. 
 
 BUT!
