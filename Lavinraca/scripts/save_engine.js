@@ -4,13 +4,14 @@ const SAVE_KEY = 'LAVINRACA_2026_SHESMIDDLEAGEDNOW'
 //up to what uses this to define this
 //https://catalystsbathroomlibrary.neocities.org/
 let globalDataObject = {
-         hallways_entered:0,
-         prayers_sent:[],
-         inventory:[],
-         meat:0,
-         candy:0,
-         opened_the_door:false
-    }
+    hallways_entered: 0,
+    prayers_sent: [],
+    inventory: [],
+    keys: 0,
+    meat: 0,
+    candy: 0,
+    opened_the_door: false
+}
 
 //JR NOTE: add the things you're worried about desyncing here
 const protectFromDesyncIssues = () => {

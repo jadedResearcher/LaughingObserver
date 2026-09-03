@@ -74,7 +74,7 @@ const outsideTheDoor = () => {
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
-  video.src = contentDirectory + "/ApproachDoorFoley.mp4";
+  video.src = `${contentDirectory}${globalDataObject.opened_the_door ? "/RunDoor.mp4" : "/ApproachDoorFoley.mp4"}`;
   storyContainer.style.display = "none"
   video.play();
   const obviousExits = [];
