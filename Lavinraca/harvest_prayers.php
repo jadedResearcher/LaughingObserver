@@ -2,7 +2,7 @@
 function createPendingGuestBookEntry() {
     //html inputs with names post these to this php file
   $entry = [
-    "message" => htmlspecialchars($_POST['nickname'] ?? 'Anon'),
+    "message" => htmlspecialchars($_POST['message'] ?? ''),
     "date" => htmlspecialchars($_POST['date'] ?? '???'),
     "website" => htmlspecialchars($_POST['website'] ?? "You passed the test, you're not a particularly stupid bot!")
 

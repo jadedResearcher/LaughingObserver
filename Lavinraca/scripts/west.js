@@ -69,6 +69,10 @@ const renderHarvestAndPrayers = async (parent) => {
   option1.focus();
   option1.placeholder = "Pray to the Harvest?";
   option1.name = "message"
+  const dateField = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
+  dateField.type = "hidden";
+  dateField.name = "date";
+  dateField.value = new Date().toLocaleDateString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
   const button = createElementWithClassAndParent("button", form, "option");
   button.innerText = "Submit";
   button.type = "submit";
