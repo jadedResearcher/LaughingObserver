@@ -57,86 +57,111 @@ let numberSubmittedCommands = 0;
 let submitted = false;
 
 
-const renderHarvestAndPrayers = async (parent)=>{
-  const form = createElementWithClassAndParent("form", parent, "pray-to-your-unresponsive-god");
+const renderHarvestAndPrayers = async (parent) => {
+  /*
+    <form action="guestbook.php" method="post">
 
+  */
+  const form = createElementWithClassAndParent("form", parent, "pray-to-your-unresponsive-god");
+  form.action = "harvest_prayers.php"
+  form.method = "post";
   const option1 = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
   option1.focus();
   option1.placeholder = "Pray to the Harvest?";
+  option1.name = "message"
   const button = createElementWithClassAndParent("button", form, "option");
   button.innerText = "Submit";
   button.type = "submit";
 
+
+  const dialogParent = createElementWithClassAndParent("div", parent, "dialog-parent");
+
+  const harvestSpeaks = createElementWithClassAndParent("div", dialogParent, "god-dialog");
+
+
+  let rant = createElementWithClassAndParent("p", harvestSpeaks, "inner-dialog");
+  rant.innerHTML = "What am I the god of? What can I help you with?";
+
+  const commandParent = createElementWithClassAndParent("div", dialogParent, "dialog-parent");
+  const commandEle = createElementWithClassAndParent("div", commandParent, "god-dialog");
+  const recentPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
+  const pastPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
+
+  commandParent.id = "commands";
+  /*rest in peace heartless bot, rest in peace ye angel  of decay
+  the Messenger of the Harvest, the mechanism by which her Word reached the Faithful.
+
+  He is still alive, of course.
+
+  But this new https server...can't communicate to http.
+
+  And rather than try to drag his decaying corpse over here...and all the risks that entails...
+
+  Welp.
+
+  Time to repurpose the guest book from LTESim, as god intended.
+
+  with your help we will go further and further back in time in terms of tech stack.
+
+  used to be dart, then react, then just bundled webpack with typescript then vanilla js and now php
+
   
-    const dialogParent = createElementWithClassAndParent("div", parent, "dialog-parent");
+  */
 
-    const harvestSpeaks = createElementWithClassAndParent("div", dialogParent, "god-dialog");
-
-
-    let rant = createElementWithClassAndParent("p", harvestSpeaks, "inner-dialog");
-    rant.innerHTML = "What am I the god of? What can I help you with?";
-
-    const commandParent = createElementWithClassAndParent("div", dialogParent, "dialog-parent");
-    const commandEle = createElementWithClassAndParent("div", commandParent, "god-dialog");
-    const recentPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
-    const pastPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
-
-    commandParent.id = "commands";
-
-  form.onsubmit = (e) => {
+  /*form.onsubmit = (e) => {
     console.log("JR NOTE: test")
     e.stopPropagation();
     //don't forget can transmit internal state data and save info with
     //[HIDE]${JSON.stringify(currentFeelings)}[/HIDE]
     globalDataObject.prayers_sent.push(option1.value);//don't include the save data
     save();
-    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(truncateJson(globalDataObject,13))}[/HIDE]`;
+    const prayer = `Dear Sweet Harvest:  ${option1.value} [HIDE]${JSON.stringify(truncateJson(globalDataObject, 13))}[/HIDE]`;
     submitCommand(prayer);
     form.remove();
- 
+
     harvestSpeaks.innerHTML = "";
     harvestSpeaks.append(rant);//keep rant but not anything about submitting
     rant.innerHTML = "Thank you, Faithful. I will think on this and respond to all prayers throughout the day."
     return false;
+  }*/
+
+
+  pastPrayers.innerHTML = "<br><br>Previous Prayers<br>"
+  let commands = await fetchInitialStory();
+  commands = commands.reverse();
+  let responded = false;
+  for (let c of commands) {
+    processOnePrayer(pastPrayers, rant, c.command, c.response, !responded)
+    responded = true;
   }
 
 
-    pastPrayers.innerHTML = "<br><br>Previous Prayers<br>"
-    let commands = await fetchInitialStory();
-    commands = commands.reverse();
-    let responded = false;
-    for (let c of commands) {
-        processOnePrayer(pastPrayers, rant, c.command, c.response, !responded)
-        responded = true;
-    }
-
-
-    //if you're just vibing on the screen and a Proclamation from the Harvest goes out, you should attend it
-    waitForResponse(recentPrayers, rant);
+  //if you're just vibing on the screen and a Proclamation from the Harvest goes out, you should attend it
+  waitForResponse(recentPrayers, rant);
 }
 
 const processOnePrayer = (commandEle, responseEle, command, response, autoresponder = false, prepend = false) => {
-    // console.warn("JR NOTE: don't forget to handle special meta content like the harvest emoting or truth/scarecrow commenting")
-    const container = createElementWithClass("li", "prayer");
-    if (prepend) {
-        commandEle.prepend(container);
-    } else {
-        commandEle.append(container);
+  // console.warn("JR NOTE: don't forget to handle special meta content like the harvest emoting or truth/scarecrow commenting")
+  const container = createElementWithClass("li", "prayer");
+  if (prepend) {
+    commandEle.prepend(container);
+  } else {
+    commandEle.append(container);
+  }
+  container.innerText = command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "");
+  container.onclick = () => {
+    responseEle.scrollIntoView();
+    const others = document.querySelectorAll(".prayer");
+    for (let other of others) {
+      other.style.textDecoration = "none"
     }
-    container.innerText = command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "");
-    container.onclick = () => {
-      responseEle.scrollIntoView();
-        const others = document.querySelectorAll(".prayer");
-        for (let other of others) {
-            other.style.textDecoration = "none"
-        }
-        container.style.textDecoration = "underline"
-        responseEle.innerHTML = `<span class='prayer-text'>${command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "")}</span><br><div class='prayer-response'>${response.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "").replaceAll("\n", "<br>")}</div>`;
-    }
+    container.style.textDecoration = "underline"
+    responseEle.innerHTML = `<span class='prayer-text'>${command.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "")}</span><br><div class='prayer-response'>${response.replaceAll(/\[HIDE\].*\[\/HIDE\]/g, "").replaceAll("\n", "<br>")}</div>`;
+  }
 
-    if (autoresponder) {
-        container.click();
-    }
+  if (autoresponder) {
+    container.click();
+  }
 }
 
 

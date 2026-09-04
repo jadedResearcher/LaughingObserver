@@ -1,0 +1,73 @@
+[
+    {
+        "humanLabel": "Entrance 1",
+        "id": 1,
+        "src": "1/Sunset/deep_panel1",
+        "flavorText": "TODO: write flavortext Entrance1",
+        "forwards": 4,
+        "left": 2,
+        "right": 3,
+        "backwards": -1,
+        "functions": [
+            "hallwayOneSunbeam"
+        ]
+    },
+    {
+        "humanLabel": "Entrance 1: Meat and Paintings",
+        "id": 2,
+        "src": "1/Sunset/flat_section1",
+        "flavorText": "TODO: write flavortext Entrance1 meat and painting",
+        "forwards": null,
+        "left": null,
+        "right": 1,
+        "backwards": 1,
+        "functions": [
+            "test2"
+        ]
+    },
+    {
+        "humanLabel": "Entrance 1: Lamp and Paintings",
+        "id": 3,
+        "src": "1/Sunset/flat_section2",
+        "flavorText": "TODO: write flavortext Entrance1",
+        "forwards": null,
+        "left": 1,
+        "right": null,
+        "backwards": 1,
+        "functions": []
+    },
+    {
+        "humanLabel": "Entrance 2:",
+        "id": 4,
+        "src": "1/Sunset/deep_panel2",
+        "flavorText": "TODO: write flavortext Entrance2",
+        "forwards": null,
+        "left": 5,
+        "right": 6,
+        "backwards": 1,
+        "functions": [
+            "wrongOnPurposeForDebugging"
+        ]
+    },
+    {
+        "humanLabel": "Entrance 2: Dark Window",
+        "id": 5,
+        "src": "1/Sunset/deep_panel2",
+        "flavorText": "TODO: write flavortext Entrance2",
+        "forwards": null,
+        "left": null,
+        "right": 4,
+        "backwards": 4,
+        "functions": []
+    },
+    {
+        "humanLabel": "Entrance 2: Bright Window",
+        "id": 6,
+        "flavorText": "TODO: write flavortext Entrance2",
+        "forwards": null,
+        "left": 4,
+        "right": null,
+        "backwards": 4,
+        "functions": []
+    }
+]
