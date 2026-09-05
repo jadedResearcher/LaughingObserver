@@ -85,8 +85,8 @@ svg {
 
 video {
   height: 100dvh;
-  width: 100dvw;
   margin-left: auto;
+  aspect-ratio: auto;
   margin-right: auto;
   display: block;
   pointer-events: none;
@@ -98,6 +98,7 @@ video {
   margin-right: auto;
   position: relative;
   border: 5px solid black;
+  width: fit-content;
 }
 
 .ominous {
@@ -157,59 +158,59 @@ video {
   right: 0px;
 }
 
-.prayer-contents{
+.prayer-contents {
   border: 3px solid #677221;
   color: #677221;
   font-family: gameboy;
 }
 
 .god-dialog {
-    background-color: #a1b234;
-    color: black;
-    font-family: gameboy;
-    border: 2px solid black;
-    margin: 0px;
-    overflow-x: hidden;
-    transform: none !important;
-    padding: 13px;
+  background-color: #a1b234;
+  color: black;
+  font-family: gameboy;
+  border: 2px solid black;
+  margin: 0px;
+  overflow-x: hidden;
+  transform: none !important;
+  padding: 13px;
 }
 
 .prayer {
-    cursor: pointer;
-    font-size: 8px;
-    margin-top: 13px;
+  cursor: pointer;
+  font-size: 8px;
+  margin-top: 13px;
 }
 
 .prayer:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .prayer-container {
-    padding: 0px;
+  padding: 0px;
 
 }
 
 .prayer-text {
-    text-decoration: underline;
-    font-size: 10px;
-    font-family: gameboy;
+  text-decoration: underline;
+  font-size: 10px;
+  font-family: gameboy;
 
 }
 
 .prayer-response {
-    font-size: 8px;
-    margin-top: 13px;
-    font-family: gameboy;
+  font-size: 8px;
+  margin-top: 13px;
+  font-family: gameboy;
 
 
-    img {
-        max-width: 100%;
-    }
+  img {
+    max-width: 100%;
+  }
 
-    p {
-        margin-top: 0px;
-        margin-bottom: 0px;
-    }
+  p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 .gallery-popup {

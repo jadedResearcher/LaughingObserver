@@ -1,5 +1,8 @@
 //responses can be html, prayers can not be
 const makeNewAnsweredPrayer = (prayer, response) => {
+  if (!prayer) {
+    return;
+  }
   clean_answered_prayers.push({ prayer: prayer, response: response })
 }
 const makeNewRawPrayer = (responseText, prayerObject) => {

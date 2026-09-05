@@ -10,7 +10,8 @@ let globalDataObject = {
     keys: 0,
     meat: 0,
     candy: 0,
-    opened_the_door: false
+    opened_the_door: false,
+    current_room_id: -1//outside
 }
 
 //JR NOTE: add the things you're worried about desyncing here

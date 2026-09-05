@@ -1,7 +1,6 @@
-[
-    {
+const hallways = {
+    1: {
         "humanLabel": "Entrance 1",
-        "id": 1,
         "src": "1/Sunset/deep_panel1",
         "flavorText": "TODO: write flavortext Entrance1",
         "forwards": 4,
@@ -12,9 +11,8 @@
             "hallwayOneSunbeam"
         ]
     },
-    {
+    2: {
         "humanLabel": "Entrance 1: Meat and Paintings",
-        "id": 2,
         "src": "1/Sunset/flat_section1",
         "flavorText": "TODO: write flavortext Entrance1 meat and painting",
         "forwards": null,
@@ -25,9 +23,8 @@
             "test2"
         ]
     },
-    {
+    3: {
         "humanLabel": "Entrance 1: Lamp and Paintings",
-        "id": 3,
         "src": "1/Sunset/flat_section2",
         "flavorText": "TODO: write flavortext Entrance1",
         "forwards": null,
@@ -36,9 +33,8 @@
         "backwards": 1,
         "functions": []
     },
-    {
+    4: {
         "humanLabel": "Entrance 2:",
-        "id": 4,
         "src": "1/Sunset/deep_panel2",
         "flavorText": "TODO: write flavortext Entrance2",
         "forwards": null,
@@ -49,9 +45,8 @@
             "wrongOnPurposeForDebugging"
         ]
     },
-    {
+    5: {
         "humanLabel": "Entrance 2: Dark Window",
-        "id": 5,
         "src": "1/Sunset/deep_panel2",
         "flavorText": "TODO: write flavortext Entrance2",
         "forwards": null,
@@ -60,9 +55,8 @@
         "backwards": 4,
         "functions": []
     },
-    {
+    6: {
         "humanLabel": "Entrance 2: Bright Window",
-        "id": 6,
         "flavorText": "TODO: write flavortext Entrance2",
         "forwards": null,
         "left": 4,
@@ -70,4 +64,4 @@
         "backwards": 4,
         "functions": []
     }
-]
+}

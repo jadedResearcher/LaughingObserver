@@ -90,7 +90,7 @@ const outsideTheDoor = () => {
 }
 
 const inside = () => {
-  alert("JR NOTE: TODO trick")
+  beginGameplayLoop();
 }
 
 
