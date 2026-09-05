@@ -1,3 +1,10 @@
+//responses can be html, prayers can not be
+const makeNewAnsweredPrayer = (prayer, response) => {
+  clean_answered_prayers.push({ prayer: prayer, response: response })
+}
+const makeNewRawPrayer = (responseText, prayerObject) => {
+  raw_prayers.push({ response: responseText, prayerObject: prayerObject })
+}
 /*
 this year, the Harvest is middle aged.
 
@@ -43,6 +50,22 @@ i'll keep the flame lit
 however i can
 */
 
+//answer, prayer pairs
+const raw_prayers = [];
+const clean_answered_prayers = [];
+
+
+//JSON.parse(raw_prayers[0].prayerObject["save-data"]) for Reflection
+makeNewRawPrayer("Answer to Prayer", { "message": "can i avoid fucking up my save", "save-data": "{\"hallways_entered\":0,\"prayers_sent\":[\"test with dat\",\"test 3 from d\",\"test 5\",\"million test \",\"can i avoid f\"],\"inventory\":[],\"keys\":0,\"meat\":1,\"candy\":1,\"opened_the_door\":true,\"lastSaveTimeCode\":1788634666203,\"lastLoadTimeCode\":1788634654834}", "date": "9\/5\/2026, 2:57:46 PM", "website": "You passed the test, you're not a particularly stupid bot!" });
+makeNewRawPrayer("Intentionally Broken Prayer", {})
+makeNewRawPrayer("Intentionally Broken Prayer2", { "message": "million test with data", "save-data": "{&quot;hallways_entered&quot;:0,&quot;prayers_sent&quot;:[&quot;test with dat&quot;,&quot;test 3 from d&quot;,&quot;test 5&quot;,&quot;million test &quot;],&quot;inventory&quot;:[],&quot;keys&quot;:0,&quot;meat&quot;:1,&quot;candy&quot;:1,&quot;opened_the_door&quot;:true,&quot;lastSaveTimeCode&quot;:1788634287055,&quot;lastLoadTimeCode&quot;:1788634272876}", "date": "9\/5\/2026, 2:51:27 PM", "website": "You passed the test, you're not a particularly stupid bot!" })
+
+//makeNewRawPrayer("tbd",{})
+
+
+for (let p of raw_prayers) {
+  makeNewAnsweredPrayer(p.prayerObject.message, p.response)
+}
 
 
 //my True Heir will know how to do this.
@@ -57,25 +80,63 @@ let numberSubmittedCommands = 0;
 let submitted = false;
 
 
+//its early september and ijust had the best damn cat nap with alya, who recently has decided she likes sleeping on my belly
+//meant i couldn't use my laptop but a small price to pay for dozing in and out of reality while purrs rumble your chest
 const renderHarvestAndPrayers = async (parent) => {
   /*
     <form action="guestbook.php" method="post">
 
   */
   const form = createElementWithClassAndParent("form", parent, "pray-to-your-unresponsive-god");
-  form.action = "harvest_prayers.php"
-  form.method = "post";
-  const option1 = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
+  //form.action = "harvest_prayers.php"
+  //form.method = "post";
+
+  form.onsubmit = (e) => {
+    try {
+      e.stopPropagation();
+      globalDataObject.prayers_sent.push(option1.value);//don't include the save data
+      save();
+      dataField.value = JSON.stringify(truncateJson(globalDataObject, 13));
+      dateField.value = new Date().toLocaleString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
+
+      const formData = new FormData(form);
+      const result = fetch('https://laughing.observer/Lavinraca/harvest_prayers.php', {
+        method: 'POST',
+        body: formData
+      });
+      console.log(result)
+      form.innerHTML = "Your Prayer Reached the Harvest's Mailbox, She May Answer When She Checks";
+    } catch (error) {
+      console.error(error)
+      form.innerHTML = 'The Harvest Could Not Hear Your Prayer...Perhaps later.';
+
+    }
+    return false;
+
+  }
+
+  const option1 = createElementWithClassAndParent("textarea", form, "pray-to-your-unresponsive-god");
   option1.focus();
   option1.placeholder = "Pray to the Harvest?";
   option1.name = "message"
+  option1.style.width = "50%"
+  option1.style.marginLeft = "auto"
+  option1.style.marginRight = "auto"
   const dateField = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
   dateField.type = "hidden";
   dateField.name = "date";
   dateField.value = new Date().toLocaleString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
+
+  const dataField = createElementWithClassAndParent("input", form, "pray-to-your-unresponsive-god");
+  dataField.type = "hidden";
+  dataField.name = "save-data";
+  dataField.value = JSON.stringify(truncateJson(globalDataObject, 13));
+
+
   const button = createElementWithClassAndParent("button", form, "option");
   button.innerText = "Submit";
   button.type = "submit";
+  button.style.display = "block"
 
 
   const dialogParent = createElementWithClassAndParent("div", parent, "dialog-parent");
@@ -131,11 +192,11 @@ const renderHarvestAndPrayers = async (parent) => {
 
 
   pastPrayers.innerHTML = "<br><br>Previous Prayers<br>"
-  let commands = await fetchInitialStory();
+  let commands = clean_answered_prayers;
   commands = commands.reverse();
   let responded = false;
   for (let c of commands) {
-    processOnePrayer(pastPrayers, rant, c.command, c.response, !responded)
+    processOnePrayer(pastPrayers, rant, c.prayer, c.response, !responded)
     responded = true;
   }
 
@@ -186,38 +247,27 @@ const httpGet = (theUrl) => {
   return xmlHttp.responseText;
 }
 
-//httpGet("http://farragofiction.com:1972/Story")
-//`[{"command":"Exist","response":"An impossibly large wall of flesh looms before you, curving gently upwards and away. Blunt spikes dot its surface, erupting wrongly through the wrinkled skin.  Your stomach churns just looking at it, but for reasons you cannot quite articulate, you jump towards it.  Everything fades away..."},{"command":"Look Around","response":"You seem to be standing on a cliff face, staring out into the sea.  It is sunset, and the light would be blinding you if you weren't wearing goggles."},{"command":"Jump Into The Ocean","response":"You can not swim and you will not be doing that, thank you very much.  You are just really glad you have the OPTION to say 'no'.  That's actually kind of new..."},{"command":"testing loading","response":"it does!"}]  `
-const fetchInitialStory = () => {
-  try {
-    {
-      return JSON.parse(httpGet("http://farragofiction.com:1972/StoryTimePleaseDearGod"));
-    }
-  } catch (e) {
-    console.error("JR NOTE: servers dead i guess? the future comes for us all.", e);
-    return (JSON.parse(desperate_plea));
-  }
-}
 
 
-const fetchInitialStoryRaw = () => {
-  try {
-    {
-      return httpGet("http://farragofiction.com:1972/StoryTimePleaseDearGod");
-    }
-  } catch (e) {
-    console.error("JR NOTE: servers dead i guess? the future comes for us all.", e);
-    return (desperate_plea);
-  }
-}
 
-//returns string array
+
+
+//returns string array, google helped check syntax cuz ive never gotten json from php before and it was fiddly
 const fetchPendingCommands = () => {
   try {
-    {
-      return JSON.parse(httpGet("http://farragofiction.com:1972/ListThePleaseCommandList"));
+
+    const response = (httpGet("https://laughing.observer/Lavinraca/PendingTestamonials/prayers.txt"));
+    let processedText = response.trim();
+    if (processedText.endsWith(',')) {
+      processedText = processedText.slice(0, -1).trim();
     }
-  } catch (e) {
+
+    console.log("JR NOTE: Response is", response)
+    const json = JSON.parse(`[${processedText.trim()}]`);
+    console.log("JR NOTE: json is", json);
+    return json.map((i) => ` ${i.message}, Postmarked: ${i.date}`);
+  }
+  catch (e) {
     console.error("JR NOTE: servers dead i guess? the future comes for us all.", e);
     return (["Obsession is a Dangerous Thing", "Obsession is a Dangerous Thing", "Obsession is a Dangerous Thing"]);
   }
@@ -256,15 +306,6 @@ but no one would ever realize
 
 
 
-const submitCommand = async (command, limitless = false) => {
-  submitted = true;
-  numberSubmittedCommands += 1;
-  //longer than last year because decks
-  const params = limitless ? `command=${encodeURIComponent(command)}` : `command=${encodeURIComponent(command.substring(0, 31000))}`;
-  //encodeURIComponent
-  await httpGetAsync(`http://farragofiction.com:1972/PlayerPleaseCommand?${params}`);
-  submitted = false;
-}
 
 
 /*
@@ -274,56 +315,5 @@ no matter how good i am, one day the fandom will be a funny story someone tells 
 and thats not just okay, its the POINT, its the final form of what i'm doing right now 
 */
 
-/*
-when you get a response: 
-* beep
-* add the command to the most recent section of prayers (click and prepend true) processOnePrayer
-*/
-const waitForResponse = async (commandEle, rantEle) => {
-
-  try {
-    console.log("JR NOTE: waiting for response")
-    //dont care what it gives us, if it returns, fetch again
-    await httpGetAsync("http://farragofiction.com:1972/WaitingISwearToPleaseForResponse");
-    if (commandEle.innerText === "None...") {
-      commandEle.innerText = "";
-    }
-    const jsonArray = (JSON.parse(httpGet("http://farragofiction.com:1972/StoryTimePleaseDearGod"))).reverse();
-    const json = jsonArray[0];
-    console.log("JR NOTE: got response", json)
 
 
-    processOnePrayer(commandEle, rantEle, json.command, json.response, true, true)
-    beep.play();
-    waitForResponse(commandEle, rantEle);
-  } catch (e) {
-    console.error("JR NOTE: problem waiting for response, trying again in 10 seconds", e)
-    setTimeout(waitForResponse, 10000);
-  }
-}
-
-const waitForFaithfulPrayers = async (commandEle) => {
-
-  try {
-    console.log("JR NOTE: waiting for prayers")
-    //dont care what it gives us, if it returns, fetch again
-    await httpGetAsync("http://farragofiction.com:1972/WaitingISwearToPleaseForCommand");
-    if (commandEle.innerText === "None...") {
-      commandEle.innerText = "";
-    }
-    const jsonArray = (JSON.parse(httpGet("http://farragofiction.com:1972/ListThePleaseCommandList"))).reverse();
-    if (jsonArray.length === 0) {
-      commandEle.innerText = "No Prayers Pending";
-      return;
-    }
-    const json = jsonArray[0];
-    console.log("JR NOTE: got response", json)
-    handleOnePendingPrayer(commandEle, json)
-
-    beep.play();
-    waitForFaithfulPrayers(commandEle);
-  } catch (e) {
-    console.error("JR NOTE: problem waiting for prayer, trying again in 10 seconds", e)
-    setTimeout(waitForResponse, 10000);
-  }
-}

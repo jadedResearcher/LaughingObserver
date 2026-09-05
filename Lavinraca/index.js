@@ -186,7 +186,7 @@ const viewMail = () => {
   c.style.marginTop = "31px"
   c.innerText = "You feel vaguely guilty reading such personal things, before anyone has seen them at all. ";
   const close = createElementWithClassAndParent("button", popupContents);
-  close.innerText = "Put the Letters Back and Hurry Back To the Door";
+  close.innerText = "Put the Letters Back and Hurry Back To the GATE";
   close.onclick = () => {
     closeThePopup();
     outsideTheHouse();
