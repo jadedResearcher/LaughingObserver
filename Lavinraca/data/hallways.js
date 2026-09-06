@@ -1,3 +1,24 @@
+const debugHallways = () => {
+    const body = document.body;
+    body.innerHTML = "";
+    const table = createElementWithClassAndParent("table", body);
+    table.style.background = "white"
+    const header_row = createElementWithClassAndParent("tr", table);
+
+    for (let [key, value] of Object.entries(hallways)) {
+        console.log("JR NOTE: debug", key, value)
+        const row = createElementWithClassAndParent("tr", table);
+        const cell = createElementWithClassAndParent("td", row);
+        cell.innerHTML = "<b>ID: </b> " + key;
+        for (let [k, v] of Object.entries(value)) {
+            const c = createElementWithClassAndParent("td", row);
+            c.innerHTML = `<b>${k}</b>:${v}`;
+            c.style.border = "1px solid black";
+
+        }
+
+    }
+}
 const hallways = {
     1: {
         "humanLabel": "Entrance 1",
@@ -12,8 +33,8 @@ const hallways = {
         ]
     },
     2: {
-        "humanLabel": "Entrance 1: Meat and Paintings",
-        "src": "1/Sunset/flat_section1",
+        "humanLabel": "Entrance 1: Lamp and Paintings",
+        "src": "1/Sunset/flat_section2",
         "flavorText": "TODO: write flavortext Entrance1 meat and painting",
         "forwards": null,
         "left": null,
@@ -24,8 +45,8 @@ const hallways = {
         ]
     },
     3: {
-        "humanLabel": "Entrance 1: Lamp and Paintings",
-        "src": "1/Sunset/flat_section2",
+        "humanLabel": "Entrance 1: MEat and Paintings",
+        "src": "1/Sunset/flat_section1",
         "flavorText": "TODO: write flavortext Entrance1",
         "forwards": null,
         "left": 1,
@@ -47,7 +68,7 @@ const hallways = {
     },
     5: {
         "humanLabel": "Entrance 2: Dark Window",
-        "src": "1/Sunset/deep_panel2",
+        "src": "1/Sunset/flat_section4",
         "flavorText": "TODO: write flavortext Entrance2",
         "forwards": null,
         "left": null,
@@ -57,6 +78,7 @@ const hallways = {
     },
     6: {
         "humanLabel": "Entrance 2: Bright Window",
+        "src": "1/Sunset/flat_section3",
         "flavorText": "TODO: write flavortext Entrance2",
         "forwards": null,
         "left": 4,

@@ -58,6 +58,7 @@ text is mostly always the same but can vary
 const outsideTheHouse = () => {
   bgMusic.play();
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
+  video.src = contentDirectory + "/ApproachDoorFoley.mp4"
   video.thumbnail = contentDirectory + "first.jpg";
   video.currentTime = 0;
   const obviousExits = [];
@@ -71,6 +72,8 @@ const outsideTheHouse = () => {
 }
 
 const outsideTheDoor = () => {
+  window.removeEventListener('keydown', handleMovement);
+
   /*
     play approach_door.mp4 in the video, when its done display your text 
   */
@@ -90,6 +93,7 @@ const outsideTheDoor = () => {
 }
 
 const inside = () => {
+  video.onended = null;
   beginGameplayLoop();
 }
 
@@ -112,7 +116,8 @@ const openDoor = () => {
     save();
     storyContainer.style.display = "block"
     story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. You jump, hoping that half the neighborhood isn't coming to check who is dumb enough to break into the Harvest's House. <br><Br>Just inside the door, on paired little tables, you see two neat little piles of ...are those...religious Tracts? One has a little sculpture of Meat weighing it down, and the other a jar of fake Candy. The sign propped up between them proudly reads 'Take One!'"
-    attachObviousExits(obviousExits)
+    attachObviousExits(obviousExits);
+
 
   }
 }
