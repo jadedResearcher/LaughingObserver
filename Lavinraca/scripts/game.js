@@ -17,13 +17,18 @@ src: "1/Sunset/deep_panel1"
 */
 let lastfiretime = performance.now();
 
+//if a function has event handling or timers or whatever they need to know when its time to cleanup
+let cleanupFunctions = [];
+
 const beginGameplayLoop = () => {
-    bgMusic.pause();
+    video.loop = true;
     if (!globalDataObject.current_room_id || globalDataObject.current_room_id < 1) {
         globalDataObject.current_room_id = 1
     }
-
+    spookyLoop.play();
     renderRoom(hallways[globalDataObject.current_room_id]);
+    bgMusic.src = weird;
+    bgMusic.play();
     popup.style.display = "block"
 
     popupContents.innerHTML = "Inside these Hallowed Halls, Movement becomes more natural. Your first task? See if you can get the lights on before the sun finishes setting."
@@ -36,17 +41,50 @@ const beginGameplayLoop = () => {
     close.innerText = "Gotcha";
     close.onclick = () => {
         closeThePopup();
-        bgMusic.pause()
     }
     close.style.display = "block"
     close.style.marginTop = "13px"
     close.style.marginBottom = "13px"
 
     const contents = createElementWithClassAndParent("div", popupContents);
-    contents.innerHTML = `W/UP Arrow = Move Forwards<br>S/DOWN Arrow = Move Backwards<Br>A/Left Arrow = Turn Left<br>D/Right Arrow = Turn Right<br><Br>JR NOTE: It would be WAY Too hard to actually shoot looking down the halls backwards, so, I'm sure it won't be TOO Scary to just...back up. The whole way out. Lol.`;
+    contents.innerHTML = `
+    <u>Keyboard controls are recommended:</u><br>
+    W/UP Arrow = Move Forwards
+    <br>S/DOWN Arrow = Move Backwards
+    <Br>A/Left Arrow = Turn Left
+    <br>D/Right Arrow = Turn Right
+    <br><Br>
+    Or you can click below to toggle on mouse/touch controls, which will render buttons to move (and cover up more of the video)`
+
+
+    const check = createCheckboxInputWithLabel(contents, "check", "Toggle Button Controls", globalDataObject.button_controls)
+    check.container.onclick = () => {
+        globalDataObject.button_controls = !globalDataObject.button_controls;
+        save();
+        renderRoom(hallways[globalDataObject.current_room_id]);
+
+    }
+
+    const jrnote = createElementWithClassAndParent("div", popupContents);
+    jrnote.innerHTML = `<Br><Br><i>JR NOTE: It would have been way too annoying to film all scenes with you facing backwards too so...if you wanna backtrack, enjoy literally walking backwards, I guess??? Everyone knows its perfectly safe to back into a room in a spooky house, lol.</i>`;
+
+
 }
 
 const renderRoom = (json) => {
+    save();
+    for (let f of cleanupFunctions) {
+        if (f) {
+            f();
+        }
+    }
+    cleanupFunctions = [];
+    if (spookyLoop.duration) {//don't just alwyas play
+        spookyLoop.currentTime = Math.random() * spookyLoop.duration;
+    }
+    const vol = Math.random();
+    spookyLoop.volume = vol < 0.5 ? vol : 0// don't want to overuse creaks
+    console.log("JR NOTE: spooky loop", spookyLoop.volume, spookyLoop.playing)
     console.log("JR NOTE: renderRoom", json)
     if (!json) {//id of -1 will get you there, need ways to leave
         outsideTheHouse();
@@ -54,8 +92,70 @@ const renderRoom = (json) => {
     }
     video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
     handleMovement(json);
-    story.innerHTML = `${json.flavorText}<br><br><Br>TODO: wire up touch controls and interaction functions`;
+    //if any function needs to alter room-text target here
+    story.innerHTML = `<div id='room-text'>${json.flavorText}</div>`;
     video.play();
+    const obviousExits = [];
+    obviousExits.push({ text: "Forwards", function: moveForwards })
+    obviousExits.push({ text: "Backwards", function: moveBackwards })
+    obviousExits.push({ text: "Look Left", function: moveLeft })
+    obviousExits.push({ text: "Look Right", function: moveRight })
+
+    if (json.functions) {
+        for (let f of json.functions) {
+            //call via window["functionName"](arguments);
+            if (window[f]) {
+                cleanupFunctions.push(window[f]());
+            }
+        }
+    }
+
+    if (globalDataObject.button_controls) {
+        attachObviousExits(obviousExits, false)
+    }
+}
+
+
+const moveForwards = () => {
+    const json = hallways[globalDataObject.current_room_id];
+
+    if (json && json.forwards) {
+        console.log("JR NOTE: forwards")
+        globalDataObject.current_room_id = json.forwards;
+        renderRoom(hallways[json.forwards])
+    }
+}
+const moveBackwards = () => {
+    const json = hallways[globalDataObject.current_room_id];
+
+    if (json && json.backwards) {
+        console.log("JR NOTE: backwards")
+        globalDataObject.current_room_id = json.backwards;
+
+        renderRoom(hallways[json.backwards])
+    }
+}
+
+const moveLeft = () => {
+    const json = hallways[globalDataObject.current_room_id];
+
+    if (json && json.left) {
+        console.log("JR NOTE: left")
+        globalDataObject.current_room_id = json.left;
+
+        renderRoom(hallways[json.left])
+    }
+}
+
+const moveRight = () => {
+    const json = hallways[globalDataObject.current_room_id];
+
+    if (json && json.right) {
+        console.log("JR NOTE: right")
+        globalDataObject.current_room_id = json.right;
+
+        renderRoom(hallways[json.right])
+    }
 }
 
 
@@ -72,47 +172,6 @@ const handleMovement = (event) => {
     //the future is changing under my feet
     //the codes mine tho
 
-    const moveForwards = () => {
-        const json = hallways[globalDataObject.current_room_id];
-
-        if (json && json.forwards) {
-            console.log("JR NOTE: forwards")
-            globalDataObject.current_room_id = json.forwards;
-            renderRoom(hallways[json.forwards])
-        }
-    }
-    const moveBackwards = () => {
-        const json = hallways[globalDataObject.current_room_id];
-
-        if (json && json.backwards) {
-            console.log("JR NOTE: backwards")
-            globalDataObject.current_room_id = json.backwards;
-
-            renderRoom(hallways[json.backwards])
-        }
-    }
-
-    const moveLeft = () => {
-        const json = hallways[globalDataObject.current_room_id];
-
-        if (json && json.left) {
-            console.log("JR NOTE: left")
-            globalDataObject.current_room_id = json.left;
-
-            renderRoom(hallways[json.left])
-        }
-    }
-
-    const moveRight = () => {
-        const json = hallways[globalDataObject.current_room_id];
-
-        if (json && json.right) {
-            console.log("JR NOTE: right")
-            globalDataObject.current_room_id = json.right;
-
-            renderRoom(hallways[json.right])
-        }
-    }
 
     const keyActions = {
         w: moveForwards,

@@ -19,11 +19,13 @@ const debugHallways = () => {
 
     }
 }
+
+//call functions via window["functionName"](arguments);
+
 const hallways = {
     1: {
-        "humanLabel": "Entrance 1",
         "src": "1/Sunset/deep_panel1",
-        "flavorText": "TODO: write flavortext Entrance1",
+        "flavorText": "You gingerly step inside, peering into the dark hallway, lit only by the setting sun.",
         "forwards": 4,
         "left": 2,
         "right": 3,
@@ -33,9 +35,8 @@ const hallways = {
         ]
     },
     2: {
-        "humanLabel": "Entrance 1: Lamp and Paintings",
         "src": "1/Sunset/flat_section2",
-        "flavorText": "TODO: write flavortext Entrance1 meat and painting",
+        "flavorText": "The lamp doesn't seem to be working.",
         "forwards": null,
         "left": null,
         "right": 1,
@@ -45,9 +46,8 @@ const hallways = {
         ]
     },
     3: {
-        "humanLabel": "Entrance 1: MEat and Paintings",
         "src": "1/Sunset/flat_section1",
-        "flavorText": "TODO: write flavortext Entrance1",
+        "flavorText": "Its hard to make out the paintings in the dark.",
         "forwards": null,
         "left": 1,
         "right": null,
@@ -55,10 +55,9 @@ const hallways = {
         "functions": []
     },
     4: {
-        "humanLabel": "Entrance 2:",
         "src": "1/Sunset/deep_panel2",
-        "flavorText": "TODO: write flavortext Entrance2",
-        "forwards": null,
+        "flavorText": "The door stands before you, invitingly.",
+        "forwards": 111,
         "left": 5,
         "right": 6,
         "backwards": 1,
@@ -67,9 +66,8 @@ const hallways = {
         ]
     },
     5: {
-        "humanLabel": "Entrance 2: Dark Window",
         "src": "1/Sunset/flat_section4",
-        "flavorText": "TODO: write flavortext Entrance2",
+        "flavorText": "Not much light is coming in from the east.",
         "forwards": null,
         "left": null,
         "right": 4,
@@ -77,13 +75,70 @@ const hallways = {
         "functions": []
     },
     6: {
-        "humanLabel": "Entrance 2: Bright Window",
         "src": "1/Sunset/flat_section3",
-        "flavorText": "TODO: write flavortext Entrance2",
+        "flavorText": "This window is doing its best to light up the entire hallway.",
         "forwards": null,
         "left": 4,
         "right": null,
         "backwards": 4,
+        "functions": []
+    },
+    111: {
+        "src": "1/ElectricLights/front1",
+        "flavorText": "The foyer looks so different lit by the electric lamps.",
+        "forwards": 444,
+        "left": 222,
+        "right": 333,
+        "backwards": 4,
+        "functions": []
+    },
+    222: {
+        "src": "1/ElectricLights/front_left",
+        "flavorText": "The lamp shines brightly showing two classic scenes from the Book of Harvest.",
+        "forwards": null,
+        "left": null,
+        "right": 111,
+        "backwards": 111,
+        "functions": [
+            "test2"
+        ]
+    },
+    333: {
+        "src": "1/ElectricLights/front_right",
+        "flavorText": "Two classic scenes from the Book of Harvest.",
+        "forwards": null,
+        "left": 111,
+        "right": null,
+        "backwards": 111,
+        "functions": []
+    },
+    444: {
+        "src": "1/ElectricLights/front2",
+        "flavorText": "The door stands before you, invitingly.",
+        "forwards": null,
+        "left": 555,
+        "right": 666,
+        "backwards": 111,
+        "functions": [
+            "wrongOnPurposeForDebugging"
+        ]
+    },
+    555: {
+        "src": "1/ElectricLights/back_left",
+        "flavorText": "The key has already been collected.",
+        "forwards": null,
+        "left": null,
+        "right": 444,
+        "backwards": 444,
+        "functions": ["testFuckery"]
+    },
+    666: {
+        "src": "1/ElectricLights/back_right",
+        "flavorText": "The formerly briliant window is now a dark mirror.",
+        "forwards": null,
+        "left": 444,
+        "right": null,
+        "backwards": 444,
         "functions": []
     }
 }

@@ -11,7 +11,8 @@ let globalDataObject = {
     meat: 0,
     candy: 0,
     opened_the_door: false,
-    current_room_id: -1//outside
+    current_room_id: -1,//outside
+    button_controls: false //keyboard is easier
 }
 
 //JR NOTE: add the things you're worried about desyncing here

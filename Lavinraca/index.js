@@ -1,11 +1,23 @@
-const bgMusic = new Audio("images/Diorama/foley/ready_effects/Outdoor/wind_loop.mp3");
+const wind = "images/Diorama/foley/ready_effects/Outdoor/wind_loop.mp3";
+const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
+const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
+
+const bgMusic = new Audio(wind);
 bgMusic.loop = true;
+
+const spookyLoop = new Audio(spooky_source);
+spookyLoop.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
   wireUpPopupClose();
-  outsideTheHouse();
+  if (globalDataObject.current_room_id && globalDataObject.current_room_id > 0) {
+    beginGameplayLoop();
+  } else {
+    outsideTheHouse();
+
+  }
 
   console.log("JR NOTE: hello world")
   /*
@@ -24,8 +36,7 @@ window.onload = () => {
 
 const attachObviousExits = (obviousExits, outside = true) => {
   const c = createElementWithClassAndParent("div", story);
-  c.innerHTML = "<br>Obvious Exits Are:<br><br>"
-  console.log("JR NOTE: don't forget to have outside = false once i have insides")
+  c.innerHTML = `<br>${outside ? "Obvious Exits" : "Obvious Exits (no keyboard)"} Are:<br><br>`;
   for (let exit of obviousExits) {
     const button = createElementWithClassAndParent("button", c);
     button.innerText = exit.text;
@@ -56,7 +67,10 @@ content directory decides if its the normal outside or if its silly/spooky
 text is mostly always the same but can vary
 */
 const outsideTheHouse = () => {
+  bgMusic.src = wind;
+  bgMusic.volume = 1;
   bgMusic.play();
+  video.loop = false;
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
   video.src = contentDirectory + "/ApproachDoorFoley.mp4"
   video.thumbnail = contentDirectory + "first.jpg";
@@ -115,7 +129,7 @@ const openDoor = () => {
     globalDataObject.opened_the_door = true;
     save();
     storyContainer.style.display = "block"
-    story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. You jump, hoping that half the neighborhood isn't coming to check who is dumb enough to break into the Harvest's House. <br><Br>Just inside the door, on paired little tables, you see two neat little piles of ...are those...religious Tracts? One has a little sculpture of Meat weighing it down, and the other a jar of fake Candy. The sign propped up between them proudly reads 'Take One!'"
+    story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. <Br><Br>Just inside the door, on paired little tables, you see two neat little piles of ...are those...religious Tracts? One has a little sculpture of Meat weighing it down, and the other a jar of fake Candy. The sign propped up between them proudly reads 'Take One!'"
     attachObviousExits(obviousExits);
 
 
