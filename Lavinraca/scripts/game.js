@@ -71,19 +71,22 @@ const beginGameplayLoop = () => {
 
 }
 
-const renderRoom = (json) => {
+
+const renderRoom = (json, replacedAlready) => {
+    const me = globalDataObject.current_room_id
     save();
-    for (let f of cleanupFunctions) {
-        if (f) {
-            f();
-        }
+    cleanupAllFunctions();
+    const replacement_id = globalDataObject.state_changes[me];
+
+    //only replace once, no infinite chains on accident
+    if (replacement_id && !replacedAlready) {
+        globalDataObject.current_room_id = replacement_id
+        renderRoom(hallways[replacement_id], true)
+        return;
     }
-    cleanupFunctions = [];
-    if (spookyLoop.duration) {//don't just alwyas play
-        spookyLoop.currentTime = Math.random() * spookyLoop.duration;
-    }
-    const vol = Math.random();
-    spookyLoop.volume = vol < 0.5 ? vol : 0// don't want to overuse creaks
+
+    fuckWithAudioVolume();
+
     console.log("JR NOTE: renderRoom", json)
     if (!json) {//id of -1 will get you there, need ways to leave
         outsideTheHouse();
@@ -94,11 +97,9 @@ const renderRoom = (json) => {
     //if any function needs to alter room-text target here
     story.innerHTML = `<div id='room-text'>${json.flavorText}</div>`;
     video.play();
-    const obviousExits = [];
-    obviousExits.push({ text: "Forwards", function: moveForwards })
-    obviousExits.push({ text: "Backwards", function: moveBackwards })
-    obviousExits.push({ text: "Look Left", function: moveLeft })
-    obviousExits.push({ text: "Look Right", function: moveRight })
+    if (globalDataObject.button_controls) {
+        handleHallwayObviousExits()
+    }
 
     if (json.functions) {
         for (let f of json.functions) {
@@ -111,9 +112,7 @@ const renderRoom = (json) => {
         }
     }
 
-    if (globalDataObject.button_controls) {
-        attachObviousExits(obviousExits, false)
-    }
+
 }
 
 
@@ -157,6 +156,33 @@ const moveRight = () => {
 
         renderRoom(hallways[json.right])
     }
+}
+
+
+const cleanupAllFunctions = () => {
+    for (let f of cleanupFunctions) {
+        if (f) {
+            f();
+        }
+    }
+    cleanupFunctions = [];
+}
+
+const fuckWithAudioVolume = () => {
+    if (spookyLoop.duration) {//don't just alwyas play
+        spookyLoop.currentTime = Math.random() * spookyLoop.duration;
+    }
+    const vol = Math.random();
+    spookyLoop.volume = vol < 0.5 ? vol : 0// don't want to overuse creaks
+}
+
+const handleHallwayObviousExits = () => {
+    const obviousExits = [];
+    obviousExits.push({ text: "Forwards", function: moveForwards })
+    obviousExits.push({ text: "Backwards", function: moveBackwards })
+    obviousExits.push({ text: "Look Left", function: moveLeft })
+    obviousExits.push({ text: "Look Right", function: moveRight })
+    attachObviousExits(obviousExits, false)
 }
 
 

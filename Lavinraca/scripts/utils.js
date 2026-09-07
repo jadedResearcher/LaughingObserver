@@ -31,14 +31,14 @@ const isItFriday = () => {
 function truncateJson(data, maxChars) {
   if (Array.isArray(data)) {
     return data.map(item => truncateJson(item, maxChars));
-  } 
+  }
   else if (typeof data === 'object' && data !== null) {
     const result = {};
     for (const key in data) {
       result[key] = truncateJson(data[key], maxChars);
     }
     return result;
-  } 
+  }
   else if (typeof data === 'string') {
     return data.slice(0, maxChars);
   }
@@ -64,6 +64,7 @@ const calculatePerformanceInSeconds = (startTime, endTime) => {
 const calculatePerformanceInMilliSeconds = (startTime, endTime) => {
   return (endTime - startTime);
 }
+
 
 
 

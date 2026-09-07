@@ -32,7 +32,7 @@ const debugHallways = () => {
 const hallways = {
     1: {
         "src": "1/Sunset/deep1_sun",
-        "flavorText": "You gingerly step inside, peering into the dark hallway, lit only by the setting sun.",
+        "flavorText": "The entrance to the house is lit only by the setting sun.",
         "forwards": 4,
         "left": 2,
         "right": 3,
@@ -74,7 +74,16 @@ const hallways = {
     },
     5: {
         "src": "1/Sunset/back_left_key",
-        "flavorText": "Not much light is coming in from the east.",
+        "flavorText": "Light filters in from across the hall, revealing a glinting Key.",
+        "forwards": null,
+        "left": null,
+        "right": 4,
+        "backwards": 4,
+        "functions": ["pickUpKey5"]
+    },
+    1005: {
+        "src": "1/Sunset/back_left_no_key",
+        "flavorText": "You already got the key here.",
         "forwards": null,
         "left": null,
         "right": 4,
@@ -83,7 +92,7 @@ const hallways = {
     },
     6: {
         "src": "1/Sunset/back_right",
-        "flavorText": "This window is doing its best to light up the entire hallway.",
+        "flavorText": "This dirty window is doing its best to light up the entire hallway.",
         "forwards": null,
         "left": 4,
         "right": null,

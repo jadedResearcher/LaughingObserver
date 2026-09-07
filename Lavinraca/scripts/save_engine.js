@@ -12,7 +12,21 @@ let globalDataObject = {
     candy: 0,
     opened_the_door: false,
     current_room_id: -1,//outside
-    button_controls: false //keyboard is easier
+    button_controls: false, //keyboard is easier, make it default
+    state_changes: {}//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
+
+}
+
+//showing number of keys you have etc
+const saveSideEffects = () => {
+    console.log("JR NOTE: should i update graphics?")
+    if (globalDataObject.keys > 0) {
+        keyText.innerText = `x${globalDataObject.keys}`;
+        keyContainer.style.display = "flex";
+
+    } else {
+        keyContainer.style.display = "none";
+    }
 }
 
 //JR NOTE: add the things you're worried about desyncing here
@@ -60,6 +74,8 @@ const save = (reason) => {
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));
     const saveNoise = new Audio("SoundEffects/single_heart.mp3");
     saveNoise.play();
+    saveSideEffects();
+
 }
 
 
@@ -71,12 +87,16 @@ const load = () => {
     if (data) {
         globalDataObject = JSON.parse(data);
         globalDataObject.lastLoadTimeCode = Date.now();
+        if (!globalDataObject.state_changes) {
+            globalDataObject.state_changes = {}
+        }
 
         /*
           only objects that need to respond to functions have to be separately parsed as json
           if they just store data (like facts) its fine to leave them as parsed json
         */
     }
+    saveSideEffects();
 
 }
 

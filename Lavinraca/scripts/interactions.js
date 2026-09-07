@@ -7,6 +7,7 @@ const test1 = () => {
 
 
 
+
 function test2() {
   console.log("JR NOTE: test interaction event");
   return () => { console.log("JR NOTE: test cleaning up") }
@@ -57,7 +58,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   video.loop = false;
   console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
   const odds = Math.random();
-  if (odds > .9999999991) {
+  if (odds > .5) {
     const spookyEffects = ["images/Diorama/Inside/Hallways/1/ElectricLights/quicktest.mp4"];
     video.src = pickFrom(spookyEffects)
   }
@@ -102,7 +103,7 @@ function hallwayOneSunbeam() {
     console.log("JR NOTE: fucky sunbeam", video)
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "Is...something weird going on with the light?"
-    video.src = "images/Diorama/Inside/Hallways/1/Weird/deep_panel1.mp4";
+    video.src = "images/Diorama/Inside/Hallways/1/Sunset/deep1_no_sun.mp4";
     video.play();
   }
   window.addEventListener("click", fuckySunBeam);
@@ -110,6 +111,31 @@ function hallwayOneSunbeam() {
     video.src = oldSrc;
     window.removeEventListener("click", fuckySunBeam)
   }
+}
+
+const keyGet = () => {
+  globalDataObject.keys++;
+  save();
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You got a Key!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+//render a button to pick the key up, if you click it, replace 5 with 1005
+function pickUpKey5() {
+  const myID = "5";
+  const newID = "1005"
+  const c = createElementWithClassAndParent("div", story);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Take Key?"
+  button.onclick = () => {
+    //whenever you would render room 5, now render 1005 which is the same but no key and no function
+    globalDataObject.state_changes[myID] = newID;
+    keyGet();
+    renderRoom(hallways[newID])
+  }
+
 }
 
 function openDoor4111() {
