@@ -39,7 +39,8 @@ const keyGet = () => {
 }
 
 const keyLose = () => {
-  const audio = new Audio("images/Diorama/foley/ready_effects/Inside/key_use.mp3")
+  const audio = new Audio("images/Diorama/foley/ready_effects/Inside/key_use.mp3");
+  audio.play();
   globalDataObject.keys += -1;
   save();
 }
