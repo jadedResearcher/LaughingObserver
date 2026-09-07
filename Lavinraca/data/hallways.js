@@ -21,10 +21,17 @@ const debugHallways = () => {
 }
 
 //call functions via window["functionName"](arguments);
+/*
+* scene id 4005 is for scene 4 transitioning to 5 with a door opening, (shouldn't matter if side or front)
+ has function door4005 to handle it, 
+ function calls generic function to check what video plays for door opening then moved
+  to correct next scene, do this for sunset/electric 
+
+*/
 
 const hallways = {
     1: {
-        "src": "1/Sunset/deep_panel1",
+        "src": "1/Sunset/deep1_sun",
         "flavorText": "You gingerly step inside, peering into the dark hallway, lit only by the setting sun.",
         "forwards": 4,
         "left": 2,
@@ -35,7 +42,7 @@ const hallways = {
         ]
     },
     2: {
-        "src": "1/Sunset/flat_section2",
+        "src": "1/Sunset/front_left",
         "flavorText": "The lamp doesn't seem to be working.",
         "forwards": null,
         "left": null,
@@ -46,7 +53,7 @@ const hallways = {
         ]
     },
     3: {
-        "src": "1/Sunset/flat_section1",
+        "src": "1/Sunset/front_right",
         "flavorText": "Its hard to make out the paintings in the dark.",
         "forwards": null,
         "left": 1,
@@ -55,9 +62,9 @@ const hallways = {
         "functions": []
     },
     4: {
-        "src": "1/Sunset/deep_panel2",
+        "src": "1/Sunset/deep2",
         "flavorText": "The door stands before you, invitingly.",
-        "forwards": 111,
+        "forwards": 4111,
         "left": 5,
         "right": 6,
         "backwards": 1,
@@ -66,7 +73,7 @@ const hallways = {
         ]
     },
     5: {
-        "src": "1/Sunset/flat_section4",
+        "src": "1/Sunset/back_left_key",
         "flavorText": "Not much light is coming in from the east.",
         "forwards": null,
         "left": null,
@@ -75,11 +82,21 @@ const hallways = {
         "functions": []
     },
     6: {
-        "src": "1/Sunset/flat_section3",
+        "src": "1/Sunset/back_right",
         "flavorText": "This window is doing its best to light up the entire hallway.",
         "forwards": null,
         "left": 4,
         "right": null,
+        "backwards": 4,
+        "functions": []
+    },
+
+    111: {
+        "src": "1/ElectricLights/front1",
+        "flavorText": "The foyer looks so different lit by the electric lamps.",
+        "forwards": 444,
+        "left": 222,
+        "right": 333,
         "backwards": 4,
         "functions": []
     },
