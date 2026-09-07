@@ -54,7 +54,7 @@ const deleteSave = () => {
 
 //up to what uses this to decide how often to save
 const save = (reason) => {
-    console.log("JR NOTE: Saving game because: ", reason)
+    //console.log("JR NOTE: Saving game because: ", reason)
     protectFromDesyncIssues();//will handle anything that needs to be combined with what's currently in local storage (if another tab saved before us)
     globalDataObject.lastSaveTimeCode = Date.now();
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));

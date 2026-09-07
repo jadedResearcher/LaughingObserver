@@ -12,6 +12,68 @@ function test2() {
   return () => { console.log("JR NOTE: test cleaning up") }
 }
 
+/*
+Eternal darkness was SUCH a good game for how bad the actual game play  of it was.
+
+horrible combat controls
+
+annoying mechanics
+
+incredible spell grammer mechanic and
+you know
+
+the whole sanity mechanic they had was perfeciton
+
+'this can't be happening!' was so iconic.
+
+you'd open a door, enter a room and SOMETIMES it would be weird
+
+upside down
+
+or there would be lots of rare items
+
+or enemies
+
+or somewhere entirely different
+
+and after thirty seconds or so your charcter would scream "this can't be happening!" and instead
+you'd be just entering the room you were supposed to be in and it would be normal
+
+they famously patented the sanity system 
+
+but jokes on them, im not using sanity as a mechanic cuz thats kinda abelist
+
+its just random if it happens
+
+deal with it
+
+
+*/
+//any time you open a door it'll call this, when its done it'll do the callback
+const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
+  //do your best not to save while transitioning
+  globalDataObject.current_room_id = originalDestination;
+  save();
+  video.loop = false;
+  console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
+  const odds = Math.random();
+  if (odds > .9999999991) {
+    const spookyEffects = ["images/Diorama/Inside/Hallways/1/ElectricLights/quicktest.mp4"];
+    video.src = pickFrom(spookyEffects)
+  }
+
+  video.onended = () => {
+    console.log("JR NOTE: video ended")
+    video.onended = null;
+    video.loop = true;
+
+    renderRoom(hallways[originalDestination]);
+  }
+  console.log("JR NOTE: video about to play")
+  video.play();
+
+}
+
 function testFuckery() {
   const bookcase = "images/Diorama/Inside/Hallways/1/ElectricLights/quicktest";
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";
@@ -48,4 +110,12 @@ function hallwayOneSunbeam() {
     video.src = oldSrc;
     window.removeEventListener("click", fuckySunBeam)
   }
+}
+
+function openDoor4111() {
+  console.log("JR NOTE: openDoor4111")
+  video.pause();
+  const json = hallways["4111"]
+  console.log("JR NOTE: Json for openDoor4111 is", json)
+  youKnowEternalDarknessDoThatThingForDoors(json.forwards);
 }

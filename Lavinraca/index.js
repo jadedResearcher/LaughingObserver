@@ -286,10 +286,13 @@ const wireUpPopupClose = () => {
 
 }
 
-const closeThePopup = () => {
+const closeThePopup = (callback) => {
   popup.style.display = "none"
   if (bgMusic.paused) {
     bgMusic.play();
+  }
+  if (callback) {
+    callback();
   }
 }
 

@@ -26,7 +26,7 @@ const beginGameplayLoop = () => {
         globalDataObject.current_room_id = 1
     }
     spookyLoop.play();
-    renderRoom(hallways[globalDataObject.current_room_id]);
+    renderRoom(hallways[globalDataObject.current_room_id])
     bgMusic.src = weird;
     bgMusic.play();
     popup.style.display = "block"
@@ -84,7 +84,6 @@ const renderRoom = (json) => {
     }
     const vol = Math.random();
     spookyLoop.volume = vol < 0.5 ? vol : 0// don't want to overuse creaks
-    console.log("JR NOTE: spooky loop", spookyLoop.volume, spookyLoop.playing)
     console.log("JR NOTE: renderRoom", json)
     if (!json) {//id of -1 will get you there, need ways to leave
         outsideTheHouse();
@@ -106,6 +105,8 @@ const renderRoom = (json) => {
             //call via window["functionName"](arguments);
             if (window[f]) {
                 cleanupFunctions.push(window[f]());
+            } else {
+                console.error("JR NOTE: function is missing, did you do that on purpose???", f)
             }
         }
     }

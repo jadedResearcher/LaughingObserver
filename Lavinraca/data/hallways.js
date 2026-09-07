@@ -91,14 +91,11 @@ const hallways = {
         "functions": []
     },
 
-    111: {
-        "src": "1/ElectricLights/front1",
-        "flavorText": "The foyer looks so different lit by the electric lamps.",
-        "forwards": 444,
-        "left": 222,
-        "right": 333,
-        "backwards": 4,
-        "functions": []
+    4111: {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": 111,
+        "functions": ["openDoor4111"]
     },
     111: {
         "src": "1/ElectricLights/front1",
