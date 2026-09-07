@@ -22,8 +22,8 @@ let cleanupFunctions = [];
 
 const beginGameplayLoop = () => {
     video.loop = true;
-    if (!globalDataObject.current_room_id || globalDataObject.current_room_id < 1) {
-        globalDataObject.current_room_id = 1
+    if (!globalDataObject.current_room_id || globalDataObject.current_room_id == "OUTSIDE") {
+        globalDataObject.current_room_id = "1"
     }
     spookyLoop.play();
     renderRoom(hallways[globalDataObject.current_room_id])
@@ -73,7 +73,8 @@ const beginGameplayLoop = () => {
 
 
 const renderRoom = (json, replacedAlready) => {
-    const me = globalDataObject.current_room_id
+    const me = globalDataObject.current_room_id;
+    globalDataObject.hallways_entered++;
     save();
     cleanupAllFunctions();
     const replacement_id = globalDataObject.state_changes[me];

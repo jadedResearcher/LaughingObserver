@@ -12,7 +12,7 @@ const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
   wireUpPopupClose();
-  if (globalDataObject.current_room_id && globalDataObject.current_room_id > 0) {
+  if (globalDataObject.current_room_id && globalDataObject.current_room_id != "OUTSIDE") {
     beginGameplayLoop();
   } else {
     outsideTheHouse();

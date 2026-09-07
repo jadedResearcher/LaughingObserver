@@ -6,12 +6,44 @@ const test1 = () => {
 }*/
 
 
+//displays a button that asks if you want to use a key (if you have one)
+// if you do, it adds a state replacement for the two ids and transitions to the new
+//(presumably unlocked) state
+const normalKeyLockedDoor = (current_id, unlock_id) => {
+  video.pause();
+  if (globalDataObject.keys > 0) {
+    const c = createElementWithClassAndParent("div", story);
+    const button = createElementWithClassAndParent("button", c);
+    button.innerText = "Use Key?"
+    button.onclick = () => {
+      globalDataObject.state_changes[current_id] = unlock_id;
+      keyLose(); //will handle saving
+      renderRoom(hallways[unlock_id])
+    }
+  }
 
-
-function test2() {
-  console.log("JR NOTE: test interaction event");
-  return () => { console.log("JR NOTE: test cleaning up") }
 }
+
+const normalUnlockedDoor = (current_id, next_id) => {
+  video.pause();
+  youKnowEternalDarknessDoThatThingForDoors(next_id);
+}
+
+const keyGet = () => {
+  globalDataObject.keys++;
+  save();
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You got a Key!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+const keyLose = () => {
+  const audio = new Audio("images/Diorama/foley/ready_effects/Inside/key_use.mp3")
+  globalDataObject.keys += -1;
+  save();
+}
+
 
 /*
 Eternal darkness was SUCH a good game for how bad the actual game play  of it was.
@@ -106,42 +138,43 @@ function hallwayOneSunbeam() {
     video.src = "images/Diorama/Inside/Hallways/1/Sunset/deep1_no_sun.mp4";
     video.play();
   }
-  window.addEventListener("click", fuckySunBeam);
+  const timeout = setTimeout(fuckySunBeam, 10000)
   return () => {
     video.src = oldSrc;
-    window.removeEventListener("click", fuckySunBeam)
+    //if i don't do this then no matter what, after 10 seconds, we'll see fucky sunbeam, even if we're somewehre else and its disorienting
+    clearTimeout(timeout);
   }
 }
 
-const keyGet = () => {
-  globalDataObject.keys++;
-  save();
-  const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Key!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
 
-  showExistingPopup(contentEle, "Gotcha")
-}
+
+
 
 //render a button to pick the key up, if you click it, replace 5 with 1005
 function pickUpKey5() {
   const myID = "5";
-  const newID = "1005"
+  const newID = "5_key_gotten"
   const c = createElementWithClassAndParent("div", story);
   const button = createElementWithClassAndParent("button", c);
   button.innerText = "Take Key?"
   button.onclick = () => {
     //whenever you would render room 5, now render 1005 which is the same but no key and no function
     globalDataObject.state_changes[myID] = newID;
-    keyGet();
+    keyGet(); //will handle saving
     renderRoom(hallways[newID])
   }
 
 }
 
-function openDoor4111() {
-  console.log("JR NOTE: openDoor4111")
-  video.pause();
-  const json = hallways["4111"]
-  console.log("JR NOTE: Json for openDoor4111 is", json)
-  youKnowEternalDarknessDoThatThingForDoors(json.forwards);
+function openDoor4Locked() {
+  const current_id = globalDataObject.current_room_id;
+  const unlock_id = "4_open_unlocked_door";
+  normalKeyLockedDoor(current_id, unlock_id);
+}
+
+function openDoor4UnLocked() {
+  const current_id = globalDataObject.current_room_id;
+  //some doors are left/right but this one is forwards
+  const next_id = hallways[current_id].forwards;
+  normalUnlockedDoor(current_id, next_id);
 }

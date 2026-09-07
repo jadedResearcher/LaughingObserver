@@ -14,6 +14,17 @@ const debugHallways = () => {
             const c = createElementWithClassAndParent("td", row);
             c.innerHTML = `<b>${k}</b>:${v}`;
             c.style.border = "1px solid black";
+            const ids = ["forwards", "left", "right", "backwards"];
+            if (ids.includes(k)) {
+                if (hallways[v]) {
+                    c.style.background = "#b2e2b2";
+                } else if (v === null) {
+                    c.style.opacity = "0.3"
+                } else {
+                    c.style.background = "red"
+                    c.style.color = "black"
+                }
+            }
 
         }
 
@@ -30,138 +41,142 @@ const debugHallways = () => {
 */
 
 const hallways = {
-    1: {
+    "1": {
         "src": "1/Sunset/deep1_sun",
         "flavorText": "The entrance to the house is lit only by the setting sun.",
-        "forwards": 4,
-        "left": 2,
-        "right": 3,
-        "backwards": -1,
+        "forwards": "4",
+        "left": "2",
+        "right": "3",
+        "backwards": "OUTSIDE",
         "functions": [
             "hallwayOneSunbeam"
         ]
     },
-    2: {
+    "2": {
         "src": "1/Sunset/front_left",
         "flavorText": "The lamp doesn't seem to be working.",
         "forwards": null,
         "left": null,
-        "right": 1,
-        "backwards": 1,
+        "right": "1",
+        "backwards": "1",
         "functions": [
             "test2"
         ]
     },
-    3: {
+    "3": {
         "src": "1/Sunset/front_right",
         "flavorText": "Its hard to make out the paintings in the dark.",
         "forwards": null,
-        "left": 1,
+        "left": "1",
         "right": null,
-        "backwards": 1,
+        "backwards": "1",
         "functions": []
     },
-    4: {
+    "4": {
         "src": "1/Sunset/deep2",
         "flavorText": "The door stands before you, invitingly.",
-        "forwards": 4111,
-        "left": 5,
-        "right": 6,
-        "backwards": 1,
-        "functions": [
-            "wrongOnPurposeForDebugging"
-        ]
+        "forwards": "4_open_locked_door",
+        "left": "5",
+        "right": "6",
+        "backwards": "1"
     },
-    5: {
+    "5": {
         "src": "1/Sunset/back_left_key",
         "flavorText": "Light filters in from across the hall, revealing a glinting Key.",
         "forwards": null,
         "left": null,
-        "right": 4,
-        "backwards": 4,
+        "right": "4",
+        "backwards": "4",
         "functions": ["pickUpKey5"]
     },
-    1005: {
+    "5_key_gotten": {
         "src": "1/Sunset/back_left_no_key",
         "flavorText": "You already got the key here.",
         "forwards": null,
         "left": null,
-        "right": 4,
-        "backwards": 4,
+        "right": "4",
+        "backwards": "4",
         "functions": []
     },
-    6: {
+    "6": {
         "src": "1/Sunset/back_right",
         "flavorText": "This dirty window is doing its best to light up the entire hallway.",
         "forwards": null,
-        "left": 4,
+        "left": "4",
         "right": null,
-        "backwards": 4,
+        "backwards": "4",
         "functions": []
     },
 
-    4111: {
+    "4_open_locked_door": {
+        "src": "open_the_door",
+        "flavorText": "The door is locked, a normal keyhole visible.",
+        "backwards": "4",
+        "functions": ["openDoor4Locked"]
+    },
+    "4_open_unlocked_door": {
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": 111,
-        "functions": ["openDoor4111"]
+        "forwards": "1_bright",
+        "backwards": "4",
+        "functions": ["openDoor4UnLocked"]
     },
-    111: {
+    "1_bright": {
         "src": "1/ElectricLights/front1",
         "flavorText": "The foyer looks so different lit by the electric lamps.",
-        "forwards": 444,
-        "left": 222,
-        "right": 333,
-        "backwards": 4,
+        "forwards": "4_bright",
+        "left": "2_bright",
+        "right": "3_bright",
+        "backwards": "4",
         "functions": []
     },
-    222: {
+    "2_bright": {
         "src": "1/ElectricLights/front_left",
         "flavorText": "The lamp shines brightly showing two classic scenes from the Book of Harvest.",
         "forwards": null,
         "left": null,
-        "right": 111,
-        "backwards": 111,
+        "right": "1_bright",
+        "backwards": "1_bright",
         "functions": [
             "test2"
         ]
     },
-    333: {
+    "3_bright": {
         "src": "1/ElectricLights/front_right",
         "flavorText": "Two classic scenes from the Book of Harvest.",
         "forwards": null,
-        "left": 111,
+        "left": "1_bright",
         "right": null,
-        "backwards": 111,
+        "backwards": "1_bright",
         "functions": []
     },
-    444: {
+    "4_bright": {
         "src": "1/ElectricLights/front2",
         "flavorText": "The door stands before you, invitingly.",
         "forwards": null,
-        "left": 555,
-        "right": 666,
-        "backwards": 111,
+        "left": "5_bright",
+        "right": "6_bright",
+        "backwards": "1_bright",
         "functions": [
             "wrongOnPurposeForDebugging"
         ]
     },
-    555: {
+    "5_bright": {
         "src": "1/ElectricLights/back_left",
         "flavorText": "The key has already been collected.",
         "forwards": null,
         "left": null,
-        "right": 444,
-        "backwards": 444,
+        "right": "4_bright",
+        "backwards": "4_bright",
         "functions": ["testFuckery"]
     },
-    666: {
+    "6_bright": {
         "src": "1/ElectricLights/back_right",
         "flavorText": "The formerly briliant window is now a dark mirror.",
         "forwards": null,
-        "left": 444,
+        "left": "4_bright",
         "right": null,
-        "backwards": 444,
+        "backwards": "4_bright",
         "functions": []
     }
 }

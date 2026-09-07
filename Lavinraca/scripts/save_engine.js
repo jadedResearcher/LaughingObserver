@@ -11,7 +11,7 @@ let globalDataObject = {
     meat: 0,
     candy: 0,
     opened_the_door: false,
-    current_room_id: -1,//outside
+    current_room_id: "OUTSIDE",
     button_controls: false, //keyboard is easier, make it default
     state_changes: {}//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
 
