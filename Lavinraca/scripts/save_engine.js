@@ -13,8 +13,8 @@ let globalDataObject = {
     opened_the_door: false,
     current_room_id: "OUTSIDE",
     button_controls: false, //keyboard is easier, make it default
-    state_changes: {}//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
-
+    state_changes: {},//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
+    spooky_seen: []
 }
 
 //showing number of keys you have etc
@@ -89,6 +89,9 @@ const load = () => {
         globalDataObject.lastLoadTimeCode = Date.now();
         if (!globalDataObject.state_changes) {
             globalDataObject.state_changes = {}
+        }
+        if (!globalDataObject.spooky_seen) {
+            globalDataObject.spooky_seen = [];
         }
 
         /*

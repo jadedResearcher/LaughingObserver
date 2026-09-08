@@ -92,8 +92,11 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
   const odds = Math.random();
   if (odds > .5) {
-    const spookyEffects = ["images/Diorama/Inside/Hallways/1/ElectricLights/quicktest.mp4"];
-    video.src = pickFrom(spookyEffects)
+    const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
+    const spookyEffects = ["stick", "hand"];
+    const choice = pickFrom(spookyEffects)
+    video.src = dir + choice + ".mp4"
+    globalDataObject.spooky_seen.push(choice);
   }
 
   video.onended = () => {
