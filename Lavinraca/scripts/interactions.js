@@ -93,7 +93,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   const odds = Math.random();
   if (odds > .5) {
     const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
-    const spookyEffects = ["stick", "hand"];
+    const spookyEffects = ["stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
     const choice = pickFrom(spookyEffects)
     video.src = dir + choice + ".mp4"
     globalDataObject.spooky_seen.push(choice);
