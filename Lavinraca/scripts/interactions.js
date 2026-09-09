@@ -83,6 +83,48 @@ deal with it
 
 
 */
+
+//the longer you're in here the spookier it gets but thats not all
+const calculateOddsSpooky = () => {
+  let oddsToBeat = 0.9999;
+  if (isItMidnight()) {
+    oddsToBeat = 0;//its midnight, its spooky time, obviously, plus reminder to maybe take a break
+  }
+
+  if (globalDataObject.hallways_entered > 13) {
+    oddsToBeat += -.01;
+  }
+
+  if (globalDataObject.hallways_entered > 31) {
+    oddsToBeat += -.01;
+  }
+
+  if (globalDataObject.hallways_entered > 66) {
+    oddsToBeat += -.1;
+  }
+
+  return Math.max(0, oddsToBeat);
+}
+
+//separate function so i can write a debug script to look at them all and make sure they work
+const getSpookyEffects = () => {
+  const spookyEffects = ["car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
+
+  if (globalDataObject.candy > globalDataObject.meat) {
+    spookyEffects.push("candy")
+  }
+
+  if (globalDataObject.meat > globalDataObject.candy) {
+    spookyEffects.push("masks")
+  }
+
+  if (isItMidnight()) {
+    spookyEffects.push("truth");
+    spookyEffects.push("midnight");
+  }
+  return spookyEffects;
+}
+
 //any time you open a door it'll call this, when its done it'll do the callback
 const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   //do your best not to save while transitioning
@@ -91,10 +133,14 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   video.loop = false;
   console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
   const odds = Math.random();
-  if (odds > .5) {
+  const oddsToBeat = calculateOddsSpooky();
+  if (odds > oddsToBeat) {
+
+
+
+    const choice = pickFrom(getSpookyEffects())
     const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
-    const spookyEffects = ["stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
-    const choice = pickFrom(spookyEffects)
+
     video.src = dir + choice + ".mp4"
     globalDataObject.spooky_seen.push(choice);
   }

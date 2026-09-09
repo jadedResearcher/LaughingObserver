@@ -86,7 +86,6 @@ const debugHallways = () => {
   const table = createElementWithClassAndParent("table", body);
   table.style.overflow = 'auto'
   table.style.background = "white"
-  const header_row = createElementWithClassAndParent("tr", table);
 
   for (let [key, value] of Object.entries(hallways)) {
     console.log("JR NOTE: debug", key, value)
@@ -119,4 +118,25 @@ const debugCanvas = () => {
   const ctx = canvas.getContext("2d");
   ctx.fillStyle = "red";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+const debugSpookyEffects = () => {
+  const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
+  const files = getSpookyEffects();
+  const body = document.body;
+  body.innerHTML = "";
+  body.style.overflow = "auto";
+  const preview = createElementWithClassAndParent("div", body);
+  preview.style.cssText = `
+  display: flex;
+  flex-wrap:wrap;
+  gap:13px;
+`
+
+  for (let f of files) {
+    const v = createElementWithClassAndParent("video", preview);
+    v.src = dir + f + ".mp4"
+    v.style.height = "213px"
+    v.controls = true;
+  }
 }

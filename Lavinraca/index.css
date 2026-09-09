@@ -107,7 +107,7 @@ svg {
   display: block;
 }
 
-video {
+#video {
   height: 100dvh;
   pointer-events: none;
   z-index: 31;

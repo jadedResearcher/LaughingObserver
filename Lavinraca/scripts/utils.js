@@ -54,7 +54,9 @@ function truncateJson(data, maxChars) {
   }
   return data;
 }
-
+const isItMidnight = () => {
+  return new Date().getHours() == 0;
+}
 const isItFridayOrMidnight = () => {
   //midnight and fridays are wungle time
   const date = new Date();
