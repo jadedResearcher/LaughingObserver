@@ -240,6 +240,7 @@ video {
 .gallery-popup {
   position: fixed;
   background: black;
+  width: max-content;
   max-width: 69dvw;
   max-height: 80dvh;
   overflow-y: auto;

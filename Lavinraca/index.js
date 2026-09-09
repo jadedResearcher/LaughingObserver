@@ -91,6 +91,7 @@ content directory decides if its the normal outside or if its silly/spooky
 text is mostly always the same but can vary
 */
 const outsideTheHouse = () => {
+  window.removeEventListener('keydown', handleMovement); //remove the wasd controls we set up for inside (won't crash even if they werent' in use)
   bgMusic.src = wind;
   bgMusic.volume = 1;
   bgMusic.play();

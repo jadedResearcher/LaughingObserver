@@ -25,6 +25,16 @@ const isItFriday = () => {
 
 }
 
+const probablyMobile = () => {
+  //a finger or whatever
+  const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+  //if it can't hover its probably not a mouse/desktop
+  const supportsHover = window.matchMedia('(any-hover: hover)').matches;
+
+  return isCoarsePointer && !supportsHover;
+
+}
+
 
 //i googled this one, didn't write it myself, i woulda done the same in the stack overflow days but this time gemini called dibs
 //don't want our save data to spam the harvest

@@ -26,10 +26,12 @@ const beginGameplayLoop = () => {
         globalDataObject.current_room_id = "1"
     }
     spookyLoop.play();
-    renderRoom(hallways[globalDataObject.current_room_id])
     bgMusic.src = weird;
     bgMusic.play();
     popup.style.display = "block"
+    if (probablyMobile()) {
+        globalDataObject.button_controls = true;
+    }
 
     popupContents.innerHTML = "Inside these Hallowed Halls, Movement becomes more natural. Your first task? See if you can get the lights on before the sun finishes setting."
 
@@ -54,7 +56,9 @@ const beginGameplayLoop = () => {
     <Br>A/Left Arrow = Turn Left
     <br>D/Right Arrow = Turn Right
     <br><Br>
-    Or you can click below to toggle on mouse/touch controls, which will render buttons to move (and cover up more of the video)`
+    ${globalDataObject.button_controls ? "Buttons will also display on the bottom. (this will happen by default on mobile but you can turn it off if I guessed wrong)" : "Or you can click below to toggle on mouse/touch controls, which will render buttons to move (and cover up more of the video)"}
+    `
+
 
 
     const check = createCheckboxInputWithLabel(contents, "check", "Toggle Button Controls", globalDataObject.button_controls)
@@ -64,6 +68,8 @@ const beginGameplayLoop = () => {
         renderRoom(hallways[globalDataObject.current_room_id]);
 
     }
+    renderRoom(hallways[globalDataObject.current_room_id])
+
 
     const jrnote = createElementWithClassAndParent("div", popupContents);
     jrnote.innerHTML = `<Br><Br><i>JR NOTE: It would have been way too annoying to film all scenes with you facing backwards too so...if you wanna backtrack, enjoy literally walking backwards, I guess??? Everyone knows its perfectly safe to back into a room in a spooky house, lol.</i>`;
@@ -191,6 +197,9 @@ const handleHallwayObviousExits = () => {
 //originally i took in json and had the rooms wire this up but it was lagging the page
 //need to do it once and just handle current room stuff
 const handleMovement = (event) => {
+    if (event.repeat) {
+        return;
+    }
     //googled what the key codes are for arrows and stuff
     //its weird
     //normally i'll link to stack overflow articles if i use it
@@ -220,16 +229,11 @@ const handleMovement = (event) => {
     const action = keyActions[event.key];
 
     if (action) {
-        const time = performance.now() - lastfiretime
         //dont let it go too fast, and certaintly not constantly if you don't let up on the key
-        if (time > 300) {
-            event.preventDefault();
-            lastfiretime = performance.now();
-            action();
-        } else {
-            //time is real in lavinraca rip
-            console.log("JR NOTE: time is not enough", time)
-        }
+        //event.preventDefault();
+        lastfiretime = performance.now();
+        action();
+
     }
 }
 

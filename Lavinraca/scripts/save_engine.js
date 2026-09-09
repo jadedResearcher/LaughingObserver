@@ -12,7 +12,7 @@ let globalDataObject = {
     candy: 0,
     opened_the_door: false,
     current_room_id: "OUTSIDE",
-    button_controls: false, //keyboard is easier, make it default
+    button_controls: !probablyMobile(), //keyboard is easier, make it default unless probably mobile
     state_changes: {},//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
     spooky_seen: []
 }
