@@ -39,6 +39,7 @@ window.onload = () => {
 }
 
 const wireUpCanvas = () => {
+  console.log("JR NOTE: you can do INTERESTING fuckery with canvas video, make a note of that (just while wiring this up the video got super tiny and that was fun)")
   video.removeEventListener("loadedmetadata", wireUpCanvas);
 
   //videoWith etc is the true resolution of the video
@@ -96,7 +97,6 @@ const outsideTheHouse = () => {
   video.loop = false;
   const text = "Everyone knows the Harvest's House is Haunted. Will this year be when you finally are brave enough to Trick or Treat there?";
   video.src = contentDirectory + "/ApproachDoorFoley.mp4"
-  video.thumbnail = contentDirectory + "first.jpg";
   video.currentTime = 0;
   const obviousExits = [];
   obviousExits.push({ text: "Approach the Door", function: outsideTheDoor })
