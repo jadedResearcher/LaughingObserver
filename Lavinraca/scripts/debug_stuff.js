@@ -1,7 +1,19 @@
-//give me the base ID for the hallway and I'll give you a template to edit with all the 
+/*
+i am finding it SUPER annoyign to do all this boiler plate for each new hallway
+
+so
+
+i'm fixing it
+
+plus it hurts my arm to do all this repetition
+
+i considered flat out makign a builder but, i hate making forms and this is easier
+
+give me the base ID for the hallway and I'll give you a template to edit with all the 
 //wasd already wired in (youll need to make clones for state changes tho)
 //and if theres a sunset version you gotta make two templates
-const debugGenerateTemplateForNewHallway = (id, backwards_full_id, forwards_full_id) => {
+*/
+const debugGenerateTemplateForNewHallway = (id, backwards_full_id = null, forwards_full_id = null) => {
 
   const map_template = `{
     "${id}_front": {
@@ -59,14 +71,19 @@ const debugGenerateTemplateForNewHallway = (id, backwards_full_id, forwards_full
       "functions": []
     }
   }`
-  return map_template;
+  //trust me on this, outputs something i can copy and paste into the json
+  const data = JSON.parse(map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  console.log(JSON.stringify(data, null, 4))
 
 }
 
 const debugHallways = () => {
   const body = document.body;
   body.innerHTML = "";
+  body.style.overflow = "auto"
   const table = createElementWithClassAndParent("table", body);
+  table.style.overflow = 'auto'
   table.style.background = "white"
   const header_row = createElementWithClassAndParent("tr", table);
 

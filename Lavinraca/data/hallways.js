@@ -150,6 +150,61 @@ const hallways = {
         "backwards": "4_bright",
         "functions": []
     },
+    //hallway2
+    "2_front": {
+        "src": "2/deep1",
+        "flavorText": "TODO",
+        "forwards": "2_back",
+        "left": "2_front_left",
+        "right": "2_front_right",
+        "backwards": "null",
+        "functions": []
+    },
+    "2_front_left": {
+        "src": "2/front_left",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "2_front",
+        "backwards": "2_front",
+        "functions": []
+    },
+    "2_front_right": {
+        "src": "2/front_right",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "2_front",
+        "right": null,
+        "backwards": "2_front",
+        "functions": []
+    },
+    "2_back": {
+        "src": "2/deep2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "2_back_left",
+        "right": "2_back_right",
+        "backwards": "2_front",
+        "functions": []
+    },
+    "2_back_left": {
+        "src": "2/back_left",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "2_back",
+        "backwards": "2_back",
+        "functions": []
+    },
+    "2_back_right": {
+        "src": "2/back_right",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "2_back",
+        "right": null,
+        "backwards": "2_back",
+        "functions": []
+    }
 
 
 }
