@@ -100,7 +100,7 @@ const hallways = {
         "forwards": "4_bright",
         "left": "2_bright",
         "right": "3_bright",
-        "backwards": "2_front",
+        "backwards": "2_sunset_back",
         "functions": []
     },
     "2_bright": {
@@ -167,7 +167,7 @@ const hallways = {
         "forwards": "2_back",
         "left": "2_front_left",
         "right": "2_front_right",
-        "backwards": "4",
+        "backwards": "4_bright",
         "functions": []
     },
     "2_front_left": {
@@ -246,12 +246,20 @@ const hallways = {
     "2_sunset_back": {
         "src": "2_sunset/deep2",
         "flavorText": "TODO",
-        "forwards": "1_bright",
+        "forwards": "2_sunset_back_open_unlocked_door",
         "left": "2_sunset_back_left",
         "right": "2_sunset_back_right",
         "backwards": "2_sunset_front",
         "functions": []
     },
+    "2_sunset_back_open_unlocked_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "1_bright",
+        "backwards": "2_sunset_back",
+        "functions": ["unlockDoorForwards"]
+    },
+
     "2_sunset_back_left": {
         "src": "2_sunset/back_left",
         "flavorText": "TODO",

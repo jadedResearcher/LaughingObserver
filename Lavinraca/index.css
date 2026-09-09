@@ -99,14 +99,21 @@ svg {
   margin-right: 5px;
 }
 
-video {
-  height: 100dvh;
+#canvas {
+  z-index: 32;
   margin-left: auto;
   aspect-ratio: auto;
   margin-right: auto;
   display: block;
+}
+
+video {
+  height: 100dvh;
   pointer-events: none;
   z-index: 31;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .house {

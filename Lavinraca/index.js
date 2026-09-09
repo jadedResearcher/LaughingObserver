@@ -2,6 +2,7 @@ const wind = "images/Diorama/foley/ready_effects/Outdoor/wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
 
+
 const bgMusic = new Audio(wind);
 bgMusic.loop = true;
 
@@ -12,6 +13,9 @@ const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
   wireUpPopupClose();
+  //video ele handles decoding and audio playing AND loading the buffer
+  //but the canvas element should be the visible thing (prevents flicker)
+  video.addEventListener("loadedmetadata", wireUpCanvas);
   if (globalDataObject.current_room_id && globalDataObject.current_room_id != "OUTSIDE") {
     beginGameplayLoop();
   } else {
@@ -32,6 +36,25 @@ window.onload = () => {
   game.onended = () => {
     alert("trick or treat")
   }*/
+}
+
+const wireUpCanvas = () => {
+  video.removeEventListener("loadedmetadata", wireUpCanvas);
+
+  //videoWith etc is the true resolution of the video
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  //this stuff scales my canvas to however big exactly teh video is on screen
+  canvas.style.width = `${video.clientWidth}px`;
+  canvas.style.height = `${video.clientHeight}px`;
+  renderVideoToCanvas();
+}
+
+const renderVideoToCanvas = () => {
+
+  const ctx = canvas.getContext("2d");
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  requestAnimationFrame(renderVideoToCanvas);
 }
 
 const attachObviousExits = (obviousExits, outside = true) => {

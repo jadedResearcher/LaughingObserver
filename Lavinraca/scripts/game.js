@@ -90,6 +90,7 @@ const renderRoom = (json, replacedAlready) => {
 
     console.log("JR NOTE: renderRoom", json)
     if (!json) {//id of -1 will get you there, need ways to leave
+        globalDataObject.current_room_id = "OUTSIDE"
         outsideTheHouse();
         return;
     }
