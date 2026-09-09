@@ -9,6 +9,8 @@
 
 */
 
+//i changed conventions shorly after flushing out the first room, to make it easier to template
+//so first room is the most confusing one
 const hallways = {
     //hallway 1, sunset
     "1": {
@@ -87,9 +89,9 @@ const hallways = {
     "4_open_unlocked_door": {
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "1_bright",
+        "forwards": "2_sunset_front",
         "backwards": "4",
-        "functions": ["openDoor4UnLocked"]
+        "functions": ["unlockDoorForwards"]
     },
     //hallway 1, electric lights
     "1_bright": {
@@ -98,7 +100,7 @@ const hallways = {
         "forwards": "4_bright",
         "left": "2_bright",
         "right": "3_bright",
-        "backwards": "4",
+        "backwards": "2_front",
         "functions": []
     },
     "2_bright": {
@@ -124,13 +126,21 @@ const hallways = {
     "4_bright": {
         "src": "1/ElectricLights/front2",
         "flavorText": "The door stands before you, invitingly.",
-        "forwards": null,
+        "forwards": "1_2_open_unlocked_door",
         "left": "5_bright",
         "right": "6_bright",
         "backwards": "1_bright",
         "functions": [
             "wrongOnPurposeForDebugging"
         ]
+    },
+
+    "1_2_open_unlocked_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "2_front",
+        "backwards": "4_bright",
+        "functions": ["unlockDoorForwards"]
     },
     "5_bright": {
         "src": "1/ElectricLights/back_left",
@@ -150,14 +160,14 @@ const hallways = {
         "backwards": "4_bright",
         "functions": []
     },
-    //hallway2
+    //hallway2 bright
     "2_front": {
         "src": "2/deep1",
         "flavorText": "TODO",
         "forwards": "2_back",
         "left": "2_front_left",
         "right": "2_front_right",
-        "backwards": "null",
+        "backwards": "4",
         "functions": []
     },
     "2_front_left": {
@@ -188,7 +198,7 @@ const hallways = {
         "functions": []
     },
     "2_back_left": {
-        "src": "2/back_left",
+        "src": "2/back_left_no_mask",
         "flavorText": "TODO",
         "forwards": null,
         "left": null,
@@ -204,8 +214,72 @@ const hallways = {
         "right": null,
         "backwards": "2_back",
         "functions": []
+    },
+    //hallway 2 sunset
+    "2_sunset_front": {
+        "src": "2_sunset/deep1",
+        "flavorText": "TODO",
+        "forwards": "2_sunset_back",
+        "left": "2_sunset_front_left",
+        "right": "2_sunset_front_right",
+        "backwards": "4",
+        "functions": []
+    },
+    "2_sunset_front_left": {
+        "src": "2_sunset/front_left",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "2_sunset_front",
+        "backwards": "2_sunset_front",
+        "functions": []
+    },
+    "2_sunset_front_right": {
+        "src": "2_sunset/front_right",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "2_sunset_front",
+        "right": null,
+        "backwards": "2_sunset_front",
+        "functions": []
+    },
+    "2_sunset_back": {
+        "src": "2_sunset/deep2",
+        "flavorText": "TODO",
+        "forwards": "1_bright",
+        "left": "2_sunset_back_left",
+        "right": "2_sunset_back_right",
+        "backwards": "2_sunset_front",
+        "functions": []
+    },
+    "2_sunset_back_left": {
+        "src": "2_sunset/back_left",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "2_sunset_back",
+        "backwards": "2_sunset_back",
+        "functions": []
+    },
+    "2_sunset_back_right": {
+        "src": "2_sunset/back_right",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "2_sunset_back",
+        "right": null,
+        "backwards": "2_sunset_back",
+        "functions": []
     }
 
 
 }
 
+/*
+    "4_open_unlocked_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "1_bright",
+        "backwards": "4",
+        "functions": ["openDoor4UnLocked"]
+    },
+*/

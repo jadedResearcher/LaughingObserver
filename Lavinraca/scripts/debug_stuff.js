@@ -13,6 +13,7 @@ give me the base ID for the hallway and I'll give you a template to edit with al
 //wasd already wired in (youll need to make clones for state changes tho)
 //and if theres a sunset version you gotta make two templates
 */
+//debugGenerateTemplateForNewHallway("2_sunset")
 const debugGenerateTemplateForNewHallway = (id, backwards_full_id = null, forwards_full_id = null) => {
 
   const map_template = `{

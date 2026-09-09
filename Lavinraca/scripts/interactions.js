@@ -172,13 +172,14 @@ function pickUpKey5() {
 
 function openDoor4Locked() {
   const current_id = globalDataObject.current_room_id;
-  const unlock_id = "4_open_unlocked_door";
+  const unlock_id = "4_open_unlocked_door"; //will know where to go next
   normalKeyLockedDoor(current_id, unlock_id);
 }
 
-function openDoor4UnLocked() {
+function unlockDoorForwards() {
   const current_id = globalDataObject.current_room_id;
   //some doors are left/right but this one is forwards
   const next_id = hallways[current_id].forwards;
   normalUnlockedDoor(current_id, next_id);
 }
+
