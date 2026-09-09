@@ -1,35 +1,4 @@
-const debugHallways = () => {
-    const body = document.body;
-    body.innerHTML = "";
-    const table = createElementWithClassAndParent("table", body);
-    table.style.background = "white"
-    const header_row = createElementWithClassAndParent("tr", table);
 
-    for (let [key, value] of Object.entries(hallways)) {
-        console.log("JR NOTE: debug", key, value)
-        const row = createElementWithClassAndParent("tr", table);
-        const cell = createElementWithClassAndParent("td", row);
-        cell.innerHTML = "<b>ID: </b> " + key;
-        for (let [k, v] of Object.entries(value)) {
-            const c = createElementWithClassAndParent("td", row);
-            c.innerHTML = `<b>${k}</b>:${v}`;
-            c.style.border = "1px solid black";
-            const ids = ["forwards", "left", "right", "backwards"];
-            if (ids.includes(k)) {
-                if (hallways[v]) {
-                    c.style.background = "#b2e2b2";
-                } else if (v === null) {
-                    c.style.opacity = "0.3"
-                } else {
-                    c.style.background = "red"
-                    c.style.color = "black"
-                }
-            }
-
-        }
-
-    }
-}
 
 //call functions via window["functionName"](arguments);
 /*
@@ -41,6 +10,7 @@ const debugHallways = () => {
 */
 
 const hallways = {
+    //hallway 1, sunset
     "1": {
         "src": "1/Sunset/deep1_sun",
         "flavorText": "The entrance to the house is lit only by the setting sun.",
@@ -121,6 +91,7 @@ const hallways = {
         "backwards": "4",
         "functions": ["openDoor4UnLocked"]
     },
+    //hallway 1, electric lights
     "1_bright": {
         "src": "1/ElectricLights/front1",
         "flavorText": "The foyer looks so different lit by the electric lamps.",
@@ -178,5 +149,8 @@ const hallways = {
         "right": null,
         "backwards": "4_bright",
         "functions": []
-    }
+    },
+
+
 }
+
