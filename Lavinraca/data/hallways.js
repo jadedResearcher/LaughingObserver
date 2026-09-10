@@ -222,7 +222,8 @@ const hallways = {
         "right": "2_back",
         "backwards": "2_back",
         "functions": []
-    }, "2_back_left_unlocked_mask": {
+    },
+    "2_back_left_unlocked_mask": {
         "src": "2/back_left_mask",
         "flavorText": "The desk is clearly lit. A Mask is placed on the desk, a gentle electrical hum coming from it.",
         "forwards": null,
