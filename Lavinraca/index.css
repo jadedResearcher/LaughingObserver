@@ -73,6 +73,24 @@ body {
   top: 0px;
   right: 5px;
   display: flex;
+  z-index: 33;
+
+  img {
+    height: 31px;
+  }
+
+  div {
+    margin-top: 8px;
+  }
+
+}
+
+#maskContainer {
+  position: absolute;
+  top: 31px;
+  right: 5px;
+  display: flex;
+  z-index: 33;
 
   img {
     height: 31px;

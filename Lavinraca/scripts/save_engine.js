@@ -8,6 +8,7 @@ let globalDataObject = {
     prayers_sent: [],
     inventory: [],
     keys: 0,
+    masks: 0,
     meat: 0,
     candy: 0,
     opened_the_door: false,
@@ -26,6 +27,15 @@ const saveSideEffects = () => {
 
     } else {
         keyContainer.style.display = "none";
+    }
+
+    if (globalDataObject.masks > 0) {
+        maskText.innerText = `x${globalDataObject.masks}`;
+        maskContainer.style.display = "flex";
+
+    } else {
+        maskContainer.style.display = "none";
+
     }
 }
 
@@ -92,6 +102,10 @@ const load = () => {
         }
         if (!globalDataObject.spooky_seen) {
             globalDataObject.spooky_seen = [];
+        }
+
+        if (!globalDataObject.masks) {
+            globalDataObject.masks = 0;
         }
 
         /*

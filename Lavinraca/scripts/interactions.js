@@ -43,19 +43,18 @@ const comboLock = (parent, callback, one, two, three, four) => {
     let threewin = three_ele.input.value == three;
     let fourwin = four_ele.input.value == four;
     if (onewin && twowin && threewin && fourwin) {
+      const audio = new Audio("images/Diorama/foley/ready_effects/Inside/combo_lock_open.mp3");
+      audio.play();
+      closeThePopup();
       callback();
     } else {
       console.log("JR NOTE: did not win", onewin, twowin, threewin, fourwin)
     }
 
   }
-
   one_ele.input.onchange = checkWin;
-
   two_ele.input.onchange = checkWin;
-
   three_ele.input.onchange = checkWin;
-
   four_ele.input.onchange = checkWin;
 }
 
@@ -71,6 +70,15 @@ const keyGet = () => {
   save();
   const contentEle = document.createElement("div");
   contentEle.innerHTML = `You got a Key!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+const maskGet = () => {
+  globalDataObject.masks++;
+  save();
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You got a Mask!<br><br><img src='images/Diorama/Inside/mask_spin.gif'>`;
 
   showExistingPopup(contentEle, "Gotcha")
 }
@@ -344,7 +352,11 @@ function handleDesk2Locked() {
   lock.innerText = "Enter Combination?"
   lock.onclick = () => {
     const win = () => {
-      alert("TODO")
+      const myID = "2_back_left_locked";
+      const newID = "2_back_left_unlocked_no_mask"
+      globalDataObject.state_changes[myID] = newID;
+      maskGet();
+      renderID(newID);
     }
     const contentEle = document.createElement("div");
     contentEle.innerText = "The combination lock has four digits:"

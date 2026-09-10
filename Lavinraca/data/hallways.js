@@ -214,6 +214,23 @@ const hallways = {
         "backwards": "2_back",
         "functions": ["handleDesk2Locked"]
     },
+    "2_back_left_unlocked_no_mask": {
+        "src": "2/back_left_no_mask",
+        "flavorText": "The desk is clearly lit. You already got the Mask in the locked drawer.",
+        "forwards": null,
+        "left": null,
+        "right": "2_back",
+        "backwards": "2_back",
+        "functions": []
+    }, "2_back_left_unlocked_mask": {
+        "src": "2/back_left_mask",
+        "flavorText": "The desk is clearly lit. A Mask is placed on the desk, a gentle electrical hum coming from it.",
+        "forwards": null,
+        "left": null,
+        "right": "2_back",
+        "backwards": "2_back",
+        "functions": []
+    },
     "2_back_right": {
         "src": "2/back_right",
         "flavorText": "TODO",
