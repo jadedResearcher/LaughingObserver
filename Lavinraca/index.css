@@ -20,6 +20,17 @@
 
 
 @font-face {
+  font-family: halloween;
+  src: url("Fonts/happy_halloween_2/HappyHalloween.ttf");
+}
+
+@font-face {
+  font-family: lazy;
+  src: url("Fonts/lazy_dog.ttf");
+}
+
+
+@font-face {
   font-family: gameboy;
   src: url("Fonts/early-gameboy/Early%20GameBoy.ttf");
 }
@@ -122,6 +133,51 @@ svg {
   position: relative;
   border: 5px solid black;
   width: fit-content;
+}
+
+.terri {
+  background: orange;
+  font-family: halloween;
+  padding: 31px;
+  padding-top: 66px;
+  padding-bottom: 81px;
+  position: relative;
+  color: black;
+  width: fit-content;
+
+  .pumpkin1 {
+    position: absolute;
+    left: 31px;
+    top: 31px;
+  }
+
+  .pumpkin2 {
+    position: absolute;
+    right: 31px;
+    top: 31px;
+  }
+
+  .pumpkin3 {
+    position: absolute;
+    left: 31px;
+    bottom: 31px;
+  }
+
+  .pumpkin4 {
+    position: absolute;
+    right: 31px;
+    bottom: 31px;
+  }
+
+  .eustace {
+    position: absolute;
+    transform: rotate(-14deg);
+    width: 300px;
+    left: 450px;
+    bottom: 46px;
+    font-family: lazy;
+    color: navy;
+  }
 }
 
 .ominous {

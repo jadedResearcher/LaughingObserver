@@ -163,7 +163,7 @@ const hallways = {
     //hallway2 bright
     "2_front": {
         "src": "2/deep1",
-        "flavorText": "TODO",
+        "flavorText": "Everything is clearly lit.",
         "forwards": "2_back",
         "left": "2_front_left",
         "right": "2_front_right",
@@ -172,16 +172,24 @@ const hallways = {
     },
     "2_front_left": {
         "src": "2/front_left",
-        "flavorText": "TODO",
-        "forwards": null,
+        "flavorText": "Time to face this door again.",
+        "forwards": "2_open_locked_door",
         "left": null,
         "right": "2_front",
         "backwards": "2_front",
         "functions": []
     },
+
+    "2_open_locked_door": {
+        "src": "2/front_left",
+        "flavorText": "The door is locked, and there is keyhole visible...it wasn't locked before...Did the power turning back on lock it?",
+        "right": "2_front",
+        "backwards": "2_front",
+        "functions": ["openDoor2MaskLocked"]
+    },
     "2_front_right": {
         "src": "2/front_right",
-        "flavorText": "TODO",
+        "flavorText": "The formerly blinding window is now a dark mirror.",
         "forwards": null,
         "left": "2_front",
         "right": null,
@@ -190,21 +198,21 @@ const hallways = {
     },
     "2_back": {
         "src": "2/deep2",
-        "flavorText": "TODO",
+        "flavorText": "You feel unsettled.",
         "forwards": null,
-        "left": "2_back_left",
+        "left": "2_back_left_locked",
         "right": "2_back_right",
         "backwards": "2_front",
         "functions": []
     },
-    "2_back_left": {
+    "2_back_left_locked": {
         "src": "2/back_left_no_mask",
-        "flavorText": "TODO",
+        "flavorText": "The desk is clearly lit. You try the drawers and find they are all empty, save a single locked one. There are some papers on the desk, under a heart shaped paperweight.",
         "forwards": null,
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": []
+        "functions": ["handleDesk2Locked"]
     },
     "2_back_right": {
         "src": "2/back_right",
@@ -247,7 +255,7 @@ const hallways = {
 
     "2_sunset_front_right": {
         "src": "2_sunset/front_right",
-        "flavorText": "TODO",
+        "flavorText": "The setting sun is blinding.",
         "forwards": null,
         "left": "2_sunset_front",
         "right": null,
@@ -256,7 +264,7 @@ const hallways = {
     },
     "2_sunset_back": {
         "src": "2_sunset/deep2",
-        "flavorText": "TODO",
+        "flavorText": "You almost can't see this far from the window.",
         "forwards": "2_sunset_back_open_unlocked_door",
         "left": "2_sunset_back_left",
         "right": "2_sunset_back_right",
@@ -273,7 +281,7 @@ const hallways = {
 
     "2_sunset_back_left": {
         "src": "2_sunset/back_left",
-        "flavorText": "TODO",
+        "flavorText": "There is a desk here but its too dark to see.",
         "forwards": null,
         "left": null,
         "right": "2_sunset_back",
@@ -282,7 +290,7 @@ const hallways = {
     },
     "2_sunset_back_right": {
         "src": "2_sunset/back_right",
-        "flavorText": "TODO",
+        "flavorText": "There is a mirror here but its too dark to see much. You get a weird feeling from it.",
         "forwards": null,
         "left": "2_sunset_back",
         "right": null,

@@ -12,7 +12,9 @@ const test1 = () => {
 const normalKeyLockedDoor = (current_id, unlock_id) => {
   video.pause();
   if (globalDataObject.keys > 0) {
-    const c = createElementWithClassAndParent("div", story);
+    const textEle = story.querySelector("#room-text");
+
+    const c = createElementWithClassAndParent("div", textEle);
     const button = createElementWithClassAndParent("button", c);
     button.innerText = "Use Key?"
     button.onclick = () => {
@@ -24,6 +26,8 @@ const normalKeyLockedDoor = (current_id, unlock_id) => {
   }
 
 }
+
+
 
 const normalUnlockedDoor = (current_id, next_id) => {
   video.pause();
@@ -286,6 +290,54 @@ function openDoor4Locked() {
   const unlock_id = "4_open_unlocked_door"; //will know where to go next
   normalKeyLockedDoor(current_id, unlock_id);
 }
+
+function openDoor2MaskLocked() {
+  alert("TODO: need to check that state got rewritten somewhere else")
+}
+
+function handleDesk2Locked() {
+  const textEle = story.querySelector("#room-text");
+  const c = createElementWithClassAndParent("div", story);
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Read Papers?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `<div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.png'>    <img class='pumpkin2' src='images/pumpkinstamp.png'>
+
+    <br><Br><i>I am so excited you could make it here!
+    <br><Br>This years Harvest Festival is going to be the BEST ONE EVER! 
+    <br><Br>
+    We, the Church of the Candy Harvest, have made sure to prepare LOTS of activities for everyone to do!
+    <br><Br>
+    We aren't like those squares over in the meat faction, you know?
+    <br><Br>
+    What's the point of Halloween if not to have spooky fun?
+    <br><Br>
+    Anyways we wanted this puzzle to be super easy! So that no one gets stuck in the boring start of the maze!
+    <Br><Br>
+    So the combination lock is 4665!
+    <br><Br>
+    But you probably already knew that because thats a sacred number to the Harvest!
+    <br><Br>
+    Anyways I hope you have so so much fun!
+    <br><Br>
+    -Terri
+    <br>    <img class='pumpkin3' src='images/pumpkinstamp.png'>    <img class='pumpkin4' src='images/pumpkinstamp.png'>
+
+</i>
+    <div class='eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
+</div>
+
+<br><Br><Br><Br>
+    There is a scrawled note in the margins that reads '<i>Classic Terri. Got so excited she forgot no one could READ this damn letter in the dark. Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on. Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</i>'`;
+
+    showExistingPopup(contentEle, "Gotcha")
+  }
+}
+
+
 
 function unlockDoorForwards() {
   const current_id = globalDataObject.current_room_id;

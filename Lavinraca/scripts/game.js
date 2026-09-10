@@ -20,14 +20,35 @@ let lastfiretime = performance.now();
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 
+const tryPlayBgMusic = async () => {
+    if (bgMusic.paused) {
+        try {
+            await spookyLoop.play();
+            await bgMusic.play();
+            console.log("JR NOTE: tried to play")
+        } catch (e) {
+            console.log("JR NOTE: error caught")
+            //christ this is annoying, i know its to protect ppl from auto playing ads but like... 
+            //so hard to start a gameplay loop
+            if (e.name === "NotAllowedError") {
+                //just silently fail
+            } else {
+                //literally any other reason
+                console.error("JR NOTE:", e);
+            }
+        }
+    }
+}
+
 const beginGameplayLoop = () => {
+    bgMusic.src = weird;
+
+    tryPlayBgMusic();
     video.loop = true;
     if (!globalDataObject.current_room_id || globalDataObject.current_room_id == "OUTSIDE") {
         globalDataObject.current_room_id = "1"
     }
-    spookyLoop.play();
-    bgMusic.src = weird;
-    bgMusic.play();
+
     popup.style.display = "block"
     if (probablyMobile()) {
         globalDataObject.button_controls = true;
@@ -82,6 +103,7 @@ const renderID = (id) => {
     renderRoom(hallways[id])
 }
 const renderRoom = (json, replacedAlready) => {
+    tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
     globalDataObject.hallways_entered++;
     save();
