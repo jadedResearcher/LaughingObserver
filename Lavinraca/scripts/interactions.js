@@ -108,19 +108,57 @@ const calculateOddsSpooky = () => {
 
 //separate function so i can write a debug script to look at them all and make sure they work
 const getSpookyEffects = () => {
-  const spookyEffects = ["car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
+  const spookyEffects = ["bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
 
   if (globalDataObject.candy > globalDataObject.meat) {
     spookyEffects.push("candy")
   }
 
   if (globalDataObject.meat > globalDataObject.candy) {
-    spookyEffects.push("masks")
+    spookyEffects.push("meat")
   }
 
   if (isItMidnight()) {
     spookyEffects.push("truth");
     spookyEffects.push("midnight");
+  }
+
+  if (globalDataObject.hallways_entered > 13) {
+    spookyEffects.push("family")
+    spookyEffects.push("masks")
+    spookyEffects.push("somanypumpkins")
+    spookyEffects.push("shake")
+    spookyEffects.push("plants")
+    spookyEffects.push("evil")
+    spookyEffects.push("jrstairs")
+    spookyEffects.push("fuckeduphorse")
+    spookyEffects.push("approved")
+
+  }
+
+  if (globalDataObject.hallways_entered > 31) {
+    spookyEffects.push("plantsandblocks")
+    spookyEffects.push("masksky")
+    spookyEffects.push("laugh")
+    spookyEffects.push("jrsky")
+    spookyEffects.push("deepstairs")
+    spookyEffects.push("clowns")
+
+    spookyEffects.push("face")
+    spookyEffects.push("blind")
+
+
+  }
+
+  if (globalDataObject.hallways_entered > 66) {
+    spookyEffects.push("bride_with_friends")
+    spookyEffects.push("tentacles")
+
+  }
+
+  if (globalDataObject.hallways_entered > 113) {
+    spookyEffects.push("mirrorwave")
+    spookyEffects.push("tentacles")
   }
   return spookyEffects;
 }
