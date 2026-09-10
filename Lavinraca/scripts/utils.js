@@ -303,17 +303,21 @@ const createTextAreaInputWithLabel = (parent, id, labelText, initialValue, rows 
   return { container, input, label };
 }
 
-const createNumberInputWithLabel = (parent, id, labelText, initialValue, max = 113, min = -113) => {
+const createNumberInputWithLabel = (parent, id, labelText, initialValue, min = -113, max = 113) => {
   const container = createElementWithClassAndParent("div", parent, "form-container");
 
-  const label = createElementWithClassAndParent("label", container)
-  label.for = id;
-  label.innerText = labelText;
+  let label;
+  if (labelText) {
+    label = createElementWithClassAndParent("label", container)
+    label.for = id;
+    label.innerText = labelText;
+  }
 
   const input = createElementWithClassAndParent("input", container)
   input.type = "number";
   input.id = id;
   input.min = min;
+  input.step = "1";
   input.max = max;
   input.name = id;
   input.value = initialValue;
@@ -321,7 +325,7 @@ const createNumberInputWithLabel = (parent, id, labelText, initialValue, max = 1
 
 
 
-  return { container, input, label };
+  return { container, input, label: label ? label : null };
 }
 
 //if you pass me html this might break the html

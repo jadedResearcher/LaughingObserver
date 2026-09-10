@@ -27,6 +27,38 @@ const normalKeyLockedDoor = (current_id, unlock_id) => {
 
 }
 
+//easy way to apply friction
+const comboLock = (parent, callback, one, two, three, four) => {
+  //const createNumberInputWithLabel = (parent, id, labelText, initialValue, max = 113, min = -113) => {
+
+  const one_ele = createNumberInputWithLabel(parent, "one-lock", null, 1, 1, 9);
+  const two_ele = createNumberInputWithLabel(parent, "two-lock", null, 1, 1, 9);
+  const three_ele = createNumberInputWithLabel(parent, "three-lock", null, 1, 1, 9);
+  const four_ele = createNumberInputWithLabel(parent, "four-lock", null, 1, 1, 9);
+
+  const checkWin = () => {
+    console.log("JR NOTE: checking win ", one, two, three, four)
+    let onewin = one_ele.input.value == one;
+    let twowin = two_ele.input.value == two;
+    let threewin = three_ele.input.value == three;
+    let fourwin = four_ele.input.value == four;
+    if (onewin && twowin && threewin && fourwin) {
+      callback();
+    } else {
+      console.log("JR NOTE: did not win", onewin, twowin, threewin, fourwin)
+    }
+
+  }
+
+  one_ele.input.onchange = checkWin;
+
+  two_ele.input.onchange = checkWin;
+
+  three_ele.input.onchange = checkWin;
+
+  four_ele.input.onchange = checkWin;
+}
+
 
 
 const normalUnlockedDoor = (current_id, next_id) => {
@@ -306,6 +338,19 @@ function handleDesk2Locked() {
     contentEle.src = "images/eustaceandterri.PNG"
 
     showExistingPopup(contentEle, "Gotcha");
+  }
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Enter Combination?"
+  lock.onclick = () => {
+    const win = () => {
+      alert("TODO")
+    }
+    const contentEle = document.createElement("div");
+    contentEle.innerText = "The combination lock has four digits:"
+
+    showExistingPopup(contentEle, "I give up for now...");
+    comboLock(contentEle, win, 4, 6, 6, 5)
   }
 }
 
