@@ -60,7 +60,11 @@ const renderVideoToCanvas = () => {
 
 const attachObviousExits = (obviousExits, outside = true) => {
   const c = createElementWithClassAndParent("div", story);
-  c.innerHTML = `<br>${outside ? "Obvious Exits" : "Obvious Exits (no keyboard)"} Are:<br><br>`;
+  if (outside) {
+    c.innerHTML = "<br>Obvious Exits Are:<br><Br>"
+  } else {
+    c.innerHTML = "<br><Br>"
+  }
   for (let exit of obviousExits) {
     const button = createElementWithClassAndParent("button", c);
     button.innerText = exit.text;

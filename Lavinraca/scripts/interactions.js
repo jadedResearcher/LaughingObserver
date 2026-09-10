@@ -18,7 +18,8 @@ const normalKeyLockedDoor = (current_id, unlock_id) => {
     button.onclick = () => {
       globalDataObject.state_changes[current_id] = unlock_id;
       keyLose(); //will handle saving
-      renderRoom(hallways[unlock_id])
+      renderID(unlock_id)
+
     }
   }
 
@@ -193,7 +194,8 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
     video.onended = null;
     video.loop = true;
 
-    renderRoom(hallways[originalDestination]);
+    renderID(originalDestination)
+
   }
   console.log("JR NOTE: video about to play")
   video.play();
@@ -254,9 +256,29 @@ function pickUpKey5() {
     //whenever you would render room 5, now render 1005 which is the same but no key and no function
     globalDataObject.state_changes[myID] = newID;
     keyGet(); //will handle saving
-    renderRoom(hallways[newID])
+    renderID(newID)
   }
 
+}
+
+/*
+switches the video to play only a single loop, then return to normal looping when its done
+and also send you away from the scary door
+*/
+function shutDoor2() {
+  video.loop = false;
+  const flee = () => {
+    renderID("2_sunset_front_left")
+  }
+  video.addEventListener("ended", flee);
+  const textEle = story.querySelector("#room-text");
+
+  const t = setTimeout(() => { textEle.innerText = "You...do not want to go into the darkness." }, 2000)
+  return () => {
+    video.loop = true;
+    clearTimeout(t);
+    video.removeEventListener("ended", flee);
+  }
 }
 
 function openDoor4Locked() {

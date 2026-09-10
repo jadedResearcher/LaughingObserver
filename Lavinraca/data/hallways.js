@@ -218,7 +218,7 @@ const hallways = {
     //hallway 2 sunset
     "2_sunset_front": {
         "src": "2_sunset/deep1",
-        "flavorText": "TODO",
+        "flavorText": "If it wasn't for the setting sun you wouldn't be able to see anything at all.",
         "forwards": "2_sunset_back",
         "left": "2_sunset_front_left",
         "right": "2_sunset_front_right",
@@ -227,13 +227,24 @@ const hallways = {
     },
     "2_sunset_front_left": {
         "src": "2_sunset/front_left",
-        "flavorText": "TODO",
-        "forwards": null,
+        "flavorText": "A beam of sunlight draws your attention to this door.",
+        "forwards": "2_sunset_front_left_toodark",
         "left": null,
         "right": "2_sunset_front",
         "backwards": "2_sunset_front",
         "functions": []
     },
+
+    "2_sunset_front_left_toodark": {
+        "src": "2_sunset/bad_door",
+        "flavorText": "You go to open the door...",
+        "forwards": null,
+        "left": null,
+        "right": null,
+        "backwards": "2_sunset_front_left",
+        "functions": ["shutDoor2"]
+    },
+
     "2_sunset_front_right": {
         "src": "2_sunset/front_right",
         "flavorText": "TODO",

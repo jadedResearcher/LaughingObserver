@@ -77,7 +77,10 @@ const beginGameplayLoop = () => {
 
 }
 
-
+const renderID = (id) => {
+    globalDataObject.current_room_id = id;
+    renderRoom(hallways[id])
+}
 const renderRoom = (json, replacedAlready) => {
     const me = globalDataObject.current_room_id;
     globalDataObject.hallways_entered++;
@@ -129,8 +132,7 @@ const moveForwards = () => {
 
     if (json && json.forwards) {
         console.log("JR NOTE: forwards")
-        globalDataObject.current_room_id = json.forwards;
-        renderRoom(hallways[json.forwards])
+        renderID(json.forwards)
     }
 }
 const moveBackwards = () => {
@@ -138,9 +140,7 @@ const moveBackwards = () => {
 
     if (json && json.backwards) {
         console.log("JR NOTE: backwards")
-        globalDataObject.current_room_id = json.backwards;
-
-        renderRoom(hallways[json.backwards])
+        renderID(json.backwards)
     }
 }
 
@@ -149,9 +149,7 @@ const moveLeft = () => {
 
     if (json && json.left) {
         console.log("JR NOTE: left")
-        globalDataObject.current_room_id = json.left;
-
-        renderRoom(hallways[json.left])
+        renderID(json.left)
     }
 }
 
@@ -160,9 +158,7 @@ const moveRight = () => {
 
     if (json && json.right) {
         console.log("JR NOTE: right")
-        globalDataObject.current_room_id = json.right;
-
-        renderRoom(hallways[json.right])
+        renderID(json.right)
     }
 }
 
