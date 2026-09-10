@@ -86,17 +86,22 @@ deal with it
 
 //the longer you're in here the spookier it gets but thats not all
 const calculateOddsSpooky = () => {
-  let oddsToBeat = 0.9999;
+  let oddsToBeat = 0.99;
   if (isItMidnight()) {
     oddsToBeat = 0;//its midnight, its spooky time, obviously, plus reminder to maybe take a break
   }
 
+
+  if (globalDataObject.hallways_entered > 51) {
+    oddsToBeat += -.1;
+  }
+
   if (globalDataObject.hallways_entered > 13) {
-    oddsToBeat += -.01;
+    oddsToBeat += -.1;
   }
 
   if (globalDataObject.hallways_entered > 31) {
-    oddsToBeat += -.01;
+    oddsToBeat += -.1;
   }
 
   if (globalDataObject.hallways_entered > 66) {
