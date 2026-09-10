@@ -327,16 +327,23 @@ const closeThePopup = (callback) => {
 const showExistingPopup = (contentEle, closeButtonText) => {
   popup.style.display = "block"
 
-  const close = createElementWithClassAndParent("button", popupContents);
-  close.innerText = closeButtonText;
-  close.onclick = () => {
-    closeThePopup();
-  }
-  close.style.display = "block"
-  close.style.marginTop = "13px"
-  close.style.marginBottom = "13px"
+
+
+
   popupContents.innerHTML = "";
   const contents = createElementWithClassAndParent("div", popupContents);
+  if (closeButtonText) {
+    const close = createElementWithClassAndParent("button", contents);
+    close.innerText = closeButtonText;
+    close.onclick = () => {
+      closeThePopup();
+    }
+
+    close.style.display = "block"
+    close.style.marginTop = "13px"
+    close.style.marginBottom = "13px"
+  }
   contents.append(contentEle)
+
 }
 

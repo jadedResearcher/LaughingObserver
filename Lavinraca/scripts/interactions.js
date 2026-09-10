@@ -302,9 +302,30 @@ function handleDesk2Locked() {
   const button = createElementWithClassAndParent("button", textEle);
   button.innerText = "Read Papers?"
   button.onclick = () => {
-    const contentEle = document.createElement("div");
-    contentEle.innerHTML = `<div class='terri'>
-    <img class='pumpkin1' src='images/pumpkinstamp.png'>    <img class='pumpkin2' src='images/pumpkinstamp.png'>
+    const contentEle = document.createElement("img");
+    contentEle.src = "images/eustaceandterri.PNG"
+
+    showExistingPopup(contentEle, "Gotcha");
+  }
+}
+
+
+
+function unlockDoorForwards() {
+  const current_id = globalDataObject.current_room_id;
+  //some doors are left/right but this one is forwards
+  const next_id = hallways[current_id].forwards;
+  normalUnlockedDoor(current_id, next_id);
+}
+
+
+
+//this won't render right on all devices, so use this to make screenshots you display as images
+function eustaceAndTerri() {
+
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `<div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
     <br><Br><i>I am so excited you could make it here!
     <br><Br>This years Harvest Festival is going to be the BEST ONE EVER! 
@@ -324,7 +345,7 @@ function handleDesk2Locked() {
     Anyways I hope you have so so much fun!
     <br><Br>
     -Terri
-    <br>    <img class='pumpkin3' src='images/pumpkinstamp.png'>    <img class='pumpkin4' src='images/pumpkinstamp.png'>
+    <br>    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
 
 </i>
     <div class='eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
@@ -333,16 +354,5 @@ function handleDesk2Locked() {
 <br><Br><Br><Br>
     There is a scrawled note in the margins that reads '<i>Classic Terri. Got so excited she forgot no one could READ this damn letter in the dark. Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on. Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</i>'`;
 
-    showExistingPopup(contentEle, "Gotcha")
-  }
+  showExistingPopup(contentEle, "Gotcha")
 }
-
-
-
-function unlockDoorForwards() {
-  const current_id = globalDataObject.current_room_id;
-  //some doors are left/right but this one is forwards
-  const next_id = hallways[current_id].forwards;
-  normalUnlockedDoor(current_id, next_id);
-}
-
