@@ -111,6 +111,7 @@ const renderRoom = (json, replacedAlready) => {
     const replacement_id = globalDataObject.state_changes[me];
 
     //only replace once, no infinite chains on accident
+    //(jr i know you think you can save it by limiting recursion but you cant we tried on 9/10/26 and regretted it)
     if (replacement_id && !replacedAlready) {
         globalDataObject.current_room_id = replacement_id
         renderRoom(hallways[replacement_id], true)

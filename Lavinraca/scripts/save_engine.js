@@ -3,13 +3,16 @@ const SAVE_KEY = 'LAVINRACA_2026_SHESMIDDLEAGEDNOW'
 
 //up to what uses this to define this
 //https://catalystsbathroomlibrary.neocities.org/
-let globalDataObject = {
+
+
+let initialDataObject = {
     hallways_entered: 0,
     prayers_sent: [],
     inventory: [],
     keys: 0,
     masks: 0,
     meat: 0,
+    stranger: false, //there are ways you can become a stranger to everyone around you, what even is identity
     candy: 0,
     opened_the_door: false,
     current_room_id: "OUTSIDE",
@@ -17,6 +20,8 @@ let globalDataObject = {
     state_changes: {},//if you pick up the key, permamently replace 5 with 1005 or whatever, which is the video with no key
     spooky_seen: []
 }
+
+globalDataObject = initialDataObject;
 
 //showing number of keys you have etc
 const saveSideEffects = () => {
@@ -70,10 +75,11 @@ window.onstorage = () => {
 
 const deleteSave = () => {
     localStorage.removeItem(SAVE_KEY);
+    globalDataObject = initialDataObject;
+    save();
 }
 
 //http://www.purplefrog.com/~thoth/ruby/nobody-knows-shoes.pdf
-
 
 
 //up to what uses this to decide how often to save
@@ -97,6 +103,9 @@ const load = () => {
     if (data) {
         globalDataObject = JSON.parse(data);
         globalDataObject.lastLoadTimeCode = Date.now();
+        if (!globalDataObject.current_room_id) {
+            globalDataObject.current_room_id = "OUTSIDE";
+        }
         if (!globalDataObject.state_changes) {
             globalDataObject.state_changes = {}
         }

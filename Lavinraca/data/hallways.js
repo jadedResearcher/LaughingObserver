@@ -182,10 +182,18 @@ const hallways = {
 
     "2_open_locked_door": {
         "src": "2/front_left",
-        "flavorText": "The door is locked, and there is keyhole visible...it wasn't locked before...Did the power turning back on lock it?",
+        "flavorText": "The door is locked, and there is no keyhole visible...it wasn't locked before...Did the power turning back on lock it?",
         "right": "2_front",
         "backwards": "2_front",
         "functions": ["openDoor2MaskLocked"]
+    },
+
+    "2_open_unlocked_doorleft": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "Outside",
+        "backwards": "2_front",
+        "functions": ["unlockDoorForwards"]
     },
     "2_front_right": {
         "src": "2/front_right",
@@ -221,25 +229,25 @@ const hallways = {
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": []
+        "functions": ["putMask2"]
     },
-    "2_back_left_unlocked_mask": {
+    "2_back_left_mask": {
         "src": "2/back_left_mask",
         "flavorText": "The desk is clearly lit. A Mask is placed on the desk, a gentle electrical hum coming from it.",
         "forwards": null,
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": []
+        "functions": ["takeMask2"]
     },
     "2_back_right": {
         "src": "2/back_right",
-        "flavorText": "TODO",
+        "flavorText": "The mirror is scratched and chipped, in ragged lines too similar to finger scratches for your liking. Someone desperately wanted to destroy this.<br><Br>You almost feel like you can see...a face that is not yours imprinted on the glass?",
         "forwards": null,
         "left": "2_back",
         "right": null,
         "backwards": "2_back",
-        "functions": []
+        "functions": ["lookIntoTheMirror"]
     },
     //hallway 2 sunset
     "2_sunset_front": {

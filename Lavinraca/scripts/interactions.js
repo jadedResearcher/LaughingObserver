@@ -5,6 +5,11 @@ const test1 = () => {
   console.log("JR NOTE: test1")
 }*/
 
+//bespoke functions can use this to ask if a state has been set
+const checkForState = (state_name) => {
+  const values = Object.values(globalDataObject.state_changes)
+  return values.includes(state_name);
+}
 
 //displays a button that asks if you want to use a key (if you have one)
 // if you do, it adds a state replacement for the two ids and transitions to the new
@@ -81,6 +86,13 @@ const maskGet = () => {
   contentEle.innerHTML = `You got a Mask!<br><br><img src='images/Diorama/Inside/mask_spin.gif'>`;
 
   showExistingPopup(contentEle, "Gotcha")
+}
+
+const maskLose = () => {
+  const audio = new Audio("images/Diorama/foley/ready_effects/Inside/mask_use.mp3");
+  audio.play();
+  globalDataObject.masks += -1;
+  save();
 }
 
 const keyLose = () => {
@@ -331,13 +343,19 @@ function openDoor4Locked() {
   normalKeyLockedDoor(current_id, unlock_id);
 }
 
+//maybe refactor this later. 
 function openDoor2MaskLocked() {
-  alert("TODO: need to check that state got rewritten somewhere else")
+  const textEle = story.querySelector("#room-text");
+  if (checkForState("2_back_left_mask")) {
+    textEle.innerHTML = "The door is unlocked...You think it has something to do with the mask on the desk.";
+    //no other way to reach here
+    renderID("2_open_unlocked_doorleft");
+  }
+
 }
 
 function handleDesk2Locked() {
   const textEle = story.querySelector("#room-text");
-  const c = createElementWithClassAndParent("div", story);
 
   const button = createElementWithClassAndParent("button", textEle);
   button.innerText = "Read Papers?"
@@ -363,6 +381,71 @@ function handleDesk2Locked() {
 
     showExistingPopup(contentEle, "I give up for now...");
     comboLock(contentEle, win, 4, 6, 6, 5)
+  }
+}
+
+function putMask2() {
+  const textEle = story.querySelector("#room-text");
+
+  if (globalDataObject.masks > 0) {
+    const button = createElementWithClassAndParent("button", textEle);
+    button.innerText = "Place Mask On Stand?"
+    button.onclick = () => {
+      maskLose();
+      const myID = "2_back_left_unlocked_no_mask";
+      const otherID = "2_back_left_locked"; //hallway still knows about this
+      const newID = "2_back_left_mask"
+      globalDataObject.state_changes[myID] = newID;
+      //hallway should redirect to the current meta
+      globalDataObject.state_changes[otherID] = newID;
+      //clear out the fact that i was previously redirecting to no mask
+      globalDataObject.state_changes[newID] = undefined;
+      renderID(newID)
+    }
+  } else {
+    textEle.innerText += " If you had a Mask you could place it here."
+  }
+}
+
+function takeMask2() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Take Mask?"
+  button.onclick = () => {
+    maskGet();
+    const myID = "2_back_left_mask";
+    const otherID = "2_back_left_locked"; //hallway still knows about this
+    const newID = "2_back_left_unlocked_no_mask"
+    globalDataObject.state_changes[myID] = newID;
+    //hallway should redirect to the current meta
+    globalDataObject.state_changes[otherID] = newID;
+    //clear out the fact that i was previously redirecting to mask
+    globalDataObject.state_changes[newID] = undefined;
+    renderID(newID)
+  }
+}
+
+function lookIntoTheMirror() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Look Into The Mirror?"
+  button.onclick = () => {
+    try {
+      const another_you_from_another_world = JSON.parse(raw_prayers[0].prayerObject["save-data"])
+      textEle.innerText = "You feel a wave of vertigo as your world view shifts.";
+      globalDataObject = another_you_from_another_world;
+      globalDataObject.stranger = true;
+      save();
+      load();//sets defaults if whoevers save doesnt have them
+      setTimeout(() => {
+        renderID(globalDataObject.current_room_id);
+      }, 1000)
+
+    } catch (e) {
+      textEle.innerText = "You don't know why you feel relived that nothing happened..."
+    }
   }
 }
 

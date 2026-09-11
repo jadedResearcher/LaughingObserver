@@ -1,0 +1,68 @@
+nostalgic to have f ile named this
+
+the internet is out
+
+and it is thursday of my week off
+
+i am NOT letting this slow me down
+
+i spent the first part of it assembling some walls for the big hallway full of anomolies
+
+but
+
+internet still doesn't exist
+
+so i'll code what i can and mabe track down a usb key to make backups
+
+ironically im less interested in filming wihtout internet 
+its not on my computer but
+
+i send the pictures to discord to get them easily on my computer, and to confirm which ones i picked vs shots i don'tw ant to use
+
+really really really don't wanna dig thru them later
+
+anyways time to code
+i want to wire up two things rn
+
+* the door on the left of hallway 2 (bright) should open if a mask is on the desk near it
+* the mirror on the right of hallway 2 (bright) should replace you with a random version of save data (sourced from OTHER people who weren't cautious about the mirror)
+
+important note: i can't fully code the mirror wihtout internet, cuz i need a 'guestbook' for it. 
+
+but i can get everything else going and have a placeholder php thing for it. 
+
+actually probably can just use the prayer php and have a custom prayer
+im nervous about my current pace  
+
+im actually working really fast, but the things i'm trying to do always are bigger than i think (isn't that always the case)
+
+to be fair these first few rooms are INTENTIONALLY dense because i want to get all my mechanics fleshed out as early as possible
+
+i had to code a combo lock from scratch just now!
+
+so like, next time i need one i won't need to do that. 
+
+hopefully.
+
+anyways
+door first
+
+~~
+that was easy  
+
+god i want to commit my code and deploy as a back up :( :( :(
+
+    maybe i should just rest
+
+
+    but no 
+
+
+    i promised myself the second halwlay would be fully done today so i could focus on the anomoly horror
+
+    and i will 
+
+
+    note to self tho (wish i had discord for this), right now the left door just goes outside
+
+    eventually it needs to go into an electric only room
