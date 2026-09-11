@@ -14,64 +14,136 @@ give me the base ID for the hallway and I'll give you a template to edit with al
 //and if theres a sunset version you gotta make two templates
 */
 //debugGenerateTemplateForNewHallway("2_sunset")
-const debugGenerateTemplateForNewHallway = (id, backwards_full_id = null, forwards_full_id = null) => {
-
-  const map_template = `{
-    "${id}_front": {
+const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_full_id = null, forwards_full_id = null) => {
+  //they had us in the first half ngl
+  const first_half = `
+    "${id}_deep1": {
+      "roomID": "${id}",
       "src": "${id}/deep1",
       "flavorText": "TODO",
-      "forwards": "${id}_back",
-      "left": "${id}_front_left",
-      "right": "${id}_front_right",
+      "forwards": "${id}_deep2",
+      "left": "${id}_left1",
+      "right": "${id}_right1",
       "backwards": "${backwards_full_id}",
       "functions": []
     },
-    "${id}_front_left": {
-      "src": "${id}/front_left",
+    "${id}_left1": {
+      "roomID": "${id}",
+      "src": "${id}/left1",
       "flavorText": "TODO",
       "forwards": null,
       "left": null,
-      "right": "${id}_front",
-      "backwards": "${id}_front",
+      "right": "${id}_deep1",
+      "backwards": "${id}_deep1",
       "functions": []
     },
-    "${id}_front_right": {
-      "src": "${id}/front_right",
+    "${id}_right1": {
+      "roomID": "${id}",
+      "src": "${id}/right1",
       "flavorText": "TODO",
       "forwards": null,
-      "left": "${id}_front",
+      "left": "${id}_deep1",
       "right": null,
-      "backwards": "${id}_front",
+      "backwards": "${id}_deep1",
       "functions": []
     },
-    "${id}_back": {
+    "${id}_deep2": {
+      "roomID": "${id}",
       "src": "${id}/deep2",
       "flavorText": "TODO",
-      "forwards": ${forwards_full_id},
-      "left": "${id}_back_left",
-      "right": "${id}_back_right",
-      "backwards": "${id}_front",
+      "forwards": ${doubleSize ? `"${id}_deep3"` : forwards_full_id},
+      "left": "${id}_left2",
+      "right": "${id}_right2",
+      "backwards": "${id}_deep1",
       "functions": []
     },
-    "${id}_back_left": {
-      "src": "${id}/back_left",
+    "${id}_left2": {
+      "roomID": "${id}",
+      "src": "${id}/left2",
       "flavorText": "TODO",
       "forwards": null,
       "left": null,
-      "right": "${id}_back",
-      "backwards": "${id}_back",
+      "right": "${id}_deep2",
+      "backwards": "${id}_deep2",
       "functions": []
     },
-    "${id}_back_right": {
-      "src": "${id}/back_right",
+    "${id}_right2": {
+      "roomID": "${id}",
+      "src": "${id}/right2",
       "flavorText": "TODO",
       "forwards": null,
-      "left": "${id}_back",
+      "left": "${id}_deep2",
       "right": null,
-      "backwards": "${id}_back",
+      "backwards": "${id}_deep2",
       "functions": []
     }
-  }`
+  `
+
+  const second_half = `,
+    "${id}_deep3": {
+      "roomID": "${id}",
+      "src": "${id}/deep3",
+      "flavorText": "TODO",
+      "forwards": "${id}_deep4",
+      "left": "${id}_left3",
+      "right": "${id}_right3",
+      "backwards": "${id}_deep2",
+      "functions": []
+    },
+    "${id}_left3": {
+      "roomID": "${id}",
+      "src": "${id}/left3",
+      "flavorText": "TODO",
+      "forwards": null,
+      "left": null,
+      "right": "${id}_deep3",
+      "backwards": "${id}_deep3",
+      "functions": []
+    },
+    "${id}_right3": {
+      "roomID": "${id}",
+      "src": "${id}/right3",
+      "flavorText": "TODO",
+      "forwards": null,
+      "left": "${id}_deep3",
+      "right": null,
+      "backwards": "${id}_deep3",
+      "functions": []
+    },
+    "${id}_deep4": {
+      "roomID": "${id}",
+      "src": "${id}/deep4",
+      "flavorText": "TODO",
+      "forwards": ${forwards_full_id},
+      "left": "${id}_left4",
+      "right": "${id}_right4",
+      "backwards": "${id}_deep3",
+      "functions": []
+    },
+    "${id}_left4": {
+      "roomID": "${id}",
+      "src": "${id}/left4",
+      "flavorText": "TODO",
+      "forwards": null,
+      "left": null,
+      "right": "${id}_deep4",
+      "backwards": "${id}_deep4",
+      "functions": []
+    },
+    "${id}_right4": {
+      "roomID": "${id}",
+      "src": "${id}/right4",
+      "flavorText": "TODO",
+      "forwards": null,
+      "left": "${id}_deep4",
+      "right": null,
+      "backwards": "${id}_deep4",
+      "functions": []
+    }
+  `
+
+  const map_template = `{${first_half}${doubleSize ? second_half : ""}}`;
+  // console.log("JR NOTE: ", map_template)
   //trust me on this, outputs something i can copy and paste into the json
   const data = JSON.parse(map_template)
   //const outputEle = createTextAreaInputWithLabel();
