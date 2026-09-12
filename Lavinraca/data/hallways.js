@@ -432,7 +432,7 @@ const hallways = {
     "6_deep1": {
         "roomID": "6",
         "src": "6/deep1",
-        "flavorText": "TODO",
+        "flavorText": "You keep your eyes peeled for any time instabilities.",
         "forwards": "6_deep2",
         "left": "6_left1",
         "right": "6_right1",
@@ -442,7 +442,6 @@ const hallways = {
     "6_left1": {
         "roomID": "6",
         "src": "6/left1",
-        "flavorText": "TODO",
         "forwards": null,
         "left": null,
         "right": "6_deep1",
@@ -452,7 +451,6 @@ const hallways = {
     "6_right1": {
         "roomID": "6",
         "src": "6/right1",
-        "flavorText": "TODO",
         "forwards": null,
         "left": "6_deep1",
         "right": null,
@@ -462,7 +460,6 @@ const hallways = {
     "6_deep2": {
         "roomID": "6",
         "src": "6/deep2",
-        "flavorText": "TODO",
         "forwards": "6_deep3",
         "left": "6_left2",
         "right": "6_right2",
@@ -472,7 +469,6 @@ const hallways = {
     "6_left2": {
         "roomID": "6",
         "src": "6/left2",
-        "flavorText": "TODO",
         "forwards": null,
         "left": null,
         "right": "6_deep2",
@@ -482,7 +478,6 @@ const hallways = {
     "6_right2": {
         "roomID": "6",
         "src": "6/right2",
-        "flavorText": "TODO",
         "forwards": null,
         "left": "6_deep2",
         "right": null,
@@ -492,7 +487,6 @@ const hallways = {
     "6_deep3": {
         "roomID": "6",
         "src": "6/deep3",
-        "flavorText": "TODO",
         "forwards": "6_deep4",
         "left": "6_left3",
         "right": "6_right3",
@@ -502,7 +496,6 @@ const hallways = {
     "6_left3": {
         "roomID": "6",
         "src": "6/left3",
-        "flavorText": "TODO",
         "forwards": null,
         "left": null,
         "right": "6_deep3",
@@ -512,7 +505,6 @@ const hallways = {
     "6_right3": {
         "roomID": "6",
         "src": "6/right3",
-        "flavorText": "TODO",
         "forwards": null,
         "left": "6_deep3",
         "right": null,
@@ -522,7 +514,6 @@ const hallways = {
     "6_deep4": {
         "roomID": "6",
         "src": "6/deep4",
-        "flavorText": "TODO",
         "forwards": "3_deep3",
         "left": "6_left4",
         "right": "6_right4",
@@ -532,7 +523,6 @@ const hallways = {
     "6_left4": {
         "roomID": "6",
         "src": "6/left4",
-        "flavorText": "TODO",
         "forwards": null,
         "left": null,
         "right": "6_deep4",
@@ -542,7 +532,6 @@ const hallways = {
     "6_right4": {
         "roomID": "6",
         "src": "6/right4",
-        "flavorText": "TODO",
         "forwards": null,
         "left": "6_deep4",
         "right": null,
