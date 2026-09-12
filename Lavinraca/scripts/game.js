@@ -132,7 +132,7 @@ const renderRoom = (json, replacedAlready) => {
     story.innerHTML = `<div id='room-text'>${json.flavorText}</div>`;
     video.play();
     if (globalDataObject.button_controls) {
-        handleHallwayObviousExits()
+        handleHallwayObviousExits(json.forwards, json.backwards, json.left, json.right)
     }
 
     if (json.functions) {
@@ -203,12 +203,12 @@ const fuckWithAudioVolume = () => {
     spookyLoop.volume = vol < 0.5 ? vol : 0// don't want to overuse creaks
 }
 
-const handleHallwayObviousExits = () => {
+const handleHallwayObviousExits = (f, b, l, r) => {
     const obviousExits = [];
-    obviousExits.push({ text: "Forwards", function: moveForwards })
-    obviousExits.push({ text: "Backwards", function: moveBackwards })
-    obviousExits.push({ text: "Look Left", function: moveLeft })
-    obviousExits.push({ text: "Look Right", function: moveRight })
+    obviousExits.push({ text: "Forwards", function: moveForwards, dim: !f })
+    obviousExits.push({ text: "Backwards", function: moveBackwards, dim: !b })
+    obviousExits.push({ text: "Look Left", function: moveLeft, dim: !l })
+    obviousExits.push({ text: "Look Right", function: moveRight, dim: !r })
     attachObviousExits(obviousExits, false)
 }
 

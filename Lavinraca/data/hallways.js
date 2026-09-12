@@ -362,7 +362,7 @@ const hallways = {
     "3_deep1": {
         "roomID": "3",
         "src": "3/deep1",
-        "flavorText": "TODO",
+        "flavorText": "You see something hung from the far door.",
         "forwards": "3_deep2",
         "left": "3_left1",
         "right": "3_right1",
@@ -372,7 +372,7 @@ const hallways = {
     "3_left1": {
         "roomID": "3",
         "src": "3/left1",
-        "flavorText": "TODO",
+        "flavorText": "Nothing seems especially important about this bookcase in the dim light.",
         "forwards": null,
         "left": null,
         "right": "3_deep1",
@@ -382,7 +382,7 @@ const hallways = {
     "3_right1": {
         "roomID": "3",
         "src": "3/right1",
-        "flavorText": "TODO",
+        "flavorText": "The setting sun is blinding.",
         "forwards": null,
         "left": "3_deep1",
         "right": null,
@@ -392,7 +392,7 @@ const hallways = {
     "3_deep2": {
         "roomID": "3",
         "src": "3/deep2",
-        "flavorText": "TODO",
+        "flavorText": "You can't make the writing out yet.",
         "forwards": "3_deep3",
         "left": "3_left2",
         "right": "3_right2",
@@ -402,16 +402,16 @@ const hallways = {
     "3_deep3": {
         "roomID": "3",
         "src": "3/deep3",
-        "flavorText": "TODO",
+        "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": []
+        "functions": ["lookCloserAtRules"]
     },
 
     "3_left2": {
         "roomID": "3",
         "src": "3/left2",
-        "flavorText": "TODO",
+        "flavorText": "The lamp is not lit.",
         "forwards": null,
         "left": null,
         "right": "3_deep2",
@@ -421,7 +421,7 @@ const hallways = {
     "3_right2": {
         "roomID": "3",
         "src": "3/right2",
-        "flavorText": "TODO",
+        "flavorText": "There is a door leading to the right, towards the setting sun. <br><Br>You should be able to see in the room beyond.",
         "forwards": null,
         "left": "3_deep2",
         "right": null,

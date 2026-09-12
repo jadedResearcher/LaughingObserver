@@ -69,6 +69,9 @@ const attachObviousExits = (obviousExits, outside = true) => {
     const button = createElementWithClassAndParent("button", c);
     button.innerText = exit.text;
     button.onclick = () => movingAroundOutside(exit.function);
+    if (exit.dim) {
+      button.style.opacity = "0.3"
+    }
   }
 }
 
@@ -332,6 +335,8 @@ const showExistingPopup = (contentEle, closeButtonText) => {
 
   popupContents.innerHTML = "";
   const contents = createElementWithClassAndParent("div", popupContents);
+  contents.append(contentEle)
+
   if (closeButtonText) {
     const close = createElementWithClassAndParent("button", contents);
     close.innerText = closeButtonText;
@@ -343,7 +348,6 @@ const showExistingPopup = (contentEle, closeButtonText) => {
     close.style.marginTop = "13px"
     close.style.marginBottom = "13px"
   }
-  contents.append(contentEle)
 
 }
 

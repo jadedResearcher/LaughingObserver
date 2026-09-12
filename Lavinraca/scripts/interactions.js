@@ -458,6 +458,36 @@ function unlockDoorForwards() {
   normalUnlockedDoor(current_id, next_id);
 }
 
+function lookCloserAtRules() {
+  const textEle = story.querySelector("#room-text");
+
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Look Closer At Rules?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `<img style='max-height:100%' src='images/Diorama/Inside/Hallways/rules.PNG' >
+    <ol>
+    <li>If time is stable, go through the far door.</li>
+    <li>If time is NOT stable, turn around and leave the room.</li>
+    <li>Past room 8 is where time solidifies fully.</li>
+    (NOTE: Some instabilities are more subtle than others. There is no penalty for missing them, save starting the loop over from 0.)
+    </ol>`
+
+    showExistingPopup(contentEle, "Gotcha")
+  }
+
+  const button2 = createElementWithClassAndParent("button", c);
+  button2.innerText = "Enter"
+  const current_id = globalDataObject.current_room_id;
+  const next_id = hallways[current_id].forwards;
+
+  button2.onclick = () => {
+    renderID(next_id)
+  }
+
+}
+
 
 
 //this won't render right on all devices, so use this to make screenshots you display as images
