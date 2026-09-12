@@ -25,7 +25,6 @@ globalDataObject = initialDataObject;
 
 //showing number of keys you have etc
 const saveSideEffects = () => {
-    console.log("JR NOTE: should i update graphics?")
     if (globalDataObject.keys > 0) {
         keyText.innerText = `x${globalDataObject.keys}`;
         keyContainer.style.display = "flex";

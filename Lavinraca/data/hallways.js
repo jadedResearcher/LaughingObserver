@@ -407,6 +407,67 @@ const hallways = {
         "backwards": "3_deep2",
         "functions": ["lookCloserAtRules"]
     },
+    "3_deep3_1": {
+        "roomID": "3",
+        "src": "3/deep3_1",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+    "3_deep3_2": {
+        "roomID": "3",
+        "src": "3/deep3_2",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+    "3_deep3_3": {
+        "roomID": "3",
+        "src": "3/deep3_3",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+    "3_deep3_4": {
+        "roomID": "3",
+        "src": "3/deep3_4",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+
+    "3_deep3_5": {
+        "roomID": "3",
+        "src": "3/deep3_5",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+
+    "3_deep3_6": {
+        "roomID": "3",
+        "src": "3/deep3_6",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+
+    "3_deep3_7": {
+        "roomID": "3",
+        "src": "3/deep3_7",
+        "flavorText": "A list of rules are hung on the door.",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": ["lookCloserAtRules"]
+    },
+
+
 
     "3_left2": {
         "roomID": "3",
@@ -437,7 +498,7 @@ const hallways = {
         "left": "6_left1",
         "right": "6_right1",
         "backwards": "3_deep3",
-        "functions": []
+        "functions": ["check_room_6_near_stability"]
     },
     "6_left1": {
         "roomID": "6",
@@ -518,7 +579,7 @@ const hallways = {
         "left": "6_left4",
         "right": "6_right4",
         "backwards": "6_deep3",
-        "functions": []
+        "functions": ["check_room_6_far_stability"]
     },
     "6_left4": {
         "roomID": "6",
@@ -537,8 +598,17 @@ const hallways = {
         "right": null,
         "backwards": "6_deep4",
         "functions": []
-    }
+    },
 
+    "TODO": {
+        "roomID": "6",
+        "src": "TODO",
+        "forwards": "JR has not completed this yet. ",
+        "left": "6_deep4",
+        "right": null,
+        "backwards": "OUTSIDE",
+        "functions": []
+    },
 
 
 
