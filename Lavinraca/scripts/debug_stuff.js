@@ -151,7 +151,25 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
 
 }
 
-const debugHallways = () => {
+//        "roomID": "6",
+
+const getHallwaysForRoomID = (roomID) => {
+  return Object.values(hallways).filter((h) => h.roomID === roomID)
+}
+
+//i don't want to manually copy and paste this but i want them to be a map normally
+//but a given hallway know its id too
+const addIDToHallways = () => {
+  for (let [key, value] of Object.entries(hallways)) {
+    value.id = key;
+  }
+}
+
+const debugHallways = (subset) => {
+  let h = hallways;
+  if (subset) {
+    h = subset;
+  }
   const body = document.body;
   body.innerHTML = "";
   body.style.overflow = "auto"
@@ -159,7 +177,7 @@ const debugHallways = () => {
   table.style.overflow = 'auto'
   table.style.background = "white"
 
-  for (let [key, value] of Object.entries(hallways)) {
+  for (let [key, value] of Object.entries(h)) {
     console.log("JR NOTE: debug", key, value)
     const row = createElementWithClassAndParent("tr", table);
     const cell = createElementWithClassAndParent("td", row);

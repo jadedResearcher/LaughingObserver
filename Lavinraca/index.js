@@ -12,6 +12,7 @@ spookyLoop.loop = true;
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
+  addIDToHallways();
   wireUpPopupClose();
   //video ele handles decoding and audio playing AND loading the buffer
   //but the canvas element should be the visible thing (prevents flicker)

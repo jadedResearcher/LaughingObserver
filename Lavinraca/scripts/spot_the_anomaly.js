@@ -44,6 +44,7 @@ function checkStabilityFarDoor(json, successID, failID) {
 //room 6 functions
 let loop6SuccessArray = ["3_deep3_1", "3_deep3_2", "3_deep3_3", "3_deep3_4", "3_deep3_5", "3_deep3_6", "3_deep3_7", "TODO"]
 const loop6Fail = "3_deep3"; //always the same failure
+const loop6PossibleAnomalyLocations = []
 
 function check_room_6_near_stability() {
   const targetID = globalDataObject.current_room_id;
