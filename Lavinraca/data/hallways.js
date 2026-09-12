@@ -606,7 +606,7 @@ const hallways = {
         "forwards": "JR has not completed this yet. ",
         "left": "6_deep4",
         "right": null,
-        "backwards": "OUTSIDE",
+        "backwards": "6_deep4",
         "functions": []
     },
 
