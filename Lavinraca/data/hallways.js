@@ -405,7 +405,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "resetRoomBeaten"]
     },
     "3_deep3_1": {
         "roomID": "3",
@@ -413,7 +413,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
     "3_deep3_2": {
         "roomID": "3",
@@ -421,7 +421,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
     "3_deep3_3": {
         "roomID": "3",
@@ -429,7 +429,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
     "3_deep3_4": {
         "roomID": "3",
@@ -437,7 +437,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
 
     "3_deep3_5": {
@@ -446,7 +446,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
 
     "3_deep3_6": {
@@ -455,7 +455,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
 
     "3_deep3_7": {
@@ -464,7 +464,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
     },
 
 

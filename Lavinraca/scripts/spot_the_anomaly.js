@@ -12,16 +12,20 @@ let anomaly_id = null;
 let currentRoomBeaten = 0;
 
 
+function incrementRoomBeaten() {
+  currentRoomBeaten++;
+}
+
+function resetRoomBeaten() {
+  currentRoomBeaten = 0
+}
 
 //go back if theres something wrong
 function checkStabilityNearDoor(json, successID, failID) {
-  console.log("JR NOTE: checkStabilityNearDoor", { anomaly_id, json, successID, failID })
   if (anomaly_id) {
-    currentRoomBeaten++;
     json.backwards = successID;
     return;
   }
-  currentRoomBeaten = 0;
   json.backwards = failID;
 }
 
@@ -30,12 +34,10 @@ function checkStabilityFarDoor(json, successID, failID) {
   console.log("JR NOTE: checkStabilityFarDoor", { anomaly_id, json, successID, failID })
 
   if (!anomaly_id) {
-    console.log("JR NOTE: there is no anomaly so setting forwards to be", successID)
-    currentRoomBeaten++;
+    console.log("JR NOTE: there is no anomaly so success", { successID, currentRoomBeaten })
     json.forwards = successID;
     return;
   }
-  currentRoomBeaten = 0;
   json.forwards = failID;
 }
 
@@ -49,6 +51,7 @@ function check_room_6_near_stability() {
 }
 
 function check_room_6_far_stability() {
+  console.log("JR NOTE: check_room_6_far_stability currentRoomBeaten is:", currentRoomBeaten)
   const targetID = globalDataObject.current_room_id;
   checkStabilityFarDoor(hallways[targetID], loop6SuccessArray[currentRoomBeaten], loop6Fail);
 
