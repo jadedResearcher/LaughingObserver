@@ -333,7 +333,7 @@ const hallways = {
         "roomID": "2",
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "1_bright",
+        "forwards": "3_deep1",
         "backwards": "2_sunset_back",
         "functions": ["unlockDoorForwards"]
     },
@@ -358,6 +358,77 @@ const hallways = {
         "backwards": "2_sunset_back",
         "functions": []
     },
+    //room 3
+    "3_deep1": {
+        "roomID": "3",
+        "src": "3/deep1",
+        "flavorText": "TODO",
+        "forwards": "3_deep2",
+        "left": "3_left1",
+        "right": "3_right1",
+        "backwards": "null",
+        "functions": []
+    },
+    "3_left1": {
+        "roomID": "3",
+        "src": "3/left1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "3_deep1",
+        "backwards": "3_deep1",
+        "functions": []
+    },
+    "3_right1": {
+        "roomID": "3",
+        "src": "3/right1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "3_deep1",
+        "right": null,
+        "backwards": "3_deep1",
+        "functions": []
+    },
+    "3_deep2": {
+        "roomID": "3",
+        "src": "3/deep2",
+        "flavorText": "TODO",
+        "forwards": "3_deep3",
+        "left": "3_left2",
+        "right": "3_right2",
+        "backwards": "3_deep1",
+        "functions": []
+    },
+    "3_deep3": {
+        "roomID": "3",
+        "src": "3/deep3",
+        "flavorText": "TODO",
+        "forwards": "6_deep1",
+        "backwards": "3_deep2",
+        "functions": []
+    },
+
+    "3_left2": {
+        "roomID": "3",
+        "src": "3/left2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "3_deep2",
+        "backwards": "3_deep2",
+        "functions": []
+    },
+    "3_right2": {
+        "roomID": "3",
+        "src": "3/right2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "3_deep2",
+        "right": null,
+        "backwards": "3_deep2",
+        "functions": []
+    },
+    //room 6
     "6_deep1": {
         "roomID": "6",
         "src": "6/deep1",
@@ -452,7 +523,7 @@ const hallways = {
         "roomID": "6",
         "src": "6/deep4",
         "flavorText": "TODO",
-        "forwards": null,
+        "forwards": "3_deep3",
         "left": "6_left4",
         "right": "6_right4",
         "backwards": "6_deep3",
