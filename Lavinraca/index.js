@@ -149,8 +149,8 @@ const openDoor = () => {
   video.play();
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
-  obviousExits.push({ text: "Take Meat Pamphlet", function: meatPamphlet })
-  obviousExits.push({ text: "Take Candy Pamphlet", function: candyPamphlet })
+  obviousExits.push({ text: "Take Meat", function: meatPamphlet })
+  obviousExits.push({ text: "Take Candy", function: candyPamphlet })
   obviousExits.push({ text: "Go Inside, What's the Worst That Could Happen?", function: inside })
 
   video.onended = () => {
