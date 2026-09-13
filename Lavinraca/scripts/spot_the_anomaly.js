@@ -169,7 +169,7 @@ function check_room_6_right2() {
 
 function check_room_6_deep3() {
   const path = "images/Diorama/Inside/Hallways/6/";
-  const options = ["deep3_bride", "deep3_mask"];
+  const options = ["deep3_bride", "deep3_mask", "deep3_skull"];
   playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
