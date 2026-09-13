@@ -41,12 +41,51 @@ function checkStabilityFarDoor(json, successID, failID) {
   json.forwards = failID;
 }
 
+function playVariantIfCurrentIdIsAnomaly(path, variant_list) {
+  if (globalDataObject.current_room_id === anomaly_id) {
+    video.src = path + pickFrom(variant_list) + ".mp4";
+    video.play();
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 //room 6 functions
 let loop6SuccessArray = ["3_deep3_1", "3_deep3_2", "3_deep3_3", "3_deep3_4", "3_deep3_5", "3_deep3_6", "3_deep3_7", "TODO"]
 const loop6Fail = "3_deep3"; //always the same failure
-const loop6PossibleAnomalyLocations = []
+//all ids for room 6
+const loop6PossibleAnomalyLocations = ['6_deep1', '6_left1', '6_right1', '6_deep2', '6_left2', '6_right2', '6_deep3', '6_left3', '6_right3', '6_deep4', '6_left4', '6_right4']
 
+
+function setAnomalyLocation() {
+  //room 5 is guaranteed to have an anamaly for two reasons
+  //one, so you can't get a run where theres literally nothing wrong with it
+  //and two
+  //and this is more important to me
+  //i forgot to film the 5 marker at first and didn't know why and got confused and 
+  //kinda disoriented when i couldn't find it and had to reshoot it
+  //it wans't too hard but
+  //man how did that happen
+  //i remember setting it up, i just...didn't snap the picture??? i guess???
+  //perfect thing to immortalize
+  if (Math.random() > 0.5 || currentRoomBeaten == 4) {
+    anomaly_id = pickFrom(loop6PossibleAnomalyLocations);
+  } else {
+    anomaly_id = null;
+  }
+}
 function check_room_6_near_stability() {
+  setAnomalyLocation();
   const targetID = globalDataObject.current_room_id;
   checkStabilityNearDoor(hallways[targetID], loop6SuccessArray[currentRoomBeaten], loop6Fail);
 }
@@ -60,70 +99,94 @@ function check_room_6_far_stability() {
 
 //functions to handle rendering anomolies if you're supposed to
 function check_room_6_deep1() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["deep1_bride", "deep1_mask_storm"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 function check_room_6_left1() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["left1_subtle_painting", "left1_two_orbs"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 function check_room_6_right1() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["right1_bride", "right1_nosign"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 function check_room_6_deep2() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["deep2_cat", "deep2_garland"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_left2() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["left2_fallen_chair", "left2_subtle", "left2_therearefourlights"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_right2() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["right2_upsidedown"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_deep3() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["deep3_bride", "deep3_mask"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_left3() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["left3_chair", "left3_noface"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_right3() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["right3_bearleft", "right3_jack", "right3_no_odin", "right3_nobear"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_deep4() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["deep4_cones", "deep4_crate", "deep4_growth", "deep4_stop"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_left4() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["left4_blue", "left4_chair", "left4_chair_nolight", "left4_fallen", "left4_wrongpics"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 
 
 function check_room_6_right4() {
-
+  const path = "images/Diorama/Inside/Hallways/6/";
+  const options = ["right4_noknife", "right4_plantfell", "right4_tablefell", "right4_weirdblackgoo"];
+  playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
 //end room 6
