@@ -74,7 +74,18 @@ function setAnomalyLocationRoom6() {
   if (currentRoomBeaten === 0) {
     anomaly_id = null;
     return;
-  }  //room 5 is guaranteed to have an anamaly for two reasons
+
+  }
+
+  if (currentRoomBeaten < 4 && Math.random() > 0.5) {
+    anomaly_id = pickFrom(loop6PossibleAnomalyLocations);
+    return;
+
+  }
+
+
+
+  //room 5 is guaranteed to have an anamaly for two reasons
   //one, so you can't get a run where theres literally nothing wrong with it
   //and two
   //and this is more important to me
@@ -86,9 +97,17 @@ function setAnomalyLocationRoom6() {
   //perfect thing to immortalize
   if (Math.random() > 0.5 || currentRoomBeaten == 4) {
     anomaly_id = pickFrom(loop6PossibleAnomalyLocations);
-  } else {
-    anomaly_id = null;
+    return;
   }
+  //more likely to see them later on
+  if (currentRoomBeaten > 4 && Math.random() > 0.25) {
+    anomaly_id = pickFrom(loop6PossibleAnomalyLocations);
+    return;
+
+  }
+  anomaly_id = null;
+  return;
+
 }
 function check_room_6_near_stability() {
   const targetID = globalDataObject.current_room_id;
