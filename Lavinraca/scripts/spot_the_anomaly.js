@@ -14,10 +14,11 @@ let currentRoomBeaten = 0;
 
 function incrementRoomBeaten() {
   currentRoomBeaten++;
+
 }
 
 function resetRoomBeaten() {
-  currentRoomBeaten = 0
+  currentRoomBeaten = 0;
 }
 
 //go back if theres something wrong
@@ -42,7 +43,9 @@ function checkStabilityFarDoor(json, successID, failID) {
 }
 
 function playVariantIfCurrentIdIsAnomaly(path, variant_list) {
+  console.log("JR NOTE: playVariantIfCurrentIdIsAnomaly", globalDataObject.current_room_id, anomaly_id)
   if (globalDataObject.current_room_id === anomaly_id) {
+    console.log("JR NOTE: going to play weird video")
     video.src = path + pickFrom(variant_list) + ".mp4";
     video.play();
   }
@@ -67,8 +70,11 @@ const loop6Fail = "3_deep3"; //always the same failure
 const loop6PossibleAnomalyLocations = ['6_deep1', '6_left1', '6_right1', '6_deep2', '6_left2', '6_right2', '6_deep3', '6_left3', '6_right3', '6_deep4', '6_left4', '6_right4']
 
 
-function setAnomalyLocation() {
-  //room 5 is guaranteed to have an anamaly for two reasons
+function setAnomalyLocationRoom6() {
+  if (currentRoomBeaten === 0) {
+    anomaly_id = null;
+    return;
+  }  //room 5 is guaranteed to have an anamaly for two reasons
   //one, so you can't get a run where theres literally nothing wrong with it
   //and two
   //and this is more important to me
@@ -85,7 +91,6 @@ function setAnomalyLocation() {
   }
 }
 function check_room_6_near_stability() {
-  setAnomalyLocation();
   const targetID = globalDataObject.current_room_id;
   checkStabilityNearDoor(hallways[targetID], loop6SuccessArray[currentRoomBeaten], loop6Fail);
 }

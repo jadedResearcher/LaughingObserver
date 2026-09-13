@@ -405,7 +405,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "resetRoomBeaten"]
+        "functions": ["lookCloserAtRules", "resetRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_1": {
         "roomID": "3",
@@ -413,7 +413,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_2": {
         "roomID": "3",
@@ -421,7 +421,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_3": {
         "roomID": "3",
@@ -429,7 +429,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_4": {
         "roomID": "3",
@@ -437,7 +437,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
     "3_deep3_5": {
@@ -446,7 +446,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
     "3_deep3_6": {
@@ -455,7 +455,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
     "3_deep3_7": {
@@ -464,7 +464,7 @@ const hallways = {
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
-        "functions": ["lookCloserAtRules", "incrementRoomBeaten"]
+        "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
 
@@ -498,7 +498,7 @@ const hallways = {
         "left": "6_left1",
         "right": "6_right1",
         "backwards": "3_deep3",
-        "functions": ["check_room_6_near_stability"]
+        "functions": ["check_room_6_near_stability", "check_room_6_deep1"]
     },
     "6_left1": {
         "roomID": "6",
@@ -507,7 +507,7 @@ const hallways = {
         "left": null,
         "right": "6_deep1",
         "backwards": "6_deep1",
-        "functions": []
+        "functions": ["check_room_6_left1"]
     },
     "6_right1": {
         "roomID": "6",
@@ -516,7 +516,7 @@ const hallways = {
         "left": "6_deep1",
         "right": null,
         "backwards": "6_deep1",
-        "functions": []
+        "functions": ["check_room_6_right1"]
     },
     "6_deep2": {
         "roomID": "6",
@@ -525,7 +525,7 @@ const hallways = {
         "left": "6_left2",
         "right": "6_right2",
         "backwards": "6_deep1",
-        "functions": []
+        "functions": ["check_room_6_deep2"]
     },
     "6_left2": {
         "roomID": "6",
@@ -534,7 +534,7 @@ const hallways = {
         "left": null,
         "right": "6_deep2",
         "backwards": "6_deep2",
-        "functions": []
+        "functions": ["check_room_6_left2"]
     },
     "6_right2": {
         "roomID": "6",
@@ -543,7 +543,7 @@ const hallways = {
         "left": "6_deep2",
         "right": null,
         "backwards": "6_deep2",
-        "functions": []
+        "functions": ["check_room_6_right2"]
     },
     "6_deep3": {
         "roomID": "6",
@@ -552,7 +552,7 @@ const hallways = {
         "left": "6_left3",
         "right": "6_right3",
         "backwards": "6_deep2",
-        "functions": []
+        "functions": ["check_room_6_deep3"]
     },
     "6_left3": {
         "roomID": "6",
@@ -561,7 +561,7 @@ const hallways = {
         "left": null,
         "right": "6_deep3",
         "backwards": "6_deep3",
-        "functions": []
+        "functions": ["check_room_6_left3"]
     },
     "6_right3": {
         "roomID": "6",
@@ -570,7 +570,7 @@ const hallways = {
         "left": "6_deep3",
         "right": null,
         "backwards": "6_deep3",
-        "functions": []
+        "functions": ["check_room_6_right3"]
     },
     "6_deep4": {
         "roomID": "6",
@@ -579,7 +579,7 @@ const hallways = {
         "left": "6_left4",
         "right": "6_right4",
         "backwards": "6_deep3",
-        "functions": ["check_room_6_far_stability"]
+        "functions": ["check_room_6_far_stability", "check_room_6_deep4"]
     },
     "6_left4": {
         "roomID": "6",
@@ -588,7 +588,7 @@ const hallways = {
         "left": null,
         "right": "6_deep4",
         "backwards": "6_deep4",
-        "functions": []
+        "functions": ["check_room_6_left4"]
     },
     "6_right4": {
         "roomID": "6",
@@ -597,7 +597,7 @@ const hallways = {
         "left": "6_deep4",
         "right": null,
         "backwards": "6_deep4",
-        "functions": []
+        "functions": ["check_room_6_right4"]
     },
 
     "TODO": {
