@@ -148,7 +148,7 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
   const data = JSON.parse(map_template)
   //const outputEle = createTextAreaInputWithLabel();
   console.log(JSON.stringify(data, null, 4))
-
+  console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
 //        "roomID": "6",

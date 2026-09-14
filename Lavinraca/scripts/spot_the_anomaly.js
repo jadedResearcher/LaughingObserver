@@ -64,7 +64,7 @@ function playVariantIfCurrentIdIsAnomaly(path, variant_list) {
 
 
 //room 6 functions
-let loop6SuccessArray = ["3_deep3_1", "3_deep3_2", "3_deep3_3", "3_deep3_4", "3_deep3_5", "3_deep3_6", "3_deep3_7", "TODO"]
+let loop6SuccessArray = ["3_deep3_1", "3_deep3_2", "3_deep3_3", "3_deep3_4", "3_deep3_5", "3_deep3_6", "3_deep3_7", "7_deep1"]
 const loop6Fail = "3_deep3"; //always the same failure
 //all ids for room 6
 const loop6PossibleAnomalyLocations = ['6_deep1', '6_left1', '6_right1', '6_deep2', '6_left2', '6_right2', '6_deep3', '6_left3', '6_right3', '6_deep4', '6_left4', '6_right4']

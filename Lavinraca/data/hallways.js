@@ -489,6 +489,67 @@ const hallways = {
         "backwards": "3_deep2",
         "functions": []
     },
+
+    "3_bright_deep1": {
+        "roomID": "3_bright",
+        "src": "3_bright/deep1",
+        "flavorText": "TODO",
+        "forwards": "3_bright_deep2",
+        "left": "3_bright_left1",
+        "right": "3_bright_right1",
+        "backwards": "null",
+        "functions": []
+    },
+    "3_bright_left1": {
+        "roomID": "3_bright",
+        "src": "3_bright/left1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "3_bright_deep1",
+        "backwards": "3_bright_deep1",
+        "functions": []
+    },
+    "3_bright_right1": {
+        "roomID": "3_bright",
+        "src": "3_bright/right1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "3_bright_deep1",
+        "right": null,
+        "backwards": "3_bright_deep1",
+        "functions": []
+    },
+    "3_bright_deep2": {
+        "roomID": "3_bright",
+        "src": "3_bright/deep2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "3_bright_left2",
+        "right": "3_bright_right2",
+        "backwards": "3_bright_deep1",
+        "functions": []
+    },
+    "3_bright_left2": {
+        "roomID": "3_bright",
+        "src": "3_bright/left2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "3_bright_deep2",
+        "backwards": "3_bright_deep2",
+        "functions": []
+    },
+    "3_bright_right2": {
+        "roomID": "3_bright",
+        "src": "3_bright/right2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "3_bright_deep2",
+        "right": null,
+        "backwards": "3_bright_deep2",
+        "functions": []
+    },
     //room 6
     "6_deep1": {
         "roomID": "6",
@@ -609,6 +670,44 @@ const hallways = {
         "backwards": "6_deep4",
         "functions": []
     },
+    "7_deep1": {
+        "roomID": "7",
+        "src": "7/deep1",
+        "flavorText": "TODO",
+        "forwards": "7_deep2",
+        "left": "7_left1",
+        "right": "7_right1",
+        "backwards": "6_deep4",
+        "functions": ["victory7"]
+    },
+    "7_left1": {
+        "roomID": "7",
+        "src": "7/left1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "7_deep1",
+        "backwards": "7_deep1",
+        "functions": []
+    },
+    "7_right1": {
+        "roomID": "7",
+        "src": "7/right1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "7_deep1",
+        "right": null,
+        "backwards": "7_deep1",
+        "functions": []
+    },
+    "7_deep2": {
+        "roomID": "7",
+        "src": "7/close",
+        "flavorText": "TODO",
+        "forwards": null,
+        "backwards": "7_deep1",
+        "functions": []
+    }
 
 
 

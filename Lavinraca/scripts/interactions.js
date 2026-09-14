@@ -246,7 +246,6 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   }
 
   video.onended = () => {
-    console.log("JR NOTE: video ended")
     video.onended = null;
     video.loop = true;
 
@@ -484,6 +483,24 @@ function lookCloserAtRules() {
 
   button2.onclick = () => {
     renderID(next_id)
+  }
+
+}
+
+function victory7() {
+  if (currentRoomBeaten > 0) {
+    const dir = "images/Diorama/Inside/Hallways/7/victory.mp4";
+    video.src = dir;
+    video.loop = false;
+    video.play();
+    const json = hallways[globalDataObject.current_room_id];
+    video.onended = () => {
+      video.onended = null;
+      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+      video.loop = true;
+      window.requestAnimationFrame(() => video.play())
+    }
+    currentRoomBeaten = 0;
   }
 
 }
