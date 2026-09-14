@@ -493,9 +493,17 @@ const hallways = {
         "flavorText": "There is a door leading to the right, towards the setting sun. <br><Br>You should be able to see in the room beyond.",
         "forwards": null,
         "left": "3_deep2",
-        "right": null,
+        "right": "3_open_unlocked_door_right",
         "backwards": "3_deep2",
         "functions": []
+    },
+
+    "3_open_unlocked_door_right": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "west_sunroom_deep1",
+        "backwards": "3_deep2",
+        "functions": ["unlockDoorForwards"]
     },
 
     "3_bright_deep1": {
@@ -865,6 +873,66 @@ const hallways = {
         "right": null,
         "backwards": "7_bright_deep1",
         "functions": ["pressBigRedButton7Off"]
+    },
+    "west_sunroom_deep1": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/deep1",
+        "flavorText": "TODO",
+        "forwards": "west_sunroom_deep2",
+        "left": "west_sunroom_left1",
+        "right": "west_sunroom_right1",
+        "backwards": "null",
+        "functions": []
+    },
+    "west_sunroom_left1": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/left1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "west_sunroom_deep1",
+        "backwards": "west_sunroom_deep1",
+        "functions": []
+    },
+    "west_sunroom_right1": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/right1",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "west_sunroom_deep1",
+        "right": null,
+        "backwards": "west_sunroom_deep1",
+        "functions": []
+    },
+    "west_sunroom_deep2": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/deep2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "west_sunroom_left2",
+        "right": "west_sunroom_right2",
+        "backwards": "west_sunroom_deep1",
+        "functions": []
+    },
+    "west_sunroom_left2": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/left2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": null,
+        "right": "west_sunroom_deep2",
+        "backwards": "west_sunroom_deep2",
+        "functions": []
+    },
+    "west_sunroom_right2": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/right2",
+        "flavorText": "TODO",
+        "forwards": null,
+        "left": "west_sunroom_deep2",
+        "right": null,
+        "backwards": "west_sunroom_deep2",
+        "functions": []
     }
 
 
@@ -877,7 +945,7 @@ const hallways = {
         "flavorText": "",
         "forwards": "1_bright",
         "backwards": "4",
-        "functions": ["openDoor4UnLocked"]
+        "functions": ["unlockDoorForwards"]
     },
 */
 
