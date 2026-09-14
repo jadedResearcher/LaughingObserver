@@ -491,9 +491,9 @@ const hallways = {
         "roomID": "3",
         "src": "3/right2",
         "flavorText": "There is a door leading to the right, towards the setting sun. <br><Br>You should be able to see in the room beyond.",
-        "forwards": null,
+        "forwards": "3_open_unlocked_door_right",
         "left": "3_deep2",
-        "right": "3_open_unlocked_door_right",
+        "right": null,
         "backwards": "3_deep2",
         "functions": []
     },
@@ -886,7 +886,7 @@ const hallways = {
     },
     "west_sunroom_left1": {
         "roomID": "west_sunroom",
-        "src": "west_sunroom/left1",
+        "src": "west_sunroom/left1key",
         "flavorText": "TODO",
         "forwards": null,
         "left": null,
@@ -908,10 +908,18 @@ const hallways = {
         "roomID": "west_sunroom",
         "src": "west_sunroom/deep2",
         "flavorText": "TODO",
-        "forwards": null,
+        "forwards": "west_sunroom_deep3",
         "left": "west_sunroom_left2",
         "right": "west_sunroom_right2",
         "backwards": "west_sunroom_deep1",
+        "functions": []
+    },
+    "west_sunroom_deep3": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/deep3",
+        "flavorText": "Its a beautiful stained glass window of the Harvest.",
+        "forwards": null,
+        "backwards": "west_sunroom_deep2",
         "functions": []
     },
     "west_sunroom_left2": {
