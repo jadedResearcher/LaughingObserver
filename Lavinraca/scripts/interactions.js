@@ -11,6 +11,17 @@ const checkForState = (state_name) => {
   return values.includes(state_name);
 }
 
+const resumePlayingRegularVideoOnEndOfTemporaryOne = () => {
+  const json = hallways[globalDataObject.current_room_id];
+
+  video.onended = () => {
+    video.onended = null;
+    video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+    video.loop = true;
+    window.requestAnimationFrame(() => video.play())
+  }
+}
+
 //displays a button that asks if you want to use a key (if you have one)
 // if you do, it adds a state replacement for the two ids and transitions to the new
 //(presumably unlocked) state
@@ -493,14 +504,23 @@ function victory7() {
     video.src = dir;
     video.loop = false;
     video.play();
-    const json = hallways[globalDataObject.current_room_id];
-    video.onended = () => {
-      video.onended = null;
-      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
-      video.loop = true;
-      window.requestAnimationFrame(() => video.play())
-    }
+    resumePlayingRegularVideoOnEndOfTemporaryOne();
     currentRoomBeaten = 0;
+  }
+
+}
+
+function pressBigRedButton7() {
+  const textEle = story.querySelector("#room-text");
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Press Them, What's the Worst That Can Happen?"
+  button.onclick = () => {
+    const dir = "images/Diorama/Inside/Hallways/7/power_cutscene.mp4";
+    video.src = dir;
+    video.loop = false;
+    video.play();
+    resumePlayingRegularVideoOnEndOfTemporaryOne();
   }
 
 }

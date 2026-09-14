@@ -703,10 +703,10 @@ const hallways = {
     "7_deep2": {
         "roomID": "7",
         "src": "7/close",
-        "flavorText": "TODO",
+        "flavorText": "There is a large red button on each of the strange tanks.",
         "forwards": null,
         "backwards": "7_deep1",
-        "functions": []
+        "functions": ["pressBigRedButton7"]
     }
 
 
