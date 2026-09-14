@@ -62,12 +62,14 @@ const renderVideoToCanvas = () => {
 const attachObviousExits = (obviousExits, outside = true) => {
   const c = createElementWithClassAndParent("div", story);
   if (outside) {
-    c.innerHTML = "<br>Obvious Exits Are:<br><Br>"
+    c.innerHTML = "<br>Obvious Exits Are:"
   } else {
-    c.innerHTML = "<br><Br>"
+    c.innerHTML = ""
   }
+  const c2 = createElementWithClassAndParent("div", story, "button-holder");
+
   for (let exit of obviousExits) {
-    const button = createElementWithClassAndParent("button", c);
+    const button = createElementWithClassAndParent("button", c2);
     button.innerText = exit.text;
     button.onclick = () => movingAroundOutside(exit.function);
     if (exit.dim) {

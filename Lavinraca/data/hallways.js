@@ -230,7 +230,7 @@ const hallways = {
         "roomID": "2",
         "src": "2/deep2",
         "flavorText": "You feel unsettled.",
-        "forwards": null,
+        "forwards": "null",
         "left": "2_back_left_locked",
         "right": "2_back_right",
         "backwards": "2_front",
@@ -497,7 +497,7 @@ const hallways = {
         "forwards": "3_bright_deep2",
         "left": "3_bright_left1",
         "right": "3_bright_right1",
-        "backwards": "null",
+        "backwards": "2_back",
         "functions": []
     },
     "3_bright_left1": {
@@ -524,7 +524,7 @@ const hallways = {
         "roomID": "3_bright",
         "src": "3_bright/deep2",
         "flavorText": "TODO",
-        "forwards": null,
+        "forwards": "6_deep1_safe",
         "left": "3_bright_left2",
         "right": "3_bright_right2",
         "backwards": "3_bright_deep1",
@@ -660,6 +660,116 @@ const hallways = {
         "backwards": "6_deep4",
         "functions": ["check_room_6_right4"]
     },
+    "6_deep1_safe": {
+        "roomID": "6",
+        "src": "6/deep1",
+        "flavorText": "You keep your eyes peeled for any time instabilities.",
+        "forwards": "6_deep2_safe",
+        "left": "6_left1_safe",
+        "right": "6_right1_safe",
+        "backwards": "3_bright_deep2",
+        "functions": []
+    },
+    "6_left1_safe": {
+        "roomID": "6",
+        "src": "6/left1",
+        "forwards": null,
+        "left": null,
+        "right": "6_deep1_safe",
+        "backwards": "6_deep1_safe",
+        "functions": []
+    },
+    "6_right1_safe": {
+        "roomID": "6",
+        "src": "6/right1",
+        "forwards": null,
+        "left": "6_deep1_safe",
+        "right": null,
+        "backwards": "6_deep1_safe",
+        "functions": []
+    },
+    "6_deep2_safe": {
+        "roomID": "6",
+        "src": "6/deep2",
+        "forwards": "6_deep3_safe",
+        "left": "6_left2_safe",
+        "right": "6_right2_safe",
+        "backwards": "6_deep1_safe",
+        "functions": []
+    },
+    "6_left2_safe": {
+        "roomID": "6",
+        "src": "6/left2",
+        "forwards": null,
+        "left": null,
+        "right": "6_deep2_safe",
+        "backwards": "6_deep2_safe",
+        "functions": []
+    },
+    "6_right2_safe": {
+        "roomID": "6",
+        "src": "6/right2",
+        "forwards": null,
+        "left": "6_deep2_safe",
+        "right": null,
+        "backwards": "6_deep2_safe",
+        "functions": []
+    },
+    "6_deep3_safe": {
+        "roomID": "6",
+        "src": "6/deep3",
+        "forwards": "6_deep4_safe",
+        "left": "6_left3_safe",
+        "right": "6_right3_safe",
+        "backwards": "6_deep2_safe",
+        "functions": []
+    },
+    "6_left3_safe": {
+        "roomID": "6",
+        "src": "6/left3",
+        "forwards": null,
+        "left": null,
+        "right": "6_deep3_safe",
+        "backwards": "6_deep3_safe",
+        "functions": []
+    },
+    "6_right3_safe": {
+        "roomID": "6",
+        "src": "6/right3",
+        "forwards": null,
+        "left": "6_deep3_safe",
+        "right": null,
+        "backwards": "6_deep3_safe",
+        "functions": []
+    },
+    "6_deep4_safe": {
+        "roomID": "6",
+        "src": "6/deep4",
+        "forwards": "7_bright_deep1",
+        "left": "6_left4_safe",
+        "right": "6_right4_safe",
+        "backwards": "6_deep3_safe",
+        "functions": []
+    },
+    "6_left4_safe": {
+        "roomID": "6",
+        "src": "6/left4",
+        "forwards": null,
+        "left": null,
+        "right": "6_deep4_safe",
+        "backwards": "6_deep4_safe",
+        "functions": []
+    },
+    "6_right4_safe": {
+        "roomID": "6",
+        "src": "6/right4",
+        "forwards": null,
+        "left": "6_deep4_safe",
+        "right": null,
+        "backwards": "6_deep4_safe",
+        "functions": []
+    },
+
 
     "TODO": {
         "roomID": "6",
@@ -673,7 +783,7 @@ const hallways = {
     "7_deep1": {
         "roomID": "7",
         "src": "7/deep1",
-        "flavorText": "TODO",
+        "flavorText": "Are those...tanks?",
         "forwards": "7_deep2",
         "left": "7_left1",
         "right": "7_right1",
@@ -683,7 +793,7 @@ const hallways = {
     "7_left1": {
         "roomID": "7",
         "src": "7/left1",
-        "flavorText": "TODO",
+        "flavorText": "Nothing important to see.",
         "forwards": null,
         "left": null,
         "right": "7_deep1",
@@ -693,7 +803,7 @@ const hallways = {
     "7_right1": {
         "roomID": "7",
         "src": "7/right1",
-        "flavorText": "TODO",
+        "flavorText": "The bright sunlight filters through the tanks, lighting them up.",
         "forwards": null,
         "left": "7_deep1",
         "right": null,
@@ -711,17 +821,17 @@ const hallways = {
     "7_bright_deep1": {
         "roomID": "7_bright",
         "src": "7_bright/deep1",
-        "flavorText": "TODO",
+        "flavorText": "The power is on, flooding the room with bright light from the tanks.",
         "forwards": "7_bright_deep2",
         "left": "7_bright_left1",
         "right": "7_bright_right1",
-        "backwards": "null",
+        "backwards": "6_deep4_safe",
         "functions": []
     },
     "7_bright_left1": {
         "roomID": "7_bright",
         "src": "7_bright/left1",
-        "flavorText": "TODO",
+        "flavorText": "Nothing important is here.",
         "forwards": null,
         "left": null,
         "right": "7_bright_deep1",
@@ -731,7 +841,7 @@ const hallways = {
     "7_bright_right1": {
         "roomID": "7_bright",
         "src": "7_bright/right1",
-        "flavorText": "TODO",
+        "flavorText": "The sun must have gone down while you weren't looking.",
         "forwards": null,
         "left": "7_bright_deep1",
         "right": null,
@@ -740,33 +850,13 @@ const hallways = {
     },
     "7_bright_deep2": {
         "roomID": "7_bright",
-        "src": "7_bright/deep2",
-        "flavorText": "TODO",
-        "forwards": null,
-        "left": "7_bright_left2",
-        "right": "7_bright_right2",
-        "backwards": "7_bright_deep1",
-        "functions": []
-    },
-    "7_bright_left2": {
-        "roomID": "7_bright",
-        "src": "7_bright/left2",
-        "flavorText": "TODO",
+        "src": "7_bright/close",
+        "flavorText": "Somehow these mannequins are powering the house.",
         "forwards": null,
         "left": null,
-        "right": "7_bright_deep2",
-        "backwards": "7_bright_deep2",
-        "functions": []
-    },
-    "7_bright_right2": {
-        "roomID": "7_bright",
-        "src": "7_bright/right2",
-        "flavorText": "TODO",
-        "forwards": null,
-        "left": "7_bright_deep2",
         "right": null,
-        "backwards": "7_bright_deep2",
-        "functions": []
+        "backwards": "7_bright_deep1",
+        "functions": ["pressBigRedButton7Off"]
     }
 
 

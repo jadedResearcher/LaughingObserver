@@ -301,7 +301,9 @@ function hallwayOneSunbeam() {
   }
   const timeout = setTimeout(fuckySunBeam, 10000)
   return () => {
-    video.src = oldSrc;
+    if (globalDataObject.current_room_id === "1") {
+      video.src = oldSrc;
+    }
     //if i don't do this then no matter what, after 10 seconds, we'll see fucky sunbeam, even if we're somewehre else and its disorienting
     clearTimeout(timeout);
   }
@@ -516,11 +518,47 @@ function pressBigRedButton7() {
   const button = createElementWithClassAndParent("button", c);
   button.innerText = "Press Them, What's the Worst That Can Happen?"
   button.onclick = () => {
+    button.remove();
     const dir = "images/Diorama/Inside/Hallways/7/power_cutscene.mp4";
     video.src = dir;
     video.loop = false;
     video.play();
-    resumePlayingRegularVideoOnEndOfTemporaryOne();
+    const json = hallways[globalDataObject.current_room_id];
+
+    video.onended = () => {
+      globalDataObject.powerWorking = true;
+      video.onended = null;
+      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+      video.loop = true;
+      window.requestAnimationFrame(() => video.play())
+      renderID("7_bright_deep2");
+    }
+  }
+
+}
+
+function pressBigRedButton7Off() {
+  const textEle = story.querySelector("#room-text");
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Turn The Power Back Off"
+  button.onclick = () => {
+    button.remove();
+    const dir = "images/Diorama/Inside/Hallways/7/power_cutscene_but_backwards.mp4";
+    video.src = dir;
+    video.loop = false;
+    video.play();
+    const json = hallways[globalDataObject.current_room_id];
+
+    video.onended = () => {
+      globalDataObject.powerWorking = false;
+      video.onended = null;
+      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+      video.loop = true;
+      window.requestAnimationFrame(() => video.play())
+      renderID("7_deep2");
+      textEle.innerText = "...Somehow the sun is setting again."
+    }
   }
 
 }
