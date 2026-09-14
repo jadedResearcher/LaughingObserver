@@ -111,7 +111,7 @@ const hallways = {
         "forwards": "4_bright",
         "left": "2_bright",
         "right": "3_bright",
-        "backwards": "2_sunset_back",
+        "backwards": "OUTSIDE",
         "functions": []
     },
     "2_bright": {
@@ -230,11 +230,19 @@ const hallways = {
         "roomID": "2",
         "src": "2/deep2",
         "flavorText": "You feel unsettled.",
-        "forwards": "null",
+        "forwards": "2_back_open_unlocked_door",
         "left": "2_back_left_locked",
         "right": "2_back_right",
         "backwards": "2_front",
         "functions": []
+    },
+    "2_back_open_unlocked_door": {
+        "roomID": "2",
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "3_bright_deep1",
+        "backwards": "2_back",
+        "functions": ["unlockDoorForwards"]
     },
     "2_back_left_locked": {
         "roomID": "2",

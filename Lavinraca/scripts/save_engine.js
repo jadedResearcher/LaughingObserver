@@ -14,6 +14,7 @@ let initialDataObject = {
     meat: 0,
     stranger: false, //there are ways you can become a stranger to everyone around you, what even is identity
     candy: 0,
+    powerWorking: false,
     opened_the_door: false,
     current_room_id: "OUTSIDE",
     button_controls: !probablyMobile(), //keyboard is easier, make it default unless probably mobile

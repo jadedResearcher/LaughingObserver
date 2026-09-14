@@ -94,7 +94,7 @@ const maskGet = () => {
   globalDataObject.masks++;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Mask!<br><br><img src='images/Diorama/Inside/mask_spin.gif'>`;
+  contentEle.innerHTML = `You got a Mask!<br><br><img src='images/Diorama/Inside/Hallways/mask_spin.gif'>`;
 
   showExistingPopup(contentEle, "Gotcha")
 }

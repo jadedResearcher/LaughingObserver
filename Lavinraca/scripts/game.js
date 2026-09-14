@@ -46,7 +46,12 @@ const beginGameplayLoop = () => {
     tryPlayBgMusic();
     video.loop = true;
     if (!globalDataObject.current_room_id || globalDataObject.current_room_id == "OUTSIDE") {
-        globalDataObject.current_room_id = "1"
+        if (globalDataObject.powerWorking) {
+            globalDataObject.current_room_id = "1_bright"
+
+        } else {
+            globalDataObject.current_room_id = "1"
+        }
     }
 
     popup.style.display = "block"
