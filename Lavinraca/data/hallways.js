@@ -877,17 +877,26 @@ const hallways = {
     "west_sunroom_deep1": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/deep1",
-        "flavorText": "TODO",
+        "flavorText": "The view of the West Facing Sunroom is stunning.",
         "forwards": "west_sunroom_deep2",
         "left": "west_sunroom_left1",
         "right": "west_sunroom_right1",
-        "backwards": "null",
+        "backwards": "3_right2",
         "functions": []
     },
     "west_sunroom_left1": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/left1key",
-        "flavorText": "TODO",
+        "flavorText": "There is a key on the bench.",
+        "forwards": null,
+        "left": null,
+        "right": "west_sunroom_deep1",
+        "backwards": "west_sunroom_deep1",
+        "functions": ["takeKeyWestSunroom"]
+    }, "west_sunroom_left1_nokey": {
+        "roomID": "west_sunroom",
+        "src": "west_sunroom/left1nokey",
+        "flavorText": "You already took the key from the bench.",
         "forwards": null,
         "left": null,
         "right": "west_sunroom_deep1",

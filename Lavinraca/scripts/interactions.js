@@ -329,6 +329,19 @@ function pickUpKey5() {
 
 }
 
+function takeKeyWestSunroom() {
+  const myID = "west_sunroom_left1";
+  const newID = "west_sunroom_left1_nokey"
+  const c = createElementWithClassAndParent("div", story);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Take Key?"
+  button.onclick = () => {
+    globalDataObject.state_changes[myID] = newID;
+    keyGet(); //will handle saving
+    renderID(newID)
+  }
+}
+
 /*
 switches the video to play only a single loop, then return to normal looping when its done
 and also send you away from the scary door
@@ -348,6 +361,8 @@ function shutDoor2() {
     video.removeEventListener("ended", flee);
   }
 }
+
+
 
 function openDoor4Locked() {
   const current_id = globalDataObject.current_room_id;
