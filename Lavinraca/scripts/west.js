@@ -50,16 +50,7 @@ however i can
 
 
 
-const getWaitingReflections = () => {
-  const ret = [];
-  for (let r of raw_prayers) {
-    //im sure its fine
-    if (r.prayerObject.message === "Reflection of a Reflection Reflected Endlessly") {
-      ret.push(r.prayerObject["save-data"])
-    }
-  }
-  return ret;
-}
+
 
 
 //my True Heir will know how to do this.

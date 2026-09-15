@@ -82,10 +82,10 @@ const comboLock = (parent, callback, one, two, three, four) => {
     }
 
   }
-  one_ele.input.onchange = checkWin;
-  two_ele.input.onchange = checkWin;
-  three_ele.input.onchange = checkWin;
-  four_ele.input.onchange = checkWin;
+  one_ele.input.oninput = checkWin;
+  two_ele.input.oninput = checkWin;
+  three_ele.input.oninput = checkWin;
+  four_ele.input.oninput = checkWin;
 }
 
 
