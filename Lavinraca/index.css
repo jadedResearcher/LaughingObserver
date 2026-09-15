@@ -38,6 +38,7 @@
 
 
 body {
+  -webkit-tap-highlight-color: transparent;
   --main-darker-color: #300111;
   --main-dark-color: #450118;
   --main-bg-color: #660022;
