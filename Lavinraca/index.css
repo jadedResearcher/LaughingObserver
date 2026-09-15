@@ -105,7 +105,8 @@ body {
 #storyContainer {
   position: absolute;
   bottom: 0px;
-  height: fit-content;
+  height: auto;
+  /*having this fit-content worked onc hrome but broke safari rip*/
   border-top: 5px solid black;
   padding-top: 31px;
   padding-bottom: 31px;
@@ -135,6 +136,8 @@ svg {
   aspect-ratio: auto;
   margin-right: auto;
   display: block;
+  -webkit-tap-highlight-color: transparent;
+
 }
 
 #video {
@@ -144,6 +147,8 @@ svg {
   position: absolute;
   top: 0px;
   left: 0px;
+  -webkit-tap-highlight-color: transparent;
+
 }
 
 .house {
