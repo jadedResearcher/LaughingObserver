@@ -410,7 +410,14 @@ const hallways = {
     "3_deep3": {
         "roomID": "3",
         "src": "3/deep3",
-        "flavorText": "A list of rules are hung on the door.",
+        "flavorText": "A list of rules are hung on the door. The door appears to be locked, a normal keyhole visible.",
+        "forwards": "",
+        "backwards": "3_deep2",
+        "functions": ["openDoor3Locked", "lookCloserAtRules"]
+    }, "3_deep3_unlocked": {
+        "roomID": "3",
+        "src": "3/deep3",
+        "flavorText": "A list of rules are hung on the door. The door appears to be locked, a normal keyhole visible.",
         "forwards": "6_deep1",
         "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "resetRoomBeaten", "setAnomalyLocationRoom6"]
@@ -679,7 +686,7 @@ const hallways = {
     "6_deep1_safe": {
         "roomID": "6",
         "src": "6/deep1",
-        "flavorText": "You keep your eyes peeled for any time instabilities.",
+        "flavorText": "Somehow you can just feel the hallway is stable now.",
         "forwards": "6_deep2_safe",
         "left": "6_left1_safe",
         "right": "6_right1_safe",
@@ -691,6 +698,8 @@ const hallways = {
         "src": "6/left1",
         "forwards": null,
         "left": null,
+        "flavorText": "The paintings are just how you expect them to be.",
+
         "right": "6_deep1_safe",
         "backwards": "6_deep1_safe",
         "functions": []
@@ -699,6 +708,8 @@ const hallways = {
         "roomID": "6",
         "src": "6/right1",
         "forwards": null,
+        "flavorText": "The harvest is happy, all is well.",
+
         "left": "6_deep1_safe",
         "right": null,
         "backwards": "6_deep1_safe",
@@ -718,6 +729,8 @@ const hallways = {
         "src": "6/left2",
         "forwards": null,
         "left": null,
+        "flavorText": "The chair and the vase are where they should be.",
+
         "right": "6_deep2_safe",
         "backwards": "6_deep2_safe",
         "functions": []
@@ -726,6 +739,8 @@ const hallways = {
         "roomID": "6",
         "src": "6/right2",
         "forwards": null,
+        "flavorText": "The wall isn't upside down behind the lamp, just as it should be.",
+
         "left": "6_deep2_safe",
         "right": null,
         "backwards": "6_deep2_safe",
@@ -745,6 +760,8 @@ const hallways = {
         "src": "6/left3",
         "forwards": null,
         "left": null,
+        "flavorText": "The pumpkin gazes down the hallway, like normal.",
+
         "right": "6_deep3_safe",
         "backwards": "6_deep3_safe",
         "functions": []
@@ -753,6 +770,8 @@ const hallways = {
         "roomID": "6",
         "src": "6/right3",
         "forwards": null,
+        "flavorText": "The bear is on the right, the statue is of Odin and his crows.",
+
         "left": "6_deep3_safe",
         "right": null,
         "backwards": "6_deep3_safe",
@@ -762,6 +781,7 @@ const hallways = {
         "roomID": "6",
         "src": "6/deep4",
         "forwards": "7_bright_deep1",
+        "flavorText": "The hallway feels ...stable somehow.",
         "left": "6_left4_safe",
         "right": "6_right4_safe",
         "backwards": "6_deep3_safe",
@@ -772,6 +792,7 @@ const hallways = {
         "src": "6/left4",
         "forwards": null,
         "left": null,
+        "flavorText": "The lamp is on the table, like always.",
         "right": "6_deep4_safe",
         "backwards": "6_deep4_safe",
         "functions": []
@@ -780,6 +801,7 @@ const hallways = {
         "roomID": "6",
         "src": "6/right4",
         "forwards": null,
+        "flavorText": "The knife is where its supposed to be.",
         "left": "6_deep4_safe",
         "right": null,
         "backwards": "6_deep4_safe",
@@ -906,7 +928,7 @@ const hallways = {
     "west_sunroom_right1": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/right1",
-        "flavorText": "TODO",
+        "flavorText": "A length of canvas covers the window from the outside.",
         "forwards": null,
         "left": "west_sunroom_deep1",
         "right": null,
@@ -916,7 +938,7 @@ const hallways = {
     "west_sunroom_deep2": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/deep2",
-        "flavorText": "TODO",
+        "flavorText": "The setting sun paints everything in gold.",
         "forwards": "west_sunroom_deep3",
         "left": "west_sunroom_left2",
         "right": "west_sunroom_right2",
@@ -934,7 +956,7 @@ const hallways = {
     "west_sunroom_left2": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/left2",
-        "flavorText": "TODO",
+        "flavorText": "Looking closer, you see the potted plants are fake.",
         "forwards": null,
         "left": null,
         "right": "west_sunroom_deep2",
@@ -944,7 +966,7 @@ const hallways = {
     "west_sunroom_right2": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/right2",
-        "flavorText": "TODO",
+        "flavorText": "Looking closer, you see the potted plants are fake.",
         "forwards": null,
         "left": "west_sunroom_deep2",
         "right": null,

@@ -25,7 +25,7 @@ const resumePlayingRegularVideoOnEndOfTemporaryOne = () => {
 //displays a button that asks if you want to use a key (if you have one)
 // if you do, it adds a state replacement for the two ids and transitions to the new
 //(presumably unlocked) state
-const normalKeyLockedDoor = (current_id, unlock_id) => {
+const normalKeyLockedDoor = (current_id, unlock_id, autoMoveToNextRoom = false) => {
   video.pause();
   if (globalDataObject.keys > 0) {
     const textEle = story.querySelector("#room-text");
@@ -36,9 +36,23 @@ const normalKeyLockedDoor = (current_id, unlock_id) => {
     button.onclick = () => {
       globalDataObject.state_changes[current_id] = unlock_id;
       keyLose(); //will handle saving
-      renderID(unlock_id)
+
+      //usually the new state will have unlockDoorForwards so will auto move you, but if you don't want that to happen (say you dont want to play the door graphic), do it here
+      if (autoMoveToNextRoom) {
+        console.log("JR NOTE: skip normal door opening")
+        const json = hallways[unlock_id];
+        renderID(json.forwards)
+      } else {
+        renderID(unlock_id);
+
+      }
 
     }
+  } else {
+    const textEle = story.querySelector("#room-text");
+    const c = createElementWithClassAndParent("div", textEle);
+    c.innerText = "You need a key to pass through here."
+
   }
 
 }
@@ -366,8 +380,15 @@ function shutDoor2() {
 
 function openDoor4Locked() {
   const current_id = globalDataObject.current_room_id;
-  const unlock_id = "4_open_unlocked_door"; //will know where to go next
-  normalKeyLockedDoor(current_id, unlock_id);
+  const new_state_id = "4_open_unlocked_door"; //will know where to go next
+  normalKeyLockedDoor(current_id, new_state_id);
+}
+
+function openDoor3Locked() {
+  const current_id = globalDataObject.current_room_id;
+  const new_state_id = "3_deep3_unlocked"; //will know where to go next
+  //automatically moves past the locked door
+  normalKeyLockedDoor(current_id, new_state_id, true);
 }
 
 //maybe refactor this later. 
@@ -504,14 +525,6 @@ function lookCloserAtRules() {
     showExistingPopup(contentEle, "Gotcha")
   }
 
-  const button2 = createElementWithClassAndParent("button", c);
-  button2.innerText = "Enter"
-  const current_id = globalDataObject.current_room_id;
-  const next_id = hallways[current_id].forwards;
-
-  button2.onclick = () => {
-    renderID(next_id)
-  }
 
 }
 
