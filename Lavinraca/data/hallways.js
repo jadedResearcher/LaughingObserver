@@ -516,7 +516,7 @@ const hallways = {
     "3_bright_deep1": {
         "roomID": "3_bright",
         "src": "3_bright/deep1",
-        "flavorText": "TODO",
+        "flavorText": "The room is bright and inviting you to investigate it.",
         "forwards": "3_bright_deep2",
         "left": "3_bright_left1",
         "right": "3_bright_right1",
@@ -527,7 +527,7 @@ const hallways = {
     "3_bright_deep1_open": {
         "roomID": "3_bright",
         "src": "3_bright/deep1_open",
-        "flavorText": "TODO",
+        "flavorText": "The mask has revealed a hidden passage way.",
         "forwards": "3_bright_deep2",
         "left": "3_bright_left1",
         "right": "3_bright_right1",
@@ -557,7 +557,7 @@ const hallways = {
     "3_bright_right1": {
         "roomID": "3_bright",
         "src": "3_bright/right1",
-        "flavorText": "TODO",
+        "flavorText": "The electric light illuminates the whole hall.",
         "forwards": null,
         "left": "3_bright_deep1",
         "right": null,
@@ -587,7 +587,7 @@ const hallways = {
     "3_bright_right2": {
         "roomID": "3_bright",
         "src": "3_bright/right2",
-        "flavorText": "TODO",
+        "flavorText": "The door to the West Sun Room no longer opens. You don't remember seeing any lights in there, so it would be too dark, anyways.",
         "forwards": null,
         "left": "3_bright_deep2",
         "right": null,
