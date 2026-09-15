@@ -474,6 +474,53 @@ function takeMask2() {
   }
 }
 
+function bookcase3PlaceMask() {
+  const textEle = story.querySelector("#room-text");
+
+  if (globalDataObject.masks > 0) {
+    const button = createElementWithClassAndParent("button", textEle);
+    button.innerText = "Place Mask On Stand?"
+    button.onclick = () => {
+      maskLose();
+      const myID = "3_bright_left1";
+      const newID = "3_bright_left1_mask"
+
+      const dir = "images/Diorama/Inside/Hallways/3_bright/left1_open_cutscene.mp4";
+      video.src = dir;
+      video.loop = false;
+      globalDataObject.state_changes[myID] = newID;
+      //hallway should redirect to the current meta
+      globalDataObject.state_changes["3_bright_deep1"] = "3_bright_deep1_open";
+      video.play();
+      video.onended = () => {
+        video.onended = null;
+        video.loop = true;
+
+        renderID(newID);
+      }
+
+    }
+  }
+}
+
+
+function bookcase3TakeMask() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Take Mask?"
+  button.onclick = () => {
+    maskGet();
+
+    //clear state changes
+    globalDataObject.state_changes["3_bright_left1"] = undefined;
+    globalDataObject.state_changes["3_bright_deep1"] = undefined;
+
+    renderID("3_bright_left1")
+  }
+}
+
+
 function lookIntoTheMirror() {
   const textEle = story.querySelector("#room-text");
 

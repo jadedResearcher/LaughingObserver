@@ -523,15 +523,36 @@ const hallways = {
         "backwards": "2_back",
         "functions": []
     },
+
+    "3_bright_deep1_open": {
+        "roomID": "3_bright",
+        "src": "3_bright/deep1_open",
+        "flavorText": "TODO",
+        "forwards": "3_bright_deep2",
+        "left": "3_bright_left1",
+        "right": "3_bright_right1",
+        "backwards": "2_back",
+        "functions": []
+    },
     "3_bright_left1": {
         "roomID": "3_bright",
         "src": "3_bright/left1",
-        "flavorText": "TODO",
+        "flavorText": "Something seems to be missing from this bookshelf.",
         "forwards": null,
         "left": null,
         "right": "3_bright_deep1",
         "backwards": "3_bright_deep1",
-        "functions": []
+        "functions": ["bookcase3PlaceMask"]
+    },
+    "3_bright_left1_mask": {
+        "roomID": "3_bright",
+        "src": "3_bright/left1_open",
+        "flavorText": "The bookcase slides to reveal a secret passage way.",
+        "forwards": "TODO",
+        "left": null,
+        "right": "3_bright_deep1",
+        "backwards": "3_bright_deep1",
+        "functions": ["bookcase3TakeMask"]
     },
     "3_bright_right1": {
         "roomID": "3_bright",
@@ -546,7 +567,7 @@ const hallways = {
     "3_bright_deep2": {
         "roomID": "3_bright",
         "src": "3_bright/deep2",
-        "flavorText": "TODO",
+        "flavorText": "Somehow the rules posted on the door are less ominous in the bright light.",
         "forwards": "6_deep1_safe",
         "left": "3_bright_left2",
         "right": "3_bright_right2",
@@ -556,7 +577,7 @@ const hallways = {
     "3_bright_left2": {
         "roomID": "3_bright",
         "src": "3_bright/left2",
-        "flavorText": "TODO",
+        "flavorText": "The electric light illuminates the whole hall.",
         "forwards": null,
         "left": null,
         "right": "3_bright_deep2",
@@ -812,10 +833,10 @@ const hallways = {
     "TODO": {
         "roomID": "6",
         "src": "TODO",
-        "forwards": "JR has not completed this yet. ",
-        "left": "6_deep4",
-        "right": null,
-        "backwards": "6_deep4",
+        "forwards": "OUTSIDE",
+        "left": "OUTSIDE",
+        "right": "OUTSIDE",
+        "backwards": "OUTSIDE",
         "functions": []
     },
     "7_deep1": {
