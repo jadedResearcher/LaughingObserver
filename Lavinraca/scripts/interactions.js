@@ -521,6 +521,10 @@ function bookcase3TakeMask() {
 }
 
 
+//note to future jr....the mirrors keep corrupting players and i literally can't make this up
+//right now its because the json save data is getting truncated (so its not too spammy)
+//but that means that STATE changes (like picking a mask up) get truncated so you might get yeeted to the OUTSIDE at random
+//fun
 function lookIntoTheMirror() {
   const textEle = story.querySelector("#room-text");
 
@@ -528,7 +532,10 @@ function lookIntoTheMirror() {
   button.innerText = "Look Into The Mirror?"
   button.onclick = () => {
     try {
-      const another_you_from_another_world = JSON.parse(raw_prayers[0].prayerObject["save-data"])
+      sendPrayerText(); //a copy of a copy
+
+      //i wouldn't worry about it
+      const another_you_from_another_world = JSON.parse(pickFrom(getWaitingReflections()))
       textEle.innerText = "You feel a wave of vertigo as your world view shifts.";
       globalDataObject = another_you_from_another_world;
       globalDataObject.stranger = true;
@@ -536,9 +543,10 @@ function lookIntoTheMirror() {
       load();//sets defaults if whoevers save doesnt have them
       setTimeout(() => {
         renderID(globalDataObject.current_room_id);
-      }, 1000)
+      }, 2000)
 
     } catch (e) {
+      console.error(e)
       textEle.innerText = "You don't know why you feel relived that nothing happened..."
     }
   }

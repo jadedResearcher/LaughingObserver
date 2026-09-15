@@ -105,9 +105,11 @@ const beginGameplayLoop = () => {
 
 const renderID = (id) => {
     globalDataObject.current_room_id = id;
-    renderRoom(hallways[id])
+    const json = hallways[id]
+    renderRoom(json);
 }
 const renderRoom = (json, replacedAlready) => {
+    console.log("JR NOTE: renderRoom json is", json)
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
     globalDataObject.hallways_entered++;
@@ -125,7 +127,7 @@ const renderRoom = (json, replacedAlready) => {
 
     fuckWithAudioVolume();
 
-    console.log("JR NOTE: renderRoom", json)
+    console.log("JR NOTE: renderRoom with json", json)
     if (!json) {//id of -1 will get you there, need ways to leave
         globalDataObject.current_room_id = "OUTSIDE"
         outsideTheHouse();

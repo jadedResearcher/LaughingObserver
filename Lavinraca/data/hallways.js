@@ -212,7 +212,7 @@ const hallways = {
         "roomID": "2",
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "Outside",
+        "forwards": "TODO",
         "backwards": "2_front",
         "functions": ["unlockDoorForwards"]
     },

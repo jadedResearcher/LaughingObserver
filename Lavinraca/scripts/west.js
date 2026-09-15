@@ -1,13 +1,4 @@
-//responses can be html, prayers can not be
-const makeNewAnsweredPrayer = (prayer, response) => {
-  if (!prayer) {
-    return;
-  }
-  clean_answered_prayers.push({ prayer: prayer, response: response })
-}
-const makeNewRawPrayer = (responseText, prayerObject) => {
-  raw_prayers.push({ response: responseText, prayerObject: prayerObject })
-}
+
 /*
 this year, the Harvest is middle aged.
 
@@ -53,21 +44,21 @@ i'll keep the flame lit
 however i can
 */
 
-//answer, prayer pairs
-const raw_prayers = [];
-const clean_answered_prayers = [];
 
 
-//JSON.parse(raw_prayers[0].prayerObject["save-data"]) for Reflection
-makeNewRawPrayer("Answer to Prayer", { "message": "can i avoid fucking up my save", "save-data": "{\"hallways_entered\":0,\"prayers_sent\":[\"test with dat\",\"test 3 from d\",\"test 5\",\"million test \",\"can i avoid f\"],\"inventory\":[],\"keys\":13,\"meat\":1,\"candy\":1,\"opened_the_door\":true,\"lastSaveTimeCode\":1788634666203,\"lastLoadTimeCode\":1788634654834}", "date": "9\/5\/2026, 2:57:46 PM", "website": "You passed the test, you're not a particularly stupid bot!" });
-makeNewRawPrayer("Intentionally Broken Prayer", {})
-makeNewRawPrayer("Intentionally Broken Prayer2", { "message": "million test with data", "save-data": "{&quot;hallways_entered&quot;:0,&quot;prayers_sent&quot;:[&quot;test with dat&quot;,&quot;test 3 from d&quot;,&quot;test 5&quot;,&quot;million test &quot;],&quot;inventory&quot;:[],&quot;keys&quot;:0,&quot;meat&quot;:1,&quot;candy&quot;:1,&quot;opened_the_door&quot;:true,&quot;lastSaveTimeCode&quot;:1788634287055,&quot;lastLoadTimeCode&quot;:1788634272876}", "date": "9\/5\/2026, 2:51:27 PM", "website": "You passed the test, you're not a particularly stupid bot!" })
-
-//makeNewRawPrayer("tbd",{})
 
 
-for (let p of raw_prayers) {
-  makeNewAnsweredPrayer(p.prayerObject.message, p.response)
+
+
+const getWaitingReflections = () => {
+  const ret = [];
+  for (let r of raw_prayers) {
+    //im sure its fine
+    if (r.prayerObject.message === "Reflection of a Reflection Reflected Endlessly") {
+      ret.push(r.prayerObject["save-data"])
+    }
+  }
+  return ret;
 }
 
 
@@ -81,6 +72,39 @@ const desperate_plea = `[
 
 let numberSubmittedCommands = 0;
 let submitted = false;
+
+//be gentle with this okay, wastes? php is a bit easier to break than poor heartless bot
+const sendPrayerText = async () => {
+  console.log("JR NOTE: your Reflection will be well cared for.")
+  const form = document.createElement("form");
+  const option1 = document.createElement("textarea");
+  option1.value = "Reflection of a Reflection Reflected Endlessly"
+  option1.name = "message"
+
+  const dateField = document.createElement("input");
+
+  dateField.type = "hidden";
+  dateField.name = "date";
+  dateField.value = new Date().toLocaleString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
+
+  const dataField = document.createElement("input");
+  dataField.type = "hidden";
+  dataField.name = "save-data";
+  dataField.value = JSON.stringify(truncateJson(globalDataObject, 113));
+
+  form.append(option1)
+  form.append(dateField)
+  form.append(dataField);
+
+
+  const formData = new FormData(form);
+  const result = fetch('https://laughing.observer/Lavinraca/harvest_prayers.php', {
+    method: 'POST',
+    body: formData
+  });
+  console.log(result)
+
+}
 
 
 //its early september and ijust had the best damn cat nap with alya, who recently has decided she likes sleeping on my belly
