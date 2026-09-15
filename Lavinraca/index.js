@@ -163,7 +163,7 @@ const openDoor = () => {
     globalDataObject.opened_the_door = true;
     save();
     storyContainer.style.display = "block"
-    story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. <Br><Br>Just inside the door, on paired little tables, you see two neat little piles of ...are those...religious Tracts? One has a little sculpture of Meat weighing it down, and the other a jar of fake Candy. The sign propped up between them proudly reads 'Take One!'"
+    story.innerHTML = "You only knock, but the door must have been partially open or something, because it drifts open with a startlingly loud creak. <Br><Br>Just inside the door, on paired little tables, you see piles of paper. Propped up between them proudly reads 'Take One!'"
     attachObviousExits(obviousExits);
 
 
