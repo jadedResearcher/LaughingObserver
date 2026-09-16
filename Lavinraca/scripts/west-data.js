@@ -2,11 +2,13 @@
 const raw_prayers = [];
 const clean_answered_prayers = [];
 
+const REFLECTED_MESSAGE = "Reflection of a Reflection Reflected Endlessly";
+
 const getWaitingReflections = () => {
   const ret = [];
   for (let r of raw_prayers) {
     //im sure its fine
-    if (r && r.prayerObject.message === "Reflection of a Reflection Reflected Endlessly") {
+    if (r && r.prayerObject.message === REFLECTED_MESSAGE) {
       ret.push(r.prayerObject["save-data"])
     }
   }
@@ -19,8 +21,9 @@ const addNewReflection = (garbage, json) => {
 }
 
 //responses can be html, prayers can not be
+//also if the prayer is a reflection, don't show spam
 const makeNewAnsweredPrayer = (prayer, response) => {
-  if (!prayer) {
+  if (!prayer || prayer === REFLECTED_MESSAGE) {
     return;
   }
   clean_answered_prayers.push({ prayer: prayer, response: response })

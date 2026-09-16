@@ -177,7 +177,6 @@ const renderHarvestAndPrayers = async (parent) => {
 
   const commandParent = createElementWithClassAndParent("div", dialogParent, "dialog-parent");
   const commandEle = createElementWithClassAndParent("div", commandParent, "god-dialog");
-  const recentPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
   const pastPrayers = createElementWithClassAndParent("div", commandEle, "prayer-container");
 
   commandParent.id = "commands";
