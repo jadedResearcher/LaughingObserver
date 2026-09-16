@@ -13,6 +13,10 @@ give me the base ID for the hallway and I'll give you a template to edit with al
 //wasd already wired in (youll need to make clones for state changes tho)
 //and if theres a sunset version you gotta make two templates
 */
+
+//very very very fun fan animation of ZampanioSimEast:  https://www.tumblr.com/emberiscurious/827708119865016320/that-thing-i-promised?source=share
+
+
 //debugGenerateTemplateForNewHallway("2_sunset")
 const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_full_id = null, forwards_full_id = null) => {
   //they had us in the first half ngl

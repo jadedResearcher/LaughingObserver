@@ -1,4 +1,4 @@
-const wind = "images/Diorama/foley/ready_effects/Outdoor/wind_loop.mp3";
+const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
 
