@@ -80,6 +80,7 @@ function setAnomalyLocationRoom6() {
   //tutorial, so you get two for free
   if (currentRoomBeaten === 1) {
     anomaly_id = "6_deep4";
+    return;
   }
 
   if (currentRoomBeaten < 4 && Math.random() > 0.5) {
