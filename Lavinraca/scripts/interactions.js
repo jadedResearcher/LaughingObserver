@@ -173,20 +173,21 @@ const calculateOddsSpooky = () => {
     oddsToBeat = 0;//its midnight, its spooky time, obviously, plus reminder to maybe take a break
   }
 
+  const hallwayCountMultiplier = 3;
 
-  if (globalDataObject.hallways_entered > 51) {
+  if (globalDataObject.hallways_entered > 51 * hallwayCountMultiplier) {
     oddsToBeat += -.1;
   }
 
-  if (globalDataObject.hallways_entered > 13) {
+  if (globalDataObject.hallways_entered > 13 * hallwayCountMultiplier) {
     oddsToBeat += -.1;
   }
 
-  if (globalDataObject.hallways_entered > 31) {
+  if (globalDataObject.hallways_entered > 31 * hallwayCountMultiplier) {
     oddsToBeat += -.1;
   }
 
-  if (globalDataObject.hallways_entered > 66) {
+  if (globalDataObject.hallways_entered > 66 * hallwayCountMultiplier) {
     oddsToBeat += -.1;
   }
 

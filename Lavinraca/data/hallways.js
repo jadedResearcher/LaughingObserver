@@ -212,7 +212,7 @@ const hallways = {
         "roomID": "2",
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "TODO",
+        "forwards": "east_main_1_deep1",
         "backwards": "2_front",
         "functions": ["unlockDoorForwards"]
     },
@@ -985,6 +985,65 @@ const hallways = {
         "left": "west_sunroom_deep2",
         "right": null,
         "backwards": "west_sunroom_deep2",
+        "functions": []
+    },
+    //east wing start
+    //east wing start
+    //east wing start
+
+    "east_main_1_deep1": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/BDeep1",
+        "flavorText": "TODO",
+        "forwards": "east_main_1_deep2",
+        "left": "east_main_1_left1",
+        "right": "east_main_1_right1",
+        "backwards": "2_front_left",
+        "functions": []
+    },
+    "east_main_1_left1": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_1_deep1",
+        "backwards": "east_main_1_deep1",
+        "functions": []
+    },
+    "east_main_1_right1": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_1_deep1",
+        "right": null,
+        "backwards": "east_main_1_deep1",
+        "functions": []
+    },
+    "east_main_1_deep2": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/BDeep2",
+        "forwards": "TODO",
+        "left": "east_main_1_left2",
+        "right": "east_main_1_right2",
+        "backwards": "east_main_1_deep1",
+        "functions": []
+    },
+    "east_main_1_left2": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_1_deep2",
+        "backwards": "east_main_1_deep2",
+        "functions": []
+    },
+    "east_main_1_right2": {
+        "roomID": "east_main_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": "east_main_1_deep2",
+        "right": null,
+        "backwards": "east_main_1_deep2",
         "functions": []
     }
 

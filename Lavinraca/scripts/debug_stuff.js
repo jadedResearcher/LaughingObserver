@@ -155,6 +155,113 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
   console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
+
+//debugGenerateTemplateForNewHallway("bluh")
+//a generic hallway with no decorations that fills out the "you should map this" part of the maze
+//i.e. the east wing
+//i can go back around and make more custom stuff for some hallways if i want, but this lets me go fast
+//its 9/16, only 14 or so days till halloween season begins
+//gotta make the most of it
+//if i want to customize just edit the json, make a new dir for the stuff etc
+const debugGenerateStraightHallway = (id) => {
+  const versions = [];
+  /* versions.push({
+     deep1: "",
+     deep2: "",
+     left1: "",
+     left2: "",
+     right1: "",
+     right2: ""
+   });*/
+
+  versions.push({
+    deep1: "ADeep1",
+    deep2: "ADeep2",
+    left1: "BFlatLight",
+    left2: "FlatWall",
+    right1: "FlatWall",
+    right2: "AFlatLight"
+  });
+
+  versions.push({
+    deep1: "BDeep1",
+    deep2: "BDeep2",
+    left1: "FlatWall",
+    left2: "BFlatLight",
+    right1: "AFlatLight",
+    right2: "FlatWall"
+  });
+  const version = pickFrom(versions);
+
+  const map_template = `"${id}_deep1": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.deep1}",
+      "forwards": "${id}_deep2",
+      "left": "${id}_left1",
+      "right": "${id}_right1",
+      "backwards": "TODO",
+      "functions": []
+    },
+    "${id}_left1": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.left1}",
+      "forwards": null,
+      "left": null,
+      "right": "${id}_deep1",
+      "backwards": "${id}_deep1",
+      "functions": []
+    },
+    "${id}_right1": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.right1}",
+      "forwards": null,
+      "left": "${id}_deep1",
+      "right": null,
+      "backwards": "${id}_deep1",
+      "functions": []
+    },
+    "${id}_deep2": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.deep2}",
+      "forwards": "TODO",
+      "left": "${id}_left2",
+      "right": "${id}_right2",
+      "backwards": "${id}_deep1",
+      "functions": []
+    },
+    "${id}_left2": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.left2}",
+      "forwards": null,
+      "left": null,
+      "right": "${id}_deep2",
+      "backwards": "${id}_deep2",
+      "functions": []
+    },
+    "${id}_right2": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.right2}",
+      "forwards": null,
+      "left": "${id}_deep2",
+      "right": null,
+      "backwards": "${id}_deep2",
+      "functions": []
+    }
+  `
+
+
+
+  //trust me on this, outputs something i can copy and paste into the json
+  const massaged_map_template = `{${map_template}}`;
+
+  //console.log("JR NOTE: ", massaged_map_template);
+
+  const data = JSON.parse(massaged_map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  console.log(JSON.stringify(data, null, 4))
+  console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+}
+
 //        "roomID": "6",
 
 const getHallwaysForRoomID = (roomID) => {

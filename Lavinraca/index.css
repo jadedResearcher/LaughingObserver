@@ -111,7 +111,7 @@ body {
   border-top: 5px solid black;
   padding-top: 31px;
   padding-bottom: 31px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 113;
   width: 100%;
 }
