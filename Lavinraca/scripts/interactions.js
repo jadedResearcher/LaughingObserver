@@ -569,11 +569,12 @@ function lookCloserAtRules() {
   button.innerText = "Look Closer At Rules?"
   button.onclick = () => {
     const contentEle = document.createElement("div");
-    contentEle.innerHTML = `<img style='max-height:100%' src='images/Diorama/Inside/Hallways/rules.PNG' >
+    contentEle.innerHTML = `These rules seem to apply to the room past this door:<br><Br> <img style='max-height:100%' src='images/Diorama/Inside/Hallways/rules.PNG' >
     <ol>
     <li>If time is stable, go through the far door.</li>
     <li>If time is NOT stable, turn around and leave the room.</li>
     <li>Past room 8 is where time solidifies fully.</li>
+    <li>You cannot leave if you have a number.</li>
     (NOTE: Some instabilities are more subtle than others. There is no penalty for missing them, save starting the loop over from 0.)
     </ol>`
 

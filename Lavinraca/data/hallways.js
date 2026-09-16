@@ -427,7 +427,6 @@ const hallways = {
         "src": "3/deep3_1",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_2": {
@@ -435,7 +434,6 @@ const hallways = {
         "src": "3/deep3_2",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_3": {
@@ -443,7 +441,6 @@ const hallways = {
         "src": "3/deep3_3",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
     "3_deep3_4": {
@@ -451,7 +448,6 @@ const hallways = {
         "src": "3/deep3_4",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
@@ -460,7 +456,6 @@ const hallways = {
         "src": "3/deep3_5",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
@@ -469,7 +464,6 @@ const hallways = {
         "src": "3/deep3_6",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 
@@ -478,7 +472,6 @@ const hallways = {
         "src": "3/deep3_7",
         "flavorText": "A list of rules are hung on the door.",
         "forwards": "6_deep1",
-        "backwards": "3_deep2",
         "functions": ["lookCloserAtRules", "incrementRoomBeaten", "setAnomalyLocationRoom6"]
     },
 

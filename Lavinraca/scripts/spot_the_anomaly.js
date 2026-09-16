@@ -77,6 +77,11 @@ function setAnomalyLocationRoom6() {
 
   }
 
+  //tutorial, so you get two for free
+  if (currentRoomBeaten === 1) {
+    anomaly_id = "6_deep4";
+  }
+
   if (currentRoomBeaten < 4 && Math.random() > 0.5) {
     anomaly_id = pickFrom(loop6PossibleAnomalyLocations);
     return;
@@ -153,7 +158,7 @@ function check_room_6_deep2() {
 
 function check_room_6_left2() {
   const path = "images/Diorama/Inside/Hallways/6/";
-  const options = ["left2_fallen_chair", "left2_subtle", "left2_therearefourlights"];
+  const options = ["left2_fallen_chair", "left2_therearefourlights"];
   playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
@@ -193,7 +198,7 @@ function check_room_6_right3() {
 
 function check_room_6_deep4() {
   const path = "images/Diorama/Inside/Hallways/6/";
-  const options = ["deep4_cones", "deep4_crate", "deep4_growth", "deep4_stop"];
+  const options = ["deep4_cones", "deep4_crate", "deep4_growth", "deep4_stop", "deep4_stop", "deep4_stop", "deep4_stop"];
   playVariantIfCurrentIdIsAnomaly(path, options);
 }
 
