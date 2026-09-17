@@ -263,8 +263,8 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
   if (canGaslight && odds > oddsToBeat) {
     const choice = pickFrom(getSpookyEffects())
     const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
-
-    video.src = dir + choice + ".mp4"
+    video.pause();
+    video.src = dir + choice + ".mp4";
     globalDataObject.spooky_seen.push(choice);
   }
 
@@ -285,12 +285,14 @@ function testFuckery() {
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";
   const odds = Math.random();
   if (odds > .6) {
+    video.pause();
     video.src = bookcase + ".mp4";
     video.play();
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "Who put this bookcase here? For some reason its hard to focus on...What were you doing here?"
 
   } else if (odds > .3) {
+    video.pause();
     video.src = key + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "How...how is the key back? You reach for it instinctively, but your hand goes right through."
@@ -308,6 +310,7 @@ function hallwayOneSunbeam() {
     console.log("JR NOTE: fucky sunbeam", video)
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "Is...something weird going on with the light?"
+    video.pause();
     video.src = "images/Diorama/Inside/Hallways/1/Sunset/deep1_no_sun.mp4";
     video.play();
   }
@@ -482,7 +485,7 @@ function bookcase3PlaceMask() {
       maskLose();
       const myID = "3_bright_left1";
       const newID = "3_bright_left1_mask"
-
+      video.pause();
       const dir = "images/Diorama/Inside/Hallways/3_bright/left1_open_cutscene.mp4";
       video.src = dir;
       video.loop = false;
@@ -607,6 +610,7 @@ function lookCloserAtRules() {
 function victory7() {
   if (currentRoomBeaten > 0) {
     const dir = "images/Diorama/Inside/Hallways/7/victory.mp4";
+    video.pause();
     video.src = dir;
     video.loop = false;
     video.play();
@@ -624,6 +628,7 @@ function pressBigRedButton7() {
   button.onclick = () => {
     button.remove();
     const dir = "images/Diorama/Inside/Hallways/7/power_cutscene.mp4";
+    video.pause();
     video.src = dir;
     video.loop = false;
     video.play();
@@ -648,6 +653,7 @@ function pressBigRedButton7Off() {
   button.innerText = "Turn The Power Back Off"
   button.onclick = () => {
     button.remove();
+    video.pause();
     const dir = "images/Diorama/Inside/Hallways/7/power_cutscene_but_backwards.mp4";
     video.src = dir;
     video.loop = false;
