@@ -151,8 +151,10 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
   //trust me on this, outputs something i can copy and paste into the json
   const data = JSON.parse(map_template)
   //const outputEle = createTextAreaInputWithLabel();
-  console.log(JSON.stringify(data, null, 4))
-  console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+  const str = (JSON.stringify(data, null, 4)) //gets rid of first and last curly brace, not stupposd to copy
+  console.log(str.slice(1, -1))
+
+  //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
 
@@ -215,7 +217,7 @@ const debugGenerateRightDoorHallway = (id) => {
     left1: "FlatWall",
     left2: "BFlatLight",
     right1: "AFlatLight",
-    right2: "FlatWall"
+    right2: "FlatDoor"
   });
   debugGenerateCopiedHallwayWithVersions(id, versions)
 }
@@ -290,8 +292,10 @@ const debugGenerateCopiedHallwayWithVersions = (id, versions) => {
 
   const data = JSON.parse(massaged_map_template)
   //const outputEle = createTextAreaInputWithLabel();
-  console.log(JSON.stringify(data, null, 4))
-  console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+  const str = (JSON.stringify(data, null, 4));
+  //gets rid of first and last curly braces, not supposed to copy
+  console.log(str.slice(1, -1))
+  //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
 //        "roomID": "6",

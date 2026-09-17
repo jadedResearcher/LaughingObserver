@@ -1022,7 +1022,7 @@ const hallways = {
     "east_main_1_deep2": {
         "roomID": "east_main_1",
         "src": "CopyOfACopy/BDeep2",
-        "forwards": "TODO",
+        "forwards": "east_main_1_2_unlocked",
         "left": "east_main_1_left2",
         "right": "east_main_1_right2",
         "backwards": "east_main_1_deep1",
@@ -1047,6 +1047,68 @@ const hallways = {
         "functions": []
     },
 
+    "east_main_1_2_unlocked": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_2_deep1",
+        "backwards": "east_main_1_deep2",
+        "functions": ["unlockDoorForwards"]
+    },
+    //east wing main hall  2
+    "east_main_2_deep1": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/RightDoorDeep1",
+        "forwards": "east_main_2_deep2",
+        "left": "east_main_2_left1",
+        "right": "east_main_2_right1",
+        "backwards": "east_main_1_deep2",
+        "functions": []
+    },
+    "east_main_2_left1": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_2_deep1",
+        "backwards": "east_main_2_deep1",
+        "functions": []
+    },
+    "east_main_2_right1": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_2_deep1",
+        "right": null,
+        "backwards": "east_main_2_deep1",
+        "functions": []
+    },
+    "east_main_2_left2": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_2_deep2",
+        "backwards": "east_main_2_deep2",
+        "functions": []
+    },
+    "east_main_2_right2": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": null,
+        "left": "east_main_2_deep2",
+        "right": null,
+        "backwards": "east_main_2_deep2",
+        "functions": []
+    },
+    "east_main_2_deep2": {
+        "roomID": "east_main_2",
+        "src": "CopyOfACopy/RightDoorDeep2",
+        "forwards": "TODO",
+        "left": "east_main_2_left2",
+        "right": "east_main_2_right2",
+        "backwards": "east_main_2_deep1",
+        "functions": []
+    }
 
 
 
