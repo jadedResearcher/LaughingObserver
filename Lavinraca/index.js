@@ -294,6 +294,7 @@ const rollCredits = () => {
     "DM": "Electrical Engineering, Harvest Screen Assembly <a href='https://github.com/mutantbob/diorama-mini-tv' target='_blank'>[Source]</a>",
     "IC": "Character Design, Candy Pamphlet Writing",
     "EmberIsCurious": "Wodin Blender Model",
+    "Flippet/flippetUrnways": "Eustace Poems",
     "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations"
   }
   for (let [key, value] of Object.entries(credits)) {

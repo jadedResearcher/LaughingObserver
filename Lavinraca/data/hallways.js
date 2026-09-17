@@ -548,7 +548,7 @@ const hallways = {
         "forwards": "3_bright_deep2",
         "left": "3_bright_left1",
         "right": "3_bright_right1",
-        "backwards": "2_back",
+        "backwards": "bright_3_2_backup",
         "functions": []
     },
 
@@ -1127,7 +1127,7 @@ const hallways = {
         "forwards": "east_main_2_deep2",
         "left": "east_main_2_left1",
         "right": "east_main_2_right1",
-        "backwards": "east_main_1_deep2",
+        "backwards": "east_main_1_2_backup",
         "functions": []
     },
     "east_main_2_left1": {
