@@ -284,6 +284,14 @@ const hallways = {
         "backwards": "2_back",
         "functions": ["lookIntoTheMirror"]
     },
+
+    "sunset_2_1_back_up": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "2_sunset_front",
+        "backwards": "4",
+        "functions": ["unlockDoorBackwards"]
+    },
     //hallway 2 sunset
     "2_sunset_front": {
         "roomID": "2",
@@ -292,7 +300,7 @@ const hallways = {
         "forwards": "2_sunset_back",
         "left": "2_sunset_front_left",
         "right": "2_sunset_front_right",
-        "backwards": "4",
+        "backwards": "sunset_2_1_back_up",
         "functions": []
     },
     "2_sunset_front_left": {
@@ -1103,10 +1111,76 @@ const hallways = {
     "east_main_2_deep2": {
         "roomID": "east_main_2",
         "src": "CopyOfACopy/RightDoorDeep2",
-        "forwards": "TODO",
+        "forwards": "east_main_2_3_unlocked",
         "left": "east_main_2_left2",
         "right": "east_main_2_right2",
         "backwards": "east_main_2_deep1",
+        "functions": []
+    },
+
+
+    "east_main_2_3_unlocked": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_3_deep1",
+        "backwards": "east_main_2_deep2",
+        "functions": ["unlockDoorForwards"]
+    },
+
+
+    //east main 3
+    "east_main_3_deep1": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/LeftDoorDeep1",
+        "forwards": "east_main_3_deep2",
+        "left": "east_main_3_left1",
+        "right": "east_main_3_right1",
+        "backwards": "east_main_2_deep2",
+        "functions": []
+    },
+    "east_main_3_left1": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_3_deep1",
+        "backwards": "east_main_3_deep1",
+        "functions": []
+    },
+    "east_main_3_right1": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_3_deep1",
+        "right": null,
+        "backwards": "east_main_3_deep1",
+        "functions": []
+    },
+    "east_main_3_left2": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_3_deep2",
+        "backwards": "east_main_3_deep2",
+        "functions": []
+    },
+    "east_main_3_right2": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": "east_main_3_deep2",
+        "right": null,
+        "backwards": "east_main_3_deep2",
+        "functions": []
+    },
+    "east_main_3_deep2": {
+        "roomID": "east_main_3",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "TODO",
+        "left": "east_main_3_left2",
+        "right": "east_main_3_right2",
+        "backwards": "east_main_3_deep1",
         "functions": []
     }
 
@@ -1115,12 +1189,36 @@ const hallways = {
 }
 
 /*
-    "4_open_unlocked_door": {
+    "1_2_open_door": {
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "1_bright",
-        "backwards": "4",
+        "forwards": "1",
+        "backwards": "2",
         "functions": ["unlockDoorForwards"]
+    },
+//going backwards needs a transition effect or it feels like you're moving forwards rip
+    "2_1_open_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "2",
+        "backwards": "1",
+        "functions": ["unlockDoorBackwards"]
+    },
+
+        "1_2_open_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "1",
+        "backwards": "2",
+        "functions": ["unlockDoorLeft"]
+    },
+
+        "1_2_open_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "1",
+        "backwards": "2",
+        "functions": ["unlockDoorRight"]
     },
 */
 

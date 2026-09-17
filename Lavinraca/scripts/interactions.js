@@ -90,9 +90,9 @@ const comboLock = (parent, callback, one, two, three, four) => {
 
 
 
-const normalUnlockedDoor = (current_id, next_id) => {
+const normalUnlockedDoor = (current_id, next_id, canGaslight = false) => {
   video.pause();
-  youKnowEternalDarknessDoThatThingForDoors(next_id);
+  youKnowEternalDarknessDoThatThingForDoors(next_id, canGaslight);
 }
 
 const keyGet = () => {
@@ -252,7 +252,7 @@ const getSpookyEffects = () => {
 }
 
 //any time you open a door it'll call this, when its done it'll do the callback
-const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
+const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGaslight) => {
   //do your best not to save while transitioning
   globalDataObject.current_room_id = originalDestination;
   save();
@@ -260,10 +260,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination) => {
   console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
   const odds = Math.random();
   const oddsToBeat = calculateOddsSpooky();
-  if (odds > oddsToBeat) {
-
-
-
+  if (canGaslight && odds > oddsToBeat) {
     const choice = pickFrom(getSpookyEffects())
     const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
 
@@ -559,6 +556,28 @@ function unlockDoorForwards() {
   const current_id = globalDataObject.current_room_id;
   //some doors are left/right but this one is forwards
   const next_id = hallways[current_id].forwards;
+  normalUnlockedDoor(current_id, next_id, true);
+}
+
+function unlockDoorBackwards() {
+  const current_id = globalDataObject.current_room_id;
+  //some doors are left/right but this one is back
+  const next_id = hallways[current_id].backwards;
+  normalUnlockedDoor(current_id, next_id);
+}
+
+
+function unlockDoorLeft() {
+  const current_id = globalDataObject.current_room_id;
+  const next_id = hallways[current_id].left;
+  normalUnlockedDoor(current_id, next_id);
+}
+
+
+function unlockDoorRight() {
+  const current_id = globalDataObject.current_room_id;
+  //some doors are left/right but this one is back
+  const next_id = hallways[current_id].right;
   normalUnlockedDoor(current_id, next_id);
 }
 

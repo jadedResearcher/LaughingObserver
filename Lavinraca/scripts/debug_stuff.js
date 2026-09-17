@@ -222,6 +222,29 @@ const debugGenerateRightDoorHallway = (id) => {
   debugGenerateCopiedHallwayWithVersions(id, versions)
 }
 
+const debugGenerateLeftDoorHallway = (id) => {
+  const versions = [];
+  /* versions.push({
+     deep1: "",
+     deep2: "",
+     left1: "",
+     left2: "",
+     right1: "",
+     right2: ""
+   });*/
+
+  versions.push({
+    deep1: "LeftDoorDeep1",
+    deep2: "ADeep2",
+    left1: "FlatDoor",
+    left2: "FlatWall",
+    right1: "AFlatLight",
+    right2: "BFlatLight"
+  });
+  debugGenerateCopiedHallwayWithVersions(id, versions)
+}
+
+
 
 
 const debugGenerateCopiedHallwayWithVersions = (id, versions) => {
