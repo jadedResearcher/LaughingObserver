@@ -178,6 +178,15 @@ const hallways = {
         "functions": []
     },
     //hallway2 bright
+
+    "bright_2_1_back_up": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "2_front",
+        "backwards": "4_bright",
+        "functions": ["unlockDoorBackwards"]
+    },
+
     "2_front": {
         "roomID": "2",
         "src": "2/deep1",
@@ -185,7 +194,7 @@ const hallways = {
         "forwards": "2_back",
         "left": "2_front_left",
         "right": "2_front_right",
-        "backwards": "4_bright",
+        "backwards": "bright_2_1_back_up",
         "functions": []
     },
     "2_front_left": {
@@ -292,7 +301,9 @@ const hallways = {
         "backwards": "4",
         "functions": ["unlockDoorBackwards"]
     },
+
     //hallway 2 sunset
+
     "2_sunset_front": {
         "roomID": "2",
         "src": "2_sunset/deep1",
@@ -375,6 +386,13 @@ const hallways = {
         "functions": []
     },
     //room 3
+    "sunset_3_2_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "3_deep1",
+        "backwards": "2_sunset_back",
+        "functions": ["unlockDoorBackwards"]
+    },
     "3_deep1": {
         "roomID": "3",
         "src": "3/deep1",
@@ -382,7 +400,7 @@ const hallways = {
         "forwards": "3_deep2",
         "left": "3_left1",
         "right": "3_right1",
-        "backwards": "2_sunset_back",
+        "backwards": "sunset_3_2_backup",
         "functions": []
     },
     "3_left1": {
@@ -512,6 +530,15 @@ const hallways = {
         "forwards": "west_sunroom_deep1",
         "backwards": "3_deep2",
         "functions": ["unlockDoorForwards"]
+    },
+
+    //3 bright
+    "bright_3_2_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "3_bright_deep1",
+        "backwards": "2_back",
+        "functions": ["unlockDoorBackwards"]
     },
 
     "3_bright_deep1": {
@@ -840,6 +867,15 @@ const hallways = {
         "backwards": "OUTSIDE",
         "functions": []
     },
+
+    //room 7
+    "sunset_7_6_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "7_deep1",
+        "backwards": "6_deep4",
+        "functions": ["unlockDoorBackwards"]
+    },
     "7_deep1": {
         "roomID": "7",
         "src": "7/deep1",
@@ -847,7 +883,7 @@ const hallways = {
         "forwards": "7_deep2",
         "left": "7_left1",
         "right": "7_right1",
-        "backwards": "6_deep4",
+        "backwards": "sunset_7_6_backup",
         "functions": ["victory7"]
     },
     "7_left1": {
@@ -918,6 +954,15 @@ const hallways = {
         "backwards": "7_bright_deep1",
         "functions": ["pressBigRedButton7Off"]
     },
+
+    //west sunroom
+    "sunset_3_west_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "west_sunroom_deep1",
+        "backwards": "3_right2",
+        "functions": ["unlockDoorBackwards"]
+    },
     "west_sunroom_deep1": {
         "roomID": "west_sunroom",
         "src": "west_sunroom/deep1",
@@ -925,7 +970,7 @@ const hallways = {
         "forwards": "west_sunroom_deep2",
         "left": "west_sunroom_left1",
         "right": "west_sunroom_right1",
-        "backwards": "3_right2",
+        "backwards": "sunset_3_west_backup",
         "functions": []
     },
     "west_sunroom_left1": {
@@ -998,7 +1043,13 @@ const hallways = {
     //east wing start
     //east wing start
     //east wing start
-
+    "east_west_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_1_deep1",
+        "backwards": "2_front_left",
+        "functions": ["unlockDoorBackwards"]
+    },
     "east_main_1_deep1": {
         "roomID": "east_main_1",
         "src": "CopyOfACopy/BDeep1",
@@ -1006,7 +1057,7 @@ const hallways = {
         "forwards": "east_main_1_deep2",
         "left": "east_main_1_left1",
         "right": "east_main_1_right1",
-        "backwards": "2_front_left",
+        "backwards": "east_west_backup",
         "functions": []
     },
     "east_main_1_left1": {
@@ -1063,6 +1114,13 @@ const hallways = {
         "functions": ["unlockDoorForwards"]
     },
     //east wing main hall  2
+    "east_main_1_2_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_2_deep1",
+        "backwards": "east_main_1_deep2",
+        "functions": ["unlockDoorBackwards"]
+    },
     "east_main_2_deep1": {
         "roomID": "east_main_2",
         "src": "CopyOfACopy/RightDoorDeep1",
@@ -1129,13 +1187,21 @@ const hallways = {
 
 
     //east main 3
+
+    "east_main_3_2_backup": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_3_deep1",
+        "backwards": "east_main_2_deep2",
+        "functions": ["unlockDoorBackwards"]
+    },
     "east_main_3_deep1": {
         "roomID": "east_main_3",
         "src": "CopyOfACopy/LeftDoorDeep1",
         "forwards": "east_main_3_deep2",
         "left": "east_main_3_left1",
         "right": "east_main_3_right1",
-        "backwards": "east_main_2_deep2",
+        "backwards": "east_main_3_2_backup",
         "functions": []
     },
     "east_main_3_left1": {
