@@ -51,16 +51,6 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
       "backwards": "${id}_deep1",
       "functions": []
     },
-    "${id}_deep2": {
-      "roomID": "${id}",
-      "src": "${id}/deep2",
-      "flavorText": "TODO",
-      "forwards": ${doubleSize ? `"${id}_deep3"` : forwards_full_id},
-      "left": "${id}_left2",
-      "right": "${id}_right2",
-      "backwards": "${id}_deep1",
-      "functions": []
-    },
     "${id}_left2": {
       "roomID": "${id}",
       "src": "${id}/left2",
@@ -80,7 +70,16 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
       "right": null,
       "backwards": "${id}_deep2",
       "functions": []
-    }
+    }, "${id}_deep2": {
+      "roomID": "${id}",
+      "src": "${id}/deep2",
+      "flavorText": "TODO",
+      "forwards": ${doubleSize ? `"${id}_deep3"` : forwards_full_id},
+      "left": "${id}_left2",
+    "right": "${id}_right2",
+      "backwards": "${id}_deep1",
+      "functions": []
+    },
   `
 
   const second_half = `,
@@ -114,16 +113,7 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
       "backwards": "${id}_deep3",
       "functions": []
     },
-    "${id}_deep4": {
-      "roomID": "${id}",
-      "src": "${id}/deep4",
-      "flavorText": "TODO",
-      "forwards": ${forwards_full_id},
-      "left": "${id}_left4",
-      "right": "${id}_right4",
-      "backwards": "${id}_deep3",
-      "functions": []
-    },
+
     "${id}_left4": {
       "roomID": "${id}",
       "src": "${id}/left4",
@@ -142,6 +132,16 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
       "left": "${id}_deep4",
       "right": null,
       "backwards": "${id}_deep4",
+      "functions": []
+    },
+      "${id}_deep4": {
+      "roomID": "${id}",
+      "src": "${id}/deep4",
+      "flavorText": "TODO",
+      "forwards": ${forwards_full_id},
+      "left": "${id}_left4",
+      "right": "${id}_right4",
+      "backwards": "${id}_deep3",
       "functions": []
     }
   `
@@ -191,6 +191,38 @@ const debugGenerateStraightHallway = (id) => {
     right1: "AFlatLight",
     right2: "FlatWall"
   });
+
+  debugGenerateCopiedHallwayWithVersions(id, versions)
+
+
+
+}
+
+const debugGenerateRightDoorHallway = (id) => {
+  const versions = [];
+  /* versions.push({
+     deep1: "",
+     deep2: "",
+     left1: "",
+     left2: "",
+     right1: "",
+     right2: ""
+   });*/
+
+  versions.push({
+    deep1: "RightDoorDeep1",
+    deep2: "RightDoorDeep2",
+    left1: "FlatWall",
+    left2: "BFlatLight",
+    right1: "AFlatLight",
+    right2: "FlatWall"
+  });
+  debugGenerateCopiedHallwayWithVersions(id, versions)
+}
+
+
+
+const debugGenerateCopiedHallwayWithVersions = (id, versions) => {
   const version = pickFrom(versions);
 
   const map_template = `"${id}_deep1": {
@@ -220,15 +252,6 @@ const debugGenerateStraightHallway = (id) => {
       "backwards": "${id}_deep1",
       "functions": []
     },
-    "${id}_deep2": {
-      "roomID": "${id}",
-      "src": "CopyOfACopy/${version.deep2}",
-      "forwards": "TODO",
-      "left": "${id}_left2",
-      "right": "${id}_right2",
-      "backwards": "${id}_deep1",
-      "functions": []
-    },
     "${id}_left2": {
       "roomID": "${id}",
       "src": "CopyOfACopy/${version.left2}",
@@ -246,8 +269,17 @@ const debugGenerateStraightHallway = (id) => {
       "right": null,
       "backwards": "${id}_deep2",
       "functions": []
+    },
+    "${id}_deep2": {
+      "roomID": "${id}",
+      "src": "CopyOfACopy/${version.deep2}",
+      "forwards": "TODO",
+      "left": "${id}_left2",
+      "right": "${id}_right2",
+      "backwards": "${id}_deep1",
+      "functions": []
     }
-  `
+  `//deep2 being the last makes it easier to wire up in a line
 
 
 
