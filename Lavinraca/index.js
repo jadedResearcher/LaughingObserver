@@ -2,6 +2,7 @@ const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
 
+let flavorTextAndMovementButtonsVisible = true;
 
 const bgMusic = new Audio(wind);
 bgMusic.loop = true;
@@ -12,6 +13,7 @@ spookyLoop.loop = true;
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
+  wireUpVisionControl();
   addIDToHallways();
   wireUpPopupClose();
   //video ele handles decoding and audio playing AND loading the buffer
@@ -37,6 +39,21 @@ window.onload = () => {
   game.onended = () => {
     alert("trick or treat")
   }*/
+}
+
+const wireUpVisionControl = () => {
+  visionControl.onclick = () => {
+    if (flavorTextAndMovementButtonsVisible) {
+      storyContainer.style.display = "none";
+      visionControl.style.backgroundPositionY = "0px"
+      flavorTextAndMovementButtonsVisible = false;
+    } else {
+      storyContainer.style.display = "block";
+      flavorTextAndMovementButtonsVisible = true;
+      visionControl.style.backgroundPositionY = "25px"
+    }
+
+  }
 }
 
 const wireUpCanvas = () => {
