@@ -245,7 +245,40 @@ const debugGenerateLeftDoorHallway = (id) => {
 }
 
 
+const debugGenerateRoomWithSingleDoorBehindYou = (id) => {
 
+  const map_template = `"${id}_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorForwards"]
+    },"${id}_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorBackwards"]
+    },
+  "${id}_deep1": {
+      "roomID": "${id}",
+      "src": "${id}/deep1",
+      "backwards": "${id}_backup",
+      "functions": []
+    }`
+
+  //trust me on this, outputs something i can copy and paste into the json
+  const massaged_map_template = `{${map_template}}`;
+
+  //console.log("JR NOTE: ", massaged_map_template);
+
+  const data = JSON.parse(massaged_map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  const str = (JSON.stringify(data, null, 4));
+  //gets rid of first and last curly braces, not supposed to copy
+  console.log(`//${id} start${str.slice(1, -1)}`)
+  //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+}
 
 const debugGenerateCopiedHallwayWithVersions = (id, versions) => {
   const version = pickFrom(versions);

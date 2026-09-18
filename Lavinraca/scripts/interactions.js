@@ -673,6 +673,42 @@ function pressBigRedButton7Off() {
 
 }
 
+function embraceTheUnknown() {
+  const urls = ["http://farragofiction.com/MallSim/", "http://lavinraca.eyedolgames.com/TheHarvestGames/", "http://lavinraca.eyedolgames.com/TheHarvestWakes/", "http://lavinraca.eyedolgames.com/Week4/Corn/", "http://lavinraca.eyedolgames.com/Week3/Corn/", "http://lavinraca.eyedolgames.com/Week2/Corn/", "http://lavinraca.eyedolgames.com/Week1/Corn/"]
+  window.open(pickFrom(urls), '_blank');
+
+}
+
+function pumpkin1() {
+  const textEle = story.querySelector("#room-text");
+  const c = createElementWithClassAndParent("div", textEle);
+
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Commune with Pumpkins?"
+  button.onclick = () => {
+
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = "If you know the right words, you can teleport anywhere. Why not go to '1' or to 'west_sunroom_deep1'?<br><Br>Be Cautious: You never know where you might end up if the words aren't right.";
+    const { input } = createTextInputWithLabel(contentEle, "teleport", "Teleportation ID:", "");
+    const button2 = createElementWithClassAndParent("button", contentEle);
+    button2.innerText = "Ask the Pumpkins to Take You"
+
+
+    button2.onclick = () => {
+      if (hallways[input.value]) {
+        console.log("JR NOTE: tyring to teleport to", input.value)
+        renderID(input.value);
+        closeThePopup();
+      } else {
+        closeThePopup();
+        embraceTheUnknown();
+      }
+    }
+
+    showExistingPopup(contentEle, "I give up for now...");
+  }
+}
+
 
 
 //this won't render right on all devices, so use this to make screenshots you display as images

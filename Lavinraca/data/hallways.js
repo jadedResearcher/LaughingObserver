@@ -1391,7 +1391,7 @@ const hallways = {
     "east_main_5_left1": {
         "roomID": "east_main_5",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": null,
+        "forwards": "east_main_room2_enter",
         "left": null,
         "right": "east_main_5_deep1",
         "backwards": "east_main_5_deep1",
@@ -1432,7 +1432,33 @@ const hallways = {
         "right": "east_main_5_right2",
         "backwards": "east_main_5_deep1",
         "functions": []
-    }
+    },
+
+    //east main room 2 start
+    "east_main_room2_enter": {
+        "src": "open_the_door",
+        "forwards": "east_main_room2",
+        "backwards": "east_main_5_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_room2_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_room2",
+        "backwards": "east_main_5_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_room2": {
+        "flavorText": "...what is a pumpkin patch doing inside?",
+        "roomID": "east_main_5",
+        "src": "EastMainRoom2/deep1",
+        "backwards": "east_main_room2_backup",
+        "functions": ["pumpkin1"]
+    },
 
 
 
