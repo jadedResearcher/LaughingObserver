@@ -1092,7 +1092,7 @@ const hallways = {
     "east_main_1_deep1": {
         "roomID": "east_main_1",
         "src": "CopyOfACopy/BDeep1",
-        "flavorText": "TODO",
+        "flavorText": "The EAST WING is brightly lit.",
         "forwards": "east_main_1_deep2",
         "left": "east_main_1_left1",
         "right": "east_main_1_right1",
@@ -1292,7 +1292,7 @@ const hallways = {
         "src": "open_the_door",
         "flavorText": "",
         "forwards": "east_main_4_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_3_deep2",
         "functions": [
             "unlockDoorForwards"
         ]
@@ -1301,7 +1301,7 @@ const hallways = {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_4_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_3_deep2",
         "functions": [
             "unlockDoorBackwards"
         ]
@@ -1365,7 +1365,7 @@ const hallways = {
         "src": "open_the_door",
         "flavorText": "",
         "forwards": "east_main_5_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_4_deep2",
         "functions": [
             "unlockDoorForwards"
         ]
@@ -1374,7 +1374,7 @@ const hallways = {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_5_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_4_deep2",
         "functions": [
             "unlockDoorBackwards"
         ]

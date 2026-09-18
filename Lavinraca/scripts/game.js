@@ -229,6 +229,13 @@ const handleMovement = (event) => {
     if (event.repeat) {
         return;
     }
+    const activeTag = document.activeElement.tagName.toLowerCase();
+    const isEditing = activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select';
+
+    // Stop movement if the user is typing in a field
+    if (isEditing) {
+        return;
+    }
     //googled what the key codes are for arrows and stuff
     //its weird
     //normally i'll link to stack overflow articles if i use it
