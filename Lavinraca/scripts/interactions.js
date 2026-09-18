@@ -176,18 +176,26 @@ const calculateOddsSpooky = () => {
   const hallwayCountMultiplier = 3;
 
   if (globalDataObject.hallways_entered > 51 * hallwayCountMultiplier) {
-    oddsToBeat += -.1;
+    oddsToBeat += -.05;
   }
 
   if (globalDataObject.hallways_entered > 13 * hallwayCountMultiplier) {
-    oddsToBeat += -.1;
+    oddsToBeat += -.05;
   }
 
   if (globalDataObject.hallways_entered > 31 * hallwayCountMultiplier) {
-    oddsToBeat += -.1;
+    oddsToBeat += -.05;
   }
 
   if (globalDataObject.hallways_entered > 66 * hallwayCountMultiplier) {
+    oddsToBeat += -.05;
+  }
+
+  if (globalDataObject.hallways_entered > 113 * hallwayCountMultiplier) {
+    oddsToBeat += -.05;
+  }
+
+  if (globalDataObject.hallways_entered > 666 * hallwayCountMultiplier) {
     oddsToBeat += -.1;
   }
 

@@ -238,7 +238,7 @@ svg {
 
 #popup {
   z-index: 1113;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.75);
   width: 100%;
   height: 100%;
   position: fixed;

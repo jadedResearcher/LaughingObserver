@@ -1427,7 +1427,7 @@ const hallways = {
     "east_main_5_deep2": {
         "roomID": "east_main_5",
         "src": "CopyOfACopy/ADeep2",
-        "forwards": "TODO",
+        "forwards": "east_main_6_enter",
         "left": "east_main_5_left2",
         "right": "east_main_5_right2",
         "backwards": "east_main_5_deep1",
@@ -1459,6 +1459,80 @@ const hallways = {
         "backwards": "east_main_room2_backup",
         "functions": ["pumpkin1"]
     },
+
+    //east_main_6 start
+    "east_main_6_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_6_deep1",
+        "backwards": "east_main_5_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_6_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_6_deep1",
+        "backwards": "east_main_5_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_6_deep1": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/RightDoorDeep1",
+        "forwards": "east_main_6_deep2",
+        "left": "east_main_6_left1",
+        "right": "east_main_6_right1",
+        "backwards": "east_main_6_backup",
+        "functions": []
+    },
+    "east_main_6_left1": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_6_deep1",
+        "backwards": "east_main_6_deep1",
+        "functions": []
+    },
+    "east_main_6_right1": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_6_deep1",
+        "right": null,
+        "backwards": "east_main_6_deep1",
+        "functions": []
+    },
+    "east_main_6_left2": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_6_deep2",
+        "backwards": "east_main_6_deep2",
+        "functions": []
+    },
+    "east_main_6_right2": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": null,
+        "left": "east_main_6_deep2",
+        "right": null,
+        "backwards": "east_main_6_deep2",
+        "functions": []
+    },
+    "east_main_6_deep2": {
+        "roomID": "east_main_6",
+        "src": "CopyOfACopy/RightDoorDeep2",
+        "forwards": "TODO",
+        "left": "east_main_6_left2",
+        "right": "east_main_6_right2",
+        "backwards": "east_main_6_deep1",
+        "functions": []
+    }
 
 
 
