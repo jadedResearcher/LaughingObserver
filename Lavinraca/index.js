@@ -1,7 +1,7 @@
 const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
-
+let seerOfVoid = false;
 let flavorTextAndMovementButtonsVisible = true;
 
 const bgMusic = new Audio(wind);
@@ -13,6 +13,9 @@ spookyLoop.loop = true;
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
   load();
+  if (seerOfVoidCheck()) {
+    seerOfVoid = true;
+  }
   wireUpVisionControl();
   addIDToHallways();
   wireUpPopupClose();
@@ -26,7 +29,6 @@ window.onload = () => {
 
   }
 
-  console.log("JR NOTE: hello world")
   /*
   game.onclick = () => {
     game.play();
@@ -42,13 +44,23 @@ window.onload = () => {
 }
 
 const wireUpVisionControl = () => {
+  const body = document.querySelector("body")
   visionControl.onclick = () => {
     if (flavorTextAndMovementButtonsVisible) {
       storyContainer.style.display = "none";
+      //css vars are WAY easier than i used to do it in SBURBSim
+      if (seerOfVoid) {
+        body.style.setProperty('--void_display', 'block');
+      }
       visionControl.style.backgroundPositionY = "0px"
       flavorTextAndMovementButtonsVisible = false;
     } else {
       storyContainer.style.display = "block";
+      if (seerOfVoid) {
+
+        body.style.setProperty('--void_display', 'none');
+      }
+
       flavorTextAndMovementButtonsVisible = true;
       visionControl.style.backgroundPositionY = "25px"
     }

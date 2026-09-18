@@ -25,6 +25,12 @@ const isItFriday = () => {
 
 }
 
+const seerOfVoidCheck = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get('seerOfVoid'); //a classic
+}
+
 const probablyMobile = () => {
   //a finger or whatever
   const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;

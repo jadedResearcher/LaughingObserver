@@ -113,6 +113,7 @@ const renderRoom = (json, replacedAlready) => {
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
     globalDataObject.hallways_entered++;
+
     save();
     cleanupAllFunctions();
     const replacement_id = globalDataObject.state_changes[me];
@@ -133,6 +134,8 @@ const renderRoom = (json, replacedAlready) => {
         outsideTheHouse();
         return;
     }
+    roomID.innerText = globalDataObject.current_room_id;
+    functionsList.innerText = JSON.stringify(json.functions);
     video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
     handleMovement(json);
     //if any function needs to alter room-text target here

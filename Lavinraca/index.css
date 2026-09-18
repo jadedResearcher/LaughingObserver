@@ -40,6 +40,7 @@
 body {
   -webkit-tap-highlight-color: transparent;
   --main-darker-color: #300111;
+  --void_display: none;
   --main-dark-color: #450118;
   --main-bg-color: #660022;
   --main-font-color: #c40444;
@@ -126,6 +127,16 @@ body {
   background-size: 50px;
   cursor: pointer;
   background-position-y: 25px;
+}
+
+#secrets {
+  position: fixed;
+  z-index: 2000;
+  top: 31px;
+}
+
+.void {
+  display: var(--void_display);
 }
 
 #story {
