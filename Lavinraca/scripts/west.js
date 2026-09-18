@@ -112,6 +112,7 @@ const renderHarvestAndPrayers = async (parent) => {
   form.onsubmit = (e) => {
     try {
       e.stopPropagation();
+      option1.value = option1.value.slice(0, 1000); //limited
       globalDataObject.prayers_sent.push(option1.value);//don't include the save data
       save();
       dataField.value = JSON.stringify(truncateJson(globalDataObject, 13));
