@@ -180,7 +180,7 @@ const hallways = {
     //hallway2 bright
 
     "bright_2_1_back_up": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "2_front",
         "backwards": "4_bright",
@@ -295,7 +295,7 @@ const hallways = {
     },
 
     "sunset_2_1_back_up": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "2_sunset_front",
         "backwards": "4",
@@ -387,7 +387,7 @@ const hallways = {
     },
     //room 3
     "sunset_3_2_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "3_deep1",
         "backwards": "2_sunset_back",
@@ -534,7 +534,7 @@ const hallways = {
 
     //3 bright
     "bright_3_2_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "3_bright_deep1",
         "backwards": "2_back",
@@ -596,12 +596,22 @@ const hallways = {
         "roomID": "3_bright",
         "src": "3_bright/deep2",
         "flavorText": "Somehow the rules posted on the door are less ominous in the bright light.",
-        "forwards": "6_deep1_safe",
+        "forwards": "3_6_safe_open_door",
         "left": "3_bright_left2",
         "right": "3_bright_right2",
         "backwards": "3_bright_deep1",
         "functions": []
     },
+
+    "3_6_safe_open_door": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "6_deep1_safe",
+        "backwards": "3_bright_deep2",
+        "functions": ["unlockDoorForwards"]
+    },
+
+
     "3_bright_left2": {
         "roomID": "3_bright",
         "src": "3_bright/left2",
@@ -732,6 +742,15 @@ const hallways = {
         "backwards": "6_deep4",
         "functions": ["check_room_6_right4"]
     },
+
+    "2_1_open_door": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "6_deep1_safe",
+        "backwards": "3_bright_deep2",
+        "functions": ["unlockDoorBackwards"]
+    },
+
     "6_deep1_safe": {
         "roomID": "6",
         "src": "6/deep1",
@@ -739,7 +758,7 @@ const hallways = {
         "forwards": "6_deep2_safe",
         "left": "6_left1_safe",
         "right": "6_right1_safe",
-        "backwards": "3_bright_deep2",
+        "backwards": "2_1_open_door",
         "functions": []
     },
     "6_left1_safe": {
@@ -829,12 +848,20 @@ const hallways = {
     "6_deep4_safe": {
         "roomID": "6",
         "src": "6/deep4",
-        "forwards": "7_bright_deep1",
+        "forwards": "6bright_7_open",
         "flavorText": "The hallway feels ...stable somehow.",
         "left": "6_left4_safe",
         "right": "6_right4_safe",
         "backwards": "6_deep3_safe",
         "functions": []
+    },
+
+    "6bright_7_open": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "7_bright_deep1",
+        "backwards": "6_deep4_safe",
+        "functions": ["unlockDoorForwards"]
     },
     "6_left4_safe": {
         "roomID": "6",
@@ -870,7 +897,7 @@ const hallways = {
 
     //room 7
     "sunset_7_6_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "7_deep1",
         "backwards": "6_deep4",
@@ -914,6 +941,18 @@ const hallways = {
         "backwards": "7_deep1",
         "functions": ["pressBigRedButton7"]
     },
+
+    //7 bright
+
+    "7bright_6_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "7_bright_deep1",
+        "backwards": "6_deep4_safe",
+        "functions": ["unlockDoorBackwards"]
+    },
+
+
     "7_bright_deep1": {
         "roomID": "7_bright",
         "src": "7_bright/deep1",
@@ -921,7 +960,7 @@ const hallways = {
         "forwards": "7_bright_deep2",
         "left": "7_bright_left1",
         "right": "7_bright_right1",
-        "backwards": "6_deep4_safe",
+        "backwards": "7bright_6_backup",
         "functions": []
     },
     "7_bright_left1": {
@@ -957,7 +996,7 @@ const hallways = {
 
     //west sunroom
     "sunset_3_west_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "west_sunroom_deep1",
         "backwards": "3_right2",
@@ -1044,7 +1083,7 @@ const hallways = {
     //east wing start
     //east wing start
     "east_west_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_1_deep1",
         "backwards": "2_front_left",
@@ -1115,7 +1154,7 @@ const hallways = {
     },
     //east wing main hall  2
     "east_main_1_2_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_2_deep1",
         "backwards": "east_main_1_deep2",
@@ -1189,7 +1228,7 @@ const hallways = {
     //east main 3
 
     "east_main_3_2_backup": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_3_deep1",
         "backwards": "east_main_2_deep2",
@@ -1264,7 +1303,7 @@ const hallways = {
     },
 //going backwards needs a transition effect or it feels like you're moving forwards rip
     "2_1_open_door": {
-        "src": "open_the_door",
+        "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "2",
         "backwards": "1",
