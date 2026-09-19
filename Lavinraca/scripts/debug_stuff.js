@@ -280,6 +280,49 @@ const debugGenerateRoomWithSingleDoorBehindYou = (id) => {
   //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
+
+//until you have Prayed for a new room to exist, harvest rooms are placeholders
+//they all let you Pray, and they all let you Gamble (lets go gambling)
+//GATE is Gambling, Arbitration, Teaching and Eating
+//and boy does our girl love all four. the reward for gambling is books, which come wiht knowledge
+//and of course if multiple people are praying in the same room, the Harvest needs to Arbitrate their wishes
+//all thats left is eating .... maybe i can do something with meat and candy here.
+const debugGenerateHarvestRoom = (id) => {
+
+  const videos = ["eyes", "fox", "fox"];
+
+  const map_template = `"${id}_enter": {
+        "src": "open_the_door",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorForwards"]
+    },"${id}_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorBackwards"]
+    },
+  "${id}_deep1": {
+      "roomID": "${id}",
+      "flavorText": "A statue of the Harvest's Head looms over you.",
+      "src": "Harvest/${pickFrom(videos)}",
+      "backwards": "${id}_backup",
+      "functions": ["prayForRoom", "letsGoGamble1", "letsGoGamble10", "letsGoGamble100"]
+    }`
+
+  //trust me on this, outputs something i can copy and paste into the json
+  const massaged_map_template = `{${map_template}}`;
+
+  //console.log("JR NOTE: ", massaged_map_template);
+
+  const data = JSON.parse(massaged_map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  const str = (JSON.stringify(data, null, 4));
+  //gets rid of first and last curly braces, not supposed to copy
+  console.log(`//${id} start${str.slice(1, -1)}`)
+  //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+}
+
 const debugGenerateCopiedHallwayWithVersions = (id, versions) => {
   const version = pickFrom(versions);
 

@@ -1,3 +1,22 @@
+/*
+note to future me, i briefly considered (on 9/19/2026, talk like a pirate day me hearties)
+to try preloading video assets
+
+it would have required me to rearchitect how i interact with video, but might have been worht it
+
+unfortunately, it only works while on a server
+
+i don't run a server while developing, and anyone who tries to make mods of my code won't either
+
+i don't want to bundle wiht a server or do any of the shitty hacky workarounds google suggested 
+
+SO!
+
+no preloading assets. 
+
+future me, don't get tempted
+*/
+
 const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
@@ -12,6 +31,7 @@ spookyLoop.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
 window.onload = () => {
+  alert("NOTE: this game loads many short videos. If it seems to hang, a video may be loading.")
   load();
   if (seerOfVoidCheck()) {
     seerOfVoid = true;

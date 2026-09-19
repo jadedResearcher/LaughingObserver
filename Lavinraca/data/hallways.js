@@ -1246,7 +1246,7 @@ const hallways = {
     "east_main_3_left1": {
         "roomID": "east_main_3",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": null,
+        "forwards": "east_main_room1_enter",
         "left": null,
         "right": "east_main_3_deep1",
         "backwards": "east_main_3_deep1",
@@ -1287,7 +1287,38 @@ const hallways = {
         "right": "east_main_3_right2",
         "backwards": "east_main_3_deep1",
         "functions": []
-    },//east_main_4 start
+    },//east_main_room1 start
+    "east_main_room1_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_room1_deep1",
+        "backwards": "east_main_3_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_room1_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_room1_deep1",
+        "backwards": "east_main_3_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_room1_deep1": {
+        "roomID": "east_main_room1",
+        "src": "Harvest/eyes",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "backwards": "east_main_room1_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_main_4 start
     "east_main_4_enter": {
         "src": "open_the_door",
         "flavorText": "",
