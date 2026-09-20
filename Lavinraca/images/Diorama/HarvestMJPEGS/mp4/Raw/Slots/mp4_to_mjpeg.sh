@@ -1,7 +1,7 @@
 #!/bin/bash
 #mjpeg is what the tiny screen dm is making for me for dioramas uses
 #gotta be small, and not many frames a second
-#135x240 less than 900 kb
+#169x80 less than 900 kb
 #17 fps is what the prototype could handle but the real one might be able to do more
 #my goal is both to have a diorama with Belief and company in it
 #but also a soure of shifting light that can be offs screen in a diorama
