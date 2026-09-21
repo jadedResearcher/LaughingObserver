@@ -1,0 +1,262 @@
+
+const doll_directories = ["images/ClownDollParts/body/", "images/ClownDollParts/face/", "images/ClownDollParts/hats/", "images/ClownDollParts/extra/"];
+
+//modified from https://stackoverflow.com/questions/46399223/async-await-in-image-loading
+const waitForImage = (image, src) => {
+  return new Promise((resolve, reject) => {
+    image.onload = () => resolve(true)
+    image.onerror = reject
+    image.src = src;
+  })
+}
+
+
+const makeDollFromDirectories = async (directory_list) => {
+  const doll = new Doll(directory_list.map((d) => new Layer(d)));
+  await doll.init();
+  return doll;
+}
+//https://archiveofourown.org/works/58111936
+class Doll {
+  layers = [];
+  constructor(layers) {
+    this.layers = layers;
+  }
+
+  init = async () => {
+    for (let l of this.layers) {
+      await l.init();
+    }
+  }
+
+
+  render = async (parent, dollContainer) => {
+    const fuckery = isItFriday();
+    if (!dollContainer) {
+      dollContainer = createElementWithClassAndParent("div", parent, "doll-container section");
+    } else {
+      dollContainer.innerHTML = ""; //clear it out for a rerender
+    }
+    const dollWrapper = createElementWithClassAndParent("div", dollContainer, "doll-wrapper");
+    const doll = createElementWithClassAndParent("div", dollWrapper, "doll");
+
+
+    const controls = createElementWithClassAndParent("div", dollContainer, "controls");
+
+    let canvas = document.createElement("canvas");
+    const funCanvas = document.createElement("canvas");
+    funCanvas.className = "fun-canvas";
+
+    canvas.width = 0;
+    canvas.height = 0;
+    if (fuckery) {
+      canvas.alt = "Press Me For A Surprise :o)"
+      canvas.title = "Press Me For A Surprise :o)";
+    }
+
+    for (let layer of this.layers) {
+      await layer.render(doll, controls, canvas, funCanvas, fuckery, dollContainer, this.render);
+    }
+
+    doll.append(canvas);
+    //upscale for maximum aliasing
+    if (fuckery) {
+      const funContext = funCanvas.getContext("2d");
+      funContext.imageSmoothingEnabled = true; //glitch it out as much as you can please :)
+      funContext.drawImage(funCanvas, 0, 0, canvas.width * 3, canvas.height * 3);
+      funContext.clearRect(0, 0, canvas.width / 3, canvas.height / 3); //remove tiny version left for anti aliasing purposes
+
+      doll.append(funCanvas);
+    }
+
+    const randomButton = createElementWithClassAndParent("button", doll, "randomize-whole-doll-button");
+    randomButton.innerText = "Randomize Whole Doll";
+
+    randomButton.onclick = () => {
+      for (let l of this.layers) {
+        l.chooseRandomPart();
+      }
+      this.render(parent, dollContainer); //rerender over the last container
+    }
+
+    const downloadButton = createElementWithClassAndParent("button", doll, "randomize-whole-doll-button");
+    downloadButton.innerText = "Download Doll";
+
+    downloadButton.onclick = () => {
+      const data = canvas.toDataURL();
+      const link = document.createElement("a");
+      link.download = "doll.png";
+      link.href = data;
+      link.click();
+    }
+
+
+
+    if (fuckery) {
+      canvas.onmouseenter = () => {
+        funCanvas.style.display = "block";
+      }
+
+      funCanvas.onmouseleave = () => {
+        funCanvas.style.display = "none";
+      }
+      haveFunGlitchingCanvas(funCanvas); //:) :) ;)
+
+    }
+
+  }
+}
+
+class Layer {
+  directory = "http://farragofiction.com/404";
+  parts = []; //loaded from directory (it has to have an apache file structure type list)
+  current_part = ""; //what has been chosen?
+  allowPartsPreview = false; //slow machines or large doll parts could make this a problem, less mobile friendly
+  constructor(directory) {
+    this.directory = directory;
+  }
+
+  init = async () => {
+    this.parts = await getImages(this.directory);
+    this.chooseRandomPart();
+  }
+
+  chooseRandomPart = () => {
+    return this.choosePart(pickFrom(this.parts));
+  }
+
+  choosePart = (part) => {
+    this.current_part = this.directory + part;
+    return this.current_part;
+  }
+
+  handlePartsPicking = (controls, dollContainer, callback) => {
+    const label = createElementWithClassAndParent("h2", controls, "part-label");
+    const select = createElementWithClassAndParent("select", controls);
+    select.disabled = this.parts.length <= 1;
+    const row = createElementWithClassAndParent("div", controls, "part-row");
+
+    this.handleAllowingPartsPreview(controls, dollContainer, callback);
+
+    const customSelect = this.allowPartsPreview ? createElementWithClassAndParent("div", row, "custom-select") : null;
+
+    //const select = createElementWithClassAndParent("select", row);
+    if (this.allowPartsPreview) {
+      customSelect.disabled = this.parts.length <= 1;
+    }
+    let index = 0;
+
+    const createOption = (part, index) => {
+      let customOption;
+      if (this.allowPartsPreview) {
+        customOption = createElementWithClassAndParent("div", customSelect, "custom-option");
+        customOption.value = part;
+        customOption.innerHTML = `${index}<img src='${this.directory + part}'>`;
+        customOption.setAttribute("selected", this.current_part.includes(part));
+      }
+
+      const option = createElementWithClassAndParent("option", select);
+      option.value = part;
+      option.innerText = part;
+      option.selected = this.current_part.includes(part)
+      return customOption;
+    }
+
+
+    //show what was selected at top
+    if (this.allowPartsPreview) {
+      const option = createOption(this.current_part.replaceAll(this.directory, ""), "&#10003;");
+      option.style.cursor = "auto";
+      option.style.pointerEvents = "none";
+    }
+
+    for (let part of this.parts) {
+      index++;
+      const customOption = createOption(part, index);
+      if (customOption) { //only do for looped parts, not currently selected part
+        customOption.onclick = () => {
+          this.choosePart(part);
+          callback(parent, dollContainer); //rerender over the last container
+        }
+      }
+    }
+
+    select.onchange = () => {
+      this.choosePart(select.value);
+      callback(parent, dollContainer, select); //rerender over the last container
+    }
+
+    const parts = this.directory.split("/");
+    label.innerText = titleCase(parts[parts.length - 2]);
+    const randomButton = createElementWithClassAndParent("button", controls);
+    randomButton.innerText = "Randomize";
+    randomButton.style.marginTop = "5px";
+    randomButton.onclick = () => {
+      this.chooseRandomPart();
+      callback(parent, dollContainer, randomButton); //rerender over the last container
+    }
+  }
+
+
+  handleActualRendering = (controls, layerImage, doll, canvas, funCanvas, fuckery) => {
+    if (canvas.width == 0) {
+      canvas.width = layerImage.width;
+      canvas.height = layerImage.height;
+      funCanvas.width = canvas.width;
+      funCanvas.height = canvas.height;
+      doll.style.width = layerImage.width + "px";
+      doll.parentElement.style.width = layerImage.width + "px";
+
+      controls.style.width = document.querySelector("body").clientWidth - layerImage.width + "px";
+    }
+
+    const context = canvas.getContext("2d");
+    context.imageSmoothingEnabled = false;
+
+    context.drawImage(layerImage, 0, 0, canvas.width, canvas.height);
+
+    if (fuckery) {
+      const funContext = funCanvas.getContext("2d");
+      funContext.imageSmoothingEnabled = true; //glitch it out as much as you can please :)
+
+      funContext.drawImage(layerImage, 0, 0, canvas.width / 3, canvas.height / 3); //downscale for maximum aliasing
+    }
+    layerImage.remove();
+  }
+  //https://archiveofourown.org/works/58111936?view_adult=true
+  handleAllowingColorEdits = (controls, dollContainer, callback) => {
+    const checkBoxContainer = createElementWithClassAndParent("div", controls);
+
+
+
+  }
+
+  handleAllowingPartsPreview = (controls, dollContainer, callback) => {
+    const checkBoxContainer = createElementWithClassAndParent("div", controls);
+    const checkBox = createElementWithClassAndParent("input", checkBoxContainer);
+    checkBox.type = "checkbox";
+    checkBox.checked = this.allowPartsPreview;
+
+    const checkLabel = createElementWithClassAndParent("span", checkBoxContainer);
+    checkLabel.innerText = "Allow Parts Preview (slow)"
+    checkBox.onchange = () => {
+      this.allowPartsPreview = !this.allowPartsPreview;
+      callback(parent, dollContainer, false); //rerender over the last container but dont scroll (they want to change color)
+    }
+  }
+
+  render = async (doll, controls, canvas, funCanvas, fuckery, dollContainer, callback) => {
+    const layer_controls = createElementWithClassAndParent("div", controls, "layer-controls sub-section");
+
+
+    this.handlePartsPicking(layer_controls, dollContainer, callback);
+
+    const layerImage = createElementWithClassAndParent("img", doll, "doll-layer");
+    await waitForImage(layerImage, this.current_part);
+
+
+
+    this.handleActualRendering(controls, layerImage, doll, canvas, funCanvas, fuckery); //has to happen after we get the image
+  }
+}
+

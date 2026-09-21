@@ -687,6 +687,26 @@ function embraceTheUnknown() {
 
 }
 
+function editClownsona() {
+  const textEle = story.querySelector("#room-text");
+  const c = createElementWithClassAndParent("div", textEle);
+
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "View Clownsona?"
+  button.onclick = async () => {
+    alert("JR NOTE: save current doll layers to global data object plz")
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = "TODO"
+    const doll = await makeDollFromDirectories(doll_directories);
+
+
+    doll.render(contentEle);
+
+    showExistingPopup(contentEle, "Stop Editing Clownsona")
+
+  }
+}
+
 function pumpkin1() {
   const textEle = story.querySelector("#room-text");
   const c = createElementWithClassAndParent("div", textEle);
