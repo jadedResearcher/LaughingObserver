@@ -696,7 +696,7 @@ function editClownsona() {
   button.onclick = async () => {
     alert("JR NOTE: save current doll layers to global data object plz")
     const contentEle = document.createElement("div");
-    contentEle.innerHTML = "TODO"
+    contentEle.innerHTML = "This clown represents you. You appear this way while praying, to the Harvest. You apepar this way to others. How do you want this clown to be?"
     const doll = await makeDollFromDirectories(doll_directories);
 
 
