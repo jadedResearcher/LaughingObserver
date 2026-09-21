@@ -289,7 +289,7 @@ const debugGenerateRoomWithSingleDoorBehindYou = (id) => {
 //all thats left is eating .... maybe i can do something with meat and candy here.
 const debugGenerateHarvestRoom = (id) => {
 
-  const videos = ["eyes", "fox", "fox"];
+  const videos = ["take_one", "stop", "spin", "meat_walk", "mannequin", "key", "hall", "glory", "gang", "candy_walk", "candy", "bride", "eyes", "fox", "fox", "fox", "fox"];
 
   const map_template = `"${id}_enter": {
         "src": "open_the_door",
