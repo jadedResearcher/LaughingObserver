@@ -25,6 +25,13 @@ let initialDataObject = {
 
 globalDataObject = initialDataObject;
 
+const saveClownsona = () => {
+    if (clownsona) {
+        globalDataObject.clownsona = clownsona.toJSON();
+        save();
+    }
+}
+
 //showing number of keys you have etc
 const saveSideEffects = () => {
     if (globalDataObject.keys > 0) {
@@ -88,7 +95,7 @@ const save = (reason) => {
     //console.log("JR NOTE: Saving game because: ", reason)
     protectFromDesyncIssues();//will handle anything that needs to be combined with what's currently in local storage (if another tab saved before us)
     globalDataObject.lastSaveTimeCode = Date.now();
-    if (!globalDataObject.clownsona) {
+    if (clownsona) {
         globalDataObject.clownsona = clownsona.toJSON();
     }
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));

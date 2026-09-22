@@ -57,6 +57,12 @@ class Doll {
     }
   }
 
+  rerenderBuffer = () => {
+    const ctx = this.buffer.getContext("2d");
+    ctx.clearRect(0, 0, this.buffer.width, this.buffer.height);
+    this.renderDollToInternalBuffer();
+  }
+
   getPrerenderedClown = async () => {
     console.log("JR NOTE: getPrerenderedClown")
     if (this.bufferFilled) {
@@ -177,6 +183,13 @@ class Layer {
 
   choosePart = (part) => {
     this.current_part = this.directory + part;
+    //this is SPECIFIC to lavinraca 2026 so uh, remove this if i reuse it
+    //of note, lavinraca 2026 assumes only a single doll at a time can have parts chosen.
+    if (clownsona) {
+      saveClownsona();
+      clownsona.rerenderBuffer();
+    }
+
     return this.current_part;
   }
 
