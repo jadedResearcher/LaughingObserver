@@ -121,6 +121,10 @@ const load = () => {
             globalDataObject.masks = 0;
         }
 
+        if (globalDataObject.clownsona) {
+            clownsona.fromJSON(globalDataObject.clownsona)
+        }
+
         /*
           only objects that need to respond to functions have to be separately parsed as json
           if they just store data (like facts) its fine to leave them as parsed json
