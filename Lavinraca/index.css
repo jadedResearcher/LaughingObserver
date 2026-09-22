@@ -156,6 +156,7 @@ svg {
 
 #canvas {
   z-index: 32;
+  position: relative;
   margin-left: auto;
   aspect-ratio: auto;
   margin-right: auto;

@@ -17,6 +17,7 @@ no preloading assets.
 future me, don't get tempted
 */
 
+let renderingClownsona = undefined; //will be the sprite buffer to render sometimes
 const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
@@ -30,7 +31,8 @@ const spookyLoop = new Audio(spooky_source);
 spookyLoop.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
-window.onload = () => {
+window.onload = async () => {
+  clownsona = await makeSimpleDoll(); //loading will set its specifics
   alert("NOTE: this game loads many short videos. If it seems to hang, a video may be loading.")
   load();
   if (seerOfVoidCheck()) {
@@ -105,6 +107,11 @@ const renderVideoToCanvas = () => {
 
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  if (renderingClownsona) {
+    const x = (canvas.width - 300) / 2;
+    const y = (canvas.height - 300) / 2;
+    ctx.drawImage(renderingClownsona, x, y, 300, 300);
+  }
   requestAnimationFrame(renderVideoToCanvas);
 }
 

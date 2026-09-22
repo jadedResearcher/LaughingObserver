@@ -687,20 +687,24 @@ function embraceTheUnknown() {
 
 }
 
+async function showClownsonaInVideo() {
+  const sprite = await clownsona.getPrerenderedClown();
+  renderingClownsona = sprite;
+}
+
 function editClownsona() {
   const textEle = story.querySelector("#room-text");
   const c = createElementWithClassAndParent("div", textEle);
 
   const button = createElementWithClassAndParent("button", c);
-  button.innerText = "View Clownsona?"
+  button.innerText = "Edit Clownsona?"
   button.onclick = async () => {
     alert("JR NOTE: save current doll layers to global data object plz")
     const contentEle = document.createElement("div");
     contentEle.innerHTML = "This clown represents you. You appear this way while praying, to the Harvest. You apepar this way to others. How do you want this clown to be?"
-    const doll = await makeDollFromDirectories(doll_directories);
 
 
-    doll.render(contentEle);
+    clownsona.render(contentEle);
 
     showExistingPopup(contentEle, "Stop Editing Clownsona")
 

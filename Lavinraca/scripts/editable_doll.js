@@ -1,6 +1,6 @@
 
 const doll_directories = ["images/ClownDollParts/body/", "images/ClownDollParts/face/", "images/ClownDollParts/hats/", "images/ClownDollParts/extra/"];
-
+const doll_base = "images/ClownDollParts/";
 //modified from https://stackoverflow.com/questions/46399223/async-await-in-image-loading
 const waitForImage = (image, src) => {
   return new Promise((resolve, reject) => {
@@ -16,17 +16,67 @@ const makeDollFromDirectories = async (directory_list) => {
   await doll.init();
   return doll;
 }
+
+const makeSimpleDoll = async () => {
+  return await makeDollFromDirectories(doll_directories)
+}
 //https://archiveofourown.org/works/58111936
 class Doll {
   layers = [];
+  buffer;
+  bufferFilled = false;
   constructor(layers) {
     this.layers = layers;
+    //not using an OffScreenCanvas or whatever because I want to be able to render it to debug
+    this.buffer = document.createElement("canvas");
+    this.buffer.width = 300;
+    this.buffer.height = 300;
+
   }
 
   init = async () => {
     for (let l of this.layers) {
       await l.init();
     }
+  }
+
+  toJSON = () => {
+    return JSON.stringify(this.layers.map((l) => l.current_part.replace(doll_base, "")))
+  }
+
+  /*example: 
+  ['images/ClownDollParts/body/bigPants.png',
+   'images/ClownDollParts/face/leGrowth.png',
+    'images/ClownDollParts/hats/leaf.png',
+     'images/ClownDollParts/extra/gamerCat.png']
+  */
+  fromJSON = (json_string) => {
+    const json_parse = JSON.parse(json_string);
+    for (let i = 0; i < json_parse.length; i++) {
+      this.layers[i].current_part = `${doll_base}${json_parse[i]}`;
+    }
+  }
+
+  getPrerenderedClown = async () => {
+    console.log("JR NOTE: getPrerenderedClown")
+    if (this.bufferFilled) {
+      return this.buffer;
+    } else {
+      await this.renderDollToInternalBuffer();
+      return this.buffer;
+    }
+    console.log("JR NOTE: impossible empty return")
+  }
+
+  renderDollToInternalBuffer = async () => {
+    console.log("JR NOTE: rendering clownsona for first time to canvas");
+    for (let layer of this.layers) {
+      console.log("JR NOTE: rendering layer")
+      await layer.renderJustDoll(this.buffer);
+    }
+    this.bufferFilled = true;
+    console.log("JR NOTE: returning buffer")
+    return this.buffer;
   }
 
 
@@ -198,6 +248,20 @@ class Layer {
   }
 
 
+  renderJustDoll = async (canvas) => {
+    const layerImage = document.createElement("img");
+    await waitForImage(layerImage, this.current_part);
+    if (canvas.width == 0) {
+      canvas.width = layerImage.width;
+      canvas.height = layerImage.height;
+    }
+
+    const context = canvas.getContext("2d");
+    context.imageSmoothingEnabled = false;
+    context.drawImage(layerImage, 0, 0, canvas.width, canvas.height);
+
+  }
+
   handleActualRendering = (controls, layerImage, doll, canvas, funCanvas, fuckery) => {
     if (canvas.width == 0) {
       canvas.width = layerImage.width;
@@ -223,13 +287,7 @@ class Layer {
     }
     layerImage.remove();
   }
-  //https://archiveofourown.org/works/58111936?view_adult=true
-  handleAllowingColorEdits = (controls, dollContainer, callback) => {
-    const checkBoxContainer = createElementWithClassAndParent("div", controls);
 
-
-
-  }
 
   handleAllowingPartsPreview = (controls, dollContainer, callback) => {
     const checkBoxContainer = createElementWithClassAndParent("div", controls);

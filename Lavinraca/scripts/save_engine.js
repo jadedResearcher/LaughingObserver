@@ -4,6 +4,7 @@ const SAVE_KEY = 'LAVINRACA_2026_SHESMIDDLEAGEDNOW'
 //up to what uses this to define this
 //https://catalystsbathroomlibrary.neocities.org/
 
+let clownsona;
 
 let initialDataObject = {
     hallways_entered: 0,
@@ -87,6 +88,9 @@ const save = (reason) => {
     //console.log("JR NOTE: Saving game because: ", reason)
     protectFromDesyncIssues();//will handle anything that needs to be combined with what's currently in local storage (if another tab saved before us)
     globalDataObject.lastSaveTimeCode = Date.now();
+    if (!globalDataObject.clownsona) {
+        globalDataObject.clownsona = clownsona.toJSON();
+    }
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));
     const saveNoise = new Audio("SoundEffects/single_heart.mp3");
     saveNoise.play();
