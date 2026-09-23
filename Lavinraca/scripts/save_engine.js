@@ -129,7 +129,9 @@ const load = () => {
         }
 
         if (globalDataObject.clownsona) {
-            clownsona.fromJSON(globalDataObject.clownsona)
+            clownsona.fromJSON(globalDataObject.clownsona);
+            clownsona.rerenderBuffer();
+
         }
 
         /*
