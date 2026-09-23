@@ -551,6 +551,7 @@ function lookIntoTheMirror() {
       globalDataObject.stranger = true;
       //your face is not your face your you is not your you
       clownsona.fromJSON(globalDataObject.clownsona)
+      clownsona.rerenderBuffer();
       save();
       load();//sets defaults if whoevers save doesnt have them
       setTimeout(() => {
