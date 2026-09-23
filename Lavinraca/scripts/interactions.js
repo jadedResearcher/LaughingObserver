@@ -565,6 +565,12 @@ function lookIntoTheMirror() {
   }
 }
 
+function toggleSeerOfVoid() {
+  seerOfVoid = !seerOfVoid;
+  const textEle = story.querySelector("#room-text");
+  textEle.innerText += seerOfVoid ? " What will you find in the void within?" : " There is a peace in not knowing.";
+}
+
 
 
 function unlockDoorForwards() {

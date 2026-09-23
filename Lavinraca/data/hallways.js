@@ -1740,10 +1740,10 @@ const hallways = {
     "east_main_room1_right1": {
         "roomID": "east_main_room1",
         "src": "MirrorRoom/right1",
-        "flavorText": "The light is dazzling.",
+        "flavorText": "The light is dazzling. It makes you want to close your eyes.",
         "backwards": "east_main_room1_deep1",
         "left": "east_main_room1_deep1",
-        "functions": []
+        "functions": ["toggleSeerOfVoid"]
     },
     "east_main_room1_deep1": {
         "roomID": "east_main_room1",
