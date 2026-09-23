@@ -4,6 +4,7 @@
 const test1 = () => {
   console.log("JR NOTE: test1")
 }*/
+//do everything you can to not make any of these async, breaks cleanup functions
 
 //bespoke functions can use this to ask if a state has been set
 const checkForState = (state_name) => {
@@ -548,6 +549,8 @@ function lookIntoTheMirror() {
       textEle.innerText = "You feel a wave of vertigo as your world view shifts.";
       globalDataObject = another_you_from_another_world;
       globalDataObject.stranger = true;
+      //your face is not your face your you is not your you
+      clownsona.fromJSON(globalDataObject.clownsona)
       save();
       load();//sets defaults if whoevers save doesnt have them
       setTimeout(() => {
@@ -687,16 +690,17 @@ function embraceTheUnknown() {
 
 }
 
-async function showClownsonaInVideo() {
-  const sprite = await clownsona.getPrerenderedClown();
-  renderingClownsona = sprite;
+//don't make this async, it breaks teh cleanup stuff.
+function showClownsonaInVideo() {
+  clownsona.getPrerenderedClown().then((sprite) => {
+    renderingClownsona = sprite;
+  })
 }
 
 function editClownsona() {
   const textEle = story.querySelector("#room-text");
-  const c = createElementWithClassAndParent("div", textEle);
 
-  const button = createElementWithClassAndParent("button", c);
+  const button = createElementWithClassAndParent("button", textEle);
   button.innerText = "Edit Clownsona?"
   button.onclick = async () => {
     alert("JR NOTE: save current doll layers to global data object plz")

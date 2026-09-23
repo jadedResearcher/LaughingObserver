@@ -109,6 +109,7 @@ const renderID = (id) => {
     renderRoom(json);
 }
 const renderRoom = (json, replacedAlready) => {
+    renderingClownsona = undefined;//clear it out
     console.log("JR NOTE: renderRoom json is", json)
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
@@ -199,6 +200,7 @@ const moveRight = () => {
 const cleanupAllFunctions = () => {
     for (let f of cleanupFunctions) {
         if (f) {
+            console.log("JR NOTE: f is", f)
             f();
         }
     }

@@ -108,9 +108,15 @@ const renderVideoToCanvas = () => {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   if (renderingClownsona) {
-    const x = (canvas.width - 300) / 2;
-    const y = (canvas.height - 300) / 2;
-    ctx.drawImage(renderingClownsona, x, y, 300, 300);
+    ctx.save();
+
+    ctx.globalAlpha = 0.5;
+    const size = 810;
+    //fiddling till it kinda looks like its in the mirror
+    const x = (canvas.width - size) / 2 + size / 7;
+    const y = (canvas.height - size) / 2;
+    ctx.drawImage(renderingClownsona, x, y, size, size);
+    ctx.restore();
   }
   requestAnimationFrame(renderVideoToCanvas);
 }

@@ -1715,7 +1715,7 @@ const hallways = {
         "src": "open_the_door",
         "flavorText": "",
         "forwards": "east_main_room1_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_3_left1",
         "functions": [
             "unlockDoorForwards"
         ]
@@ -1724,7 +1724,7 @@ const hallways = {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_room1_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_3_left1",
         "functions": [
             "unlockDoorBackwards"
         ]
@@ -1732,10 +1732,10 @@ const hallways = {
     "east_main_room1_left1": {
         "roomID": "east_main_room1",
         "src": "MirrorRoom/left1",
-        "flavorText": "Was that always your face?",
+        "flavorText": "Was that always your face? You feel like looking into the Mirror would change you into someone who is not you.",
         "backwards": "east_main_room1_deep1",
         "right": "east_main_room1_deep1",
-        "functions": ["showClownsonaInVideo", "editClownsona"]
+        "functions": ["showClownsonaInVideo", "editClownsona", "lookIntoTheMirror"]
     },
     "east_main_room1_right1": {
         "roomID": "east_main_room1",
