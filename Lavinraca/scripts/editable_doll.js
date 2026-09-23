@@ -1,3 +1,9 @@
+//NOTE: this will NOT work locally
+//it needs to be running under a web server (with an apache index)
+//to grab doll parts
+//if you're running this without that but WITH a server, try just pointing it at  https://laughing.observer/Lavinraca/images/ClownDollParts/
+//instead of the relatively urls its using that start with "images/ClownDollParts/etc"
+
 
 const doll_directories = ["images/ClownDollParts/body/", "images/ClownDollParts/face/", "images/ClownDollParts/hats/", "images/ClownDollParts/extra/"];
 const doll_base = "images/ClownDollParts/";
@@ -173,7 +179,11 @@ class Layer {
   }
 
   init = async () => {
-    this.parts = await getImages(this.directory);
+    try {
+      this.parts = await getImages(this.directory);
+    } catch (e) {
+      console.error("JR NOTE: error fetching doll, this probably means you're trying to run locally and don't have a server, so it'll always fail security (CORS), check the comments for details on how to resolve this , but probably you're gonna want to be having a server AND pointing it at laughing.observer since it has the apache index its looking for to understand file structures", e)
+    }
     this.chooseRandomPart();
   }
 

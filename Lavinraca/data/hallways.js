@@ -1288,29 +1288,29 @@ const hallways = {
         "backwards": "east_main_3_deep1",
         "functions": []
     },//east_main_room1 start
-    "east_main_room1_enter": {
+    "east_main_room3_enter": {
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "east_main_room1_deep1",
+        "forwards": "east_main_room3_deep1",
         "backwards": "east_main_3_left1",
         "functions": [
             "unlockDoorForwards"
         ]
     },
-    "east_main_room1_backup": {
+    "east_main_room3_backup": {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
-        "forwards": "east_main_room1_deep1",
+        "forwards": "east_main_room3_deep1",
         "backwards": "east_main_3_left1",
         "functions": [
             "unlockDoorBackwards"
         ]
     },
-    "east_main_room1_deep1": {
-        "roomID": "east_main_room1",
+    "east_main_room3_deep1": {
+        "roomID": "east_main_room3",
         "src": "Harvest/eyes",
         "flavorText": "A statue of the Harvest's Head looms over you.",
-        "backwards": "east_main_room1_backup",
+        "backwards": "east_main_room3_backup",
         "functions": [
             "prayForRoom",
             "letsGoGamble1",
@@ -1595,7 +1595,7 @@ const hallways = {
     "east_main_7_left1": {
         "roomID": "east_main_7",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": null,
+        "forwards": "east_main_room3_enter",
         "left": null,
         "right": "east_main_7_deep1",
         "backwards": "east_main_7_deep1",
@@ -1708,6 +1708,50 @@ const hallways = {
         "left": "east_main_8_left2",
         "right": "east_main_8_right2",
         "backwards": "east_main_8_deep1",
+        "functions": []
+    },
+    //east_main_room1 start
+    "east_main_room1_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_room1_deep1",
+        "backwards": "TODO",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_room1_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_room1_deep1",
+        "backwards": "TODO",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_room1_left1": {
+        "roomID": "east_main_room1",
+        "src": "MirrorRoom/left1",
+        "flavorText": "Was that always your face?",
+        "backwards": "east_main_room1_deep1",
+        "right": "east_main_room1_deep1",
+        "functions": ["showClownsonaInVideo", "editClownsona"]
+    },
+    "east_main_room1_right1": {
+        "roomID": "east_main_room1",
+        "src": "MirrorRoom/right1",
+        "flavorText": "The light is dazzling.",
+        "backwards": "east_main_room1_deep1",
+        "left": "east_main_room1_deep1",
+        "functions": []
+    },
+    "east_main_room1_deep1": {
+        "roomID": "east_main_room1",
+        "src": "MirrorRoom/deep1",
+        "flavorText": "You feel uneasy.",
+        "backwards": "east_main_room1_backup",
+        "left": "east_main_room1_left1",
+        "right": "east_main_room1_right1",
         "functions": []
     }
 

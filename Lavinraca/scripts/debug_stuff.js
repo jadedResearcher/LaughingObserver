@@ -280,6 +280,59 @@ const debugGenerateRoomWithSingleDoorBehindYou = (id) => {
   //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }
 
+const debugGenerateRoomWithLeftAndRightViews = (id) => {
+
+  const map_template = `"${id}_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorForwards"]
+    },"${id}_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "${id}_deep1",
+        "backwards": "TODO",
+        "functions": ["unlockDoorBackwards"]
+    },
+  "${id}_left1": {
+      "roomID": "${id}",
+      "src": "${id}/left1",
+      "backwards": "${id}_deep1",
+      "right": "${id}_deep1",
+      "functions": []
+    },
+      
+    "${id}_right1": {
+      "roomID": "${id}",
+      "src": "${id}/right1",
+      "backwards": "${id}_deep1",
+      "left": "${id}_deep1",
+      "functions": []
+    },
+      
+    "${id}_deep1": {
+      "roomID": "${id}",
+      "src": "${id}/deep1",
+      "backwards": "${id}_backup",
+      "left": "${id}_left1",
+      "right": "${id}_right1",
+      "functions": []
+    }`
+
+  //trust me on this, outputs something i can copy and paste into the json
+  const massaged_map_template = `{${map_template}}`;
+
+  //console.log("JR NOTE: ", massaged_map_template);
+
+  const data = JSON.parse(massaged_map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  const str = (JSON.stringify(data, null, 4));
+  //gets rid of first and last curly braces, not supposed to copy
+  console.log(`//${id} start${str.slice(1, -1)}`)
+  //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
+}
+
 
 //until you have Prayed for a new room to exist, harvest rooms are placeholders
 //they all let you Pray, and they all let you Gamble (lets go gambling)
