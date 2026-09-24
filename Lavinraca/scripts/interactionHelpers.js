@@ -115,7 +115,14 @@ const maskGet = () => {
 
 //more complicated than most things you can get.
 const bookGet = () => {
+  globalDataObject.books++;
+  save();
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You got a Book!<br><br><img src='images/Diorama/Inside/Hallways/book_spin.gif'>`;
+  const meatOrCandy = createElementWithClassAndParent("div", contentEle);
+  meatOrCandy.innerText = "TODO: show meat and candy graphics, pick one, and get lore"
 
+  showExistingPopup(contentEle, "Gotcha")
 }
 
 const maskLose = () => {

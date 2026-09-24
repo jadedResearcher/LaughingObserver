@@ -292,6 +292,7 @@ svg {
   border: 1px solid #313131;
   border-radius: 13px;
   cursor: pointer;
+
 }
 
 .close {
@@ -415,6 +416,9 @@ button:disabled {
 .gallery-popup img {
   filter: none;
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .gallery-button-wrapper {
