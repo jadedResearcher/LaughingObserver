@@ -158,11 +158,11 @@ const bookGet = () => {
   const meatOrCandy = createElementWithClassAndParent("div", contentEle, "meatorcandy");
 
   const meatImg = createElementWithClassAndParent("img", meatOrCandy);
-  meatImg.src = "images/Diorama/Inside/Hallways/meat.PNG";
+  meatImg.src = "images/Diorama/Inside/Hallways/meat.png";
   meatImg.onclick = meatGet;
 
   const candyImg = createElementWithClassAndParent("img", meatOrCandy);
-  candyImg.src = "images/Diorama/Inside/Hallways/candy.PNG";
+  candyImg.src = "images/Diorama/Inside/Hallways/candy.png";
   candyImg.onclick = candyGet;
 
   showExistingPopup(contentEle, "Gotcha")
