@@ -118,9 +118,14 @@ const bookGet = () => {
   globalDataObject.books++;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Book!<br><br><img src='images/Diorama/Inside/Hallways/book_spin.gif'>`;
-  const meatOrCandy = createElementWithClassAndParent("div", contentEle);
-  meatOrCandy.innerText = "TODO: show meat and candy graphics, pick one, and get lore"
+  contentEle.innerHTML = `You got a Book!<br><br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
+  const meatOrCandy = createElementWithClassAndParent("div", contentEle, "meatorcandy");
+
+  const meatImg = createElementWithClassAndParent("img", meatOrCandy);
+  meatImg.src = "images/Diorama/Inside/Hallways/meat.PNG";
+
+  const candyImg = createElementWithClassAndParent("img", meatOrCandy);
+  candyImg.src = "images/Diorama/Inside/Hallways/candy.PNG";
 
   showExistingPopup(contentEle, "Gotcha")
 }

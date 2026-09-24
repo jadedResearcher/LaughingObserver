@@ -411,6 +411,19 @@ button:disabled {
   height: 5px;
 }
 
+.meatorcandy {
+  display: flex;
+
+  img {
+    height: 50px;
+    cursor: pointer;
+  }
+
+  img:hover {
+    filter: brightness(1.5);
+  }
+}
+
 
 
 .gallery-popup img {

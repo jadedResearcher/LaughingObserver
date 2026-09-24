@@ -47,7 +47,7 @@ class Doll {
   }
 
   toJSON = () => {
-    return JSON.stringify(this.layers.map((l) => l.current_part.replace(doll_base, "")))
+    return this.layers.map((l) => l.current_part.replace(doll_base, ""))
   }
 
   /*example: 
@@ -56,10 +56,9 @@ class Doll {
     'images/ClownDollParts/hats/leaf.png',
      'images/ClownDollParts/extra/gamerCat.png']
   */
-  fromJSON = (json_string) => {
-    const json_parse = JSON.parse(json_string);
-    for (let i = 0; i < json_parse.length; i++) {
-      this.layers[i].current_part = `${doll_base}${json_parse[i]}`;
+  fromJSON = (json) => {
+    for (let i = 0; i < json.length; i++) {
+      this.layers[i].current_part = `${doll_base}${json[i]}`;
     }
   }
 
