@@ -200,7 +200,6 @@ const moveRight = () => {
 const cleanupAllFunctions = () => {
     for (let f of cleanupFunctions) {
         if (f) {
-            console.log("JR NOTE: f is", f)
             f();
         }
     }

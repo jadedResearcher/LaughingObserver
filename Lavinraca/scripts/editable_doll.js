@@ -51,15 +51,12 @@ class Doll {
   }
 
   /*example: 
-  ['images/ClownDollParts/body/bigPants.png',
-   'images/ClownDollParts/face/leGrowth.png',
-    'images/ClownDollParts/hats/leaf.png',
-     'images/ClownDollParts/extra/gamerCat.png']
+(4) ['body/checkered.png', 'face/face5.png', 'hats/halo.png', 'extra/HonkHonkNose.png']
   */
   fromJSON = (json) => {
     let parsedJSON;
     try {
-      if (!json[0].includes("ClownDollParts")) {
+      if (!json[0].includes("png")) {
         //could be an early save where the clowns were stringified (like wigglersim used to, embedded escapes are a nightmare, nipped that in the bud)
         parsedJSON = JSON.parse(json);
       } else {
