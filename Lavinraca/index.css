@@ -71,11 +71,8 @@ body {
 }
 
 #keyContainer {
-  position: absolute;
-  top: 0px;
-  right: 5px;
+
   display: flex;
-  z-index: 33;
 
   img {
     height: 31px;
@@ -89,11 +86,32 @@ body {
 }
 
 #maskContainer {
+  display: flex;
+
+  img {
+    height: 31px;
+  }
+
+  div {
+    margin-top: 8px;
+  }
+
+}
+
+
+#inventory {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   position: absolute;
-  top: 31px;
+  top: 0px;
+  right: 5px;
+  z-index: 33;
+}
+
+#bookContainer {
   right: 5px;
   display: flex;
-  z-index: 33;
 
   img {
     height: 31px;

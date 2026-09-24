@@ -10,6 +10,7 @@ let initialDataObject = {
     hallways_entered: 0,
     prayers_sent: [],
     inventory: [],
+    books: 0,
     keys: 0,
     masks: 0,
     meat: 0,
@@ -49,6 +50,14 @@ const saveSideEffects = () => {
     } else {
         maskContainer.style.display = "none";
 
+    }
+
+    if (globalDataObject.books > 0) {
+        bookText.innerText = `x${globalDataObject.books}`;
+        bookContainer.style.display = "flex";
+
+    } else {
+        bookContainer.style.display = "none";
     }
 }
 
@@ -126,6 +135,10 @@ const load = () => {
 
         if (!globalDataObject.masks) {
             globalDataObject.masks = 0;
+        }
+
+        if (!globalDataObject.books) {
+            globalDataObject.books = 0;
         }
 
         if (globalDataObject.clownsona) {
