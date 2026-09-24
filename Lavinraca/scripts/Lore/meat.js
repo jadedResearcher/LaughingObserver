@@ -1,8 +1,8 @@
 
-//{terriComment, lore} pairs
-
+//{comment, lore} pairs
 const meat_lore = [];
-const addCandyLore = (terriComment, lore) => {
-    candy_lore.push({ terriComment, lore })
+const addMeatLore = (comment, lore) => {
+    meat_lore.push({ comment, lore })
 }
-addCandyLore("Wow, I'm so glad that Eustace is participating this year!", "Test Meat Lore")
+addMeatLore("Wow, I'm so glad that Eustace is participating this year!", "Test Meat Lore")
+addMeatLore("wow", "Test Meat Lore2")

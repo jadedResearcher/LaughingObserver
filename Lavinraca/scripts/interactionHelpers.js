@@ -113,6 +113,42 @@ const maskGet = () => {
   showExistingPopup(contentEle, "Gotcha")
 }
 
+
+
+const meatGet = () => {
+  globalDataObject.meat++;
+  save();
+  closeThePopup();
+  const contentEle = document.createElement("div");
+  //{comment, lore}
+  const lore = meat_lore[(globalDataObject.meat) % meat_lore.length];
+  console.log("JR NOTE: meat lore is", lore)
+  const intro = createElementWithClassAndParent("div", contentEle, "terri-comment");
+  intro.innerHTML = lore.comment;
+  const mainText = createElementWithClassAndParent("div", contentEle, "meat-lore");
+  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`)
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+const candyGet = () => {
+  globalDataObject.candy++;
+  save();
+  closeThePopup();
+  const contentEle = document.createElement("div");
+  //{comment, lore}
+  const lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
+  console.log("JR NOTE: candy lore is", lore)
+  const intro = createElementWithClassAndParent("div", contentEle, "eustace-comment");
+  intro.innerHTML = lore.comment;
+
+  const mainText = createElementWithClassAndParent("div", contentEle, "candy-lore");
+  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`)
+
+
+  showExistingPopup(contentEle, "Gotcha")
+
+}
+
 //more complicated than most things you can get.
 const bookGet = () => {
   globalDataObject.books++;
@@ -123,9 +159,11 @@ const bookGet = () => {
 
   const meatImg = createElementWithClassAndParent("img", meatOrCandy);
   meatImg.src = "images/Diorama/Inside/Hallways/meat.PNG";
+  meatImg.onclick = meatGet;
 
   const candyImg = createElementWithClassAndParent("img", meatOrCandy);
   candyImg.src = "images/Diorama/Inside/Hallways/candy.PNG";
+  candyImg.onclick = candyGet;
 
   showExistingPopup(contentEle, "Gotcha")
 }

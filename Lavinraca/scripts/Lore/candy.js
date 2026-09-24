@@ -1,11 +1,12 @@
 
-//{eustaceComment, lore} pairs
+//{comment, lore} pairs
 const candy_lore = [];
 
-const addCandyLore = (eustaceComment, lore) => {
-    candy_lore.push({ eustaceComment, lore })
+const addCandyLore = (comment, lore) => {
+    candy_lore.push({ comment, lore })
 }
 addCandyLore("Wow candy sure is over acheiveing!", "Test Candy Lore")
+addCandyLore("Wow", "Test Candy Lore2")
 
 
 

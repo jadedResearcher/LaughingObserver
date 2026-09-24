@@ -233,7 +233,6 @@ const openDoor = () => {
 }
 
 const meatPamphlet = () => {
-  globalDataObject.meat++;
   save();
   popup.style.display = "block"
 
@@ -246,7 +245,6 @@ const meatPamphlet = () => {
 }
 
 const candyPamphlet = () => {
-  globalDataObject.candy++;
   save();
   popup.style.display = "block"
 

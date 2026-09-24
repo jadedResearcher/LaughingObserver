@@ -86,12 +86,22 @@ const calculateOddsSpooky = () => {
 const getSpookyEffects = () => {
   const spookyEffects = ["bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
 
-  if (globalDataObject.candy > globalDataObject.meat) {
+  if (globalDataObject.candy > globalDataObject.meat && globalDataObject.candy > 10) {
     spookyEffects.push("candy")
+    spookyEffects.push("candy")
+    spookyEffects.push("candy")
+    spookyEffects.push("candy")
+    spookyEffects.push("candy")
+
   }
 
-  if (globalDataObject.meat > globalDataObject.candy) {
+  if (globalDataObject.meat > globalDataObject.candy && globalDataObject.meat > 10) {
     spookyEffects.push("meat")
+    spookyEffects.push("meat")
+    spookyEffects.push("meat")
+    spookyEffects.push("meat")
+    spookyEffects.push("meat")
+
   }
 
   if (isItMidnight()) {

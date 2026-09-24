@@ -57,8 +57,19 @@ class Doll {
      'images/ClownDollParts/extra/gamerCat.png']
   */
   fromJSON = (json) => {
-    for (let i = 0; i < json.length; i++) {
-      this.layers[i].current_part = `${doll_base}${json[i]}`;
+    let parsedJSON;
+    try {
+      if (!json[0].includes("ClownDollParts")) {
+        //could be an early save where the clowns were stringified (like wigglersim used to, embedded escapes are a nightmare, nipped that in the bud)
+        parsedJSON = JSON.parse(json);
+      } else {
+        parsedJSON = json;
+      }
+      for (let i = 0; i < parsedJSON.length; i++) {
+        this.layers[i].current_part = `${doll_base}${parsedJSON[i]}`;
+      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
