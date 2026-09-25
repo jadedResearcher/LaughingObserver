@@ -5,7 +5,9 @@ const addMeatLore = (comment, lore) => {
     meat_lore.push({ comment, lore })
 }
 
-addMeatLore(`I am PROUD! to announce that this years Harvest Festival will feature several poems written by none other than Eustace, the leader of the Meat Faction! They even have ANNOTATIONS! Guys! Just like that book about the house that was actually leaves!
+addMeatLore(`I am PROUD! to announce that this years Harvest Festival will feature several poems written by none other than Eustace, the leader of the Meat Faction! 
+    
+    They even have ANNOTATIONS! Guys! Just like that book about the house that was actually leaves!
 
 And guys, I know, I get it, MOST of the year we are not exactly getting along, Meat and us Candism people. It's only natural! Gotta have a little conflict to keep the narrative going, you know?
 
@@ -150,7 +152,11 @@ Oh wait this is chill
 I get paid to hang around?
 Yeah sure count me in.
 `)
-addMeatLore(`...In the dreams. Eustace had just lost his car. That's why he was having to walk home from the happiest place on earth (the Ghoul Halloween store). ... I never knew how much that must have affected him, losing that car...`, `things have been goin' well and I'm feelin pretty good. finished a long term project and decided to try somethin a little more upbeat as a result. had a lot of fun with it.
+addMeatLore(`...In the dreams. Eustace had just lost his car.
+    
+    That's why he was having to walk home from the happiest place on earth (the Ghoul Halloween store). 
+    
+    ... I never knew how much that must have affected him, losing that car...`, `things have been goin' well and I'm feelin pretty good. finished a long term project and decided to try somethin a little more upbeat as a result. had a lot of fun with it.
 ___
 
 Limericks for a Lancia

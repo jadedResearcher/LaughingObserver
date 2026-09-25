@@ -7,16 +7,16 @@ const addCandyLore = (comment, lore) => {
 }
 
 
-addCandyLore(`Oh sure, she SAYS Meat and Candy are equal to my face, but then adds this kind of shit to the 'festival'. Whatever though, not like any of us 'meat lovers' care.`, `Listen closely, for this is important: why would a god posit two different ways of worship? Are they truly both equal in measure, its application left to discretion? Be careful not to listen to this idea that to pray in Candy and to pray in Meat are merely choices, subject to the whims of preference.
+addCandyLore(`Oh sure, she SAYS Meat and Candy are equal to my face, but then adds this kind of shit to the 'festival'. Whatever though, not like any of us 'meat lovers' care.`, `<div class='simple-camellia'>Listen closely, for this is important: why would a god posit two different ways of worship? Are they truly both equal in measure, its application left to discretion? Be careful not to listen to this idea that to pray in Candy and to pray in Meat are merely choices, subject to the whims of preference.
 
 A candy, as it stands, is produced from the labors of the god that we worship: sugars and starches. The righteousness of our worship is evident in form and function, how the very fruits of our god bring it strength. What is meat but the wasteful slabs derived from the utmost act of sloth, the one of death? To feed a god this is to feed it rot itself, to introduce decay into decay.
 
 So heed this message, and heed it well. As caretakers of our god, it is our duty to ensure its fruits are not wasted. Do not make the mistake of assuming otherwise.
-`)
-addCandyLore(`What kind of fucked up religion are they peddling over there. Oh right. Cult shit. Well, our side doesn't give a shit if you're scared or not. Probably better if you're not. Chill out. `, `What is fear? You who listen, and listen close: fear is one of the primal emotions of the self-- it is the limbic song of warning, the alarm of the body. It is to be in tune with yourself beyond ego. A body in fear is subsumed by its wants, its instincts, all for a single moment. A stare often avoided for its discomfort.
+</div>`)
+addCandyLore(`What kind of fucked up religion are they peddling over there. Oh right. Cult shit. Well, our side doesn't give a shit if you're scared or not. Probably better if you're not. Chill out. `, `<div class='simple-camellia'>What is fear? You who listen, and listen close: fear is one of the primal emotions of the self-- it is the limbic song of warning, the alarm of the body. It is to be in tune with yourself beyond ego. A body in fear is subsumed by its wants, its instincts, all for a single moment. A stare often avoided for its discomfort.
 
 Still, in this holiest of seasons, the season of the ever giving, of the Harvest, we must indulge in it in part. It is through this separation of ego and id that we can approach God's wishes. She demands that we use up so she may feed, and in this state, we are well poised to do so-- and in so we train to control this state, to live in this fear, so that we may master it. May this season, then, come to pass, and from it extend into the forever.
-`)
+</div>`)
 
 addCandyLore(`Its not a competition, Terri. I just... really appreciated a space to try experimenting, is all.`, `Lets see....
     
@@ -25,7 +25,9 @@ addCandyLore(`Its not a competition, Terri. I just... really appreciated a space
     But our dear Leader, Miss Camellia, that is to say, the Cultist, is far FAR too busy for such worldy affairs!
 
 Maybe I can try my hand at some sermons!    `)
-addCandyLore(`eustace`, `lore`)
+addCandyLore(`...Cute.`, `Candy is good, candy is sweet, candy is so much better than meat!
+    
+    Haha, I'm a poet and I don't even know it!`)
 
 addCandyLore(`Seriously? Are we all sure this damn house isn't goin' to fall on our heads?
     Who wants a comedy routine along with their safety inspection?`, `Guys! I wanted to tell you all about the GREAT contractor we at the Church of Candyism used to create this AMAZING (ha! Get it! a MAZE ing? I crack myself up) Halloween haunted house!
@@ -51,7 +53,7 @@ Ever!
 addCandyLore(`Yeah well, I wasn't going to leave everything all too dark to see.
     
     Thought.... I didn't mean to exactly screw up that one hallway. 
-    
+
     But Terri, being Terri, just thought that was even funner.`, `Okay okay okay, SO! Guys, you'll never believe what just happened! 
     
     I TOTALLY Forgot that people couldn't read all our cool lore if the power was out!
@@ -272,7 +274,7 @@ addCandyLore(`... Well. New worry unlocked.
     
     Nothing I can do about it right now though.
     
-    When our Lady is awake again, we can ask her directly which she prefers.`, `Do you think its scary?
+    When our Lady is awake again, we can ask her directly which she prefers.`, `Do you think its the bad kind of scary?
     
     To be the Harvest during the Off Season, I mean.
     

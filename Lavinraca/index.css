@@ -213,6 +213,11 @@ svg {
   color: rgb(150, 150, 240);
 }
 
+.simple-camellia {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(241, 43, 255);
+}
+
 .terri {
   background: orange;
   font-family: halloween;

@@ -115,6 +115,7 @@ const maskGet = () => {
 
 
 
+//meat is simple-eustace
 const meatGet = () => {
   globalDataObject.meat++;
   save();
@@ -123,13 +124,19 @@ const meatGet = () => {
   //{comment, lore}
   const lore = meat_lore[(globalDataObject.meat) % meat_lore.length];
   console.log("JR NOTE: meat lore is", lore)
-  const intro = createElementWithClassAndParent("div", contentEle, "terri-comment");
-  intro.innerHTML = lore.comment;
-  const mainText = createElementWithClassAndParent("div", contentEle, "meat-lore");
-  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`)
+
+
+  const mainText = createElementWithClassAndParent("div", contentEle, "simple-eustace");
+  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`).join("")
+
+  const intro = createElementWithClassAndParent("div", contentEle, "simple-terri");
+  intro.innerHTML = "Terri Tip: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join()
+  intro.style.marginTop = "31px"
+
   showExistingPopup(contentEle, "Gotcha")
 }
 
+//candy is simple-terri or simple-camellia (camellia will be in the lore itself, overriding the terri class)
 const candyGet = () => {
   globalDataObject.candy++;
   save();
@@ -138,12 +145,13 @@ const candyGet = () => {
   //{comment, lore}
   const lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
   console.log("JR NOTE: candy lore is", lore)
-  const intro = createElementWithClassAndParent("div", contentEle, "eustace-comment");
-  intro.innerHTML = lore.comment;
 
-  const mainText = createElementWithClassAndParent("div", contentEle, "candy-lore");
-  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`)
+  const mainText = createElementWithClassAndParent("div", contentEle, "simple-terri");
+  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")
 
+  const intro = createElementWithClassAndParent("div", contentEle, "simple-eustace");
+  intro.style.marginTop = "31px"
+  intro.innerHTML = "Eustace Says: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join()
 
   showExistingPopup(contentEle, "Gotcha")
 
@@ -154,7 +162,7 @@ const bookGet = () => {
   globalDataObject.books++;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Book!<br><br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
+  contentEle.innerHTML = `You got a Book! < br > <br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
   const meatOrCandy = createElementWithClassAndParent("div", contentEle, "meatorcandy");
 
   const meatImg = createElementWithClassAndParent("img", meatOrCandy);
