@@ -261,7 +261,7 @@ const hallways = {
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": ["handleDesk2Locked"]
+        "functions": ["handleDesk2Locked", "readDesk2Papers"]
     },
     "2_back_left_unlocked_no_mask": {
         "roomID": "2",
@@ -271,7 +271,7 @@ const hallways = {
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": ["putMask2"]
+        "functions": ["putMask2", "readDesk2Papers"]
     },
     "2_back_left_mask": {
         "roomID": "2",
@@ -281,7 +281,7 @@ const hallways = {
         "left": null,
         "right": "2_back",
         "backwards": "2_back",
-        "functions": ["takeMask2"]
+        "functions": ["takeMask2", "readDesk2Papers"]
     },
     "2_back_right": {
         "roomID": "2",

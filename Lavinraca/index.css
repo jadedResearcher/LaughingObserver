@@ -202,6 +202,17 @@ svg {
   width: fit-content;
 }
 
+.simple-terri {
+  color: orange;
+  font-family: halloween;
+
+}
+
+.simple-eustace {
+  font-family: lazy;
+  color: rgb(150, 150, 240);
+}
+
 .terri {
   background: orange;
   font-family: halloween;
@@ -235,6 +246,8 @@ svg {
     right: 31px;
     bottom: 31px;
   }
+
+
 
   .eustace {
     position: absolute;
