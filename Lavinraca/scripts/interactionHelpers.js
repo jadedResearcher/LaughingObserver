@@ -78,7 +78,7 @@ const comboLock = (parent, callback, one, two, three, four) => {
       closeThePopup();
       callback();
     } else {
-      console.log("JR NOTE: did not win", onewin, twowin, threewin, fourwin)
+      //console.log("JR NOTE: did not win", onewin, twowin, threewin, fourwin)
     }
 
   }
@@ -117,8 +117,7 @@ const maskGet = () => {
 
 //meat is simple-eustace
 const meatGet = () => {
-  globalDataObject.meat++;
-  save();
+
   closeThePopup();
   const contentEle = document.createElement("div");
   //{comment, lore}
@@ -130,16 +129,18 @@ const meatGet = () => {
   mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`).join("")
 
   const intro = createElementWithClassAndParent("div", contentEle, "simple-terri");
-  intro.innerHTML = "Terri Tip: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join()
+  intro.innerHTML = "Terri Tip: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join("")
   intro.style.marginTop = "31px"
 
   showExistingPopup(contentEle, "Gotcha")
+  globalDataObject.meat++;
+  save();
 }
 
+//https://yolkdump.neocities.org/zampaniodiscordarchive
 //candy is simple-terri or simple-camellia (camellia will be in the lore itself, overriding the terri class)
 const candyGet = () => {
-  globalDataObject.candy++;
-  save();
+
   closeThePopup();
   const contentEle = document.createElement("div");
   //{comment, lore}
@@ -151,9 +152,11 @@ const candyGet = () => {
 
   const intro = createElementWithClassAndParent("div", contentEle, "simple-eustace");
   intro.style.marginTop = "31px"
-  intro.innerHTML = "Eustace Says: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join()
+  intro.innerHTML = "Eustace Says: " + lore.comment.split("\n").map((i) => i.trim() ? `<p>${i}</p>` : "").join("")
 
   showExistingPopup(contentEle, "Gotcha")
+  globalDataObject.candy++;
+  save();
 
 }
 
@@ -162,7 +165,7 @@ const bookGet = () => {
   globalDataObject.books++;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Book! < br > <br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
+  contentEle.innerHTML = `You got a Book! <br> <br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
   const meatOrCandy = createElementWithClassAndParent("div", contentEle, "meatorcandy");
 
   const meatImg = createElementWithClassAndParent("img", meatOrCandy);

@@ -165,7 +165,7 @@ const moveForwards = () => {
     const json = hallways[globalDataObject.current_room_id];
 
     if (json && json.forwards) {
-        console.log("JR NOTE: forwards")
+        //console.log("JR NOTE: forwards")
         renderID(json.forwards)
     }
 }
@@ -173,7 +173,7 @@ const moveBackwards = () => {
     const json = hallways[globalDataObject.current_room_id];
 
     if (json && json.backwards) {
-        console.log("JR NOTE: backwards")
+        // console.log("JR NOTE: backwards")
         renderID(json.backwards)
     }
 }
@@ -182,7 +182,7 @@ const moveLeft = () => {
     const json = hallways[globalDataObject.current_room_id];
 
     if (json && json.left) {
-        console.log("JR NOTE: left")
+        //console.log("JR NOTE: left")
         renderID(json.left)
     }
 }
@@ -191,7 +191,7 @@ const moveRight = () => {
     const json = hallways[globalDataObject.current_room_id];
 
     if (json && json.right) {
-        console.log("JR NOTE: right")
+        //console.log("JR NOTE: right")
         renderID(json.right)
     }
 }

@@ -178,22 +178,30 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
 
 }
 
-function testFuckery() {
+function gaslightToShowCombo() {
   const bookcase = "images/Diorama/Inside/Hallways/1/ElectricLights/quicktest";
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";
+  const combo = "images/Diorama/Inside/Hallways/1/ElectricLights/1031";
+
   const odds = Math.random();
-  if (odds > .6) {
+  if (odds > .75) {
     video.pause();
     video.src = bookcase + ".mp4";
     video.play();
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "Who put this bookcase here? For some reason its hard to focus on...What were you doing here?"
 
-  } else if (odds > .3) {
+  } else if (odds > .5) {
     video.pause();
     video.src = key + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "How...how is the key back? You reach for it instinctively, but your hand goes right through."
+    video.play();
+  } else if (odds > .25) {
+    video.pause();
+    video.src = combo + ".mp4";
+    const textEle = story.querySelector("#room-text");
+    textEle.innerText = "'1031' is scribbled on the wall. What could it mean?"
     video.play();
   }
   //final third do nothing, regular thing
@@ -343,11 +351,8 @@ function readDesk2Papers() {
 
 function handleDesk2Locked() {
   const textEle = story.querySelector("#room-text");
-
-
-
   const lock = createElementWithClassAndParent("button", textEle);
-  lock.innerText = "Enter Combination?"
+  lock.innerText = "Enter Combo?"
   lock.onclick = () => {
     const win = () => {
       const myID = "2_back_left_locked";
@@ -361,6 +366,26 @@ function handleDesk2Locked() {
 
     showExistingPopup(contentEle, "I give up for now...");
     comboLock(contentEle, win, 4, 6, 6, 5)
+  }
+}
+
+function getFirstBook() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Enter Combo?"
+  lock.onclick = () => {
+    const win = () => {
+      const myID = "5_bright";
+      const newID = "5_bright_book_got"
+      globalDataObject.state_changes[myID] = newID;
+      bookGet();
+      renderID(newID);
+    }
+    const contentEle = document.createElement("div");
+    contentEle.innerText = "The combination lock has four digits:"
+
+    showExistingPopup(contentEle, "I give up for now...");
+    comboLock(contentEle, win, 1, 0, 3, 1)
   }
 }
 

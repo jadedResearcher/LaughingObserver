@@ -145,7 +145,7 @@ Leave this place for good
 `)
 
 
-addMeatLore(`Even though I had to part way with Eyedol Games myself, I'm glad Eustace is positively THRIVING there!`, `wait nevermind
+addMeatLore(`Even though I had to part ways with Eyedol Games myself, I'm glad Eustace is positively THRIVING there!`, `wait nevermind
 __
 
 Oh wait this is chill

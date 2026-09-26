@@ -144,9 +144,7 @@ const hallways = {
         "left": "5_bright",
         "right": "6_bright",
         "backwards": "1_bright",
-        "functions": [
-            "wrongOnPurposeForDebugging"
-        ]
+        "functions": []
     },
 
     "1_2_open_unlocked_door": {
@@ -157,15 +155,25 @@ const hallways = {
         "backwards": "4_bright",
         "functions": ["unlockDoorForwards"]
     },
-    "5_bright": {
+    "5_bright_book_got": {
         "roomID": "1",
         "src": "1/ElectricLights/back_left",
-        "flavorText": "The key has already been collected.",
+        "flavorText": "The key and book have already been collected.",
         "forwards": null,
         "left": null,
         "right": "4_bright",
         "backwards": "4_bright",
-        "functions": ["testFuckery"]
+        "functions": ["gaslightToShowCombo"]
+    },
+    "5_bright": {
+        "roomID": "1",
+        "src": "1/ElectricLights/back_left",
+        "flavorText": "The key has already been collected. In the bright light, you notice the drawer has a combination lock.",
+        "forwards": null,
+        "left": null,
+        "right": "4_bright",
+        "backwards": "4_bright",
+        "functions": ["getFirstBook", "gaslightToShowCombo"]
     },
     "6_bright": {
         "roomID": "1",
@@ -256,7 +264,7 @@ const hallways = {
     "2_back_left_locked": {
         "roomID": "2",
         "src": "2/back_left_no_mask",
-        "flavorText": "The desk is clearly lit. You try the drawers and find they are all empty, save a single locked one. There are some papers on the desk, under a heart shaped paperweight.",
+        "flavorText": "The desk is clearly lit. You try the drawers and find both are locked. There are some papers on the desk, under a heart shaped paperweight.",
         "forwards": null,
         "left": null,
         "right": "2_back",
