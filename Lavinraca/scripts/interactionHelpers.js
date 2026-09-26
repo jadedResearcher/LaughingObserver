@@ -96,20 +96,29 @@ const normalUnlockedDoor = (current_id, next_id, canGaslight = false) => {
   youKnowEternalDarknessDoThatThingForDoors(next_id, canGaslight);
 }
 
-const keyGet = () => {
-  globalDataObject.keys++;
+const harvestPointsGet = (amount) => {
+  globalDataObject.harvestPoints += amount;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Key!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
+  contentEle.innerHTML = `You got ${amount === 1 ? "a" : amount} Harvest Point${amount === 1 ? "" : "s"}!<br><br><img src='images/Diorama/Inside/Hallways/harvest_spin_smol.gif'>`;
 
   showExistingPopup(contentEle, "Gotcha")
 }
 
-const maskGet = () => {
-  globalDataObject.masks++;
+const keyGet = (amount) => {
+  globalDataObject.keys += amount;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Mask!<br><br><img src='images/Diorama/Inside/Hallways/mask_spin.gif'>`;
+  contentEle.innerHTML = `You got ${amount === 1 ? "a" : amount} Key${amount === 1 ? "" : "s"}!<br><br><img src='images/Diorama/Inside/Hallways/key.gif'>`;
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+const maskGet = (amount) => {
+  globalDataObject.masks += amount;
+  save();
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You got ${amount === 1 ? "a" : amount} Mask${amount === 1 ? "" : "s"}!<br><br><img src='images/Diorama/Inside/Hallways/mask_spin.gif'>`;
 
   showExistingPopup(contentEle, "Gotcha")
 }
@@ -162,11 +171,11 @@ const candyGet = () => {
 }
 
 //more complicated than most things you can get.
-const bookGet = () => {
-  globalDataObject.books++;
+const bookGet = (amount = 1) => {
+  globalDataObject.books += amount;
   save();
   const contentEle = document.createElement("div");
-  contentEle.innerHTML = `You got a Book! <br> <br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
+  contentEle.innerHTML = `You got ${amount === 1 ? "a" : amount} Book${amount === 1 ? "" : "s"}! <br> <br><img src='images/Diorama/Inside/Hallways/book_spin.gif'><br><Br>Inside the book, you are given a choice between Meat and Candy!`;
   const meatOrCandy = createElementWithClassAndParent("div", contentEle, "meatorcandy");
 
   const meatImg = createElementWithClassAndParent("img", meatOrCandy);

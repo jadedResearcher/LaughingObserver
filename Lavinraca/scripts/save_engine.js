@@ -13,6 +13,7 @@ let initialDataObject = {
     books: 0,
     keys: 0,
     masks: 0,
+    harvestPoints: 0,
     meat: 0,
     stranger: false, //there are ways you can become a stranger to everyone around you, what even is identity
     candy: 0,
@@ -139,6 +140,10 @@ const load = () => {
 
         if (!globalDataObject.books) {
             globalDataObject.books = 0;
+        }
+
+        if (!globalDataObject.harvestPoints) {
+            globalDataObject.harvestPoints = 0;
         }
 
         if (globalDataObject.clownsona) {
