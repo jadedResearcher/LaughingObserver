@@ -1309,7 +1309,7 @@ const hallways = {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_main_room3_deep1",
-        "backwards": "east_main_3_left1",
+        "backwards": "east_main_7_left1",
         "functions": [
             "unlockDoorBackwards"
         ]

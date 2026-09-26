@@ -27,6 +27,17 @@ async function handleWin(src, bet) {
 
 }
 
+/*
+....
+i just left the harvest room
+and came back into it
+and it was the mirror room
+this is fine
+east_main_room1_enter is mirror
+oh i see the harvest backs out into the mirror rooms hall on accident
+i do enjoy the bugs we're getting
+space is non euclidean but don't worry its just because of bugs
+*/
 function gamble(bet) {
   if (globalDataObject.books < bet) {
     return;
@@ -44,18 +55,22 @@ function gamble(bet) {
     video.src = dir + "Harvest/" + pickFrom(possible_videos) + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.style.display = "none";
-    video.looping = false;
+    video.loop = false;
     video.play();
     video.onended = async () => {
       video.onended = null;
       if (video.src.includes("win")) {
-        handleWin(src, bet)
+        handleWin(video.src, bet)
       } else {
+        console.log("JR NOTE: lose")
         await sleep(1000);
-        resumePlayingRegularVideoOnEndOfTemporaryOne();
+        const json = hallways[globalDataObject.current_room_id];
+
+        video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+        video.loop = true;
+        window.requestAnimationFrame(() => video.play())
       }
     }
-    //resumePlayingRegularVideoOnEndOfTemporaryOne
   }
 }
 
