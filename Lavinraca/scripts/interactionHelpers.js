@@ -62,6 +62,7 @@ const comboLock = (parent, callback, one, two, three, four) => {
   //const createNumberInputWithLabel = (parent, id, labelText, initialValue, max = 113, min = -113) => {
 
   const one_ele = createNumberInputWithLabel(parent, "one-lock", null, 1, 1, 9);
+  one_ele.input.focus();
   const two_ele = createNumberInputWithLabel(parent, "two-lock", null, 1, 1, 9);
   const three_ele = createNumberInputWithLabel(parent, "three-lock", null, 1, 1, 9);
   const four_ele = createNumberInputWithLabel(parent, "four-lock", null, 1, 1, 9);

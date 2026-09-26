@@ -10,6 +10,9 @@ function prayForRoom() {
 }
 
 function gamble(bet) {
+  if (globalDataObject.books < bet) {
+    return;
+  }
   const textEle = story.querySelector("#room-text");
   const button = createElementWithClassAndParent("button", textEle);
   button.innerText = `Bet ${bet} Books?`
