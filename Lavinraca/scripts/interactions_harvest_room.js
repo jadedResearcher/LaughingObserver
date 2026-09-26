@@ -17,10 +17,7 @@ async function handleWin(src, bet) {
   video.play();
   await sleep(3000);
 
-  if (src.includes("harvest")) {
-    globalDataObject.books += 100; //quietly, with no fan fair
-    //half to show off the model, half to collect for mysterious purposes
-    harvestPointsGet(bet * 4);
+  const resumeGambling = async () => {
     await sleep(3000)
     const textEle = story.querySelector("#room-text");
     textEle.style.display = "block";
@@ -29,9 +26,27 @@ async function handleWin(src, bet) {
     video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
     video.loop = true;
     window.requestAnimationFrame(() => video.play())
+  }
 
+  if (src.includes("harvest")) {
+    globalDataObject.books += 100; //quietly, with no fan fair
+    //half to show off the model, half to collect for mysterious purposes
+    harvestPointsGet(bet * 4);
+    resumeGambling();
+  } else if (src.includes("key")) {
+    globalDataObject.books += 1; //you get your bet back, at least.
+    keyGet(bet * 4);
+    resumeGambling();
+  } else if (src.includes("mask")) {
+    globalDataObject.books += 1; //you get your bet back, at least.
+    maskGet(bet * 4);
+    resumeGambling();
+  } else if (src.includes("book")) {
+    bookGet(bet * 4);
+    resumeGambling();
   } else {
-    alert("TODO")
+    globalDataObject.books += 1; //you get your bet back, at least.
+    alert("Uh. What did. What did you do? Uh. I guess you win. Uh. This popup? How the hell did you win something impossible???")
   }
 
 
