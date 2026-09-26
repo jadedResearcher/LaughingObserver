@@ -13,13 +13,23 @@ async function handleWin(src, bet) {
   video.pause();
   const dir = "images/Diorama/Inside/Hallways/"
   video.src = dir + "Harvest/victory.mp4";
-  video.looping = true;
+  video.loop = true;
+  video.play();
   await sleep(1000);
 
   if (src.includes("harvest")) {
     globalDataObject.books += 100; //quietly, with no fan fair
     //half to show off the model, half to collect for mysterious purposes
     harvestPointsGet(bet * 4);
+    await sleep(3000)
+    const textEle = story.querySelector("#room-text");
+    textEle.style.display = "block";
+    const json = hallways[globalDataObject.current_room_id];
+
+    video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+    video.loop = true;
+    window.requestAnimationFrame(() => video.play())
+
   } else {
     alert("TODO")
   }
@@ -69,6 +79,8 @@ function gamble(bet) {
         video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
         video.loop = true;
         window.requestAnimationFrame(() => video.play())
+        textEle.style.display = "block";
+
       }
     }
   }
