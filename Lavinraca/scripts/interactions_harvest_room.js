@@ -15,7 +15,7 @@ async function handleWin(src, bet) {
   video.src = dir + "Harvest/victory.mp4";
   video.loop = true;
   video.play();
-  await sleep(1000);
+  await sleep(3000);
 
   if (src.includes("harvest")) {
     globalDataObject.books += 100; //quietly, with no fan fair
@@ -60,7 +60,7 @@ function gamble(bet) {
     globalDataObject.books += -1 * bet;
     save();
     const dir = "images/Diorama/Inside/Hallways/"
-    const possible_videos = ["fail_two_harvests", "win_harvest"];
+    const possible_videos = ["win_mask", "win_key", "win_book", "fail5", "fail3", "fail4", "fail2", "fail1", "fail_two_harvests", "win_harvest", "fail_two_keys", "fail_two_masks"];
     video.pause();
     video.src = dir + "Harvest/" + pickFrom(possible_videos) + ".mp4";
     const textEle = story.querySelector("#room-text");
@@ -72,7 +72,6 @@ function gamble(bet) {
       if (video.src.includes("win")) {
         handleWin(video.src, bet)
       } else {
-        console.log("JR NOTE: lose")
         await sleep(1000);
         const json = hallways[globalDataObject.current_room_id];
 
