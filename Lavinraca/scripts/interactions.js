@@ -84,7 +84,7 @@ const calculateOddsSpooky = () => {
 
 //separate function so i can write a debug script to look at them all and make sure they work
 const getSpookyEffects = () => {
-  const spookyEffects = ["bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
+  const spookyEffects = ["tridoor", "tridoor", "tridoor", "tridoor", "tridoor", "bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
 
   if (globalDataObject.candy > globalDataObject.meat && globalDataObject.candy > 10) {
     spookyEffects.push("candy")
@@ -132,13 +132,16 @@ const getSpookyEffects = () => {
 
     spookyEffects.push("face")
     spookyEffects.push("blind")
+    spookyEffects.push("maccus_sprint")
 
 
   }
 
   if (globalDataObject.hallways_entered > 66) {
     spookyEffects.push("bride_with_friends")
-    spookyEffects.push("tentacles")
+    spookyEffects.push("maccus_ball")
+    spookyEffects.push("maccus_rotation")
+    spookyEffects.push("mob_for_maccus")
 
   }
 
