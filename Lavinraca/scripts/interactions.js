@@ -155,7 +155,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
   globalDataObject.current_room_id = originalDestination;
   save();
   video.loop = false;
-  console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
+  //console.log("JR NOTE: youKnowEternalDarknessDoThatThingForDoors", originalDestination)
   const odds = Math.random();
   const oddsToBeat = calculateOddsSpooky();
   if (canGaslight && odds > oddsToBeat) {

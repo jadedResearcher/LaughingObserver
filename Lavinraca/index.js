@@ -31,6 +31,26 @@ const spookyLoop = new Audio(spooky_source);
 spookyLoop.loop = true;
 
 const contentDirectory = "images/Diorama/Outside/Final"
+
+//look its the 26th of september and i have MOST of the important shit done
+//time to have weird glitch effects whenever an actual for real bug hits
+//because thats funny to me
+//but also might help people report shit 
+let glitchyError = false;
+
+window.onerror = () => {
+  glitchyError = true;
+  setTimeout(() => { glitchyError = false }, 3000)
+
+}
+
+
+window.onunhandledrejection = () => {
+  glitchyError = true;
+  setTimeout(() => { glitchyError = false }, 3000)
+}
+
+
 window.onload = async () => {
   clownsona = await makeSimpleDoll(); //loading will set its specifics
   alert("NOTE: this game loads many short videos. If it seems to hang, a video may be loading.")
@@ -101,12 +121,52 @@ const wireUpCanvas = () => {
   canvas.style.width = `${video.clientWidth}px`;
   canvas.style.height = `${video.clientHeight}px`;
   renderVideoToCanvas();
+  glitchLoop();
+}
+
+/*
+wait a random amount of seconds
+*/
+const glitchLoop = async () => {
+
+  const maxWaitTime = 300000; //5 minutes is 300000
+  await sleep(Math.random() * maxWaitTime);
+  glitchyError = true;
+  //up to a whole second of glitch
+  setTimeout(() => {
+    glitchyError = false;
+    glitchLoop();
+  }, 1000 * Math.random());
+
+
 }
 
 const renderVideoToCanvas = () => {
 
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  if (glitchyError) {
+    //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
+    const slices = Math.floor(Math.random() * 4) + 2;
+    for (let i = 0; i < slices; i++) {
+
+      const offsetY = Math.random() * canvas.height;
+      const offsetHight = Math.random() * (canvas.height / 4);
+
+      const maxShift = 15;
+      const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
+
+      //take that bar and draw it again
+      ctx.drawImage(
+        canvas,
+        0, offsetY, canvas.width, offsetHight,
+        xOffset, offsetY, canvas.width, offsetHight
+      );
+    }
+  }
+
+  //your clownsona won't glitch, its the most true thing here
   if (renderingClownsona) {
     ctx.save();
 
@@ -118,6 +178,7 @@ const renderVideoToCanvas = () => {
     ctx.drawImage(renderingClownsona, x, y, size, size);
     ctx.restore();
   }
+
   requestAnimationFrame(renderVideoToCanvas);
 }
 
