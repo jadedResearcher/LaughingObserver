@@ -415,7 +415,13 @@ function openSecretPassageSafe() {
     const win = () => {
       const myID = "SecretPassageway_right2";
       const newID = "SecretPassageway_right2_safe_plundered"
+
+      //because i had to be fancy and make the secret passage way reversable
+      const myIDBackwards = "SecretPassagewayWest_left1";
+      const newIDBackwards = "SecretPassagewayWest_left1_plundered";
       globalDataObject.state_changes[myID] = newID;
+      globalDataObject.state_changes[myIDBackwards] = newIDBackwards;
+
       bookGet();
       renderID(newID);
     }
@@ -492,11 +498,15 @@ function bookcase3PlaceMask() {
       maskLose();
       const myID = "3_bright_left1";
       const newID = "3_bright_left1_mask"
+      const secretID = "SecretPassagewayWest_deep2";
+      const secretNewID = "SecretPassagewayWest_deep2_open";
       video.pause();
       const dir = "images/Diorama/Inside/Hallways/3_bright/left1_open_cutscene.mp4";
       video.src = dir;
       video.loop = false;
+      globalDataObject.state_changes[secretID] = secretNewID;
       globalDataObject.state_changes[myID] = newID;
+
       //hallway should redirect to the current meta
       globalDataObject.state_changes["3_bright_deep1"] = "3_bright_deep1_open";
       video.play().catch(() => { });
@@ -523,6 +533,8 @@ function bookcase3TakeMask() {
     //clear state changes
     globalDataObject.state_changes["3_bright_left1"] = undefined;
     globalDataObject.state_changes["3_bright_deep1"] = undefined;
+    globalDataObject.state_changes["SecretPassagewayWest_deep2"] = undefined;
+
 
     renderID("3_bright_left1")
   }
