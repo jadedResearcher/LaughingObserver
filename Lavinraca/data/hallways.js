@@ -1207,7 +1207,8 @@ const hallways = {
     "east_main_2_right2": {
         "roomID": "east_main_2",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": "east_first_1_enter",
+        "forwards": "east_first_1_locked",
+        "flavorText": "A door that leads to the right.",
         "left": "east_main_2_deep2",
         "right": null,
         "backwards": "east_main_2_deep2",
@@ -1763,6 +1764,16 @@ const hallways = {
         "functions": []
     },
     //east_first_1 start
+
+    "east_first_1_locked": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_first_1_enter",
+        "backwards": "east_main_2_right2",
+        "functions": [
+            "openDoorEastFirstLocked"
+        ]
+    },
     "east_first_1_enter": {
         "src": "open_the_door",
         "flavorText": "",

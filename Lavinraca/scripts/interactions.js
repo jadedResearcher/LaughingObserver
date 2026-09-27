@@ -308,6 +308,14 @@ function openDoor3Locked() {
   normalKeyLockedDoor(current_id, new_state_id, true);
 }
 
+
+function openDoorEastFirstLocked() {
+  const current_id = globalDataObject.current_room_id;
+  const new_state_id = "east_first_1_enter"; //will know where to go next
+  //automatically moves past the locked door
+  normalKeyLockedDoor(current_id, new_state_id, false);
+}
+
 //maybe refactor this later. 
 function openDoor2MaskLocked() {
   const textEle = story.querySelector("#room-text");
