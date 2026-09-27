@@ -96,7 +96,7 @@ const normalUnlockedDoor = (current_id, next_id, canGaslight = false) => {
   youKnowEternalDarknessDoThatThingForDoors(next_id, canGaslight);
 }
 
-const harvestPointsGet = (amount) => {
+const harvestPointsGet = (amount = 1) => {
   globalDataObject.harvestPoints += amount;
   save();
   const contentEle = document.createElement("div");
@@ -105,7 +105,7 @@ const harvestPointsGet = (amount) => {
   showExistingPopup(contentEle, "Gotcha")
 }
 
-const keyGet = (amount) => {
+const keyGet = (amount = 1) => {
   globalDataObject.keys += amount;
   save();
   const contentEle = document.createElement("div");
@@ -114,7 +114,7 @@ const keyGet = (amount) => {
   showExistingPopup(contentEle, "Gotcha")
 }
 
-const maskGet = (amount) => {
+const maskGet = (amount = 1) => {
   globalDataObject.masks += amount;
   save();
   const contentEle = document.createElement("div");

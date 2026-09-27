@@ -1835,7 +1835,7 @@ const hallways = {
     "east_first_1_right2": {
         "roomID": "east_first_1",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": "",
+        "forwards": "SecretPassageEnterFromEast",
         "left": "east_first_1_deep2",
         "flavorText": "Was this door always here?",
         "right": null,
@@ -2237,6 +2237,188 @@ const hallways = {
             "unlockDoorForwards"
         ]
     },
+
+
+    "SecretPassageway_deep1_fromWest": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/deep1",
+        "flavorText": "The secret passage way seems long forgotten. Untold years of storage and discarded items line this hall.",
+        "forwards": "SecretPassageway_deep2",
+        "left": "SecretPassageway_left1",
+        "right": "SecretPassageway_right1",
+        "backwards": "null",
+        "functions": []
+    },
+    "SecretPassageway_left1": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/left1",
+        "flavorText": "You feel strangely relieved that there are no bathrooms in this strange mansion. <a target='_blank' href='http://farragofiction.com/CatalystsBathroomSim/bathroom'>Bathrooms have a way of keeping you, after all.</a>",
+        "forwards": null,
+        "left": null,
+        "right": "SecretPassageway_deep1_fromWest",
+        "backwards": "SecretPassageway_deep1",
+        "functions": []
+    },
+    "SecretPassageway_right1": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right1",
+        "flavorText": "The flashlight is blinding. Who left this here? It seems to be stuck to the birdbath it was discarded into.",
+        "forwards": null,
+        "left": "SecretPassageway_deep1_fromWest",
+        "right": null,
+        "backwards": "SecretPassageway_deep1",
+        "functions": []
+    },
+    "SecretPassageway_left2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/left2",
+        "flavorText": "Someone must have rolled the rug up in this hall to make room.",
+        "forwards": null,
+        "left": null,
+        "right": "SecretPassageway_deep2",
+        "backwards": "SecretPassageway_deep2",
+        "functions": []
+    },
+    "SecretPassageway_right2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right2",
+        "flavorText": "There is a safe here. Faintly scratched into it, right above the combo lock, you can see the phrase 'Wasted, Wasted'. And also 'See The Void' ",
+        "forwards": null,
+        "left": "SecretPassageway_deep2",
+        "right": null,
+        "backwards": "SecretPassageway_deep2",
+        "functions": ["openSecretPassageSafe", "seeTheLadder"]
+    },
+
+    "SecretPassageway_right2_safe_plundered": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right2",
+        "flavorText": "There is a safe here. You already took what was inside it.",
+        "forwards": null,
+        "left": "SecretPassageway_deep2",
+        "right": null,
+        "backwards": "SecretPassageway_deep2",
+        "functions": ['seeTheLadder']
+    },
+    "SecretPassageway_deep2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/deep2",
+        "flavorText": "You carefully pick your way past paper, glass and who knows what to the far door. ",
+        "forwards": "SecretPassageway_exit_toEast",
+        "left": "SecretPassageway_left2",
+        "right": "SecretPassageway_right2",
+        "backwards": "SecretPassageway_deep1_fromWest",
+        "functions": []
+    },
+    "SecretPassageway_exit_toEast": {
+        "src": "open_the_door",
+        "forwards": "east_first_1_right2",
+        "backwards": "SecretPassageway_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    //start of the west version of the secret passage way
+    //  (this complexity is why i didn't do this for most halls, lol)
+
+    "SecretPassageEnterFromEast": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "SecretPassageway_deep1_fromEast",
+        "backwards": "east_first_1_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "SecretPassageBackupToEast": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "SecretPassageway_deep1_fromEast",
+        "backwards": "east_first_1_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "SecretPassageway_deep1_fromEast": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/deep1_east",
+        "flavorText": "Untold years of storage and discarded items line this hall.",
+        "forwards": "SecretPassageway_deep2",
+        "left": "SecretPassagewayWest_left1",
+        "right": "SecretPassagewayWest_right1",
+        "backwards": "SecretPassageBackupToEast",
+        "functions": []
+    },
+    "SecretPassagewayWest_left1": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/left1",
+        "flavorText": "You feel strangely relieved that there are no bathrooms in this strange mansion. <a target='_blank' href='http://farragofiction.com/CatalystsBathroomSim/bathroom'>Bathrooms have a way of keeping you, after all.</a>",
+        "forwards": null,
+        "left": null,
+        "right": "SecretPassageway_deep1_fromEast",
+        "backwards": "SecretPassageway_deep1_fromEast",
+        "functions": []
+    },
+    "SecretPassagewayWest_right1": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right1",
+        "flavorText": "The flashlight is blinding. Who left this here? It seems to be stuck to the birdbath it was discarded into.",
+        "forwards": null,
+        "left": "SecretPassageway_deep1_fromEast",
+        "right": null,
+        "backwards": "SecretPassageway_deep1_fromEast",
+        "functions": []
+    },
+    "SecretPassagewayWest_left2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/left2",
+        "flavorText": "Someone must have rolled the rug up in this hall to make room.",
+        "forwards": null,
+        "left": null,
+        "right": "SecretPassagewayWest_deep2",
+        "backwards": "SecretPassagewayWest_deep2",
+        "functions": []
+    },
+    "SecretPassagewayWest_right2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right2",
+        "flavorText": "There is a safe here. Faintly scratched into it, right above the combo lock, you can see the phrase 'Wasted, Wasted'. And also 'See The Void' ",
+        "forwards": null,
+        "left": "SecretPassagewayWest_deep2",
+        "right": null,
+        "backwards": "SecretPassagewayWest_deep2",
+        "functions": ["openSecretPassageSafe", "seeTheLadder"]
+    },
+
+    "SecretPassagewayWest_right2_safe_plundered": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/right2",
+        "flavorText": "There is a safe here. You already took what was inside it.",
+        "forwards": null,
+        "left": "SecretPassagewayWest_deep2",
+        "right": null,
+        "backwards": "SecretPassagewayWest_deep2",
+        "functions": ['seeTheLadder']
+    },
+    "SecretPassagewayWest_deep2": {
+        "roomID": "SecretPassageway",
+        "src": "SecretPassageway/deep2_east",
+        "flavorText": "You carefully pick your way past paper, glass and who knows what to the far wall. There seems to be something blocking a dooray, you can't get it to budge. ",
+        "forwards": "SecretPassageway_exit_toEast",
+        "left": "SecretPassagewayWest_left2",
+        "right": "SecretPassagewayWest_right2",
+        "backwards": "SecretPassageway_deep1_fromEast",
+        "functions": []
+    },
+    "SecretPassageway_exit_toWest": {
+        "src": "open_the_door",
+        "forwards": "east_first_1_right2",
+        "backwards": "SecretPassageway_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+
 
 
 
