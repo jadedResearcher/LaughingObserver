@@ -401,7 +401,7 @@ const rollCredits = () => {
     "Flippet/flippetUrnways": "Eustace Poems",
     "KR": "Harvest Book Design/Binding",
     "Butlers/Cirky's": "Playtesting/Feedback",
-    "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations"
+    "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations. Join the <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>."
   }
   for (let [key, value] of Object.entries(credits)) {
     console.log("JR NOTE: rendering credits")
