@@ -79,11 +79,11 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
     "right": "${id}_right2",
       "backwards": "${id}_deep1",
       "functions": []
-    },
+    }
   `
 
   const second_half = `,
-    "${id}_deep3": {
+    ",${id}_deep3": {
       "roomID": "${id}",
       "src": "${id}/deep3",
       "flavorText": "TODO",
@@ -147,7 +147,7 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
   `
 
   const map_template = `{${first_half}${doubleSize ? second_half : ""}}`;
-  // console.log("JR NOTE: ", map_template)
+  //console.log("JR NOTE: ", map_template)
   //trust me on this, outputs something i can copy and paste into the json
   const data = JSON.parse(map_template)
   //const outputEle = createTextAreaInputWithLabel();

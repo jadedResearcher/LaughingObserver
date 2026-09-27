@@ -407,6 +407,39 @@ function getFirstBook() {
   }
 }
 
+function openSecretPassageSafe() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Enter Safe Combo?"
+  lock.onclick = () => {
+    const win = () => {
+      const myID = "SecretPassageway_right2";
+      const newID = "SecretPassageway_right2_safe_plundered"
+      globalDataObject.state_changes[myID] = newID;
+      bookGet();
+      renderID(newID);
+    }
+    const contentEle = document.createElement("div");
+    contentEle.innerText = "The combination lock has four digits:"
+
+    showExistingPopup(contentEle, "I give up for now...");
+    comboLock(contentEle, win, 1, 3, 1, 3)
+  }
+}
+
+function seeTheLadder() {
+  if (seerOfVoid) {
+    video.src = hallwayDir + "SecretPassageway/right2_ladder" + ".mp4";
+    const textEle = story.querySelector("#room-text");
+    const button = createElementWithClassAndParent("button", textEle);
+    button.innerText = "Climb Ladder?"
+    button.onclick = () => {
+      const atticID = "TODO";
+      renderID(atticID)
+    }
+  }
+}
+
 function putMask2() {
   const textEle = story.querySelector("#room-text");
 
@@ -620,7 +653,7 @@ function pressBigRedButton7() {
     video.onended = () => {
       globalDataObject.powerWorking = true;
       video.onended = null;
-      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+      video.src = hallwayDir + json.src + ".mp4";
       video.loop = true;
       window.requestAnimationFrame(() => video.play.catch(() => { }))
       renderID("7_bright_deep2");
@@ -646,7 +679,7 @@ function pressBigRedButton7Off() {
     video.onended = () => {
       globalDataObject.powerWorking = false;
       video.onended = null;
-      video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+      video.src = hallwayDir + json.src + ".mp4";
       video.loop = true;
       window.requestAnimationFrame(() => video.play.catch(() => { }))
       renderID("7_deep2");

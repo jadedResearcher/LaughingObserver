@@ -11,8 +11,7 @@ function prayForRoom() {
 
 async function handleWin(src, bet) {
   video.pause();
-  const dir = "images/Diorama/Inside/Hallways/"
-  video.src = dir + "Harvest/victory.mp4";
+  video.src = hallwayDir + "Harvest/victory.mp4";
   video.loop = true;
   video.play().catch(() => { });
   await sleep(3000);
@@ -23,7 +22,7 @@ async function handleWin(src, bet) {
     textEle.style.display = "block";
     const json = hallways[globalDataObject.current_room_id];
 
-    video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+    video.src = hallwayDir + json.src + ".mp4";
     video.loop = true;
     window.requestAnimationFrame(() => video.play.catch(() => { }))
   }
@@ -74,10 +73,9 @@ function gamble(bet) {
     //take your bet.
     globalDataObject.books += -1 * bet;
     save();
-    const dir = "images/Diorama/Inside/Hallways/"
     const possible_videos = ["win_mask", "win_key", "win_book", "fail5", "fail3", "fail4", "fail2", "fail1", "fail_two_harvests", "win_harvest", "fail_two_keys", "fail_two_masks"];
     video.pause();
-    video.src = dir + "Harvest/" + pickFrom(possible_videos) + ".mp4";
+    video.src = hallwayDir + "Harvest/" + pickFrom(possible_videos) + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.style.display = "none";
     video.loop = false;
@@ -90,7 +88,7 @@ function gamble(bet) {
         await sleep(1000);
         const json = hallways[globalDataObject.current_room_id];
 
-        video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+        video.src = hallwayDir + json.src + ".mp4";
         video.loop = true;
         window.requestAnimationFrame(() => video.play.catch(() => { }))
         textEle.style.display = "block";

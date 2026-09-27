@@ -16,6 +16,7 @@ right: 3
 src: "1/Sunset/deep_panel1"
 */
 let lastfiretime = performance.now();
+const hallwayDir = "images/Diorama/Inside/Hallways/";
 
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
@@ -138,7 +139,7 @@ const renderRoom = (json, replacedAlready) => {
     roomID.innerText = globalDataObject.current_room_id;
     functionsList.innerText = JSON.stringify(json.functions);
     video.pause();
-    video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
+    video.src = hallwayDir + json.src + ".mp4";
     handleMovement(json);
     //if any function needs to alter room-text target here
     story.innerHTML = `<div id='room-text'>${json.flavorText ? json.flavorText : ""}</div>`;
