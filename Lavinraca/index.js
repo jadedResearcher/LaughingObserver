@@ -111,7 +111,7 @@ const wireUpVisionControl = () => {
 }
 
 const wireUpCanvas = () => {
-  console.log("JR NOTE: you can do INTERESTING fuckery with canvas video, make a note of that (just while wiring this up the video got super tiny and that was fun)")
+  //console.log("JR NOTE: you can do INTERESTING fuckery with canvas video, make a note of that (just while wiring this up the video got super tiny and that was fun)")
   video.removeEventListener("loadedmetadata", wireUpCanvas);
 
   //videoWith etc is the true resolution of the video
