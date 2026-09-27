@@ -170,11 +170,14 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
     video.onended = null;
     video.loop = true;
 
+
     renderID(originalDestination)
 
   }
-  console.log("JR NOTE: video about to play")
-  video.play();
+  //note: i am so tired of having errors that i don't care about
+  //yeah yeah you can't finish your play because i changed src before you were finishing loading
+  //old internet didn't use to care
+  video.play().catch(() => { });
 
 }
 
@@ -187,7 +190,7 @@ function gaslightToShowCombo() {
   if (odds > .75) {
     video.pause();
     video.src = bookcase + ".mp4";
-    video.play();
+    video.play().catch(() => { });
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "Who put this bookcase here? For some reason its hard to focus on...What were you doing here?"
 
@@ -196,16 +199,20 @@ function gaslightToShowCombo() {
     video.src = key + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "How...how is the key back? You reach for it instinctively, but your hand goes right through."
-    video.play();
+    video.play().catch(() => { });
   } else if (odds > .25) {
     video.pause();
     video.src = combo + ".mp4";
     const textEle = story.querySelector("#room-text");
     textEle.innerText = "'1031' is scribbled on the wall. What could it mean?"
-    video.play();
+    video.play().catch(() => { });
   }
   //final third do nothing, regular thing
 }
+
+//https://okgo.net/2009/02/26/do-what-you-want-version-2-wallpaper-background/ this remains the most me coded song of all time
+//faceless horrors trying out new things and encouraging you to do so as well
+
 
 //if you click anywhere the sunbeam glitches out, returns a function to clean that up
 //a simple test in the first room
@@ -218,7 +225,7 @@ function hallwayOneSunbeam() {
     textEle.innerText = "Is...something weird going on with the light?"
     video.pause();
     video.src = "images/Diorama/Inside/Hallways/1/Sunset/deep1_no_sun.mp4";
-    video.play();
+    video.play().catch(() => { });
   }
   const timeout = setTimeout(fuckySunBeam, 10000)
   return () => {
@@ -448,7 +455,7 @@ function bookcase3PlaceMask() {
       globalDataObject.state_changes[myID] = newID;
       //hallway should redirect to the current meta
       globalDataObject.state_changes["3_bright_deep1"] = "3_bright_deep1_open";
-      video.play();
+      video.play().catch(() => { });
       video.onended = () => {
         video.onended = null;
         video.loop = true;
@@ -578,7 +585,7 @@ function victory7() {
     video.pause();
     video.src = dir;
     video.loop = false;
-    video.play();
+    video.play().catch(() => { });
     resumePlayingRegularVideoOnEndOfTemporaryOne();
     currentRoomBeaten = 0;
   }
@@ -596,7 +603,7 @@ function pressBigRedButton7() {
     video.pause();
     video.src = dir;
     video.loop = false;
-    video.play();
+    video.play().catch(() => { });
     const json = hallways[globalDataObject.current_room_id];
 
     video.onended = () => {
@@ -604,7 +611,7 @@ function pressBigRedButton7() {
       video.onended = null;
       video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
       video.loop = true;
-      window.requestAnimationFrame(() => video.play())
+      window.requestAnimationFrame(() => video.play.catch(() => { }))
       renderID("7_bright_deep2");
     }
   }
@@ -622,7 +629,7 @@ function pressBigRedButton7Off() {
     const dir = "images/Diorama/Inside/Hallways/7/power_cutscene_but_backwards.mp4";
     video.src = dir;
     video.loop = false;
-    video.play();
+    video.play().catch(() => { });
     const json = hallways[globalDataObject.current_room_id];
 
     video.onended = () => {
@@ -630,7 +637,7 @@ function pressBigRedButton7Off() {
       video.onended = null;
       video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
       video.loop = true;
-      window.requestAnimationFrame(() => video.play())
+      window.requestAnimationFrame(() => video.play.catch(() => { }))
       renderID("7_deep2");
       textEle.innerText = "...Somehow the sun is setting again."
     }

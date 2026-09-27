@@ -189,7 +189,7 @@ const outsideTheDoor = () => {
   */
   video.src = `${contentDirectory}${globalDataObject.opened_the_door ? "/RunDoor.mp4" : "/ApproachDoorFoley.mp4"}`;
   storyContainer.style.display = "none"
-  video.play();
+  video.play().catch(() => { });
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
   obviousExits.push({ text: "Knock", function: openDoor })
@@ -214,7 +214,7 @@ const inside = () => {
 const openDoor = () => {
   video.src = contentDirectory + "/open_the_door.mp4";
   storyContainer.style.display = "none"
-  video.play();
+  video.play().catch(() => { });
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
   obviousExits.push({ text: "Take Meat", function: meatPamphlet })
@@ -312,7 +312,7 @@ const theHarvest = () => {
   //maybe i'll have a blue screen verion at some point, cuz it hadn't occured to me that you can't green screen a green god , lol
   video.src = contentDirectory + "/HarvestApproach.mp4";
   storyContainer.style.display = "none"
-  video.play();
+  video.play().catch(() => { });
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
   obviousExits.push({ text: "Pray", function: prayHarvest })
@@ -362,7 +362,7 @@ const rollCredits = () => {
 const theMailbox = () => {
   video.src = contentDirectory + "/MailboxApproach.mp4";
   storyContainer.style.display = "none"
-  video.play();
+  video.play().catch(() => { });
   const obviousExits = [];
   obviousExits.push({ text: "Flee", function: outsideTheHouse })
   obviousExits.push({ text: "Rifle Through Mail", function: viewMail })

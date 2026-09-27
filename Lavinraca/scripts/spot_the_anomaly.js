@@ -48,7 +48,7 @@ function playVariantIfCurrentIdIsAnomaly(path, variant_list) {
     console.log("JR NOTE: going to play weird video");
     video.pause();
     video.src = path + pickFrom(variant_list) + ".mp4";
-    video.play();
+    video.play().catch(() => { });
   }
 }
 

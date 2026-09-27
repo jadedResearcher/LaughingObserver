@@ -14,7 +14,7 @@ async function handleWin(src, bet) {
   const dir = "images/Diorama/Inside/Hallways/"
   video.src = dir + "Harvest/victory.mp4";
   video.loop = true;
-  video.play();
+  video.play().catch(() => { });
   await sleep(3000);
 
   const resumeGambling = async () => {
@@ -25,7 +25,7 @@ async function handleWin(src, bet) {
 
     video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
     video.loop = true;
-    window.requestAnimationFrame(() => video.play())
+    window.requestAnimationFrame(() => video.play.catch(() => { }))
   }
 
   if (src.includes("harvest")) {
@@ -81,7 +81,7 @@ function gamble(bet) {
     const textEle = story.querySelector("#room-text");
     textEle.style.display = "none";
     video.loop = false;
-    video.play();
+    video.play().catch(() => { });
     video.onended = async () => {
       video.onended = null;
       if (video.src.includes("win")) {
@@ -92,7 +92,7 @@ function gamble(bet) {
 
         video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
         video.loop = true;
-        window.requestAnimationFrame(() => video.play())
+        window.requestAnimationFrame(() => video.play.catch(() => { }))
         textEle.style.display = "block";
 
       }

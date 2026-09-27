@@ -137,11 +137,12 @@ const renderRoom = (json, replacedAlready) => {
     }
     roomID.innerText = globalDataObject.current_room_id;
     functionsList.innerText = JSON.stringify(json.functions);
+    video.pause();
     video.src = "images/Diorama/Inside/Hallways/" + json.src + ".mp4";
     handleMovement(json);
     //if any function needs to alter room-text target here
     story.innerHTML = `<div id='room-text'>${json.flavorText ? json.flavorText : ""}</div>`;
-    video.play();
+    video.play().catch(() => { });
     if (globalDataObject.button_controls) {
         handleHallwayObviousExits(json.forwards, json.backwards, json.left, json.right)
     }
