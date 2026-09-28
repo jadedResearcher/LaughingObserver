@@ -208,6 +208,12 @@ svg {
 
 }
 
+#themeSelectForPrayer {
+  display: inline-block;
+  background: none;
+  width: auto;
+}
+
 .simple-eustace {
   font-family: lazy;
   font-size: 18px;

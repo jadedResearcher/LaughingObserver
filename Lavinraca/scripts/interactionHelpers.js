@@ -18,7 +18,7 @@ const resumePlayingRegularVideoOnEndOfTemporaryOne = () => {
     video.onended = null;
     video.src = hallwayDir + json.src + ".mp4";
     video.loop = true;
-    window.requestAnimationFrame(() => video.play.catch(() => { }))
+    window.requestAnimationFrame(() => video.play().catch(() => { }))
   }
 }
 

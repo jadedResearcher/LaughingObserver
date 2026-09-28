@@ -377,11 +377,14 @@ const createRangeInputWithLabel = (parent, initialValue, max = 113, min = -113) 
 
 //options is array of label,value pairs
 const createSelectInputWithLabel = (parent, id, labelText, options, selected_option) => {
+  // console.log("JR NOTE: createSelectInputWithLabel", { parent, id, labelText, options, selected_option })
   const container = createElementWithClassAndParent("div", parent, "form-container");
 
-  const label = createElementWithClassAndParent("label", container)
-  label.for = id;
-  label.innerText = labelText;
+  if (labelText) {
+    const label = createElementWithClassAndParent("label", container)
+    label.for = id;
+    label.innerText = labelText;
+  }
 
   const input = createElementWithClassAndParent("select", container);
   for (let option of options) {
@@ -394,7 +397,7 @@ const createSelectInputWithLabel = (parent, id, labelText, options, selected_opt
 
   }
 
-  return { container, input, label };
+  return { container, input, label: label ? label : undefined };
 }
 
 //options is array of label,value pairs

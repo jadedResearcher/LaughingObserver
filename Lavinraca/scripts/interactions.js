@@ -667,7 +667,7 @@ function pressBigRedButton7() {
       video.onended = null;
       video.src = hallwayDir + json.src + ".mp4";
       video.loop = true;
-      window.requestAnimationFrame(() => video.play.catch(() => { }))
+      window.requestAnimationFrame(() => video.play().catch(() => { }))
       renderID("7_bright_deep2");
     }
   }
@@ -693,7 +693,7 @@ function pressBigRedButton7Off() {
       video.onended = null;
       video.src = hallwayDir + json.src + ".mp4";
       video.loop = true;
-      window.requestAnimationFrame(() => video.play.catch(() => { }))
+      window.requestAnimationFrame(() => video.play().catch(() => { }))
       renderID("7_deep2");
       textEle.innerText = "...Somehow the sun is setting again."
     }
