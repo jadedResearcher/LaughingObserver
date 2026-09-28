@@ -64,8 +64,51 @@ const desperate_plea = `[
 let numberSubmittedCommands = 0;
 let submitted = false;
 
+//      sendRoomPrayer(globalDataObject.current_room_id, theme, item1, item2, item3, sentences, claimed);
+
+const sendRoomPrayer = async (roomID, theme, item1, item2, item3, sentences, claimed) => {
+  console.log("JR NOTE: for real tho, I may not have time to get to every room. And some rooms may be way harder than others. I'll do my best for the 31 days of Halloween.")
+  const form = document.createElement("form");
+  const option1 = document.createElement("textarea");
+  option1.value = `Dear, Sweet, Precious Harvest, I pray for a room to replace ${roomID}. 
+  I want it to be ${theme} themed. 
+  I also want to copy ${item1},${item2}, and ${item3} from other rooms of the house and place them inside, if they'll fit.
+  ${sentences}
+  ${claimed ? "I claim this room for myself." : "I do NOT claim this room for myself."}
+  `;
+  option1.name = "message"
+
+  const dateField = document.createElement("input");
+
+  dateField.type = "hidden";
+  dateField.name = "date";
+  dateField.value = new Date().toLocaleString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
+
+  const dataField = document.createElement("input");
+  dataField.type = "hidden";
+  dataField.name = "save-data";
+  dataField.value = JSON.stringify(truncateJson(globalDataObject, 113));
+
+  form.append(option1)
+  form.append(dateField)
+  form.append(dataField);
+
+
+  const formData = new FormData(form);
+  const result = fetch('https://laughing.observer/Lavinraca/harvest_prayers.php', {
+    method: 'POST',
+    body: formData
+  });
+  const res = await result;
+  console.log(res)
+  if (res.ok) {
+    return true;
+  }
+  return false;
+}
+
 //be gentle with this okay, wastes? php is a bit easier to break than poor heartless bot
-const sendPrayerText = async () => {
+const sendReflectedPrayer = async () => {
   console.log("JR NOTE: your Reflection will be well cared for.")
   const form = document.createElement("form");
   const option1 = document.createElement("textarea");
@@ -137,6 +180,8 @@ const renderHarvestAndPrayers = async (parent) => {
   const option1 = createElementWithClassAndParent("textarea", form, "pray-to-your-unresponsive-god");
   option1.focus();
   option1.placeholder = "Pray to the Harvest?";
+  option1.setAttribute("maxlength", 310);
+
   option1.name = "message"
   option1.style.width = "50%"
   option1.style.marginLeft = "auto"

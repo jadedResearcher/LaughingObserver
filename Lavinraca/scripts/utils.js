@@ -287,13 +287,15 @@ const createTextInputWithLabel = (parent, id, labelText, initialValue) => {
   return { container, input, label };
 }
 
-const createTextAreaInputWithLabel = (parent, id, labelText, initialValue, rows = 8) => {
+const createTextAreaInputWithLabel = (parent, id, labelText, initialValue, rows = 8, cols = 81) => {
   const container = createElementWithClassAndParent("div", parent, "form-container");
 
 
-  const label = createElementWithClassAndParent("label", container)
-  label.for = id;
-  label.innerText = labelText;
+  if (labelText) {
+    const label = createElementWithClassAndParent("label", container)
+    label.for = id;
+    label.innerText = labelText;
+  }
 
 
   const input = createElementWithClassAndParent("textarea", container)
@@ -302,11 +304,11 @@ const createTextAreaInputWithLabel = (parent, id, labelText, initialValue, rows 
   input.name = id;
   input.value = initialValue;
   input.rows = "" + rows;
-  input.cols = "81";
+  input.cols = "" + cols;
 
 
 
-  return { container, input, label };
+  return { container, input, label: labelText ? label : undefined };
 }
 
 const createNumberInputWithLabel = (parent, id, labelText, initialValue, min = -113, max = 113) => {
@@ -387,6 +389,7 @@ const createSelectInputWithLabel = (parent, id, labelText, options, selected_opt
   }
 
   const input = createElementWithClassAndParent("select", container);
+  input.id = id;
   for (let option of options) {
     const o = createElementWithClassAndParent("option", input);
     o.value = option.value;
@@ -397,7 +400,7 @@ const createSelectInputWithLabel = (parent, id, labelText, options, selected_opt
 
   }
 
-  return { container, input, label: label ? label : undefined };
+  return { container, input, label: labelText ? label : undefined };
 }
 
 //options is array of label,value pairs

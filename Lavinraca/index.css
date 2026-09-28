@@ -208,11 +208,28 @@ svg {
 
 }
 
+.clarification {
+  font-style: italic;
+  font-size: 11px;
+  margin-top: 13px;
+}
+
 #themeSelectForPrayer {
   display: inline-block;
   background: none;
   width: auto;
+  color: white;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 0px;
+  margin: 0px;
+  height: auto;
+
+  option {
+    background: black;
+  }
 }
+
 
 .simple-eustace {
   font-family: lazy;

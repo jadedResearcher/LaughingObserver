@@ -6,42 +6,101 @@ function prayForRoom() {
   button.innerText = "Pray For Room?"
   button.onclick = () => {
     const contentEle = document.createElement("div");
-    contentEle.innerHTML = `You can pray for what you'd like the Harvest to fill room '${globalDataObject.current_room_id}' with.
-    <br><Br>
-    It could be yours, if you wanted. Claim it, if so.
-    <br><Br>
-    Or it could be everyones.
-    <br><Br>
-    Fill it with anything you desire, just be warned that the Harvest can only Reap what is Sown.
-    <br><Br>
-    Shelves, beds, dressers, paintings (with custom images, if you link to them), safes, mirrors, and more are all possible.
-    <br><Br>
-    If you've seen it somewhere in the house, odds are you can add it to this room.
-    <br><br>
-    And if you want something...rarer, its possible it can be arranged. Including combination locks, secrets or puzzles.
-    <br><Br>
-    Know that the Harvest may fill this room with more than you asked for. Or less.
-    <Br><Br>
-    Or that multiple Faithful may pray to fill the same room.
-    <br><br>
-    Know also that the Harvest only works so many hours a day, and rooms will be Blessed in the order she deems appropriate.
-    <br><Br>
-    Finally, if you know what a clownsona is, know that any room claimed will be branded with yours.
-    `
-    const yes = createElementWithClassAndParent("button", contentEle);
-    yes.innerText = "I want to Pray";
-    yes.onclick = () => {
-      contentEle.innerHTML = "<h2>Prayer for a Room</h2>"
-      const prayerEle = createElementWithClassAndParent("div", contentEle);
-      prayerEle.innerHTML = `
-      Dear, Sweet, Precious Harvest, I pray for a room.  I want it to be `;
-      const themes = ['Clowns', 'Waste', 'Technology', 'Art', 'Space', 'Time', 'Flesh', 'Buried', 'Stealing', 'Freedom', 'Fire', 'Lonely', 'Ocean', 'Science', 'Math', 'Twisting', 'Death', 'Apocalypse', 'Service', 'Family', 'Magic', 'Angels', 'Light', 'Hunting', 'Plants', 'Decay', 'Choices', 'Zap', 'Love', 'Soul', 'Anger', 'Web', 'Royalty', 'Endings', 'Knowing', 'Guiding', 'Crafting', 'Addiction', 'Spying', 'Healing', 'Dolls', 'Obfuscation', 'Censorship', 'Darkness', 'Killing', 'Music', 'Defense', 'Questing', 'Bugs', 'Language'];
-      const themeInput = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, themes.map((t) => { return { label: t, value: t } }), "Clowns")
+
+    contentEle.innerHTML = "<h2>Prayer for a Room</h2>"
+    const prayerEle = createElementWithClassAndParent("div", contentEle);
+    let theme = "Clowns;"
+    let item1 = "Bed";
+    let item2 = "Toilet";
+    let item3 = "Drawers";
+    let sentences = "";
+    let claimed = false;
+    prayerEle.innerHTML = `
+      Dear, Sweet, Precious Harvest, I pray for a room to replace this location.  I want it to be `;
+    const themes = ['Clowns', "Identity", "Dolls", "Halloween", 'Waste', 'Technology', 'Art', 'Space', 'Time', 'Flesh', 'Buried', 'Stealing', 'Freedom', 'Fire', 'Lonely', 'Ocean', 'Science', 'Math', 'Spiral', 'Death', 'Apocalypse', 'Service', 'Family', 'Magic', 'Angels', 'Light', 'Hunting', 'Plants', 'Decay', 'Choices', 'Zap', 'Love', 'Soul', 'Anger', 'Web', 'Royalty', 'Endings', 'Knowing', 'Guiding', 'Crafting', 'Addiction', 'Spying', 'Healing', 'Obfuscation', 'Censorship', 'Darkness', 'Killing', 'Music', 'Defense', 'Questing', 'Bugs', 'Language'];
+    const themeInput = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, themes.map((t) => { return { label: t, value: t } }), theme);
+    themeInput.input.oninput = () => {
+      theme = themeInput.input.value;
+    }
+    themeInput.container.style.display = "inline-block";
+    const prayerEle2 = createElementWithClassAndParent("span", prayerEle);
+    prayerEle2.innerHTML += " themed. I also want to copy these items from other rooms of the house and place them inside, if they'll fit."
+
+    const items = ["Nothing", "Bed", "Toilet", "Desk", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Bride Figure"]
+
+
+
+    const item1Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item1);
+    item1Input.input.oninput = () => {
+      theme = item1Input.input.value;
+    }
+    item1Input.container.style.display = "inline-block";
+
+    const prayerEle3 = createElementWithClassAndParent("span", prayerEle);
+    prayerEle3.innerHTML += " and ";
+
+
+    const item2Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item2);
+    item2Input.input.oninput = () => {
+      theme = item2Input.input.value;
+    }
+    item2Input.container.style.display = "inline-block";
+
+    const prayerEle4 = createElementWithClassAndParent("span", prayerEle);
+    prayerEle4.innerHTML += " and ";
+
+
+    const item3Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item3);
+    item3Input.input.oninput = () => {
+      theme = item2Input.input.value;
+    }
+    item3Input.container.style.display = "inline-block";
+
+    const prayerEle5 = createElementWithClassAndParent("span", prayerEle);
+    prayerEle5.innerHTML += " Here's a sentence or two of specifics that are important to me. If I have any images I want to be in the picture frames in this room, I'll link them here. ";
+
+
+    //parent, id, labelText, initialValue, rows = 8, cols = 81
+    const textAreaInput = createTextAreaInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, "Here's an example of how you'd link any images you want to be in paintings on the wall of the new room: https://lostinzampanio.neocities.org/character_pixel/Yongki.png", 8, 81);
+    textAreaInput.input.setAttribute("maxlength", 310);
+    textAreaInput.input.oninput = () => {
+      sentences = textAreaInput.input.value.slice(0, 310);
+    }
+    textAreaInput.container.style.marginTop = "13px";
+    textAreaInput.input.style.width = "97%"
+
+    const claimCheck = createCheckboxInputWithLabel(prayerEle, "claim-check", "I want to Claim This Room*:", claimed)
+    claimCheck.input.oninput = () => {
+      claimed = !claimed;
     }
 
+    const asterisk = createElementWithClassAndParent("div", prayerEle, "clarification");
+    asterisk.innerHTML += "* You can think of a Claimed Room as being like your personal room in the mansion. You can't keep other Guests out, but your clownsona will be associated with it so everyone knows where you are. Try to have only one claimed room, okay?";
+
+
+    const sendPrayerButton = createElementWithClassAndParent("button", prayerEle);
+    sendPrayerButton.innerText = "Send Prayer";
+    sendPrayerButton.style.marginTop = "13px";
+    sendPrayerButton.onclick = async () => {
+
+      const res = await sendRoomPrayer(globalDataObject.current_room_id, theme, item1, item2, item3, sentences, claimed);
+      if (res) {
+        closeThePopup();
+        textEle.innerHTML = "The Harvest has heard your prayer. If you are Blessed, a Room will arrive before Halloween's End. " + textEle.innerHTML;
+      } else {
+        closeThePopup();
+        textEle.innerHTML = "Something went wrong. The Harvest has NOT heard your prayer. JR may know why, if you can find them on the Lavinraca <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>. " + textEle.innerHTML;
+
+      }
+    }
+
+
     showExistingPopup(contentEle, "No thank you.");
+
   }
+
 }
+
 
 async function handleWin(src, bet) {
   video.pause();

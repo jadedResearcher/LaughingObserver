@@ -39,7 +39,7 @@ const normalKeyLockedDoor = (current_id, unlock_id, autoMoveToNextRoom = false) 
 
       //usually the new state will have unlockDoorForwards so will auto move you, but if you don't want that to happen (say you dont want to play the door graphic), do it here
       if (autoMoveToNextRoom) {
-        console.log("JR NOTE: skip normal door opening")
+        //console.log("JR NOTE: skip normal door opening")
         const json = hallways[unlock_id];
         renderID(json.forwards)
       } else {

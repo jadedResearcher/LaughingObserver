@@ -1768,7 +1768,6 @@ const hallways = {
     "east_first_1_locked": {
         "src": "open_the_door",
         "flavorText": "",
-        "forwards": "east_first_1_enter",
         "backwards": "east_main_2_right2",
         "functions": [
             "openDoorEastFirstLocked"

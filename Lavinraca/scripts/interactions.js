@@ -552,7 +552,7 @@ function lookIntoTheMirror() {
   button.innerText = "Look Into The Mirror?"
   button.onclick = () => {
     try {
-      sendPrayerText(); //a copy of a copy
+      sendReflectedPrayer(); //a copy of a copy
 
       //i wouldn't worry about it
       const another_you_from_another_world = JSON.parse(pickFrom(getWaitingReflections()))
