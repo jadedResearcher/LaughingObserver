@@ -44,6 +44,7 @@ let justifedRecursion = false;
 //its fun figuring what effects are cheap to do at 60fps or whatever this runs at
 let hallOfMirrors = false;
 let mirrorShards = 13;
+let mirrorCenter = 0.5;
 
 window.onerror = () => {
   glitchyError = true;
@@ -192,8 +193,8 @@ const renderVideoToCanvas = () => {
   if (hallOfMirrors) {
     const recursions = mirrorShards;
     const angle = (Math.PI * 2) / recursions;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    const centerX = canvas.width * mirrorCenter;
+    const centerY = canvas.height * mirrorCenter;
     for (let i = 0; i < recursions; i++) {
       ctx.save();
       ctx.translate(centerX, centerY);
@@ -269,6 +270,8 @@ content directory decides if its the normal outside or if its silly/spooky
 text is mostly always the same but can vary
 */
 const outsideTheHouse = () => {
+  //you did it, you escaped
+  hallOfMirrors = false;
   window.removeEventListener('keydown', handleMovement); //remove the wasd controls we set up for inside (won't crash even if they werent' in use)
   bgMusic.src = wind;
   bgMusic.volume = 1;

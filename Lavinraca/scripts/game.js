@@ -142,7 +142,13 @@ const renderRoom = (json, replacedAlready) => {
     video.src = hallwayDir + json.src + ".mp4";
     handleMovement(json);
     //if any function needs to alter room-text target here
+
     story.innerHTML = `<div id='room-text'>${json.flavorText ? json.flavorText : ""}</div>`;
+    if (hallOfMirrors) {
+        story.style.display = "none"
+    } else {
+        story.style.display = "block";
+    }
     video.play().catch(() => { });
     if (globalDataObject.button_controls) {
         handleHallwayObviousExits(json.forwards, json.backwards, json.left, json.right)
