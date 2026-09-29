@@ -1,3 +1,10 @@
+//sudden realization on 9/28/26, 2+ months after starting work on this game and with only 3 days left till lavinraca
+//i realized i made a game thats
+//half old school dungeon crawl
+//half one of those fucked up zillow tours
+//: 8800 Blue Lick Road,
+//https://www.tumblr.com/pain-and-lavender-honey/706658881000062976/please-explore-this-place-with-me-the-3d?source=share
+
 //answer, prayer pairs
 const raw_prayers = [];
 const clean_answered_prayers = [];

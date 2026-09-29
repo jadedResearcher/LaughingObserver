@@ -26,13 +26,13 @@ function prayForRoom() {
     const prayerEle2 = createElementWithClassAndParent("span", prayerEle);
     prayerEle2.innerHTML += " themed. I also want to copy these items from other rooms of the house and place them inside, if they'll fit."
 
-    const items = ["Nothing", "Bed", "Toilet", "Desk", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Bride Figure"]
+    const items = ["Nothing", "Bed", "Toilet", "Desk", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Veiled Figure"]
 
 
 
     const item1Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item1);
     item1Input.input.oninput = () => {
-      theme = item1Input.input.value;
+      item1 = item1Input.input.value;
     }
     item1Input.container.style.display = "inline-block";
 
@@ -42,7 +42,7 @@ function prayForRoom() {
 
     const item2Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item2);
     item2Input.input.oninput = () => {
-      theme = item2Input.input.value;
+      item2 = item2Input.input.value;
     }
     item2Input.container.style.display = "inline-block";
 
@@ -52,7 +52,7 @@ function prayForRoom() {
 
     const item3Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item3);
     item3Input.input.oninput = () => {
-      theme = item2Input.input.value;
+      item3 = item2Input.input.value;
     }
     item3Input.container.style.display = "inline-block";
 
