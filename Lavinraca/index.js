@@ -38,6 +38,9 @@ const contentDirectory = "images/Diorama/Outside/Final"
 //but also might help people report shit 
 let glitchyError = false;
 
+//look catalyst pointed out how fun the resize bug was and i figured i could go harder on purpose
+let justifedRecursion = false;
+
 window.onerror = () => {
   glitchyError = true;
   setTimeout(() => { glitchyError = false }, 3000)
@@ -164,6 +167,22 @@ const renderVideoToCanvas = () => {
         xOffset, offsetY, canvas.width, offsetHight
       );
     }
+  }
+
+  if (justifedRecursion) {
+    let scale = 0.9
+    const recursions = 13;
+    let width = canvas.width;
+    let height = canvas.height;
+    for (let i = 0; i < recursions; i++) {
+      width = width * scale;
+      height = height * scale;
+      ctx.drawImage(
+        video,
+        0, 0, width, height,
+      );
+    }
+
   }
 
   //your clownsona won't glitch, its the most true thing here
