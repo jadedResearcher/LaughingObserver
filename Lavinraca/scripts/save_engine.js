@@ -110,6 +110,7 @@ const save = (reason) => {
     }
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));
     const saveNoise = new Audio("SoundEffects/single_heart.mp3");
+    mirrorShards = getRandomNumberBetween(3, 113);
     saveNoise.play();
     saveSideEffects();
 

@@ -41,6 +41,10 @@ let glitchyError = false;
 //look catalyst pointed out how fun the resize bug was and i figured i could go harder on purpose
 let justifedRecursion = false;
 
+//its fun figuring what effects are cheap to do at 60fps or whatever this runs at
+let hallOfMirrors = false;
+let mirrorShards = 13;
+
 window.onerror = () => {
   glitchyError = true;
   setTimeout(() => { glitchyError = false }, 3000)
@@ -181,6 +185,28 @@ const renderVideoToCanvas = () => {
         video,
         0, 0, width, height,
       );
+    }
+
+  }
+
+  if (hallOfMirrors) {
+    const recursions = mirrorShards;
+    const angle = (Math.PI * 2) / recursions;
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    for (let i = 0; i < recursions; i++) {
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(i * angle);
+
+      // Mirror every alternating slice
+      if (i % 2 === 1) {
+        ctx.scale(-1, 1);
+      }
+
+      // Draw the wedge from an offscreen/source canvas
+      ctx.drawImage(video, 0, 0);
+      ctx.restore();
     }
 
   }
