@@ -387,6 +387,19 @@ function handleDesk2Locked() {
   }
 }
 
+function getEntranceBook() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Take Book?"
+  lock.onclick = () => {
+    const myID = "1_bright";
+    const newID = "1_bright_no_book"
+    globalDataObject.state_changes[myID] = newID;
+    bookGet();
+    renderID(newID);
+  }
+}
+
 function getFirstBook() {
   const textEle = story.querySelector("#room-text");
   const lock = createElementWithClassAndParent("button", textEle);

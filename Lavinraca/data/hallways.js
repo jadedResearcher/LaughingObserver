@@ -107,7 +107,18 @@ const hallways = {
     "1_bright": {
         "roomID": "1",
         "src": "1/ElectricLights/front1",
-        "flavorText": "The foyer looks so different lit by the electric lamps.",
+        "flavorText": "The foyer looks so different lit by the electric lamps. In the bright light, you notice a book tucked away behind the candy jar.",
+        "forwards": "4_bright",
+        "left": "2_bright",
+        "right": "3_bright",
+        "backwards": "OUTSIDE",
+        "functions": ["getEntranceBook"]
+    },
+
+    "1_bright_no_book": {
+        "roomID": "1",
+        "src": "1/ElectricLights/front1",
+        "flavorText": "The foyer looks so different lit by the electric lamps. You already got the book here.",
         "forwards": "4_bright",
         "left": "2_bright",
         "right": "3_bright",
