@@ -1,10 +1,51 @@
 //      "functions": ["prayForRoom", "letsGoGamble1", "letsGoGamble10", "letsGoGamble100"]
 
+function cantAffordPrayer() {
+
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `Through the buzzing TV static you seem to hear a voice.
+  
+  <div class='truth'>It seems it would cost ${globalDataObject.harvestPoints} books to pray to the Harvest right now.
+  <br><Br>
+  In Truth, She is a busy god, and can not be fielding constant requests. You understand how it is.
+  <br><Br>
+  But, perhaps, if you are willing to take a chance...?
+  <Br><Br
+  She might be persuaded of the strength of your convictions.
+  <Br><Br>
+  Here.
+  <Br><Br>
+  Take this book, free of charge.
+  <Br><Br>
+  May our lady of Gambling, Arbitration, Teaching and Eating favor you tonight.
+  </div>
+  <div class='scarecrow'>im so hungry</div>`
+  const button = createElementWithClassAndParent("button", contentEle);
+  button.innerText = "Take Book";
+  button.onclick = () => {
+    bookGet();
+  }
+
+
+  showExistingPopup(contentEle, "I don't need charity.");
+}
+
 function prayForRoom() {
+  //this fucntion will NOT let you have zero cuz if we did it won't escalate prices and im lazy and this is the easiest solution
+  //yes i note the irony that i claim to be lazy and built this whole maze in several months of intense focus
+  if (globalDataObject.harvestPoints === 0) {
+    globalDataObject.harvestPoints = 1;
+    save();
+  }
   const textEle = story.querySelector("#room-text");
   const button = createElementWithClassAndParent("button", textEle);
+
   button.innerText = "Pray For Room?"
   button.onclick = () => {
+    if (globalDataObject.harvestPoints > globalDataObject.books) {
+      cantAffordPrayer();
+      return;
+    }
     const contentEle = document.createElement("div");
 
     contentEle.innerHTML = "<h2>Prayer for a Room</h2>"
@@ -16,7 +57,7 @@ function prayForRoom() {
     let sentences = "";
     let claimed = false;
     prayerEle.innerHTML = `
-      Dear, Sweet, Precious Harvest, I pray for a room to replace this location.  I want it to be `;
+      Dear, Sweet, Precious Harvest, I pray for a room to replace this location and I am willing to Sacrifice ${globalDataObject.harvestPoints} books in Prayer. I understand that even with my Sacrifice my Prayer may go unanswered, and even if answered, may take a long time.  I want the room built from my Sacrifice to be `;
     const themes = ['Clowns', "Identity", "Dolls", "Halloween", 'Waste', 'Technology', 'Art', 'Space', 'Time', 'Flesh', 'Buried', 'Stealing', 'Freedom', 'Fire', 'Lonely', 'Ocean', 'Science', 'Math', 'Spiral', 'Death', 'Apocalypse', 'Service', 'Family', 'Magic', 'Angels', 'Light', 'Hunting', 'Plants', 'Decay', 'Choices', 'Zap', 'Love', 'Soul', 'Anger', 'Web', 'Royalty', 'Endings', 'Knowing', 'Guiding', 'Crafting', 'Addiction', 'Spying', 'Healing', 'Obfuscation', 'Censorship', 'Darkness', 'Killing', 'Music', 'Defense', 'Questing', 'Bugs', 'Language'];
     const themeInput = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, themes.map((t) => { return { label: t, value: t } }), theme);
     themeInput.input.oninput = () => {
@@ -79,18 +120,20 @@ function prayForRoom() {
 
 
     const sendPrayerButton = createElementWithClassAndParent("button", prayerEle);
-    sendPrayerButton.innerText = "Send Prayer";
+    sendPrayerButton.innerText = `Send Prayer and Lose ${globalDataObject.harvestPoints} Books`;
     sendPrayerButton.style.marginTop = "13px";
     sendPrayerButton.onclick = async () => {
-
       const res = await sendRoomPrayer(globalDataObject.current_room_id, theme, item1, item2, item3, sentences, claimed);
       if (res) {
-        closeThePopup();
-        textEle.innerHTML = "The Harvest has heard your prayer. If you are Blessed, a Room will arrive before Halloween's End. " + textEle.innerHTML;
+        contentEle.innerHTML = "The Harvest has heard your prayer. If you are Blessed, a Room will arrive before Halloween's End."
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+        //re-render the room, do NOT try to manually start it back up or it won't redo the check for if you can afford it, catalyst discovered that one
+        renderID(globalDataObject.current_room_id);
       } else {
-        closeThePopup();
-        textEle.innerHTML = "Something went wrong. The Harvest has NOT heard your prayer. JR may know why, if you can find them on the Lavinraca <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>. " + textEle.innerHTML;
-
+        contentEle.innerHTML = "Something went wrong. The Harvest has NOT heard your prayer. JR may know why, if you can find them on the Lavinraca <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>. ";
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+        //re-render the room, do NOT try to manually start it back up or it won't redo the check for if you can afford it, catalyst discovered that one
+        renderID(globalDataObject.current_room_id);
       }
     }
 
@@ -113,17 +156,15 @@ async function handleWin(src, bet) {
     await sleep(3000)
     const textEle = story.querySelector("#room-text");
     textEle.style.display = "block";
-    const json = hallways[globalDataObject.current_room_id];
+    //re-render the room, do NOT try to manually start it back up or it won't redo the check for if you can afford it, catalyst discovered that one
+    renderID(globalDataObject.current_room_id);
 
-    video.src = hallwayDir + json.src + ".mp4";
-    video.loop = true;
-    window.requestAnimationFrame(() => video.play().catch(() => { }))
   }
 
   if (src.includes("harvest")) {
     globalDataObject.books += 100; //quietly, with no fan fair
-    //half to show off the model, half to collect for mysterious purposes
-    harvestPointsGet(bet * 4);
+    //half to show off the model, half to collect for mysterious purposes (9/28/26 i know the purpose now)
+    harvestPointsGet(bet);
     resumeGambling();
   } else if (src.includes("key")) {
     globalDataObject.books += 1; //you get your bet back, at least.
@@ -179,12 +220,9 @@ function gamble(bet) {
         handleWin(video.src, bet)
       } else {
         await sleep(1000);
-        const json = hallways[globalDataObject.current_room_id];
+        //re-render the room, do NOT try to manually start it back up or it won't redo the check for if you can afford it, catalyst discovered that one
+        renderID(globalDataObject.current_room_id);
 
-        video.src = hallwayDir + json.src + ".mp4";
-        video.loop = true;
-        window.requestAnimationFrame(() => video.play().catch(() => { }))
-        textEle.style.display = "block";
 
       }
     }

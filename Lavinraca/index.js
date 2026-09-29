@@ -457,15 +457,12 @@ const closeThePopup = (callback) => {
 const showExistingPopup = (contentEle, closeButtonText) => {
   popup.style.display = "block"
 
-
-
-
   popupContents.innerHTML = "";
   const contents = createElementWithClassAndParent("div", popupContents);
   contents.append(contentEle)
 
   if (closeButtonText) {
-    const close = createElementWithClassAndParent("button", contents);
+    const close = createElementWithClassAndParent("button", contents, "bottom-close-button");
     close.innerText = closeButtonText;
     close.onclick = () => {
       closeThePopup();

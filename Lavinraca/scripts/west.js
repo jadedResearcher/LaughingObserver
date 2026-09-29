@@ -70,7 +70,7 @@ const sendRoomPrayer = async (roomID, theme, item1, item2, item3, sentences, cla
   console.log("JR NOTE: for real tho, I may not have time to get to every room. And some rooms may be way harder than others. I'll do my best for the 31 days of Halloween.")
   const form = document.createElement("form");
   const option1 = document.createElement("textarea");
-  option1.value = `Dear, Sweet, Precious Harvest, I pray for a room to replace ${roomID}. 
+  option1.value = `Dear, Sweet, Precious Harvest, I pray for a room to replace ${roomID} and Sacrificing ${globalDataObject.harvestPoints} books in your name. 
   I want it to be ${theme} themed. 
   I also want to copy ${item1},${item2}, and ${item3} from other rooms of the house and place them inside, if they'll fit.
   ${sentences}
@@ -93,6 +93,10 @@ const sendRoomPrayer = async (roomID, theme, item1, item2, item3, sentences, cla
   form.append(dateField)
   form.append(dataField);
 
+  globalDataObject.books += -1 * globalDataObject.harvestPoints;
+  const tmp = globalDataObject.harvestPoints;
+  globalDataObject.harvestPoints = 10 * tmp; //every time you send a room prayer, the cost increases by an order of magnitude
+  save();
 
   const formData = new FormData(form);
   const result = fetch('https://laughing.observer/Lavinraca/harvest_prayers.php', {
