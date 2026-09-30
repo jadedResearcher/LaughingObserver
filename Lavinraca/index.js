@@ -391,7 +391,7 @@ const prayHarvest = () => {
 
 
 const viewMail = () => {
-  const mail = fetchPendingCommands();
+  const mail = fetchPendingMail();
   console.log("JR NOTE: here's the mail it never fails", mail);
   //alert("JR NOTE: todo display " + mail.length + mail);
   popup.style.display = "block"

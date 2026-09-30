@@ -17,6 +17,86 @@ give me the base ID for the hallway and I'll give you a template to edit with al
 //very very very fun fan animation of ZampanioSimEast:  https://www.tumblr.com/emberiscurious/827708119865016320/that-thing-i-promised?source=share
 
 
+const debugPendingPrayers = () => {
+  const body = document.querySelector("body");
+  body.style.overflow = "auto"
+  body.innerHTML = "";
+  const prayers = fetchPendingCommands();
+  const ppcontainer = createElementWithClassAndParent("div", body);
+  ppcontainer.style.cssText = `display: flex; flex-wrap: wrap; gap:13px;`;
+  for (let prayer of prayers) {
+    const innerContainer = createElementWithClassAndParent("div", ppcontainer);
+
+    const header = createElementWithClassAndParent("h2", innerContainer);
+    header.innerText = "OUTSIDE PRAYER"
+    if (prayer.message === REFLECTED_MESSAGE) {
+      header.innerText = "Trapped Reflection"
+      debugSpecificReflection(innerContainer, prayer);
+    } else {
+      if (prayer.message.includes(ROOM_LITANY)) {
+        header.innerText = "Room Litany"
+
+      }
+      const litEle = createElementWithClassAndParent("div", innerContainer);
+      litEle.innerText = prayer.message;
+      litEle.style.cssText = `background: white; width: 250px; padding: 13px;`;
+    }
+
+
+    const toggle = createElementWithClassAndParent("button", innerContainer);
+    toggle.innerText = "Toggle View JSON"
+    let displayJSON = false;
+
+    const areaEle = createElementWithClassAndParent("textarea", innerContainer);
+    areaEle.value = JSON.stringify(prayer);
+    areaEle.style.width = "300px"
+    areaEle.style.height = "500px"
+    areaEle.style.display = "none";
+
+    toggle.onclick = () => {
+      console.log("JR NOTE: toggle", displayJSON)
+      displayJSON = !displayJSON
+      if (displayJSON) {
+        areaEle.style.display = "block"
+      } else {
+        areaEle.style.display = "none"
+
+      }
+    }
+  }
+
+
+}
+
+
+const debugSpecificReflection = (ele, prayer) => {
+
+  try {
+    const data = JSON.parse(prayer["save-data"]);
+    const makePair = (parent, left, right) => {
+      const pair = createElementWithClassAndParent("div", parent, "collated-stat-pair");
+      const leftEle = createElementWithClassAndParent("div", pair, "collated-stat-left");
+      leftEle.innerHTML = left;
+      const rightEle = createElementWithClassAndParent("div", pair, "collated-stat-right");
+      rightEle.innerHTML = right;
+    }
+
+    makePair(ele, "Movements Made", data.hallways_entered);
+    makePair(ele, "Prayers", data.prayers_sent)
+    makePair(ele, "Meat", data.meat)
+    makePair(ele, "Candy", data.candy)
+    makePair(ele, "Keys", data.keys)
+    makePair(ele, "Masks", data.masks)
+    makePair(ele, "Books", data.books)
+    makePair(ele, "Harvest Points", data.harvestPoints)
+
+  } catch (e) {
+    console.error(e)
+  }
+
+
+}
+
 //debugGenerateTemplateForNewHallway("2_sunset")
 const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_full_id = null, forwards_full_id = null) => {
   //they had us in the first half ngl

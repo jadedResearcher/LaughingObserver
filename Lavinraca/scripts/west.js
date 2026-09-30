@@ -328,7 +328,7 @@ const httpGet = (theUrl) => {
 
 
 
-//returns string array, google helped check syntax cuz ive never gotten json from php before and it was fiddly
+//returns json array, google helped check syntax cuz ive never gotten json from php before and it was fiddly
 const fetchPendingCommands = () => {
   try {
 
@@ -338,9 +338,30 @@ const fetchPendingCommands = () => {
       processedText = processedText.slice(0, -1).trim();
     }
 
-    console.log("JR NOTE: Response is", response)
+    // console.log("JR NOTE: Response is", response)
     const json = JSON.parse(`[${processedText.trim()}]`);
-    console.log("JR NOTE: json is", json);
+    //console.log("JR NOTE: json is", json);
+    return json;
+  }
+  catch (e) {
+    console.error("JR NOTE: servers dead i guess? the future comes for us all.", e);
+    return [];
+  }
+}
+
+//returns string array, google helped check syntax cuz ive never gotten json from php before and it was fiddly
+const fetchPendingMail = () => {
+  try {
+
+    const response = (httpGet("https://laughing.observer/Lavinraca/PendingTestamonials/prayers.txt"));
+    let processedText = response.trim();
+    if (processedText.endsWith(',')) {
+      processedText = processedText.slice(0, -1).trim();
+    }
+
+    //console.log("JR NOTE: Response is", response)
+    const json = JSON.parse(`[${processedText.trim()}]`);
+    //console.log("JR NOTE: json is", json);
     return json.map((i) => ` ${i.message}, Postmarked: ${i.date}`);
   }
   catch (e) {

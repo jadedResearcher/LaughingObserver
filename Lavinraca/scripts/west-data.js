@@ -10,6 +10,7 @@ const raw_prayers = [];
 const clean_answered_prayers = [];
 
 const REFLECTED_MESSAGE = "Reflection of a Reflection Reflected Endlessly";
+const ROOM_LITANY = "Dear, Sweet, Precious Harvest, I pray for a room to replace";
 
 const getWaitingReflections = () => {
   const ret = [];
@@ -17,6 +18,26 @@ const getWaitingReflections = () => {
     //im sure its fine
     if (r && r.prayerObject.message === REFLECTED_MESSAGE) {
       ret.push(r.prayerObject["save-data"])
+    }
+  }
+  return ret;
+}
+
+const getPendingPrayersForRoom = (id) => {
+  const ret = [];
+  const mail = fetchPendingCommands();
+  for (let r of mail) {
+    //im sure its fine
+    if (r && r.message.includes(ROOM_LITANY)) {
+      try {
+        const data = JSON.parse(r["save-data"]);
+        if (data.current_room_id === id) {
+          console.log("JR NOTE: data is", data)
+          ret.push({ message: r.message, data })
+        }
+      } catch (e) {
+        console.error(e);
+      }
     }
   }
   return ret;
