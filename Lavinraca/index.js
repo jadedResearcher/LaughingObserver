@@ -438,7 +438,8 @@ const theHarvest = () => {
 //https://yolkdump.neocities.org/zampaniodiscordarchive
 const rollCredits = () => {
   popup.style.display = "block"
-  popupContents.innerHTML = "The small metal plaque welded to the fence seems to be a list of those who have contributed to this game.";
+  popupContents.innerHTML = `The small metal plaque welded to the fence seems to be a list of those who have contributed to this game.
+  <br><br>It also has a small inscription: In Loving <a target='_blank' href ='https://catalystsbathroomlibrary.neocities.org/funeral'>Memory</a> of HeartlessBot, Who Touched Divinity.<Br><Br>`;
 
   const credits = {
     "JR": "Writing, Coding, Filming, Set Making",

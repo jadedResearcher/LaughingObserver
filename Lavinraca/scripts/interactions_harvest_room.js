@@ -132,7 +132,6 @@ const handlePrayingForRoom = () => {
 }
 
 const handleShowingExistingPrayers = (prayers) => {
-  console.log("JR NOTE:handleShowingExistingPrayers ", prayers)
 
   const contentEle = document.createElement("div");
   const header = createElementWithClassAndParent("div", contentEle);
