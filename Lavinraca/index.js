@@ -459,6 +459,16 @@ const rollCredits = () => {
 
   }
 
+  const c = createElementWithClassAndParent("div", popupContents);
+  c.innerHTML = `Lavinraca is a community event that takes place each October. While its not directly Zampanio, the Zampanio fandom (including JR) have become quite close with festivities.
+  <Br><Br>
+  The first year JR participated, they created a corn maze website designed to work like a previous years discord server.
+  <br><br>In it, Guests collaborated and Sacrificed things (and people) to create the physical form of  a new god of the Harvest.
+  <br><Br>The next year, Guests and JR collaborated to raise this Baby God and nuture her into choosing the domains of Change, Being Served and Inspiration.
+  <br><Br>The year after that, Guest and JR collaborated to raise this Teen God and give her a Motivation to do anything other than play children's card games and the Mystery GATE was opened with Gambling, Arbitration, Teaching and Eating.
+  <br><Br>This year, the Mature Harvest God is sure of who she is and why she does what she does. She simply waits for new Faithful to come and play with her.`;
+
+
   const close = createElementWithClassAndParent("button", popupContents);
   close.style.marginTop = "31px"
   close.innerText = "Stop Looking At Plaque";

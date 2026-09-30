@@ -82,7 +82,7 @@ const handlePrayingForRoom = () => {
 
   const item3Input = createSelectInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, items.map((t) => { return { label: t, value: t } }), item3);
   item3Input.input.oninput = () => {
-    item3 = item2Input.input.value;
+    item3 = item3Input.input.value;
   }
   item3Input.container.style.display = "inline-block";
 
