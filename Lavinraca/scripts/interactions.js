@@ -588,6 +588,25 @@ function lookIntoTheMirror() {
   }
 }
 
+function theStairsBeckon() {
+  const textEle = story.querySelector("#room-text");
+
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Dare you climb them anyways?";
+  button.onclick = () => {
+    const stairNoise = new Audio("images/Diorama/foley/ready_effects/Inside/short_stairs.mp3");
+    stairNoise.onended = () => {
+      hallOfMirrors = true;
+      const chosenId = getRandomHallwayID();
+      console.log("JR NOTE: chosen id is", chosenId)
+      renderID(chosenId);
+    }
+    stairNoise.play();
+
+  }
+}
+
 function toggleSeerOfVoid() {
   seerOfVoid = !seerOfVoid;
   const textEle = story.querySelector("#room-text");

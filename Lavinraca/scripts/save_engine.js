@@ -1,5 +1,6 @@
 
 const SAVE_KEY = 'LAVINRACA_2026_SHESMIDDLEAGEDNOW'
+const saveNoise = new Audio("SoundEffects/single_heart.mp3");
 
 //up to what uses this to define this
 //https://catalystsbathroomlibrary.neocities.org/
@@ -109,7 +110,6 @@ const save = (reason) => {
         globalDataObject.clownsona = clownsona.toJSON();
     }
     localStorage.setItem(SAVE_KEY, JSON.stringify(globalDataObject));
-    const saveNoise = new Audio("SoundEffects/single_heart.mp3");
     mirrorShards = getRandomNumberBetween(3, 113);
     mirrorCenter = Math.random();
     saveNoise.play();
