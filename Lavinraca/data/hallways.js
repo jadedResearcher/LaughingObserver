@@ -2839,7 +2839,7 @@ const hallways = {
         "src": "Stairs/left1",
         "backwards": "Stairs_deep1",
         "right": "Stairs_deep1",
-        "functions": []
+        "functions": ["goIntoThePortal"]
     },
     "Stairs_right1": {
         "roomID": "Stairs",

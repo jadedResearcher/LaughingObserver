@@ -588,6 +588,29 @@ function lookIntoTheMirror() {
   }
 }
 
+function goIntoThePortal() {
+  const textEle = story.querySelector("#room-text");
+
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "You kinda feel like...just...jumping into. The scary. Portal.";
+  button.onclick = () => {
+    const dir = "images/Diorama/Inside/Hallways/Stairs/left1cutscene.mp4";
+    video.pause();
+    video.src = dir;
+    video.loop = false;
+    video.play().catch(() => { });
+    video.onended = () => {
+      video.loop = true;
+      video.onended = undefined;
+      renderID("1_bright")
+
+    }
+  }
+
+
+}
+
 function theStairsBeckon() {
   const textEle = story.querySelector("#room-text");
 
