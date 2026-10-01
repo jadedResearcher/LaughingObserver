@@ -81,6 +81,8 @@ const debugSpecificReflection = (ele, prayer) => {
       rightEle.innerHTML = right;
     }
 
+    makePair(ele, "Current Location", data.current_room_id);
+
     makePair(ele, "Movements Made", data.hallways_entered);
     makePair(ele, "Prayers", data.prayers_sent)
     makePair(ele, "Meat", data.meat)
