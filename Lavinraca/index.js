@@ -66,6 +66,11 @@ window.onload = async () => {
   if (seerOfVoidCheck()) {
     seerOfVoid = true;
   }
+
+  if (jrDebugCheck()) {
+    debugPendingPrayers();
+    return;
+  }
   wireUpVisionControl();
   addIDToHallways();
   wireUpPopupClose();

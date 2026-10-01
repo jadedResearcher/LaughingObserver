@@ -30,6 +30,11 @@ const seerOfVoidCheck = () => {
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get('seerOfVoid'); //a classic
 }
+const jrDebugCheck = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get('jrDebugPlz');
+}
 
 const probablyMobile = () => {
   //a finger or whatever

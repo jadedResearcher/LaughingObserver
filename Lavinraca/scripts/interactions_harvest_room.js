@@ -149,6 +149,24 @@ const handleShowingExistingPrayers = (prayers) => {
   showExistingPopup(contentEle, "Gotcha")
 }
 
+const handleShowingExistingDibs = (prayers) => {
+
+  const contentEle = document.createElement("div");
+  const header = createElementWithClassAndParent("div", contentEle);
+  header.innerText = "These Guests Have Already Prayed For This Room."
+  const clarification = createElementWithClassAndParent("div", contentEle, "clarification");
+  clarification.innerText = "If you REALLY Want to cram yourself in here with them, AND they all agree, you can send an OUTSIDE prayer and I'll see what I can do.";
+  const list = createElementWithClassAndParent("ol", contentEle);
+
+  for (let p of prayers) {
+    const e = createElementWithClassAndParent("li", list);
+    e.innerText = p.message;
+    e.style.marginBottom = "13px"
+  }
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
 function prayForRoom() {
   //this fucntion will NOT let you have zero cuz if we did it won't escalate prices and im lazy and this is the easiest solution
   //yes i note the irony that i claim to be lazy and built this whole maze in several months of intense focus
@@ -157,24 +175,42 @@ function prayForRoom() {
     save();
   }
   const textEle = story.querySelector("#room-text");
-  const button = createElementWithClassAndParent("button", textEle);
 
-  button.innerText = "Pray For Room?"
-  button.onclick = () => {
-    handlePrayingForRoom();
-  }
 
-  const prayers = getPendingPrayersForRoom(globalDataObject.current_room_id);
-  console.log("JR NOTE: prayers for room", prayers, globalDataObject.current_room_id)
+  const dibs = getDibsForRoom(globalDataObject.current_room_id);
 
-  if (prayers.length > 0) {
+  if (dibs.length === 0) {
+    const button = createElementWithClassAndParent("button", textEle);
+
+    button.innerText = "Pray For Room?"
+    button.onclick = () => {
+      handlePrayingForRoom();
+    }
+
+    const prayers = getPendingPrayersForRoom(globalDataObject.current_room_id);
+    console.log("JR NOTE: prayers for room", prayers, globalDataObject.current_room_id)
+
+    if (prayers.length > 0) {
+      const button2 = createElementWithClassAndParent("button", textEle);
+
+      button2.innerText = "View Current Prayers For This Room?"
+      button2.onclick = () => {
+        handleShowingExistingPrayers(prayers);
+      }
+    }
+  } else {
+
     const button2 = createElementWithClassAndParent("button", textEle);
 
-    button2.innerText = "View Current Prayers For This Room?"
+    button2.innerText = "This Room Already Has Been Decided (and will be built before Halloween's End)"
     button2.onclick = () => {
-      handleShowingExistingPrayers(prayers);
+      handleShowingExistingDibs(dibs);
     }
+
   }
+
+
+
 
 }
 
