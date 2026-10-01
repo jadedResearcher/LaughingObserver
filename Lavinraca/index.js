@@ -398,9 +398,11 @@ const viewMail = () => {
   popupContents.innerHTML = "You find the following postcards, letters and small pamplets waiting for the Harvest God's perusal.<br><Br> You feel a little uneasy, knowing these messages from the Faithful have not yet been seen by any eyes. The Harvest has not yet judged any of these Worthy and you may find things better left hidden in the void.<br><br>(ooc: This is pending online content submitted by fans and not yet moderated. viewer discretion is advised etc etc but you can also check here to make sure your own Prayers are waiting for the God to be In)<br><br>";
 
   for (let letter of mail) {
-    console.log("JR NOTE: rendering mail")
-    const c = createElementWithClassAndParent("li", popupContents);
-    c.innerText = letter;
+    if (!letter.includes(REFLECTED_MESSAGE)) {
+      console.log("JR NOTE: rendering mail")
+      const c = createElementWithClassAndParent("li", popupContents);
+      c.innerText = letter;
+    }
 
   }
 

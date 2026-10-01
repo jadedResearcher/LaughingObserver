@@ -1724,7 +1724,7 @@ const hallways = {
     "east_main_8_deep2": {
         "roomID": "east_main_8",
         "src": "CopyOfACopy/RightDoorDeep2",
-        "forwards": "TODO",
+        "forwards": null,
         "left": "east_main_8_left2",
         "right": "east_main_8_right2",
         "backwards": "east_main_8_deep1",
