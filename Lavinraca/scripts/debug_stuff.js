@@ -23,7 +23,22 @@ const debugPendingPrayers = () => {
   const prayers = fetchPendingCommands();
 
   debugPrayersWithInput("Pending", prayers);
-  debugPrayersWithInput("Room Dibs", room_dibs_raw);
+
+  const claimedRoomIDs = {};
+  for (let dib of room_dibs_raw) {
+    const data = JSON.parse(dib["save-data"]);
+    const id = data.current_room_id;
+    if (claimedRoomIDs[id]) {
+      claimedRoomIDs[id].push(dib)
+    } else {
+      claimedRoomIDs[id] = [dib]
+    }
+  }
+
+  for (let dibID of Object.keys(claimedRoomIDs)) {
+    debugPrayersWithInput(`Dibs for ${dibID}`, claimedRoomIDs[dibID]);
+
+  }
 
 }
 
@@ -36,9 +51,10 @@ const debugPrayersWithInput = (header, prayers) => {
   headerEle.innerText = header;
   headerEle.style.marginTop = "31px";
   headerEle.style.color = "black"
+  headerEle.style.marginLeft = "13px"
 
   const ppcontainer = createElementWithClassAndParent("div", body);
-  ppcontainer.style.cssText = `display: flex; flex-wrap: wrap; gap:13px;`;
+  ppcontainer.style.cssText = `display: flex; flex-wrap: wrap; gap:13px; margin-left: 31px;`;
   for (let prayer of prayers) {
     const innerContainer = createElementWithClassAndParent("div", ppcontainer);
 

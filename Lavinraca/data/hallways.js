@@ -2160,18 +2160,63 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
-    "east_first_room3_deep1": {
-        "roomID": "east_first_room3",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/stop",
-        "backwards": "east_first_room3_backup",
+
+    "east_first_room3_left1": {
+        "flavorText": "A statue of the Harvest's Head looms over you, just for gambling.",
+        "src": "Harvest/gang",
+        "right": "east_first_room3_deep1",
+        "backwards": "east_first_room3_deep1",
         "functions": [
-            "prayForRoom",
             "letsGoGamble1",
             "letsGoGamble10",
             "letsGoGamble100"
         ]
     },
+    "east_first_room3_right1": {
+        "roomID": "east_first_room3",
+        "src": "east_first_room3/right1",
+        "backwards": "east_first_room3_deep1",
+        "left": "east_first_room3_deep1",
+        "flavorText": "Something is wrong here. Is. Is there a bookcase of Harvest Books and Dolls? Is...is there a map? Does that...spiral...seem to be moving? You wish if a map existed, it was easier to see.",
+
+        "functions": ["gaslightEastFirstRoom3"]
+    },
+    "east_first_room3_deep1": {
+        "roomID": "east_first_room3",
+        "src": "east_first_room3/deep1",
+        "backwards": "east_first_room3_backup",
+        "forwards": "east_first_room3_deep2",
+        "left": "east_first_room3_left1",
+        "right": "east_first_room3_right1",
+        "flavorText": "This room is stuffed to the gills with strange figures, gambling and...an eerie almost unreal feeling.",
+
+        "functions": []
+    }, "east_first_room3_deep2": {
+        "roomID": "east_first_room3",
+        "flavorText": "The bed is covered in dolls. A taxidermied alligator head gives you a toothy grin.",
+        "src": "east_first_room3/deep2",
+        "backwards": "east_first_room3_deep1",
+        "left": "east_first_room3_left2",
+        "right": "east_first_room3_right2",
+        "functions": []
+    },
+    "east_first_room3_left2": {
+        "flavorText": "The Masked and Veiled figures look impassively down onto the bed.",
+        "src": "east_first_room3/left2",
+        "right": "east_first_room3_deep2",
+        "backwards": "east_first_room3_deep2"
+    },
+    "east_first_room3_right2": {
+        "roomID": "east_first_room3",
+        "flavorText": "The mirror unsettles you. Like you would become not you if you looked within. Not even the Harvest Doll can soothe you.",
+
+        "src": "east_first_room3/right2",
+        "backwards": "east_first_room3_deep2",
+        "left": "east_first_room3_deep2",
+        "functions": ["lookIntoTheMirror"]
+    },
+
+
     "SecretPassageway_deep1_fromWest": {
         "roomID": "SecretPassageway",
         "src": "SecretPassageway/deep1",

@@ -184,6 +184,67 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
 
 }
 
+function gaslightEastFirstRoom3() {
+  const dir = "images/Diorama/Inside/Hallways/east_first_room3/"
+  const noMap = "right_nomap.mp4";
+  const noBookcase = "right_no_bookcase.mp4";
+  const gaslightFlicker = "right_bookcase_gaslight.mp4"
+  const bookCaseCoverMap = "right_bookcasecovering_map.mp4"
+  const noNOthing = "right_no_nothing.mp4"
+  const backwards = "right_backwards.mp4"
+  const possibilities = [noMap, noBookcase, gaslightFlicker, bookCaseCoverMap, noNOthing, backwards];
+  const choice = pickFrom(possibilities);
+
+  if (Math.random() > 0.75) {
+    //do nothing, its literally fine
+    return;
+  }
+
+  video.pause();
+  video.src = dir + choice;
+  video.play().catch(() => { });
+  const textEle = story.querySelector("#room-text");
+
+  if (choice === noNOthing) {
+    textEle.innerText = "There was never anything here."
+  }
+
+  if (choice === noMap) {
+    textEle.innerText = "Wasn't there a map here?"
+  }
+
+  if (choice === gaslightFlicker) {
+    textEle.innerText = "..."
+  }
+
+  if (choice === backwards) {
+    const tmp = textEle.innerText;
+    textEle.innerText = "";
+
+    const mirrorText = createElementWithClassAndParent("div", textEle);
+    mirrorText.innerText = tmp;
+    mirrorText.style.transform = "scaleX(-1)"
+
+
+  }
+
+  if (choice === noBookcase) {
+    textEle.innerText = "It's a good thing nothing blocks your view of this map. ";
+    const button = createElementWithClassAndParent("button", textEle);
+    button.innerText = "View Map?";
+    button.onclick = () => {
+      const contentEle = document.createElement("div");
+      contentEle.innerHTML = `This map seems to be only accurate while the Harvest slept... and might not even be that accurate.<img src='${dir}/secret.png'>`
+      showExistingPopup(contentEle, "Stop Viewing")
+    }
+
+
+  }
+
+
+
+}
+
 function gaslightToShowCombo() {
   const bookcase = "images/Diorama/Inside/Hallways/1/ElectricLights/quicktest";
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";
@@ -334,33 +395,33 @@ function readDesk2Papers() {
   button.innerText = "Read Papers?"
   button.onclick = () => {
     const contentEle = document.createElement("div");
-    contentEle.innerHTML = `<img src='images/eustaceandterri.PNG'><br><Br>
-    The note reads: 
-    <div class='simple-terri'>
-        <br><Br><i>I am so excited you could make it here!
-    <br><Br>This years Harvest Festival is going to be the BEST ONE EVER! 
-    <br><Br>
-    We, the Church of the Candy Harvest, have made sure to prepare LOTS of activities for everyone to do!
-    <br><Br>
-    We aren't like those squares over in the meat faction, you know?
-    <br><Br>
-    What's the point of Halloween if not to have spooky fun?
-    <br><Br>
-    Anyways we wanted this puzzle to be super easy! So that no one gets stuck in the boring start of the maze!
-    <Br><Br>
-    So the combination lock is 4665!
-    <br><Br>
-    But you probably already knew that because thats a sacred number to the Harvest!
-    <br><Br>
-    Anyways I hope you have so so much fun!
-    <br><Br>
-    -Terri
-    </div>
-<br><Br>
-    And then someone scribbled onto it in blue ink: <br><Br>
+    contentEle.innerHTML = `< img src = 'images/eustaceandterri.PNG' > <br><Br>
+        The note reads:
+        <div class='simple-terri'>
+          <br><Br><i>I am so excited you could make it here!
+            <br><Br>This years Harvest Festival is going to be the BEST ONE EVER!
+              <br><Br>
+                We, the Church of the Candy Harvest, have made sure to prepare LOTS of activities for everyone to do!
+                <br><Br>
+                  We aren't like those squares over in the meat faction, you know?
+                  <br><Br>
+                    What's the point of Halloween if not to have spooky fun?
+                    <br><Br>
+                      Anyways we wanted this puzzle to be super easy! So that no one gets stuck in the boring start of the maze!
+                      <Br><Br>
+                        So the combination lock is 4665!
+                        <br><Br>
+                          But you probably already knew that because thats a sacred number to the Harvest!
+                          <br><Br>
+                            Anyways I hope you have so so much fun!
+                            <br><Br>
+                              -Terri
+                            </div>
+                              <br><Br>
+                                And then someone scribbled onto it in blue ink: <br><Br>
 
-    <div class='simple-eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
-    `
+                                  <div class='simple-eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
+                                    `
 
 
     showExistingPopup(contentEle, "Gotcha");
@@ -676,13 +737,13 @@ function lookCloserAtRules() {
   button.onclick = () => {
     const contentEle = document.createElement("div");
     contentEle.innerHTML = `These rules seem to apply to the room past this door:<br><Br> <img style='max-height:100%' src='images/Diorama/Inside/Hallways/rules.PNG' >
-    <ol>
-    <li>If time is stable, go through the far door.</li>
-    <li>If time is NOT stable, turn around and leave the room.</li>
-    <li>Past room 8 is where time solidifies fully.</li>
-    <li>You cannot leave if you have a number.</li>
-    (NOTE: Some instabilities are more subtle than others. There is no penalty for missing them, save starting the loop over from 0.)
-    </ol>`
+                                      <ol>
+                                        <li>If time is stable, go through the far door.</li>
+                                        <li>If time is NOT stable, turn around and leave the room.</li>
+                                        <li>Past room 8 is where time solidifies fully.</li>
+                                        <li>You cannot leave if you have a number.</li>
+                                        (NOTE: Some instabilities are more subtle than others. There is no penalty for missing them, save starting the loop over from 0.)
+                                      </ol>`
 
     showExistingPopup(contentEle, "Gotcha")
   }
@@ -823,34 +884,34 @@ function eustaceAndTerri() {
 
   const contentEle = document.createElement("div");
   contentEle.innerHTML = `<div class='terri'>
-    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+                                          <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
-    <br><Br><i>I am so excited you could make it here!
-    <br><Br>This years Harvest Festival is going to be the BEST ONE EVER! 
-    <br><Br>
-    We, the Church of the Candy Harvest, have made sure to prepare LOTS of activities for everyone to do!
-    <br><Br>
-    We aren't like those squares over in the meat faction, you know?
-    <br><Br>
-    What's the point of Halloween if not to have spooky fun?
-    <br><Br>
-    Anyways we wanted this puzzle to be super easy! So that no one gets stuck in the boring start of the maze!
-    <Br><Br>
-    So the combination lock is 4665!
-    <br><Br>
-    But you probably already knew that because thats a sacred number to the Harvest!
-    <br><Br>
-    Anyways I hope you have so so much fun!
-    <br><Br>
-    -Terri
-    <br>    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+                                            <br><Br><i>I am so excited you could make it here!
+                                              <br><Br>This years Harvest Festival is going to be the BEST ONE EVER!
+                                                <br><Br>
+                                                  We, the Church of the Candy Harvest, have made sure to prepare LOTS of activities for everyone to do!
+                                                  <br><Br>
+                                                    We aren't like those squares over in the meat faction, you know?
+                                                    <br><Br>
+                                                      What's the point of Halloween if not to have spooky fun?
+                                                      <br><Br>
+                                                        Anyways we wanted this puzzle to be super easy! So that no one gets stuck in the boring start of the maze!
+                                                        <Br><Br>
+                                                          So the combination lock is 4665!
+                                                          <br><Br>
+                                                            But you probably already knew that because thats a sacred number to the Harvest!
+                                                            <br><Br>
+                                                              Anyways I hope you have so so much fun!
+                                                              <br><Br>
+                                                                -Terri
+                                                                <br>    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
 
-</i>
-    <div class='eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
-</div>
+                                                                </i>
+                                                                  <div class='eustace'>Classic Terri. <Br>Got so excited she forgot no one could READ this damn letter in the dark. <br>Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on.<Br> Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</div>
+                                                                  </div>
 
-<br><Br><Br><Br>
-    There is a scrawled note in the margins that reads '<i>Classic Terri. Got so excited she forgot no one could READ this damn letter in the dark. Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on. Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</i>'`;
+                                                                    <br><Br><Br><Br>
+                                                                      There is a scrawled note in the margins that reads '<i>Classic Terri. Got so excited she forgot no one could READ this damn letter in the dark. Well. 'square' or not, THIS meat faction guy is gonna make sure our Guests can get the power on. Amazing what you can do when you're mostly resting all year, am I right? Eustace out.</i>'`;
 
   showExistingPopup(contentEle, "Gotcha")
 }
