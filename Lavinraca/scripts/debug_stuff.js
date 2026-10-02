@@ -34,6 +34,8 @@ const debugPrayersWithInput = (header, prayers) => {
 
   const headerEle = createElementWithClassAndParent("h2", body);
   headerEle.innerText = header;
+  headerEle.style.marginTop = "31px";
+  headerEle.style.color = "black"
 
   const ppcontainer = createElementWithClassAndParent("div", body);
   ppcontainer.style.cssText = `display: flex; flex-wrap: wrap; gap:13px;`;
