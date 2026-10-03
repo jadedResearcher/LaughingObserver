@@ -23,7 +23,10 @@ const debugPendingPrayers = () => {
   const prayers = fetchPendingCommands();
 
   debugPrayersWithInput("Pending", prayers);
-
+  const instructions = createElementWithClassAndParent("div", body);
+  instructions.innerText = "FUTURE JR! WHEN YOU MAKE ROOMS, DON'T FORGET TO MOVE FROM DIBS TO FINISHED (WILL LET SEER OF VOID SEE THE PRAYER STHAT WENT INTO A ROOM)"
+  instructions.style.fontSize = "32px"
+  instructions.style.color = "black";
   const claimedRoomIDs = {};
   for (let dib of room_dibs_raw) {
     const data = JSON.parse(dib["save-data"]);
