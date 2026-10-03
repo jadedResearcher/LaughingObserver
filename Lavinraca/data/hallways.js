@@ -1400,7 +1400,7 @@ const hallways = {
     "east_main_4_right2": {
         "roomID": "east_main_4",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": null,
+        "forwards": "east_second_1_enter",
         "left": "east_main_4_deep2",
         "right": null,
         "backwards": "east_main_4_deep2",
@@ -1719,7 +1719,7 @@ const hallways = {
     "east_main_8_right2": {
         "roomID": "east_main_8",
         "src": "CopyOfACopy/FlatDoor",
-        "forwards": null,
+        "forwards": "east_fourth_1_enter",
         "left": "east_main_8_deep2",
         "right": null,
         "backwards": "east_main_8_deep2",
@@ -2959,6 +2959,792 @@ const hallways = {
         "flavorText": "The stairs beckon you forwards. Somehow, you know, bone deep, that if you try to go upstairs before Halloween Ends........It would be wrong.",
         "backwards": "Stairs_deep1",
         "functions": ["theStairsBeckon"]
+    },
+    //east_fourth_1 start
+    "east_fourth_1_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fourth_1_deep1",
+        "backwards": "east_main_8_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_1_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fourth_1_deep1",
+        "backwards": "east_main_8_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_1_deep1": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/BDeep1",
+        "forwards": "east_fourth_1_deep2",
+        "left": "east_fourth_1_left1",
+        "right": "east_fourth_1_right1",
+        "backwards": "east_fourth_1_backup",
+        "functions": []
+    },
+    "east_fourth_1_left1": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_1_deep1",
+        "backwards": "east_fourth_1_deep1",
+        "functions": []
+    },
+    "east_fourth_1_right1": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fourth_1_deep1",
+        "right": null,
+        "backwards": "east_fourth_1_deep1",
+        "functions": []
+    },
+    "east_fourth_1_left2": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_1_deep2",
+        "backwards": "east_fourth_1_deep2",
+        "functions": []
+    },
+    "east_fourth_1_right2": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": "east_fourth_1_deep2",
+        "right": null,
+        "backwards": "east_fourth_1_deep2",
+        "functions": []
+    },
+    "east_fourth_1_deep2": {
+        "roomID": "east_fourth_1",
+        "src": "CopyOfACopy/BDeep2",
+        "forwards": "east_fourth_2_enter",
+        "left": "east_fourth_1_left2",
+        "right": "east_fourth_1_right2",
+        "backwards": "east_fourth_1_deep1",
+        "functions": []
+    },
+    //east_fourth_2 start
+    "east_fourth_2_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fourth_2_deep1",
+        "backwards": "east_fourth_1_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_2_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fourth_2_deep1",
+        "backwards": "east_fourth_1_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_2_deep1": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/LeftDoorDeep1",
+        "forwards": "east_fourth_2_deep2",
+        "left": "east_fourth_2_left1",
+        "right": "east_fourth_2_right1",
+        "backwards": "east_fourth_2_backup",
+        "functions": []
+    },
+    "east_fourth_2_left1": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_fourth_room1_enter",
+        "left": null,
+        "right": "east_fourth_2_deep1",
+        "backwards": "east_fourth_2_deep1",
+        "functions": []
+    },
+    "east_fourth_2_right1": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fourth_2_deep1",
+        "right": null,
+        "backwards": "east_fourth_2_deep1",
+        "functions": []
+    },
+    "east_fourth_2_left2": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_2_deep2",
+        "backwards": "east_fourth_2_deep2",
+        "functions": []
+    },
+    "east_fourth_2_right2": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": "east_fourth_2_deep2",
+        "right": null,
+        "backwards": "east_fourth_2_deep2",
+        "functions": []
+    },
+    "east_fourth_2_deep2": {
+        "roomID": "east_fourth_2",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "east_fourth_3_enter",
+        "left": "east_fourth_2_left2",
+        "right": "east_fourth_2_right2",
+        "backwards": "east_fourth_2_deep1",
+        "functions": []
+    },
+    //east_fourth_room1 start
+    "east_fourth_room1_enter": {
+        "src": "open_the_door",
+        "forwards": "east_fourth_room1_deep1",
+        "backwards": "east_fourth_2_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_room1_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_fourth_room1_deep1",
+        "backwards": "east_fourth_2_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_room1_deep1": {
+        "roomID": "east_fourth_room1",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/fox",
+        "backwards": "east_fourth_room1_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_fourth_3 start
+    "east_fourth_3_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fourth_3_deep1",
+        "backwards": "east_fourth_2_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_3_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fourth_3_deep1",
+        "backwards": "east_fourth_2_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_3_deep1": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/RightDoorDeep1",
+        "forwards": "east_fourth_3_deep2",
+        "left": "east_fourth_3_left1",
+        "right": "east_fourth_3_right1",
+        "backwards": "east_fourth_3_backup",
+        "functions": []
+    },
+    "east_fourth_3_left1": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_3_deep1",
+        "backwards": "east_fourth_3_deep1",
+        "functions": []
+    },
+    "east_fourth_3_right1": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fourth_3_deep1",
+        "right": null,
+        "backwards": "east_fourth_3_deep1",
+        "functions": []
+    },
+    "east_fourth_3_left2": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_3_deep2",
+        "backwards": "east_fourth_3_deep2",
+        "functions": []
+    },
+    "east_fourth_3_right2": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_fourth_room2_enter",
+        "left": "east_fourth_3_deep2",
+        "right": null,
+        "backwards": "east_fourth_3_deep2",
+        "functions": []
+    },
+    "east_fourth_3_deep2": {
+        "roomID": "east_fourth_3",
+        "src": "CopyOfACopy/RightDoorDeep2",
+        "forwards": "east_fourth_4_enter",
+        "left": "east_fourth_3_left2",
+        "right": "east_fourth_3_right2",
+        "backwards": "east_fourth_3_deep1",
+        "functions": []
+    },
+    //east_fourth_room2 start
+    "east_fourth_room2_enter": {
+        "src": "open_the_door",
+        "forwards": "east_fourth_room2_deep1",
+        "backwards": "east_fourth_3_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_room2_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_fourth_room2_deep1",
+        "backwards": "east_fourth_3_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_room2_deep1": {
+        "roomID": "east_fourth_room2",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/candy",
+        "backwards": "east_fourth_room2_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_fourth_4 start
+    "east_fourth_4_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fourth_4_deep1",
+        "backwards": "east_fourth_3_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_4_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fourth_4_deep1",
+        "backwards": "east_fourth_3_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_4_deep1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/LeftDoorDeep1",
+        "forwards": "east_fourth_4_deep2",
+        "left": "east_fourth_4_left1",
+        "right": "east_fourth_4_right1",
+        "backwards": "east_fourth_4_backup",
+        "functions": []
+    },
+    "east_fourth_4_left1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_fourth_room3_enter",
+        "left": null,
+        "right": "east_fourth_4_deep1",
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    "east_fourth_4_right1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fourth_4_deep1",
+        "right": null,
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    "east_fourth_4_left2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_4_deep2",
+        "backwards": "east_fourth_4_deep2",
+        "functions": []
+    },
+    "east_fourth_4_right2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": "east_fourth_4_deep2",
+        "right": null,
+        "backwards": "east_fourth_4_deep2",
+        "functions": []
+    },
+    "east_fourth_4_deep2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "east_fourth_room4_enter",
+        "left": "east_fourth_4_left2",
+        "right": "east_fourth_4_right2",
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    //east_fourth_room3 start
+    "east_fourth_room3_enter": {
+        "src": "open_the_door",
+        "forwards": "east_fourth_room3_deep1",
+        "backwards": "east_fourth_4_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_room3_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_fourth_room3_deep1",
+        "backwards": "east_fourth_4_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_room3_deep1": {
+        "roomID": "east_fourth_room3",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/take_one",
+        "backwards": "east_fourth_room3_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_fourth_room4 start
+    "east_fourth_room4_enter": {
+        "src": "open_the_door",
+        "forwards": "east_fourth_room4_deep1",
+        "backwards": "east_fourth_4_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_room4_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_fourth_room4_deep1",
+        "backwards": "east_fourth_4_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_room4_deep1": {
+        "roomID": "east_fourth_room4",
+        "flavorText": "This room is reserved for IC.",
+        "src": "Harvest/eyes",
+        "backwards": "east_fourth_room4_backup",
+        "functions": [
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_second_1 start
+    "east_second_1_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_second_1_deep1",
+        "backwards": "east_main_4_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_1_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_second_1_deep1",
+        "backwards": "east_main_4_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_1_deep1": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/BDeep1",
+        "forwards": "east_second_1_deep2",
+        "left": "east_second_1_left1",
+        "right": "east_second_1_right1",
+        "backwards": "east_second_1_backup",
+        "functions": []
+    },
+    "east_second_1_left1": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_second_1_deep1",
+        "backwards": "east_second_1_deep1",
+        "functions": []
+    },
+    "east_second_1_right1": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_second_1_deep1",
+        "right": null,
+        "backwards": "east_second_1_deep1",
+        "functions": []
+    },
+    "east_second_1_left2": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_second_1_deep2",
+        "backwards": "east_second_1_deep2",
+        "functions": []
+    },
+    "east_second_1_right2": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": "east_second_1_deep2",
+        "right": null,
+        "backwards": "east_second_1_deep2",
+        "functions": []
+    },
+    "east_second_1_deep2": {
+        "roomID": "east_second_1",
+        "src": "CopyOfACopy/BDeep2",
+        "forwards": "east_second_2_enter",
+        "left": "east_second_1_left2",
+        "right": "east_second_1_right2",
+        "backwards": "east_second_1_deep1",
+        "functions": []
+    },
+    //east_second_2 start
+    "east_second_2_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_second_2_deep1",
+        "backwards": "east_second_1_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_2_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_second_2_deep1",
+        "backwards": "east_second_1_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_2_deep1": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/LeftDoorDeep1",
+        "forwards": "east_second_2_deep2",
+        "left": "east_second_2_left1",
+        "right": "east_second_2_right1",
+        "backwards": "east_second_2_backup",
+        "functions": []
+    },
+    "east_second_2_left1": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_second_room1_enter",
+        "left": null,
+        "right": "east_second_2_deep1",
+        "backwards": "east_second_2_deep1",
+        "functions": []
+    },
+    "east_second_2_right1": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_second_2_deep1",
+        "right": null,
+        "backwards": "east_second_2_deep1",
+        "functions": []
+    },
+    "east_second_2_left2": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_second_2_deep2",
+        "backwards": "east_second_2_deep2",
+        "functions": []
+    },
+    "east_second_2_right2": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": "east_second_2_deep2",
+        "right": null,
+        "backwards": "east_second_2_deep2",
+        "functions": []
+    },
+    "east_second_2_deep2": {
+        "roomID": "east_second_2",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "east_second_3_enter",
+        "left": "east_second_2_left2",
+        "right": "east_second_2_right2",
+        "backwards": "east_second_2_deep1",
+        "functions": []
+    },
+    //east_second_room1 start
+    "east_second_room1_enter": {
+        "src": "open_the_door",
+        "forwards": "east_second_room1_deep1",
+        "backwards": "east_second_2_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_room1_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_second_room1_deep1",
+        "backwards": "east_second_2_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_room1_deep1": {
+        "roomID": "east_second_room1",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/bride",
+        "backwards": "east_second_room1_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_second_3 start
+    "east_second_3_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_second_3_deep1",
+        "backwards": "east_second_2_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_3_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_second_3_deep1",
+        "backwards": "east_second_2_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_3_deep1": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/RightDoorDeep1",
+        "forwards": "east_second_3_deep2",
+        "left": "east_second_3_left1",
+        "right": "east_second_3_right1",
+        "backwards": "east_second_3_backup",
+        "functions": []
+    },
+    "east_second_3_left1": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_second_3_deep1",
+        "backwards": "east_second_3_deep1",
+        "functions": []
+    },
+    "east_second_3_right1": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_second_3_deep1",
+        "right": null,
+        "backwards": "east_second_3_deep1",
+        "functions": []
+    },
+    "east_second_3_left2": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_second_3_deep2",
+        "backwards": "east_second_3_deep2",
+        "functions": []
+    },
+    "east_second_3_right2": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_second_room2_enter",
+        "left": "east_second_3_deep2",
+        "right": null,
+        "backwards": "east_second_3_deep2",
+        "functions": []
+    },
+    "east_second_3_deep2": {
+        "roomID": "east_second_3",
+        "src": "CopyOfACopy/RightDoorDeep2",
+        "forwards": "east_fourth_4_enter",
+        "left": "east_second_3_left2",
+        "right": "east_second_3_right2",
+        "backwards": "east_second_3_deep1",
+        "functions": []
+    },
+    //east_second_room2 start
+    "east_second_room2_enter": {
+        "src": "open_the_door",
+        "forwards": "east_second_room2_deep1",
+        "backwards": "east_second_3_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_room2_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_second_room2_deep1",
+        "backwards": "east_second_3_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_room2_deep1": {
+        "roomID": "east_second_room2",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/fox",
+        "backwards": "east_second_room2_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
+    },
+    //east_fourth_4 start
+    "east_fourth_4_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fourth_4_deep1",
+        "backwards": "east_second_3_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fourth_4_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fourth_4_deep1",
+        "backwards": "east_second_3_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fourth_4_deep1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/BDeep1",
+        "forwards": "east_fourth_4_deep2",
+        "left": "east_fourth_4_left1",
+        "right": "east_fourth_4_right1",
+        "backwards": "east_fourth_4_backup",
+        "functions": []
+    },
+    "east_fourth_4_left1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_4_deep1",
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    "east_fourth_4_right1": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fourth_4_deep1",
+        "right": null,
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    "east_fourth_4_left2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_fourth_4_deep2",
+        "backwards": "east_fourth_4_deep2",
+        "functions": []
+    },
+    "east_fourth_4_right2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": "east_fourth_4_deep2",
+        "right": null,
+        "backwards": "east_fourth_4_deep2",
+        "functions": []
+    },
+    "east_fourth_4_deep2": {
+        "roomID": "east_fourth_4",
+        "src": "CopyOfACopy/BDeep2",
+        "forwards": "east_second_room3_enter",
+        "left": "east_fourth_4_left2",
+        "right": "east_fourth_4_right2",
+        "backwards": "east_fourth_4_deep1",
+        "functions": []
+    },
+    //east_second_room3 start
+    "east_second_room3_enter": {
+        "src": "open_the_door",
+        "forwards": "east_second_room3_deep1",
+        "backwards": "east_fourth_4_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_second_room3_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_second_room3_deep1",
+        "backwards": "east_fourth_4_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_second_room3_deep1": {
+        "roomID": "east_second_room3",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/fox",
+        "backwards": "east_second_room3_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
     }
 
 
