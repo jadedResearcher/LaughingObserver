@@ -61,7 +61,7 @@ window.onunhandledrejection = () => {
 
 window.onload = async () => {
   clownsona = await makeSimpleDoll(); //loading will set its specifics
-  alert("JR NOTE: Prayers should be working again! You may need to resubmit any done in the past 24 hours. (Oct/01/26) This game loads many short videos. If it seems to hang, a video may be loading.")
+  alert("This game loads many short videos. If it seems to hang, a video may be loading.")
   load();
   if (seerOfVoidCheck()) {
     seerOfVoid = true;

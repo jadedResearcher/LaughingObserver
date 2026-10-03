@@ -100,7 +100,7 @@ class Doll {
 
 
   render = async (parent, dollContainer) => {
-    const fuckery = isItFriday();
+    const fuckery = false;
     if (!dollContainer) {
       dollContainer = createElementWithClassAndParent("div", parent, "doll-container section");
     } else {

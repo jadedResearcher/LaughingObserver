@@ -267,7 +267,7 @@ const debugGenerateTemplateForNewHallway = (id, doubleSize = false, backwards_fu
   const data = JSON.parse(map_template)
   //const outputEle = createTextAreaInputWithLabel();
   const str = (JSON.stringify(data, null, 4)) //gets rid of first and last curly brace, not stupposd to copy
-  console.log(str.slice(1, -1))
+  console.log(`//${id} start${str.slice(1, -1)}`)
 
   //console.log("JR NOTE: dont copy the containing curly braces, they break hallways")
 }

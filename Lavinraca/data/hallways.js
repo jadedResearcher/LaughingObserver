@@ -2060,15 +2060,63 @@ const hallways = {
     },
     "east_first_room2_deep1": {
         "roomID": "east_first_room2",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/bride",
+        "src": "east_first_room2/deep1",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": "east_first_room2_deep2",
+        "left": "east_first_room2_left1",
+        "right": "east_first_room2_right1",
         "backwards": "east_first_room2_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "functions": []
+    },
+    "east_first_room2_left1": {
+        "roomID": "east_first_room2",
+        "src": "east_first_room2/left1",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": null,
+        "left": null,
+        "right": "east_first_room2_deep1",
+        "backwards": "east_first_room2_deep1",
+        "functions": []
+    },
+    "east_first_room2_right1": {
+        "roomID": "east_first_room2",
+        "src": "east_first_room2/right1",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": null,
+        "left": "east_first_room2_deep1",
+        "right": null,
+        "backwards": "east_first_room2_deep1",
+        "functions": []
+    },
+    "east_first_room2_left2": {
+        "roomID": "east_first_room2",
+        "src": "east_first_room2/left2",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": null,
+        "left": null,
+        "right": "east_first_room2_deep2",
+        "backwards": "east_first_room2_deep2",
+        "functions": []
+    },
+    "east_first_room2_right2": {
+        "roomID": "east_first_room2",
+        "src": "east_first_room2/right2",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": null,
+        "left": "east_first_room2_deep2",
+        "right": null,
+        "backwards": "east_first_room2_deep2",
+        "functions": []
+    },
+    "east_first_room2_deep2": {
+        "roomID": "east_first_room2",
+        "src": "east_first_room2/deep2",
+        "flavorText": "You are not you. Your face is not your face. You were never you. ",
+        "forwards": null,
+        "left": "east_first_room2_left2",
+        "right": "east_first_room2_right2",
+        "backwards": "east_first_room2_deep1",
+        "functions": []
     },
     //east_first_4 start
     "east_first_4_enter": {
