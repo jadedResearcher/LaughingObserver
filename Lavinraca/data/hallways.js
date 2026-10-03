@@ -2212,6 +2212,7 @@ const hallways = {
     "east_first_room3_left1": {
         "flavorText": "A statue of the Harvest's Head looms over you, just for gambling.",
         "src": "Harvest/gang",
+        "roomID": "east_first_room3",
         "right": "east_first_room3_deep1",
         "backwards": "east_first_room3_deep1",
         "functions": [
@@ -2225,7 +2226,7 @@ const hallways = {
         "src": "east_first_room3/right1",
         "backwards": "east_first_room3_deep1",
         "left": "east_first_room3_deep1",
-        "flavorText": "Something is wrong here. Is. Is there a bookcase of Harvest Books and Dolls? Is...is there a map? Does that...spiral...seem to be moving? You wish if a map existed, it was easier to see.",
+        "flavorText": "Something is wrong here. Is. Is there a bookcase of Harvest Books and Harvest Dolls? Is...is there a map? Does that...spiral...seem to be moving? You wish if a map existed, it was easier to see.",
 
         "functions": ["gaslightEastFirstRoom3"]
     },
@@ -2251,6 +2252,7 @@ const hallways = {
     "east_first_room3_left2": {
         "flavorText": "The Masked and Veiled figures look impassively down onto the bed.",
         "src": "east_first_room3/left2",
+        "roomID": "east_first_room3",
         "right": "east_first_room3_deep2",
         "backwards": "east_first_room3_deep2"
     },

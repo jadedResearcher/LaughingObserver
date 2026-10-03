@@ -138,6 +138,11 @@ const renderRoom = (json, replacedAlready) => {
     }
     roomID.innerText = globalDataObject.current_room_id;
     functionsList.innerText = JSON.stringify(json.functions);
+    if (finishedRoomPrayers[json.roomID]) {
+        prayerList.innerText = JSON.stringify(finishedRoomPrayers[json.roomID])
+    } else {
+        prayerList.innerText = "";
+    }
     video.pause();
     video.src = hallwayDir + json.src + ".mp4";
     handleMovement(json);

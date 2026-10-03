@@ -790,6 +790,10 @@ button {
   justify-content: space-around;
 }
 
+#prayerList {
+  width: 50%;
+}
+
 .collated-stat-left {
   width: 150px;
   font-weight: bolder;
