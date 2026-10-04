@@ -196,7 +196,7 @@ const handleRenderingClaims = (json) => {
     if (forwards && clown_signs_keyed_by_door[forwards]) {
         const clowns = clown_signs_keyed_by_door[forwards];
         const textEle = story.querySelector("#room-text");
-        textEle.innerText += `This room has been created from the prayers of ${clowns.length} clownsonas.`
+        textEle.innerText += `This room has been created from the prayers of ${clowns.length} Guest${clowns.length > 1 ? "s" : ""}.`
 
         for (clown of clowns) {
             const tmp = [];

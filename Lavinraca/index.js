@@ -185,12 +185,14 @@ const renderVideoToCanvas = () => {
         ctx.drawImage(part, x + size / 3, y, size, size);
       }
     } else {
+      let offset = 0;
       for (let clownsona of claimArray) {
 
         //each element in the array is a list of things to draw. 
         for (let part of clownsona) {
-          ctx.drawImage(part, x, y, size, size);
+          ctx.drawImage(part, x + offset, y, size, size);
         }
+        offset += 31;
       }
     }
 
