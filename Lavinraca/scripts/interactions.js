@@ -245,6 +245,17 @@ function gaslightEastFirstRoom3() {
 
 }
 
+function theEnd() {
+  const textEle = story.querySelector("#room-text");
+
+  video.loop = false;
+  video.onended = () => {
+    video.onended = undefined;
+    textEle.innerText = "There is nothing else. You've reached the end."
+
+  }
+}
+
 function gaslightToShowCombo() {
   const bookcase = "images/Diorama/Inside/Hallways/1/ElectricLights/quicktest";
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";

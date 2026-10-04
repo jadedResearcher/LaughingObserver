@@ -56,7 +56,7 @@ const handlePrayingForRoom = () => {
   const prayerEle2 = createElementWithClassAndParent("span", prayerEle);
   prayerEle2.innerHTML += " themed. I also want to copy these items from other rooms of the house and place them inside, if they'll fit."
 
-  const items = ["Nothing", "Bed", "Toilet", "Desk", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Veiled Figure"]
+  const items = ["Nothing", "Bed", "Toilet", "Desk", "Pool Table", "Piano", "Banquet Table", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Veiled Figure"]
 
 
 

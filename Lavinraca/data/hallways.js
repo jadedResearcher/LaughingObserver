@@ -2725,15 +2725,10 @@ const hallways = {
     },
     "east_third_room2_deep1": {
         "roomID": "east_third_room2",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/eyes",
+        "flavorText": "Something about this room makes you think about how all things end.",
+        "src": "east_third_room2/deep1",
         "backwards": "east_third_room2_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "functions": ["theEnd"]
     },
     //east_third_3 start
     "east_third_3_enter": {

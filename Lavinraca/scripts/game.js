@@ -110,6 +110,7 @@ const renderID = (id) => {
     renderRoom(json);
 }
 const renderRoom = (json, replacedAlready) => {
+    video.loop = true;
     renderingClownsona = undefined;//clear it out
     //console.log("JR NOTE: renderRoom json is", json)
     tryPlayBgMusic();
