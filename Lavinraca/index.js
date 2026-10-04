@@ -17,7 +17,15 @@ no preloading assets.
 future me, don't get tempted
 */
 
+//this is for rendering YOU (prebuffered, etc)
 let renderingClownsona = undefined; //will be the sprite buffer to render sometimes
+
+//this is for rendering the clowns who prayed for a particular room (should only be populated if you're facing a door that leads to their room)
+let claimArray = [];
+const clownSignImage = new Image();
+clownSignImage.src = "images/Diorama/Inside/Hallways/clown_sign.png"
+
+
 const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
 const weird = "images/Diorama/foley/ready_effects/Inside/weirdambient_lower.mp3";
@@ -159,6 +167,37 @@ const renderVideoToCanvas = () => {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+  //honestly i should make an engine at some point that just takes in
+  // an array of things to render and sizes at which to render them
+  //anwyays the door graphic WILL glitch cuz its meant to be part of the world
+  if (claimArray.length > 0) {
+    ctx.save();
+    ctx.globalAlpha = 0.85;
+    //base location and size
+    const size = 100;
+    const x = (canvas.width - size) / 2 - size / 3;
+    const y = (canvas.height - size) / 2 - size / 2;
+    ctx.drawImage(clownSignImage, x, y, 158, 122);
+
+    if (claimArray.length === 1) {
+      //center the clown
+      for (let part of claimArray[0]) {
+        ctx.drawImage(part, x + size / 3, y, size, size);
+      }
+    } else {
+      for (let clownsona of claimArray) {
+
+        //each element in the array is a list of things to draw. 
+        for (let part of clownsona) {
+          ctx.drawImage(part, x, y, size, size);
+        }
+      }
+    }
+
+
+    ctx.restore();
+  }
+
   if (glitchyError) {
     //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
     const slices = Math.floor(Math.random() * 4) + 2;
@@ -216,6 +255,7 @@ const renderVideoToCanvas = () => {
     }
 
   }
+
 
   //your clownsona won't glitch, its the most true thing here
   if (renderingClownsona) {

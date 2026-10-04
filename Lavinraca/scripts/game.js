@@ -111,7 +111,11 @@ const renderID = (id) => {
 }
 const renderRoom = (json, replacedAlready) => {
     video.loop = true;
+
     renderingClownsona = undefined;//clear it out
+    claimArray = [];
+
+
     //console.log("JR NOTE: renderRoom json is", json)
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
@@ -171,7 +175,41 @@ const renderRoom = (json, replacedAlready) => {
         }
     }
 
+    handleRenderingClaims(json)
 
+
+
+}
+
+const handleRenderingClaims = (json) => {
+    console.log("JR NOTE: handleRenderingClaims", json)
+    if (!json.forwards) {
+        return;
+    }
+    //a current location leads to a room if its forwards' forwards leads to that room 
+    //(because forwards will be the door opening animation)
+    //and then that specific animation's forwards will be the room
+    const forwards = hallways[json.forwards].forwards
+    //if where i currently am leads forwards to a claimed room, render the clown on the door
+    //(even left and right doors will lead forwards when you're facing them)
+    console.log("JR NOTE: checkign claim", forwards)
+    if (forwards && clown_signs_keyed_by_door[forwards]) {
+        const clowns = clown_signs_keyed_by_door[forwards];
+        const textEle = story.querySelector("#room-text");
+        textEle.innerText += `This room has been created from the prayers of ${clowns.length} clownsonas.`
+
+        for (clown of clowns) {
+            const tmp = [];
+            for (let item of clown) {
+                console.log("JR NOTE: making img src of", item)
+                const img = new Image();
+                img.src = item;
+                tmp.push(img)
+            }
+            claimArray.push(tmp)
+        }
+
+    }
 }
 
 
