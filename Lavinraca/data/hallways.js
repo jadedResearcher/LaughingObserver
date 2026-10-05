@@ -2709,15 +2709,7 @@ const hallways = {
 
     //east_third_room2/Jar start
 
-    "east_third_room2/Jar_backup": {
-        "src": "open_the_door_but_backwards",
-        "flavorText": "",
-        "forwards": "east_third_room2/Jar_deep1",
-        "backwards": "east_third_2_left1",
-        "functions": [
-            "unlockDoorBackwards"
-        ]
-    },
+
     "east_third_room2/Jar_left1": {
         "roomID": "east_third_room2/Jar",
         "src": "east_third_room2/Jar/left1",
@@ -2737,9 +2729,10 @@ const hallways = {
     "east_third_room2/Jar_deep1": {
         "roomID": "east_third_room2/Jar",
         "src": "east_third_room2/Jar/deep1",
-        "backwards": "east_third_room2/Jar_backup",
+        "backwards": "east_third_2_left1",
         "left": "east_third_room2/Jar_left1",
         "right": "east_third_room2/Jar_right1",
+        "flavorText": "...are...are you...inside the jar?",
         "functions": ["theDoorIsAJar", "justifyAllRecursion"] //keep going deeper into the JAR
     },
     //east_third_room2 start
