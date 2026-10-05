@@ -17,7 +17,8 @@ src: "1/Sunset/deep_panel1"
 */
 let lastfiretime = performance.now();
 const hallwayDir = "images/Diorama/Inside/Hallways/";
-
+//anything above 0 turns on justified recursion
+let recursionLevel = -1;
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 
@@ -174,7 +175,11 @@ const renderRoom = (json, replacedAlready) => {
             }
         }
     }
-
+    if (recursionLevel > 0) {
+        justifedRecursion = true;
+    } else {
+        justifedRecursion = false;
+    }
     handleRenderingClaims(json)
 
 
@@ -182,7 +187,7 @@ const renderRoom = (json, replacedAlready) => {
 }
 
 const handleRenderingClaims = (json) => {
-    console.log("JR NOTE: handleRenderingClaims", json)
+    //console.log("JR NOTE: handleRenderingClaims", json)
     if (!json.forwards) {
         return;
     }
@@ -192,7 +197,6 @@ const handleRenderingClaims = (json) => {
     const forwards = hallways[json.forwards].forwards
     //if where i currently am leads forwards to a claimed room, render the clown on the door
     //(even left and right doors will lead forwards when you're facing them)
-    console.log("JR NOTE: checkign claim", forwards)
     if (forwards && clown_signs_keyed_by_door[forwards]) {
         const clowns = clown_signs_keyed_by_door[forwards];
         const textEle = story.querySelector("#room-text");
@@ -201,7 +205,6 @@ const handleRenderingClaims = (json) => {
         for (clown of clowns) {
             const tmp = [];
             for (let item of clown) {
-                console.log("JR NOTE: making img src of", item)
                 const img = new Image();
                 img.src = item;
                 tmp.push(img)

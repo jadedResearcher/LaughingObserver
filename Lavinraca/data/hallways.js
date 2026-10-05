@@ -2663,12 +2663,12 @@ const hallways = {
     },
     "east_third_2_left1": {
         "roomID": "east_third_2",
-        "src": "CopyOfACopy/FlatDoor",
+        "src": "east_third_room2/Jar/jar",
         "forwards": "east_third_room2_enter",
         "left": null,
         "right": "east_third_2_deep1",
         "backwards": "east_third_2_deep1",
-        "functions": []
+        "functions": ["theDoorIsAJar", "unjustifyRecursion"] //resets recursion level
     },
     "east_third_2_right1": {
         "roomID": "east_third_2",
@@ -2705,6 +2705,42 @@ const hallways = {
         "right": "east_third_2_right2",
         "backwards": "east_third_2_deep1",
         "functions": []
+    },
+
+    //east_third_room2/Jar start
+
+    "east_third_room2/Jar_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_third_room2/Jar_deep1",
+        "backwards": "east_third_2_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_third_room2/Jar_left1": {
+        "roomID": "east_third_room2/Jar",
+        "src": "east_third_room2/Jar/left1",
+        "flavorText": "You would become who you aren't, if you look into this mirror.",
+        "backwards": "east_third_room2/Jar_deep1",
+        "right": "east_third_room2/Jar_deep1",
+        "functions": ["lookIntoTheMirror"]
+    },
+    "east_third_room2/Jar_right1": {
+        "roomID": "east_third_room2/Jar",
+        "src": "east_third_room2/Jar/right1",
+        "backwards": "east_third_room2/Jar_deep1",
+        "left": "east_third_room2/Jar_deep1",
+        "flavorText": "You would become a specific spiral cat if you looked into this mirror.",
+        "functions": ["becomeCatSpiral"]
+    },
+    "east_third_room2/Jar_deep1": {
+        "roomID": "east_third_room2/Jar",
+        "src": "east_third_room2/Jar/deep1",
+        "backwards": "east_third_room2/Jar_backup",
+        "left": "east_third_room2/Jar_left1",
+        "right": "east_third_room2/Jar_right1",
+        "functions": ["theDoorIsAJar", "justifyAllRecursion"] //keep going deeper into the JAR
     },
     //east_third_room2 start
     "east_third_room2_enter": {
@@ -2803,6 +2839,8 @@ const hallways = {
         "backwards": "east_third_3_deep1",
         "functions": []
     },
+
+
     //east_third_4 start
     "east_third_4_enter": {
         "src": "open_the_door",

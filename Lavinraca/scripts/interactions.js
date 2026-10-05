@@ -313,7 +313,17 @@ function hallwayOneSunbeam() {
 }
 
 
+function theDoorIsAJar() {
+  const textEle = story.querySelector("#room-text");
+  textEle.innerText += " When Is A Door Not A Door?"
+  const c = createElementWithClassAndParent("div", story);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "When It's a Jar.";
+  button.onclick = () => {
+    renderID("east_third_room2/Jar_deep1")
+  }
 
+}
 
 
 //render a button to pick the key up, if you click it, replace 5 with 1005
@@ -625,6 +635,42 @@ function bookcase3TakeMask() {
   }
 }
 
+function becomeCatSpiral() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Look Into The Mirror?"
+  button.onclick = () => {
+    try {
+
+      //i wouldn't worry about it
+      const another_you_from_another_world = specialReflectionCatSpiral;
+      textEle.innerText = "You feel a wave of vertigo as your world view shifts.";
+      globalDataObject = another_you_from_another_world;
+      globalDataObject.stranger = true;
+      //your face is not your face your you is not your you
+      clownsona.fromJSON(globalDataObject.clownsona)
+      clownsona.rerenderBuffer();
+      save();
+      load();//sets defaults if whoevers save doesnt have them
+      setTimeout(() => {
+        renderID(globalDataObject.current_room_id);
+      }, 2000)
+
+    } catch (e) {
+      console.error(e)
+      textEle.innerText = "You don't know why you feel relived that nothing happened..."
+    }
+  }
+}
+
+function justifyAllRecursion() {
+  recursionLevel++;
+}
+
+function unjustifyRecursion() {
+  recursionLevel = -1;
+}
 
 //note to future jr....the mirrors keep corrupting players and i literally can't make this up
 //right now its because the json save data is getting truncated (so its not too spammy)

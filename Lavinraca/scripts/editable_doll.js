@@ -77,7 +77,7 @@ class Doll {
   }
 
   getPrerenderedClown = async () => {
-    console.log("JR NOTE: getPrerenderedClown")
+    //console.log("JR NOTE: getPrerenderedClown")
     if (this.bufferFilled) {
       return this.buffer;
     } else {
@@ -88,13 +88,13 @@ class Doll {
   }
 
   renderDollToInternalBuffer = async () => {
-    console.log("JR NOTE: rendering clownsona for first time to canvas");
+    //console.log("JR NOTE: rendering clownsona for first time to canvas");
     for (let layer of this.layers) {
-      console.log("JR NOTE: rendering layer")
+      //console.log("JR NOTE: rendering layer")
       await layer.renderJustDoll(this.buffer);
     }
     this.bufferFilled = true;
-    console.log("JR NOTE: returning buffer")
+    //console.log("JR NOTE: returning buffer")
     return this.buffer;
   }
 

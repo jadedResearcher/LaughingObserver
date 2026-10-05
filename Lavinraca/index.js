@@ -184,6 +184,16 @@ const renderVideoToCanvas = () => {
       for (let part of claimArray[0]) {
         ctx.drawImage(part, x + size / 3, y, size, size);
       }
+    } else if (claimArray.length === 2) {
+      let offset = 0;
+      for (let clownsona of claimArray) {
+
+        //each element in the array is a list of things to draw. 
+        for (let part of clownsona) {
+          ctx.drawImage(part, x + offset, y, size, size);
+        }
+        offset += 67;
+      }
     } else {
       let offset = 0;
       for (let clownsona of claimArray) {
@@ -222,7 +232,7 @@ const renderVideoToCanvas = () => {
 
   if (justifedRecursion) {
     let scale = 0.9
-    const recursions = 13;
+    const recursions = recursionLevel;
     let width = canvas.width;
     let height = canvas.height;
     for (let i = 0; i < recursions; i++) {
