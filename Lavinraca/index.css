@@ -206,6 +206,7 @@ svg {
   color: orange;
   font-family: halloween;
 
+
 }
 
 .clarification {
@@ -251,6 +252,11 @@ svg {
   position: relative;
   color: black;
   width: fit-content;
+
+
+  li {
+    margin-top: 13px;
+  }
 
   .pumpkin1 {
     position: absolute;

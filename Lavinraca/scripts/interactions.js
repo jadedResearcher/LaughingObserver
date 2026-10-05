@@ -417,7 +417,7 @@ function readDesk2Papers() {
   button.innerText = "Read Papers?"
   button.onclick = () => {
     const contentEle = document.createElement("div");
-    contentEle.innerHTML = `< img src = 'images/eustaceandterri.PNG' > <br><Br>
+    contentEle.innerHTML = `<img src = 'images/eustaceandterri.PNG'> <br><Br>
         The note reads:
         <div class='simple-terri'>
           <br><Br><i>I am so excited you could make it here!

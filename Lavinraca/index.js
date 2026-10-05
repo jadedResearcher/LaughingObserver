@@ -342,6 +342,7 @@ const outsideTheHouse = () => {
   obviousExits.push({ text: "Approach the Mailbox", function: theMailbox })
   obviousExits.push({ text: "Approach the Harvest", function: theHarvest })
   obviousExits.push({ text: "Read the Plaque", function: rollCredits })
+  obviousExits.push({ text: "Check Log", function: changeLog })
 
   story.innerHTML = `${text}`;
   attachObviousExits(obviousExits)
@@ -494,6 +495,26 @@ const theHarvest = () => {
   }
 }
 
+const changeLog = () => {
+  const contentEle = document.createElement("div");
+  contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.
+    <br><Br>
+    Instead you catch a fluttering paper on the breeze, on fancy Halloween Stationary, which contains a list of all recent Changes to the house.
+    <div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+
+    <h2>Week 0 (Ended October 4th, 2026)</h2>
+    <li>Welcomed Guests into the Halls and warned them that it was still (and will always be) Under Contstruction</li>
+    <li>Showed the Guests all of Eustaces great poems!
+    <li>Let the Guests pick out rooms and find roommates!</li>
+    <li>The Billiards Room, the Gambling Bedroom, the Jar, and the Mirror Maze have all been set up for Guest Comfort! That's a room a day! Camellia will be so pleased that the Candy Faction is working so hard!</li>
+     <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+
+    </div>
+    `;
+  showExistingPopup(contentEle, "Gotcha")
+}
+
 //https://yolkdump.neocities.org/zampaniodiscordarchive
 const rollCredits = () => {
   popup.style.display = "block"
@@ -508,6 +529,7 @@ const rollCredits = () => {
     "EmberIsCurious": "Wodin Blender Model (assuming i get a chance to print it out and put it in)",
     "Flippet/flippetUrnways": "Eustace Poems",
     "KR": "Harvest Book Design/Binding",
+    "The Catalyst/Defensive Lobster": "Clownsona Dollparts, Playtesting",
     "Butlers/Cirky's": "Playtesting/Feedback",
     "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations. Join the <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>."
   }
