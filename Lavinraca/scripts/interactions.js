@@ -320,7 +320,8 @@ function theDoorIsAJar() {
   const button = createElementWithClassAndParent("button", c);
   button.innerText = "When It's a Jar.";
   button.onclick = () => {
-    renderID("east_third_room2/Jar_deep1")
+    renderID("east_third_room2/Jar_deep1");
+    justifyAllRecursion();
   }
 
 }
@@ -669,7 +670,7 @@ function justifyAllRecursion() {
 }
 
 function unjustifyRecursion() {
-  recursionLevel = -1;
+  recursionLevel = 0;
 }
 
 //note to future jr....the mirrors keep corrupting players and i literally can't make this up

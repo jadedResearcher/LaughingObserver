@@ -18,7 +18,7 @@ src: "1/Sunset/deep_panel1"
 let lastfiretime = performance.now();
 const hallwayDir = "images/Diorama/Inside/Hallways/";
 //anything above 0 turns on justified recursion
-let recursionLevel = -1;
+let recursionLevel = 0;
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 

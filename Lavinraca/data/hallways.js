@@ -2733,7 +2733,7 @@ const hallways = {
         "left": "east_third_room2/Jar_left1",
         "right": "east_third_room2/Jar_right1",
         "flavorText": "...are...are you...inside the jar?",
-        "functions": ["theDoorIsAJar", "justifyAllRecursion"] //keep going deeper into the JAR
+        "functions": ["theDoorIsAJar"] //keep going deeper into the JAR
     },
     //east_third_room2 start
     "east_third_room2_enter": {
