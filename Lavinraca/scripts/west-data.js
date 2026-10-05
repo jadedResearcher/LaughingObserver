@@ -96,7 +96,7 @@ let specialReflectionCatSpiral;
 
 const addNewClownSign = (garbage, json) => {
   const data = JSON.parse(json["save-data"]);
-  console.log("JR NOTE: addNewClownSign data", data)
+  //console.log("JR NOTE: addNewClownSign data", json.message)
   const key = data.current_room_id;
   const value = clown_signs_keyed_by_door[key];
 
@@ -264,6 +264,16 @@ I want it to be Addiction themed.
 I also want to copy Bed,Harvest Head, and Mirror from other rooms of the house and place them inside, if they'll fit.
 a Map in the room if you would. it need not be truthful, it need not be not turthful, nor even NotaLie
 I do NOT claim this room for myself.`])
+
+addNewFinishedRoomPrayer("east_third_room2/Jar", ` Dear, Sweet, Precious Harvest, I pray for a room to replace east_third_room2_deep1 and Sacrificing 24 books in your name. 
+  I want it to be Spiral themed. 
+  I also want to copy Masked Figure,Mirror, and Mirror from other rooms of the house and place them inside, if they'll fit.
+  i pray for a room to reflect my  love of spirals and obsessive search for the self . c: maybe also cats . 
+For framed photos , here are the links :
+https://file.garden/ar3vT1ueAwR8LMyN/approved_Me.png
+https://file.garden/ar3vT1ueAwR8LMyN/selfportrait.png
+https://file.garden/ar3vT1ueAwR8LMyN/spiral_lover.png
+  I claim this room for myself.`)
 
 
 
