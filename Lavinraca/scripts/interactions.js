@@ -673,6 +673,17 @@ function unjustifyRecursion() {
   recursionLevel = 0;
 }
 
+function xcom() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Look Into The Mirror?"
+  button.onclick = () => {
+    window.open("http://lavinraca.eyedolgames.com/XConByMediumOfThreads/", '_blank');
+
+  }
+}
+
 //note to future jr....the mirrors keep corrupting players and i literally can't make this up
 //right now its because the json save data is getting truncated (so its not too spammy)
 //but that means that STATE changes (like picking a mask up) get truncated so you might get yeeted to the OUTSIDE at random

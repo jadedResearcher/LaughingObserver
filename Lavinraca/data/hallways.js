@@ -1883,17 +1883,30 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_first_room1_left1": {
+        "roomID": "east_first_room1",
+        "flavorText": "The pale moonlight reveals a mirror that was not there before. Somehow you realize its two mirrors. One always shows Lies, one always shows Truths. Which will you pick?",
+        "src": "east_first_room1/left1",
+        "backwards": "east_first_room1_deep1",
+        "right": "east_first_room1_deep1",
+        "functions": ["xcom", "lookIntoTheMirror"]
+    },
+    "east_first_room1_right1": {
+        "roomID": "east_first_room1",
+        "src": "east_first_room1/right1",
+        "flavorText": "This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here. What is here was dangerous and repulsive to us. This message is a warning about danger.",
+        "backwards": "east_first_room1_deep1",
+        "left": "east_first_room1_deep1",
+        "functions": []
+    },
     "east_first_room1_deep1": {
         "roomID": "east_first_room1",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/take_one",
+        "flavorText": "Something terrible has happened here. You can see the moon shining through the splintered ceiling.",
+        "src": "east_first_room1/deep1",
         "backwards": "east_first_room1_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_first_room1_left1",
+        "right": "east_first_room1_right1",
+        "functions": []
     },
     //east_first_2 start
     "east_first_2_enter": {
