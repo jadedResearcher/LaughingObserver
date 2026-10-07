@@ -495,6 +495,12 @@ const theHarvest = () => {
   }
 }
 
+/*
+pending changes: 
+
+* Moon Room
+* Feast Room
+*/
 const changeLog = () => {
   const contentEle = document.createElement("div");
   contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.

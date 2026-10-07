@@ -30,6 +30,76 @@ function cantAffordPrayer() {
   showExistingPopup(contentEle, "I don't need charity.");
 }
 
+function prayForStorySacrifice() {
+  const textEle = story.querySelector("#room-text");
+
+
+
+  const button = createElementWithClassAndParent("button", textEle);
+
+  button.innerText = "Sacrifice a Story?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `Somehow, even over the loud music, you seem to hear a voice:
+      
+      <div class='scarecrow'>im so hungry</div>
+      <div class='truth'>It seems you wish to give our Lady Of Perpetual Hunger a boon.
+      <br><Br>
+      Any Story that is yours to give, and short enough to fit, you may Sacrifice here.
+      <br><Br>
+      Poems. Creepy pastas. Microfiction. The possibilities are truly endless.
+      <Br><Br>
+      Label them Meat or Candy if you wish, or JR will make the choice for you.
+      <Br><Br>
+      The books will join the 30 that Eustace and Terri have already Sacrificed.
+      <br><Br>
+      The Harvest is too proud to say so, but we, her parasites have no such compunctions.
+      <br><Br>
+      Feed her. She craves Books.
+      <br><Br>
+      </div>
+      `
+    const prayerEle = createElementWithClassAndParent("div", contentEle);
+
+    const godIsAtTheTable = `Write whatever you want here. You have 500 characters`;
+    const charCountEle = createElementWithClassAndParent("div", prayerEle);
+    charCountEle.innerText = `${godIsAtTheTable.length}/500 characters`;
+    let sentences = "";
+
+    const textAreaInput = createTextAreaInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, godIsAtTheTable, 13, 81);
+    textAreaInput.input.setAttribute("maxlength", 500);
+    textAreaInput.input.oninput = () => {
+      sentences = textAreaInput.input.value.slice(0, 500);
+      charCountEle.innerText = `${textAreaInput.input.value.length}/500 characters`;
+
+    }
+    textAreaInput.input.style.border = "1px solid white"
+    textAreaInput.input.style.padding = "13px"
+    textAreaInput.container.style.marginTop = "13px";
+    textAreaInput.input.style.width = "97%"
+
+    const sendPrayerButton = createElementWithClassAndParent("button", prayerEle);
+    sendPrayerButton.innerText = `Sacrifice Story`;
+    sendPrayerButton.style.marginTop = "13px";
+    sendPrayerButton.onclick = async () => {
+      const res = await sendStoryPrayer(sentences);
+      if (res) {
+        contentEle.innerHTML = "The Harvest has heard your prayer. If you are Blessed, your Story will join the Books before Halloween's End."
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+
+      } else {
+        contentEle.innerHTML = "Something went wrong. The Harvest has NOT heard your prayer. JR may know why, if you can find them on the Lavinraca <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>. ";
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+
+      }
+    }
+
+    showExistingPopup(contentEle, "I Have No Stories I Wish To Sacrifice");
+
+
+  }
+}
+
 const handlePrayingForRoom = () => {
   if (globalDataObject.harvestPoints > globalDataObject.books) {
     cantAffordPrayer();
@@ -166,6 +236,8 @@ const handleShowingExistingDibs = (prayers) => {
 
   showExistingPopup(contentEle, "Gotcha")
 }
+
+
 
 function prayForRoom() {
   //this fucntion will NOT let you have zero cuz if we did it won't escalate prices and im lazy and this is the easiest solution

@@ -3287,7 +3287,7 @@ const hallways = {
         "backwards": "east_fourth_room2_deep1",
         "flavorText": "You realize that you could Sacrifice a short story to the Harvest to feast on, if you wanted to.",
         "left": "east_fourth_room2_deep1",
-        "functions": []
+        "functions": ["prayForStorySacrifice"]
     },
     "east_fourth_room2_deep1": {
         "roomID": "east_fourth_room2",
