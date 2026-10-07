@@ -3200,7 +3200,7 @@ const hallways = {
         "left": "east_fourth_3_left1",
         "right": "east_fourth_3_right1",
         "backwards": "east_fourth_3_backup",
-        "functions": []
+        "functions": ["muffledQuietBop"]
     },
     "east_fourth_3_left1": {
         "roomID": "east_fourth_3",
@@ -3209,7 +3209,7 @@ const hallways = {
         "left": null,
         "right": "east_fourth_3_deep1",
         "backwards": "east_fourth_3_deep1",
-        "functions": []
+        "functions": ["muffledQuietBop"]
     },
     "east_fourth_3_right1": {
         "roomID": "east_fourth_3",
@@ -3218,7 +3218,7 @@ const hallways = {
         "left": "east_fourth_3_deep1",
         "right": null,
         "backwards": "east_fourth_3_deep1",
-        "functions": []
+        "functions": ["muffledQuietBop"]
     },
     "east_fourth_3_left2": {
         "roomID": "east_fourth_3",
@@ -3227,7 +3227,7 @@ const hallways = {
         "left": null,
         "right": "east_fourth_3_deep2",
         "backwards": "east_fourth_3_deep2",
-        "functions": []
+        "functions": ["muffledQuietBop"]
     },
     "east_fourth_3_right2": {
         "roomID": "east_fourth_3",
@@ -3236,7 +3236,7 @@ const hallways = {
         "left": "east_fourth_3_deep2",
         "right": null,
         "backwards": "east_fourth_3_deep2",
-        "functions": []
+        "functions": ["muffledBop"]
     },
     "east_fourth_3_deep2": {
         "roomID": "east_fourth_3",
@@ -3245,12 +3245,12 @@ const hallways = {
         "left": "east_fourth_3_left2",
         "right": "east_fourth_3_right2",
         "backwards": "east_fourth_3_deep1",
-        "functions": []
+        "functions": ["muffledBop"]
     },
     //east_fourth_room2 start
     "east_fourth_room2_enter": {
         "src": "open_the_door",
-        "forwards": "east_fourth_room2_deep1",
+        "forwards": "east_fourth_room2_deep0",
         "backwards": "east_fourth_3_right2",
         "functions": [
             "unlockDoorForwards"
@@ -3258,23 +3258,45 @@ const hallways = {
     },
     "east_fourth_room2_backup": {
         "src": "open_the_door_but_backwards",
-        "forwards": "east_fourth_room2_deep1",
+        "forwards": "east_fourth_room2_deep0",
         "backwards": "east_fourth_3_right2",
         "functions": [
             "unlockDoorBackwards"
         ]
     },
+
+    "east_fourth_room2_deep0": {
+        "roomID": "east_fourth_room2",
+        "src": "east_fourth_room2/deep1",
+        "forwards": "east_fourth_room2_deep1",
+        "flavorText": "A feast of knowledge is laid out for all to partake in. Books and Harvest Fruit are strewn carelessly about. A freaking bop is playing from everywhere and nowhere.",
+        "backwards": "east_fourth_room2_backup",
+        "functions": []
+    },
+    "east_fourth_room2_left1": {
+        "roomID": "east_fourth_room2",
+        "src": "east_fourth_room2/left1",
+        "backwards": "east_fourth_room2_deep1",
+        "right": "east_fourth_room2_deep1",
+        "flavorText": "You realize you could just...read this <a target='_blank' href='https://drive.google.com/file/d/17klENnjTIxx6ir6wLBaaslWuDrhyA7Hw/view?usp=sharing'>book</a>, if you wanted to. ", //i also host the file myself but, pdfs can be dangerous to just download so i decided to be more careful with my https server
+        "functions": []
+    },
+    "east_fourth_room2_right1": {
+        "roomID": "east_fourth_room2",
+        "src": "east_fourth_room2/right1",
+        "backwards": "east_fourth_room2_deep1",
+        "flavorText": "You realize that you could Sacrifice a short story to the Harvest to feast on, if you wanted to.",
+        "left": "east_fourth_room2_deep1",
+        "functions": []
+    },
     "east_fourth_room2_deep1": {
         "roomID": "east_fourth_room2",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/candy",
-        "backwards": "east_fourth_room2_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "src": "east_fourth_room2/deep2",
+        "backwards": "east_fourth_room2_deep0",
+        "flavorText": "You almost feel like the Harvest god is at the table.",
+        "left": "east_fourth_room2_left1",
+        "right": "east_fourth_room2_right1",
+        "functions": []
     },
     //east_fourth_4 start
     "east_fourth_4_enter": {

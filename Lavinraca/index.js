@@ -525,7 +525,7 @@ const rollCredits = () => {
     "JR": "Writing, Coding, Filming, Set Making",
     "BR": "3d Printing, 3d Model Design and Sourcing, Painting Consults, Architecture, Harvest Casing Assembly",
     "DM": "Electrical Engineering, Harvest Screen Assembly <a href='https://github.com/mutantbob/diorama-mini-tv' target='_blank'>[Source]</a>",
-    "IC": "Character Design, Candy Pamphlet Writing, Camellia Sermons",
+    "IC": "Music, Character Design, Candy Pamphlet Writing, Camellia Sermons",
     "EmberIsCurious": "Wodin Blender Model (assuming i get a chance to print it out and put it in)",
     "Flippet/flippetUrnways": "Eustace Poems",
     "KR": "Harvest Book Design/Binding",

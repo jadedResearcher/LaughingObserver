@@ -27,7 +27,7 @@ const tryPlayBgMusic = async () => {
         try {
             await spookyLoop.play();
             await bgMusic.play();
-            console.log("JR NOTE: tried to play")
+            //console.log("JR NOTE: tried to play")
         } catch (e) {
             console.log("JR NOTE: error caught")
             //christ this is annoying, i know its to protect ppl from auto playing ads but like... 
@@ -118,6 +118,8 @@ const renderRoom = (json, replacedAlready) => {
 
 
     //console.log("JR NOTE: renderRoom json is", json)
+
+
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
     globalDataObject.hallways_entered++;

@@ -684,6 +684,39 @@ function xcom() {
   }
 }
 
+//i tried to make these not reset to zero every time you move but it was annoying and its getting late so i dropped it
+function muffledBop() {
+
+  bgMusic.src = "music/loop1_byIC_itsabop_muffled.mp3";
+
+  bgMusic.onloadedmetadata = () => {
+
+    bgMusic.loadedmetadata = undefined;
+    tryPlayBgMusic();
+  }
+
+  return () => {
+    bgMusic.src = weird;
+    tryPlayBgMusic();
+  }
+
+}
+
+function muffledQuietBop() {
+
+  bgMusic.src = "music/loop1_byIC_itsabop_muffled_and_quiet.mp3";
+  bgMusic.onloadedmetadata = () => {
+    bgMusic.loadedmetadata = undefined;
+    tryPlayBgMusic();
+  }
+
+
+  return () => {
+    bgMusic.src = weird;
+    tryPlayBgMusic();
+  }
+}
+
 //note to future jr....the mirrors keep corrupting players and i literally can't make this up
 //right now its because the json save data is getting truncated (so its not too spammy)
 //but that means that STATE changes (like picking a mask up) get truncated so you might get yeeted to the OUTSIDE at random
