@@ -731,7 +731,11 @@ function eatHarvestFruit() {
     const button2 = createElementWithClassAndParent("button", contentEle);
     button2.innerText = "im so hungry";
     button2.onclick = () => {
-      console.log("JR NOTE: wasted wasted, devouring the tree")
+      console.log(`JR NOTE: wasted wasted, harvesting the tree,
+         you found a fruit and ate it, and now you finally see
+         cameras and flashlights glowing
+         all reality
+         you found a fruit and ate it, and now you finally see `)
       globalDataObject.wasted = true;
       const deep1Old = "east_main_room3_deep1";
       const deep1New = "east_main_room3_deep1_waste";
