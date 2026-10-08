@@ -530,7 +530,7 @@ function openSecretPassageSafe() {
 }
 
 function seeTheLadder() {
-  if (seerOfVoid) {
+  if (globalDataObject.wasted) {
     video.src = hallwayDir + "SecretPassageway/right2_ladder" + ".mp4";
     const textEle = story.querySelector("#room-text");
     const button = createElementWithClassAndParent("button", textEle);
@@ -714,6 +714,46 @@ function muffledQuietBop() {
   return () => {
     bgMusic.src = weird;
     tryPlayBgMusic();
+  }
+}
+
+function eatHarvestFruit() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Partake of the Harvest Fruit?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `As a Faithful of the Harvest, you know there is no turning back once you consume the Fruit of the Harvest, that which provides knowledge of the Truth behind it all.
+    <br>
+    Knowing this, do you still choose to eat?`
+
+    const button2 = createElementWithClassAndParent("button", contentEle);
+    button2.innerText = "im so hungry";
+    button2.onclick = () => {
+      console.log("JR NOTE: wasted wasted, devouring the tree")
+      globalDataObject.wasted = true;
+      const deep1Old = "east_main_room3_deep1";
+      const deep1New = "east_main_room3_deep1_waste";
+      const left1Old = "east_main_room3_left1";
+      const left1New = "east_main_room3_left1_waste";
+      const right1Old = "east_main_room3_right1"
+      const right1New = "east_main_room3_right1_waste"
+
+
+      globalDataObject.state_changes[deep1Old] = deep1New;
+      globalDataObject.state_changes[left1Old] = left1New;
+      globalDataObject.state_changes[right1Old] = right1New;
+      closeThePopup();
+      save();
+      renderID(deep1New)
+
+
+    }
+
+
+
+    showExistingPopup(contentEle, "No, that sounds like an obviously bad idea.")
   }
 }
 

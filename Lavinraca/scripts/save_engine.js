@@ -14,6 +14,7 @@ let initialDataObject = {
     books: 0,
     keys: 0,
     masks: 0,
+    wasted: false,
     harvestPoints: 0,
     meat: 0,
     stranger: false, //there are ways you can become a stranger to everyone around you, what even is identity

@@ -1330,17 +1330,51 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_main_room3_left1": {
+        "roomID": "east_main_room3",
+        "src": "east_main_room3/left1",
+        "backwards": "east_main_room3_deep1",
+        "right": "east_main_room3_deep1",
+        "functions": []
+    },
+    "east_main_room3_right1": {
+        "roomID": "east_main_room3",
+        "src": "east_main_room3/right1",
+        "backwards": "east_main_room3_deep1",
+        "left": "east_main_room3_deep1",
+        "functions": []
+    },
     "east_main_room3_deep1": {
         "roomID": "east_main_room3",
-        "src": "Harvest/eyes",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "east_main_room3/deep1",
         "backwards": "east_main_room3_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_main_room3_left1",
+        "right": "east_main_room3_right1",
+        "functions": ["eatHarvestFruit"]
+    },
+    "east_main_room3_left1_waste": {
+        "roomID": "east_main_room3",
+        "src": "east_main_room3/left1_waste",
+        "backwards": "east_main_room3_deep1",
+        "right": "east_main_room3_deep1",
+        "flavorText": "In a flash of sometthing almost...Prophetic... You realize that there is now a ladder in the Secret passage way behind the west wing bookcase.",
+        "functions": []
+    },
+    "east_main_room3_right1_waste": {
+        "roomID": "east_main_room3",
+        "src": "east_main_room3/right1_waste",
+        "backwards": "east_main_room3_deep1",
+        "left": "east_main_room3_deep1",
+        "flavorText": "You feel Alone in the knowledge. Does anyone else understand that reality is an illusion? Will you need to infect them with your knowledge? Catalyze their ascension?",
+        "functions": []
+    },
+    "east_main_room3_deep1_waste": {
+        "roomID": "east_main_room3",
+        "src": "east_main_room3/deep1_waste",
+        "backwards": "east_main_room3_backup",
+        "left": "east_main_room3_left1",
+        "right": "east_main_room3_right1",
+        "flavorText": "You feel your mind crack in two, reality leaking through the seams until you can no longer deny the fact that everything you have ever known is fake. This is...reality is just a game to beings you can not possibly comprehend."
     },
     //east_main_4 start
     "east_main_4_enter": {
@@ -1618,7 +1652,7 @@ const hallways = {
     },
     "east_main_7_left1": {
         "roomID": "east_main_7",
-        "src": "CopyOfACopy/FlatDoor",
+        "src": "CopyOfACopy/sticky_note_door",
         "forwards": "east_main_room3_enter",
         "left": null,
         "right": "east_main_7_deep1",
@@ -3269,7 +3303,7 @@ const hallways = {
         "roomID": "east_fourth_room2",
         "src": "east_fourth_room2/deep1",
         "forwards": "east_fourth_room2_deep1",
-        "flavorText": "A feast of knowledge is laid out for all to partake in. Books and Harvest Fruit are strewn carelessly about. A freaking bop is playing from everywhere and nowhere.",
+        "flavorText": "A feast of knowledge is laid out for all to partake in. Books and Replica Harvest Fruit are strewn carelessly about. A freaking bop is playing from everywhere and nowhere.",
         "backwards": "east_fourth_room2_backup",
         "functions": []
     },
@@ -3293,7 +3327,7 @@ const hallways = {
         "roomID": "east_fourth_room2",
         "src": "east_fourth_room2/deep2",
         "backwards": "east_fourth_room2_deep0",
-        "flavorText": "You almost feel like the Harvest god is at the table.",
+        "flavorText": "You almost feel like the Harvest god is at the table. If only the Harvest Fruit before you were real, but alas, it is plastic.",
         "left": "east_fourth_room2_left1",
         "right": "east_fourth_room2_right1",
         "functions": []
