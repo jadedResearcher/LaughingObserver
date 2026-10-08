@@ -1335,14 +1335,14 @@ const hallways = {
         "src": "east_main_room3/left1",
         "backwards": "east_main_room3_deep1",
         "right": "east_main_room3_deep1",
-        "functions": []
+        "functions": ["lookIntoTheMirror"]
     },
     "east_main_room3_right1": {
         "roomID": "east_main_room3",
         "src": "east_main_room3/right1",
         "backwards": "east_main_room3_deep1",
         "left": "east_main_room3_deep1",
-        "functions": []
+        "functions": ["lookIntoTheMirror"]
     },
     "east_main_room3_deep1": {
         "roomID": "east_main_room3",
@@ -1358,15 +1358,15 @@ const hallways = {
         "backwards": "east_main_room3_deep1",
         "right": "east_main_room3_deep1",
         "flavorText": "In a flash of sometthing almost...Prophetic... You realize that there is now a ladder in the Secret passage way behind the west wing bookcase.",
-        "functions": []
+        "functions": ["lookIntoTheMirror"]
     },
     "east_main_room3_right1_waste": {
         "roomID": "east_main_room3",
         "src": "east_main_room3/right1_waste",
         "backwards": "east_main_room3_deep1",
         "left": "east_main_room3_deep1",
-        "flavorText": "You feel Alone in the knowledge. Does anyone else understand that reality is an illusion? Will you need to infect them with your knowledge? Catalyze their ascension?",
-        "functions": []
+        "flavorText": "Something Catalyzes within you. You realize if you close your eyes, you will see something new. But only if seerOfVoid is enabled. You realize can add it to the URL with ?seerOfVoid=true.",
+        "functions": ["lookIntoTheMirror"]
     },
     "east_main_room3_deep1_waste": {
         "roomID": "east_main_room3",
