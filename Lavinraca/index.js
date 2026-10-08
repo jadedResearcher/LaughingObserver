@@ -106,27 +106,32 @@ window.onload = async () => {
   }*/
 }
 
-const wireUpVisionControl = () => {
+const toggleVoid = () => {
   const body = document.querySelector("body")
-  visionControl.onclick = () => {
-    if (flavorTextAndMovementButtonsVisible) {
-      storyContainer.style.display = "none";
-      //css vars are WAY easier than i used to do it in SBURBSim
-      if (seerOfVoid) {
-        body.style.setProperty('--void_display', 'block');
-      }
-      visionControl.style.backgroundPositionY = "0px"
-      flavorTextAndMovementButtonsVisible = false;
-    } else {
-      storyContainer.style.display = "block";
-      if (seerOfVoid) {
 
-        body.style.setProperty('--void_display', 'none');
-      }
-
-      flavorTextAndMovementButtonsVisible = true;
-      visionControl.style.backgroundPositionY = "25px"
+  if (flavorTextAndMovementButtonsVisible) {
+    storyContainer.style.display = "none";
+    //css vars are WAY easier than i used to do it in SBURBSim
+    if (seerOfVoid) {
+      body.style.setProperty('--void_display', 'block');
     }
+    visionControl.style.backgroundPositionY = "0px"
+    flavorTextAndMovementButtonsVisible = false;
+  } else {
+    storyContainer.style.display = "block";
+    if (seerOfVoid) {
+
+      body.style.setProperty('--void_display', 'none');
+    }
+
+    flavorTextAndMovementButtonsVisible = true;
+    visionControl.style.backgroundPositionY = "25px"
+  }
+}
+
+const wireUpVisionControl = () => {
+  visionControl.onclick = () => {
+    toggleVoid();
 
   }
 }

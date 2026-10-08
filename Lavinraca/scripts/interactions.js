@@ -748,10 +748,28 @@ function eatHarvestFruit() {
       globalDataObject.state_changes[deep1Old] = deep1New;
       globalDataObject.state_changes[left1Old] = left1New;
       globalDataObject.state_changes[right1Old] = right1New;
+
+
       closeThePopup();
       save();
       renderID(deep1New)
+      //should be a list of all functions on the window object that take no params
+      //which is the primary trait of the interaction functions i let rooms call
+      let keys = Object.keys(window).filter(key => {
+        const val = window[key];
+        return typeof val === 'function' && val.length === 0;
+      });
+      keys = keys.reverse();
+      const themeInput = createSelectInputWithLabel(secrets, "hackingSelect", "Call These Functions At Your Own Risk", keys.map((t) => { return { label: t, value: t } }));
+      themeInput.container.classList.add("void")
+      const button3 = createElementWithClassAndParent("button", secrets);
+      button3.classList.add("void")
+      button3.innerText = "Call Function"
+      button3.onclick = () => {
+        window[themeInput.input.value]();
+        toggleVoid();
 
+      }
 
     }
 

@@ -387,8 +387,9 @@ const createSelectInputWithLabel = (parent, id, labelText, options, selected_opt
   // console.log("JR NOTE: createSelectInputWithLabel", { parent, id, labelText, options, selected_option })
   const container = createElementWithClassAndParent("div", parent, "form-container");
 
+  let label;
   if (labelText) {
-    const label = createElementWithClassAndParent("label", container)
+    label = createElementWithClassAndParent("label", container)
     label.for = id;
     label.innerText = labelText;
   }
