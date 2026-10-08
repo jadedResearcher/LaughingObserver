@@ -43,6 +43,9 @@ const tryPlayBgMusic = async () => {
 }
 
 const beginGameplayLoop = () => {
+    if (globalDataObject.wasted) {
+        wireUpWasteControls();
+    }
     bgMusic.src = weird;
 
     tryPlayBgMusic();
