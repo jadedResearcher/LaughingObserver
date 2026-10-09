@@ -907,6 +907,12 @@ const hallways = {
         "functions": []
     },
 
+    "attic": {
+        "roomID": "attic",
+        "src": "Attic/Deep1",
+        "functions": ["jrsHighlySelfIndulgentSpiel"]
+    },
+
 
     "TODO": {
         "roomID": "6",

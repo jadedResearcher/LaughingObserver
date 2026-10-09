@@ -184,6 +184,60 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
 
 }
 
+const fillGalleryWithBTS = async (contentEle) => {
+  //if we're running locally look at remote
+  const first = window.location.href.includes("laughing") ? "" : "https://laughing.observer/Lavinraca/"
+
+  const dir = first + "images/Diorama/Inside/Hallways/BTS/";
+
+  const images = await getImages(dir);
+  const containerGallery = createElementWithClassAndParent("div", contentEle);
+  containerGallery.id = "gallery-container";
+  console.log("JR NOTE: images", images)
+  for (let img of images) {
+    const div = createElementWithClassAndParent("div", containerGallery);
+    div.style.marginTop = "31px"
+
+    const i = createElementWithClassAndParent("img", div);
+    i.src = dir + img;
+    const label = createElementWithClassAndParent("div", div);
+    label.innerText = img;
+    label.style.textDecoration = "underlined"
+
+  }
+}
+
+function jrsHighlySelfIndulgentSpiel() {
+  const chosenId = getRandomHallwayID();
+  hallways[globalDataObject.current_room_id].backwards = chosenId;
+  //this ALSO ominously fades to black when it ends, but thats because
+  //looping dialogue is a sin
+  if (video.paused) {
+    const textEle = story.querySelector("#room-text");
+
+    const button = createElementWithClassAndParent("button", textEle);
+    button.innerText = "Whoops, you refreshed here and its not autoplaying. Click this."
+    button.onclick = () => {
+      video.play();
+      button.remove();
+    }
+
+  }
+  video.loop = false;
+  video.onended = () => {
+    video.onended = undefined;
+    setTimeout(() => {
+      const contentEle = document.createElement("div");
+      contentEle.innerHTML = '<h2>Behind The Scenes Shots</h2>'
+      showExistingPopup(contentEle, "Stop Viewing")
+      fillGalleryWithBTS(contentEle);
+
+    }, 2000)
+
+
+  }
+}
+
 function gaslightEastFirstRoom3() {
   const dir = "images/Diorama/Inside/Hallways/east_first_room3/"
   const noMap = "right_nomap.mp4";
@@ -292,7 +346,7 @@ function gaslightToShowCombo() {
 //if you click anywhere the sunbeam glitches out, returns a function to clean that up
 //a simple test in the first room
 function hallwayOneSunbeam() {
-  console.log("JR NOTE: hallwayOneSunbeam")
+  //console.log("JR NOTE: hallwayOneSunbeam")
   const oldSrc = video.src;
   const fuckySunBeam = () => {
     console.log("JR NOTE: fucky sunbeam", video)
@@ -536,7 +590,7 @@ function seeTheLadder() {
     const button = createElementWithClassAndParent("button", textEle);
     button.innerText = "Climb Ladder?"
     button.onclick = () => {
-      const atticID = "TODO";
+      const atticID = "attic";
       renderID(atticID)
     }
   }
@@ -728,6 +782,16 @@ function freeBook() {
   }
 }
 
+/*
+btw, seeing this chronological archive of the chronicles of the marked: 
+
+https://yolkdump.neocities.org/zampaniodiscordarchive
+
+made me realize how important banquet halls were for early testimonials of zampanio
+
+so i HAD to make sure there was at least one in this house
+*/
+
 //especially useful if you steal someones body who has collected more books  than you
 function bookGallery() {
   const textEle = story.querySelector("#room-text");
@@ -903,7 +967,7 @@ function theStairsBeckon() {
     stairNoise.onended = () => {
       hallOfMirrors = true;
       const chosenId = getRandomHallwayID();
-      console.log("JR NOTE: chosen id is", chosenId)
+      //console.log("JR NOTE: chosen id is", chosenId)
       renderID(chosenId);
     }
     stairNoise.play();
