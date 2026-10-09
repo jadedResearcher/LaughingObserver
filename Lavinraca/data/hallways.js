@@ -909,7 +909,7 @@ const hallways = {
 
     "attic": {
         "roomID": "attic",
-        "src": "Attic/Deep1",
+        "src": "Attic/deep1",
         "functions": ["jrsHighlySelfIndulgentSpiel"]
     },
 
@@ -2363,7 +2363,7 @@ const hallways = {
     "SecretPassageway_right2": {
         "roomID": "SecretPassageway",
         "src": "SecretPassageway/right2",
-        "flavorText": "There is a safe here. Faintly scratched into it, right above the combo lock, you can see the phrase 'Wasted, Wasted'. And also 'See The Void' ",
+        "flavorText": "There is a safe here. Faintly scratched into it, right above the combo lock, you can see the phrase 'Wasted, Wasted'. ",
         "forwards": null,
         "left": "SecretPassageway_deep2",
         "right": null,

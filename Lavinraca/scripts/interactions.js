@@ -572,6 +572,7 @@ function openSecretPassageSafe() {
       globalDataObject.state_changes[myID] = newID;
       globalDataObject.state_changes[myIDBackwards] = newIDBackwards;
 
+      alert("Do you understand why wasted is 13?")
       bookGet();
       renderID(newID);
     }
