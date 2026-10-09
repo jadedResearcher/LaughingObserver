@@ -818,7 +818,7 @@ function bookGallery() {
       const ele = createElementWithClassAndParent("li", col1,);
       ele.innerHTML = `<a>Candy${i}</a>`;
       ele.onclick = () => {
-        candyGet(i)
+        candyGet(undefined, i)
       }
 
     }
@@ -827,7 +827,7 @@ function bookGallery() {
       const ele = createElementWithClassAndParent("li", col2,);
       ele.innerHTML = `<a>Meat${i}</a>`;
       ele.onclick = () => {
-        meatGet(i)
+        meatGet(undefined, i)
       }
     }
 

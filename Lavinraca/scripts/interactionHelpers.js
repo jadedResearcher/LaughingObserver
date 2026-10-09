@@ -126,7 +126,9 @@ const maskGet = (amount = 1) => {
 
 
 //meat is simple-eustace
-const meatGet = (index) => {
+////even tho the event is never used need to hold it cuz events can call this and if i do the event will be considered an indexa nd it crashes whoops, thanks catalyst for catching this
+
+const meatGet = (event, index) => {
 
   closeThePopup();
   const contentEle = document.createElement("div");
@@ -140,7 +142,7 @@ const meatGet = (index) => {
     globalDataObject.meat++;
 
   }
-  //console.log("JR NOTE: meat lore is", lore)
+  console.log("JR NOTE: meat lore is", lore, index)
 
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-eustace");
@@ -156,7 +158,8 @@ const meatGet = (index) => {
 
 //https://yolkdump.neocities.org/zampaniodiscordarchive
 //candy is simple-terri or simple-camellia (camellia will be in the lore itself, overriding the terri class)
-const candyGet = (index) => {
+//even tho the event is never used need to hold it cuz events can call this and if i do the event will be considered an indexa nd it crashes whoops, thanks catalyst for catching this
+const candyGet = (event, index) => {
 
   closeThePopup();
   const contentEle = document.createElement("div");
