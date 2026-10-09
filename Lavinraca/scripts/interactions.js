@@ -717,7 +717,7 @@ function muffledQuietBop() {
   }
 }
 
-function bookcase() {
+function freeBook() {
   const textEle = story.querySelector("#room-text");
 
   const lock = createElementWithClassAndParent("button", textEle);
@@ -725,6 +725,47 @@ function bookcase() {
   lock.onclick = () => {
     bookGet();
     lock.remove();
+  }
+}
+
+//especially useful if you steal someones body who has collected more books  than you
+function bookGallery() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Browse Books?"
+  lock.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `<h2>Books Collected</h2>`
+    showExistingPopup(contentEle, "Finish Browsing")
+    const loreBox = createElementWithClassAndParent("div", contentEle, 'lore-box');
+    loreBox.innerHTML
+
+    const twocols = createElementWithClassAndParent("div", contentEle, 'rows');
+
+    const maxCandy = Math.min(globalDataObject.candy, candy_lore.length);
+    const maxMeat = Math.min(globalDataObject.meat, meat_lore.length);
+
+    const col1 = createElementWithClassAndParent("ol", twocols);
+    const col2 = createElementWithClassAndParent("ol", twocols);
+
+    for (let i = 0; i < maxCandy; i++) {
+      const ele = createElementWithClassAndParent("li", col1,);
+      ele.innerHTML = `<a>Candy${i}</a>`;
+      ele.onclick = () => {
+        candyGet(i)
+      }
+
+    }
+
+    for (let i = 0; i < maxMeat; i++) {
+      const ele = createElementWithClassAndParent("li", col2,);
+      ele.innerHTML = `<a>Meat${i}</a>`;
+      ele.onclick = () => {
+        meatGet(i)
+      }
+    }
+
   }
 }
 

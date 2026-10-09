@@ -153,12 +153,26 @@ body {
   top: 31px;
 }
 
+a {
+  cursor: pointer;
+}
+
 .void {
   display: var(--void_display);
 
   select {
     width: auto;
   }
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.rows {
+  display: flex;
+  flex-direction: row;
 }
 
 #story {

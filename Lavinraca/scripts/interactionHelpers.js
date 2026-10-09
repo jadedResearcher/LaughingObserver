@@ -126,12 +126,20 @@ const maskGet = (amount = 1) => {
 
 
 //meat is simple-eustace
-const meatGet = () => {
+const meatGet = (index) => {
 
   closeThePopup();
   const contentEle = document.createElement("div");
   //{comment, lore}
-  const lore = meat_lore[(globalDataObject.meat) % meat_lore.length];
+  let lore = meat_lore[(globalDataObject.meat) % meat_lore.length];
+
+  //you only get meat for NEW books, not reading at the bookcase
+  if (index) {
+    lore = meat_lore[index];
+  } else {
+    globalDataObject.meat++;
+
+  }
   //console.log("JR NOTE: meat lore is", lore)
 
 
@@ -143,19 +151,26 @@ const meatGet = () => {
   intro.style.marginTop = "31px"
 
   showExistingPopup(contentEle, "Gotcha")
-  globalDataObject.meat++;
   save();
 }
 
 //https://yolkdump.neocities.org/zampaniodiscordarchive
 //candy is simple-terri or simple-camellia (camellia will be in the lore itself, overriding the terri class)
-const candyGet = () => {
+const candyGet = (index) => {
 
   closeThePopup();
   const contentEle = document.createElement("div");
   //{comment, lore}
-  const lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
+  let lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
   //console.log("JR NOTE: candy lore is", lore)
+  //you only get candy for NEW books, not reading at the bookcase
+
+  if (index) {
+    lore = candy_lore[index];
+  } else {
+    globalDataObject.candy++;
+
+  }
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-terri");
   mainText.innerHTML = lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")
@@ -165,7 +180,6 @@ const candyGet = () => {
   intro.innerHTML = "Eustace Says: " + lore.comment.split("\n").map((i) => i.trim() ? `<p>${i}</p>` : "").join("")
 
   showExistingPopup(contentEle, "Gotcha")
-  globalDataObject.candy++;
   save();
 
 }

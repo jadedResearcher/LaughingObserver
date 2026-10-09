@@ -3305,7 +3305,7 @@ const hallways = {
         "forwards": "east_fourth_room2_deep1",
         "flavorText": "A feast of knowledge is laid out for all to partake in. Books and Replica Harvest Fruit are strewn carelessly about. A freaking bop is playing from everywhere and nowhere.",
         "backwards": "east_fourth_room2_backup",
-        "functions": ["bookcase"]
+        "functions": ["freeBook"]
     },
     "east_fourth_room2_left1": {
         "roomID": "east_fourth_room2",
@@ -3330,7 +3330,7 @@ const hallways = {
         "flavorText": "You almost feel like the Harvest god is at the table. If only the Harvest Fruit before you were real, but alas, it is plastic.",
         "left": "east_fourth_room2_left1",
         "right": "east_fourth_room2_right1",
-        "functions": []
+        "functions": ["bookGallery"]
     },
     //east_fourth_4 start
     "east_fourth_4_enter": {
