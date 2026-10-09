@@ -3305,7 +3305,7 @@ const hallways = {
         "forwards": "east_fourth_room2_deep1",
         "flavorText": "A feast of knowledge is laid out for all to partake in. Books and Replica Harvest Fruit are strewn carelessly about. A freaking bop is playing from everywhere and nowhere.",
         "backwards": "east_fourth_room2_backup",
-        "functions": []
+        "functions": ["bookcase"]
     },
     "east_fourth_room2_left1": {
         "roomID": "east_fourth_room2",

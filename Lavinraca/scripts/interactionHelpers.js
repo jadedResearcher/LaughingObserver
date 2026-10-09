@@ -132,7 +132,7 @@ const meatGet = () => {
   const contentEle = document.createElement("div");
   //{comment, lore}
   const lore = meat_lore[(globalDataObject.meat) % meat_lore.length];
-  console.log("JR NOTE: meat lore is", lore)
+  //console.log("JR NOTE: meat lore is", lore)
 
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-eustace");
@@ -155,7 +155,7 @@ const candyGet = () => {
   const contentEle = document.createElement("div");
   //{comment, lore}
   const lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
-  console.log("JR NOTE: candy lore is", lore)
+  //console.log("JR NOTE: candy lore is", lore)
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-terri");
   mainText.innerHTML = lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")

@@ -717,6 +717,17 @@ function muffledQuietBop() {
   }
 }
 
+function bookcase() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Take Free Book?"
+  lock.onclick = () => {
+    bookGet();
+    lock.remove();
+  }
+}
+
 const wireUpWasteControls = () => {
   //should be a list of all functions on the window object that take no params
   //which is the primary trait of the interaction functions i let rooms call

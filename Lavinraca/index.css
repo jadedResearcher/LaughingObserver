@@ -155,6 +155,10 @@ body {
 
 .void {
   display: var(--void_display);
+
+  select {
+    width: auto;
+  }
 }
 
 #story {
