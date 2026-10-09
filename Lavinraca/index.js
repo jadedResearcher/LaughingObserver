@@ -505,7 +505,10 @@ pending changes:
 
 * Moon Room
 * Feast Room
+* Split Bathroom
+* Attic
 */
+//http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
 const changeLog = () => {
   const contentEle = document.createElement("div");
   contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.
