@@ -910,6 +910,7 @@ const hallways = {
     "attic": {
         "roomID": "attic",
         "src": "Attic/deep1",
+        "flavorText": "Why... hello there!!!  Fancy meeting you here, all up in my attic. I'm JR, the...Author of these shenanigans.   Hmmmmmmmmm..... Okay! Yeah! You want to see how I did it? ",
         "functions": ["jrsHighlySelfIndulgentSpiel"]
     },
 
