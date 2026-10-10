@@ -30,10 +30,52 @@ function cantAffordPrayer() {
   showExistingPopup(contentEle, "I don't need charity.");
 }
 
-function prayForStorySacrifice() {
+function prayForPet() {
   const textEle = story.querySelector("#room-text");
 
+  const button = createElementWithClassAndParent("button", textEle);
 
+  button.innerText = "Yes, I want to show you my pet."
+  button.onclick = () => {
+
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `If you like, you can submit a picture of your pet. This doesn't take uploads, much like praying for a room you have to link to one via its url to wherever it is on the internet.`
+    const prayerEle = createElementWithClassAndParent("div", contentEle);
+
+    const textAreaInput = createTextAreaInputWithLabel(prayerEle, "themeSelectForPrayer", undefined, 'Example: http://farragofiction.com/CatalystsBathroomSim/audio_utils/weird_sounds/weird_video/WeirdGifs/AllHallowsEve/hallowissohandsomeomg.png', 13, 81);
+    textAreaInput.input.setAttribute("maxlength", 500);
+    let sentences;
+    textAreaInput.input.oninput = () => {
+      sentences = textAreaInput.input.value.slice(0, 500);
+      charCountEle.innerText = `${textAreaInput.input.value.length}/500 characters`;
+
+    }
+    textAreaInput.input.style.border = "1px solid white"
+    textAreaInput.input.style.padding = "13px"
+    textAreaInput.container.style.marginTop = "13px";
+    textAreaInput.input.style.width = "97%"
+
+    const sendPrayerButton = createElementWithClassAndParent("button", prayerEle);
+    sendPrayerButton.innerText = `RSVP Pet`;
+    sendPrayerButton.style.marginTop = "13px";
+    showExistingPopup(contentEle, "Actually I Don't Want To Show A Pet")
+    sendPrayerButton.onclick = async () => {
+      const res = await sendPetPrayer(sentences);
+      if (res) {
+        contentEle.innerHTML = "The Harvest has heard your prayer. If you are Blessed, your Pet will join the Guests before Halloween's End."
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+
+      } else {
+        contentEle.innerHTML = "Something went wrong. The Harvest has NOT heard your prayer. JR may know why, if you can find them on the Lavinraca <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>. ";
+        document.querySelector(".bottom-close-button").innerText = "Gotcha"
+
+      }
+    }
+  }
+}
+
+function prayForStorySacrifice() {
+  const textEle = story.querySelector("#room-text");
 
   const button = createElementWithClassAndParent("button", textEle);
 

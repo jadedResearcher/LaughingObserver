@@ -84,7 +84,8 @@ const sendStoryPrayer = async (sentences) => {
   form.append(dateField)
   form.append(dataField);
 
-  globalDataObject.books += -1 * globalDataObject.harvestPoints;
+  //haha whoops don't force people to sacrifice books when its story time
+  //globalDataObject.books += -1 * globalDataObject.harvestPoints;
   const tmp = globalDataObject.harvestPoints;
   globalDataObject.harvestPoints = 10 * tmp; //every time you send a room prayer, the cost increases by an order of magnitude
   save();
@@ -102,6 +103,51 @@ const sendStoryPrayer = async (sentences) => {
   return false;
 
 }
+
+
+const sendPetPrayer = async (sentences) => {
+  const form = document.createElement("form");
+  const option1 = document.createElement("textarea");
+  option1.value = `Dear, Sweet, Precious Harvest, Look at my cute and precious Pet!
+  ${sentences}
+  `;
+  option1.name = "message"
+
+  const dateField = document.createElement("input");
+
+  dateField.type = "hidden";
+  dateField.name = "date";
+  dateField.value = new Date().toLocaleString();//i'll know if it was noon or if Harvest was on break when you submitted, lol, but you won't
+
+  const dataField = document.createElement("input");
+  dataField.type = "hidden";
+  dataField.name = "save-data";
+  dataField.value = JSON.stringify(truncateJson(globalDataObject, 113));
+
+  form.append(option1)
+  form.append(dateField)
+  form.append(dataField);
+
+  //haha whoops don't force people to sacrifice books when its story time
+  //globalDataObject.books += -1 * globalDataObject.harvestPoints;
+  const tmp = globalDataObject.harvestPoints;
+  globalDataObject.harvestPoints = 10 * tmp; //every time you send a room prayer, the cost increases by an order of magnitude
+  save();
+
+  const formData = new FormData(form);
+  const result = fetch('https://laughing.observer/Lavinraca/harvest_prayers.php', {
+    method: 'POST',
+    body: formData
+  });
+  const res = await result;
+  console.log(res)
+  if (res.ok) {
+    return true;
+  }
+  return false;
+
+}
+
 
 let numberSubmittedCommands = 0;
 let submitted = false;

@@ -3189,7 +3189,7 @@ const hallways = {
     //east_fourth_room1 start
     "east_fourth_room1_enter": {
         "src": "open_the_door",
-        "forwards": "east_fourth_room1_deep1",
+        "forwards": "east_fourth_room1_deep0",
         "backwards": "east_fourth_2_left1",
         "functions": [
             "unlockDoorForwards"
@@ -3197,23 +3197,47 @@ const hallways = {
     },
     "east_fourth_room1_backup": {
         "src": "open_the_door_but_backwards",
-        "forwards": "east_fourth_room1_deep1",
+        "forwards": "east_fourth_room1_deep0",
         "backwards": "east_fourth_2_left1",
         "functions": [
             "unlockDoorBackwards"
         ]
     },
+    "east_fourth_room1_deep0": {
+        "roomID": "east_fourth_room1",
+        "src": "east_fourth_room1/deep0",
+        "backwards": "east_fourth_room1_backup",
+        "forwards": "east_fourth_room1_deep1",
+        "right": "east_fourth_room1_deep1",
+        "flavorText": "A beautiful wedding. Do you have any pets that wish to attend?",
+        "functions": ["onlyOnce", "crickets", "prayForPet"]
+    },
+    "east_fourth_room1_left1": {
+        "roomID": "east_fourth_room1",
+        "src": "east_fourth_room1/left1",
+        "backwards": "east_fourth_room1_deep1",
+        "right": "east_fourth_room1_deep1",
+        "flavorText": "The Clown looks effervescent in its joy.",
+        "functions": ["crickets"]
+    },
+    "east_fourth_room1_right1": {
+        "roomID": "east_fourth_room1",
+        "src": "east_fourth_room1/right1",
+        "backwards": "east_fourth_room1_deep1",
+        "left": "east_fourth_room1_deep1",
+        "flavorText": "The Bride looks effervescent in its joy.",
+
+        "functions": ["crickets"]
+    },
     "east_fourth_room1_deep1": {
         "roomID": "east_fourth_room1",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/fox",
-        "backwards": "east_fourth_room1_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "src": "east_fourth_room1/deep1",
+        "backwards": "east_fourth_room1_deep0",
+        "left": "east_fourth_room1_left1",
+        "right": "east_fourth_room1_right1",
+        "flavorText": "The Clown and the Bride together at last. It brings a tear to your eye. Love wins.",
+
+        "functions": ["crickets"]
     },
     //east_fourth_3 start
     "east_fourth_3_enter": {

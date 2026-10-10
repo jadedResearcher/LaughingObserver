@@ -310,6 +310,16 @@ function theEnd() {
   }
 }
 
+function onlyOnce() {
+  const textEle = story.querySelector("#room-text");
+
+  video.loop = false;
+  video.onended = () => {
+    video.onended = undefined;
+
+  }
+}
+
 function gaslightToShowCombo() {
   const bookcase = "images/Diorama/Inside/Hallways/1/ElectricLights/quicktest";
   const key = "images/Diorama/Inside/Hallways/1/ElectricLights/keytest";
@@ -573,7 +583,7 @@ function openSecretPassageSafe() {
       globalDataObject.state_changes[myIDBackwards] = newIDBackwards;
 
       alert("Do you understand why wasted is 13?")
-      bookGet();
+      maskGet();
       renderID(newID);
     }
     const contentEle = document.createElement("div");
@@ -739,6 +749,25 @@ function xcom() {
   }
 }
 
+//from the corn maze in year 1 of my participation in lavinraca
+function crickets() {
+  bgMusic.src = "images/Diorama/foley/ready_effects/Outdoor/053147845-meadow-night-crickets-ambient-.mp3";
+  bgMusic.onloadedmetadata = () => {
+
+    bgMusic.loadedmetadata = undefined;
+    tryPlayBgMusic();
+
+
+
+  }
+  return () => {
+    bgMusic.src = weird;
+    tryPlayBgMusic();
+  }
+}
+
+
+
 //i tried to make these not reset to zero every time you move but it was annoying and its getting late so i dropped it
 function muffledBop() {
 
@@ -785,11 +814,11 @@ function freeBook() {
 
 /*
 btw, seeing this chronological archive of the chronicles of the marked: 
-
+ 
 https://yolkdump.neocities.org/zampaniodiscordarchive
-
+ 
 made me realize how important banquet halls were for early testimonials of zampanio
-
+ 
 so i HAD to make sure there was at least one in this house
 */
 

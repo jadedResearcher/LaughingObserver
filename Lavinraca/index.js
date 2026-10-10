@@ -529,6 +529,7 @@ const changeLog = () => {
   showExistingPopup(contentEle, "Gotcha")
 }
 
+//https://yolkdump.neocities.org/zampaniostorage/lavinracarooms
 //https://yolkdump.neocities.org/zampaniodiscordarchive
 const rollCredits = () => {
   popup.style.display = "block"
