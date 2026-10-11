@@ -227,6 +227,12 @@ svg {
 
 }
 
+#resultsEle {
+  padding: 31px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow-y: auto;
+}
+
 .censored::before {
   content: "CENSORED FOR YOUR PROTECTION";
   color: red;
