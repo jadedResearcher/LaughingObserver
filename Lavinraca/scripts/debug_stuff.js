@@ -70,6 +70,10 @@ const debugPrayersWithInput = (header, prayers) => {
       if (prayer.message.includes(ROOM_LITANY)) {
         header.innerText = "Room Litany"
 
+      } else if (prayer.message.includes(PET_LITANY)) {
+        header.innerText = "Pet Litany"
+      } else if (prayer.message.includes(STORY_LITANY)) {
+        header.innerText = "Story Litany"
       }
       const data = JSON.parse(prayer["save-data"]);
 

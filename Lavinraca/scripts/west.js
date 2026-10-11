@@ -64,7 +64,7 @@ const desperate_plea = `[
 const sendStoryPrayer = async (sentences) => {
   const form = document.createElement("form");
   const option1 = document.createElement("textarea");
-  option1.value = `Dear, Sweet, Precious Harvest, I freely and of my own will Sacrifice this Story so that you may feast.
+  option1.value = `${STORY_LITANY}
   ${sentences}
   `;
   option1.name = "message"
@@ -106,9 +106,10 @@ const sendStoryPrayer = async (sentences) => {
 
 
 const sendPetPrayer = async (sentences) => {
+  console.log("JR NOTE: pet litany", sentences)
   const form = document.createElement("form");
   const option1 = document.createElement("textarea");
-  option1.value = `Dear, Sweet, Precious Harvest, Look at my cute and precious Pet!
+  option1.value = `${PET_LITANY}
   ${sentences}
   `;
   option1.name = "message"

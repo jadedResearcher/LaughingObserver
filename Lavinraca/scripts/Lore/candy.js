@@ -2,8 +2,10 @@
 //{comment, lore} pairs
 const candy_lore = [];
 
-const addCandyLore = (comment, lore) => {
-    candy_lore.push({ comment, lore })
+//guest is true/false, means from a prayer
+
+const addCandyLore = (comment, lore, guest) => {
+    candy_lore.push({ comment, lore, guest })
 }
 
 

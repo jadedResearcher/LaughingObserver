@@ -1,8 +1,9 @@
 
 //{comment, lore} pairs
 const meat_lore = [];
-const addMeatLore = (comment, lore) => {
-    meat_lore.push({ comment, lore })
+//guest is true/false, means from a prayer
+const addMeatLore = (comment, lore, guest) => {
+    meat_lore.push({ comment, lore, guest })
 }
 
 addMeatLore(`I am PROUD! to announce that this years Harvest Festival will feature several poems written by none other than Eustace, the leader of the Meat Faction! 

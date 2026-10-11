@@ -146,7 +146,10 @@ const meatGet = (event, index) => {
 
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-eustace");
-  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p>${i}</p>`).join("")
+  mainText.innerHTML = `${lore.guest ? "A Guest Writes:" : ""}` + lore.lore.split("\n").map((i) => `<p>${i}</p>`).join("")
+  if (lore.guest) {
+    mainText.classList.add("simple-guest")
+  }
 
   const intro = createElementWithClassAndParent("div", contentEle, "simple-terri");
   intro.innerHTML = "Terri Tip: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join("")
@@ -176,7 +179,10 @@ const candyGet = (event, index) => {
   }
 
   const mainText = createElementWithClassAndParent("div", contentEle, "simple-terri");
-  mainText.innerHTML = lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")
+  if (lore.guest) {
+    mainText.classList.add("simple-guest")
+  }
+  mainText.innerHTML = `${lore.guest ? "A Guest Writes:" : ""}` + lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")
 
   const intro = createElementWithClassAndParent("div", contentEle, "simple-eustace");
   intro.style.marginTop = "31px"

@@ -227,6 +227,11 @@ svg {
 
 }
 
+.simple-guest {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .clarification {
   font-style: italic;
   font-size: 11px;
