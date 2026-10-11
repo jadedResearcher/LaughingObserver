@@ -22,7 +22,7 @@ const clean_answered_prayers = [];
 const stories = []
 
 const petDir = "images/Eyes/Pets/";
-const petGuestList = ["hallowissohandsomeomg.png", "contentwarningforgrossthingewewew.png"];
+const petGuestList = ["Pan.jfif", "hallowissohandsomeomg_mybeautifullittle_blind_void.png", "contentwarningforgrossthingewewew.png"];
 
 const REFLECTED_MESSAGE = "Reflection of a Reflection Reflected Endlessly";
 const ROOM_LITANY = "Dear, Sweet, Precious Harvest, I pray for a room to replace";
