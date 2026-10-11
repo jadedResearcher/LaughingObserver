@@ -2708,15 +2708,17 @@ const hallways = {
         "backwards": "east_third_room1_backup",
         "left": "east_third_room1_left1",
         "right": "east_third_room1_right1",
-        "functions": []
+        "flavorText": ["Your hunch was right. A trap door is exposed underneath the rug."],
+        "functions": ["lookIntoTheMirror", "digEvenDeeper"]
+
     },
 
 
     "east_third_room1_deep1_basement": {
         "roomID": "east_third_room1",
         "src": "east_third_room1/basement",
-        "backwards": "east_third_room1_backup",
-        "functions": []
+        "backwards": "east_third_room1_deep1_secret",
+        "functions": ["classicZampanioSimBasement"]
     },
     //east_third_2 start
     "east_third_2_enter": {

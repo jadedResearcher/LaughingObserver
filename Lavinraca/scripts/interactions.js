@@ -826,6 +826,49 @@ function freeBook() {
   }
 }
 
+//language + censor just sort of automatically creates a Quest, doesn't it?
+function digDeeper() {
+  console.log("JR NOTE: the prayers for this room were language + censort and they just sort of naturally combine to make a Quest don't they?")
+  const textEle = story.querySelector("#room-text");
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "This Can't be All There Is, You Have To Dig Deeper"
+  lock.onclick = () => {
+    renderID("east_third_room1_deep1_secret");
+  }
+}
+
+function digEvenDeeper() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "This Can't be All There Is, You Have To Dig Deeper"
+  lock.onclick = () => {
+    renderID("east_third_room1_deep1_basement");
+  }
+}
+
+function classicZampanioSimBasement() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Dig."
+  lock.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.style.color = "red";
+    contentEle.innerHTML = `<h2>Rabbit Hole</h2>
+    <Br>
+    You are down the rabbit hole. It does not end. If you know important words, you may enter them here.<br><Br>`
+
+    const textInput = createTextInputWithLabel(contentEle, "rabbit-hole", "", "");
+    textInput.input.placeholder = "Type Important Words Here";
+
+    showExistingPopup(contentEle, "Leave. This Quest Leads To Nothing Good")
+  }
+
+
+}
+
 /*
 btw, seeing this chronological archive of the chronicles of the marked: 
  
