@@ -30,12 +30,40 @@ function cantAffordPrayer() {
   showExistingPopup(contentEle, "I don't need charity.");
 }
 
+function showPetGuestList() {
+  const textEle = story.querySelector("#room-text");
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Show Guestlist";
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    const containerGallery = createElementWithClassAndParent("div", contentEle);
+    containerGallery.id = "gallery-container";
+    for (let img of petGuestList) {
+      const div = createElementWithClassAndParent("div", containerGallery);
+      div.style.marginTop = "31px"
+
+      const i = createElementWithClassAndParent("img", div);
+      i.src = petDir + img;
+      const label = createElementWithClassAndParent("div", div);
+      label.innerText = img;
+      label.style.textDecoration = "underlined"
+
+    }
+    showExistingPopup(contentEle, "Neat")
+
+  }
+}
+
 function prayForPet() {
   const textEle = story.querySelector("#room-text");
 
   const button = createElementWithClassAndParent("button", textEle);
 
   button.innerText = "Yes, I want to show you my pet."
+
+  showPetGuestList();
+
+
   button.onclick = () => {
 
     const contentEle = document.createElement("div");
