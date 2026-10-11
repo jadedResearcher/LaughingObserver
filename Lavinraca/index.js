@@ -507,6 +507,9 @@ pending changes:
 * Feast Room
 * Split Bathroom
 * Attic
+* more clowndoll parts
+* Bug Wedding
+* Censored Room along with [REDACTED]
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
 const changeLog = () => {
@@ -515,6 +518,19 @@ const changeLog = () => {
     <br><Br>
     Instead you catch a fluttering paper on the breeze, on fancy Halloween Stationary, which contains a list of all recent Changes to the house.
     <div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+
+    <h2>Week 1 (Ended October 11th, 2026)</h2>
+    <li>The Moon, Feast, Bath, Attic, Basement, Censored and Wedding Rooms have all been completed as per Guest instructions!</li>
+    <li>Helped the Guests show off their short stories and pets!
+    <li>Even more options are available for Clownsonas!</li>
+    <li>Camellia will be pleased we're still managing a Room a day.</li>
+     
+    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+
+    </div>
+<br><Br>
+        <div class='terri'>
     <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
     <h2>Week 0 (Ended October 4th, 2026)</h2>
