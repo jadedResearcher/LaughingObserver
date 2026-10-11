@@ -227,6 +227,17 @@ svg {
 
 }
 
+.censored::before {
+  content: "CENSORED FOR YOUR PROTECTION";
+  color: red;
+}
+
+.censored {
+  color: black !important;
+  background: black !important;
+  text-decoration: underline solid white;
+}
+
 .simple-guest {
   color: white;
   font-family: 'Courier New', Courier, monospace;

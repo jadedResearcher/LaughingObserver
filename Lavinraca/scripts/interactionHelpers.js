@@ -151,9 +151,17 @@ const meatGet = (event, index) => {
     mainText.classList.add("simple-guest")
   }
 
+  if (globalDataObject.current_room_id.includes("east_third_room1")) {
+    mainText.classList.add('censored')
+  }
+
   const intro = createElementWithClassAndParent("div", contentEle, "simple-terri");
   intro.innerHTML = "Terri Tip: " + lore.comment.split("\n").map((i) => `<p>${i}</p>`).join("")
   intro.style.marginTop = "31px"
+
+  if (globalDataObject.current_room_id.includes("east_third_room1")) {
+    intro.classList.add('censored')
+  }
 
   showExistingPopup(contentEle, "Gotcha")
   save();
@@ -182,12 +190,17 @@ const candyGet = (event, index) => {
   if (lore.guest) {
     mainText.classList.add("simple-guest")
   }
+  if (globalDataObject.current_room_id.includes("east_third_room1")) {
+    mainText.classList.add('censored')
+  }
   mainText.innerHTML = `${lore.guest ? "A Guest Writes:" : ""}` + lore.lore.split("\n").map((i) => `<p> ${i}</p> `).join("")
 
   const intro = createElementWithClassAndParent("div", contentEle, "simple-eustace");
   intro.style.marginTop = "31px"
   intro.innerHTML = "Eustace Says: " + lore.comment.split("\n").map((i) => i.trim() ? `<p>${i}</p>` : "").join("")
-
+  if (globalDataObject.current_room_id.includes("east_third_room1")) {
+    intro.classList.add('censored')
+  }
   showExistingPopup(contentEle, "Gotcha")
   save();
 

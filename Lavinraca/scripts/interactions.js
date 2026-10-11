@@ -567,6 +567,20 @@ function getFirstBook() {
   }
 }
 
+function tradeKeyForBook() {
+  if (globalDataObject.keys < 1) {
+    return;
+  }
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+
+  lock.innerText = "Use Key On Drawer?"
+  lock.onclick = () => {
+    keyLose();
+    bookGet();
+  }
+}
+
 function openSecretPassageSafe() {
   const textEle = story.querySelector("#room-text");
   const lock = createElementWithClassAndParent("button", textEle);

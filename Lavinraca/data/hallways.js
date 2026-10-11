@@ -2675,17 +2675,48 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_third_room1_left1": {
+        "roomID": "east_third_room1",
+        "src": "east_third_room1/left1",
+        "backwards": "east_third_room1_deep1",
+        "right": "east_third_room1_deep1",
+        "flavorText": "The Veiled Figure stares longingly at the Censored Books.",
+
+        "functions": ["bookGallery"]
+    },
+    "east_third_room1_right1": {
+        "roomID": "east_third_room1",
+        "src": "east_third_room1/right1",
+        "backwards": "east_third_room1_deep1",
+        "left": "east_third_room1_deep1",
+        "flavorText": "Suits of Armor stand ready for their Quest. The desk drawers are locked with a normal keyhole.",
+        "functions": ["tradeKeyForBook"]
+    },
     "east_third_room1_deep1": {
         "roomID": "east_third_room1",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/gang",
+        "src": "east_third_room1/deep1",
         "backwards": "east_third_room1_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_third_room1_left1",
+        "right": "east_third_room1_right1",
+        "flavorText": "This room...Feels...Unknowable. Like no matter how hard you try, the words just won't fully come. You want to know.",
+        "functions": ["lookIntoTheMirror", "digDeeper"]
+    },
+
+    "east_third_room1_deep1_secret": {
+        "roomID": "east_third_room1",
+        "src": "east_third_room1/secret",
+        "backwards": "east_third_room1_backup",
+        "left": "east_third_room1_left1",
+        "right": "east_third_room1_right1",
+        "functions": []
+    },
+
+
+    "east_third_room1_deep1_basement": {
+        "roomID": "east_third_room1",
+        "src": "east_third_room1/basement",
+        "backwards": "east_third_room1_backup",
+        "functions": []
     },
     //east_third_2 start
     "east_third_2_enter": {
