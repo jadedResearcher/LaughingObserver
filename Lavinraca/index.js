@@ -223,6 +223,23 @@ const renderVideoToCanvas = () => {
 
   if (censorCurrentRoom) {
     ctx.drawImage(censoredImage, 0, 0, canvas.width, canvas.height);
+    //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
+    const slices = Math.floor(Math.random() * 4) + 2;
+    for (let i = 0; i < slices; i++) {
+
+      const offsetY = Math.random() * canvas.height;
+      const offsetHight = Math.random() * (canvas.height / 4);
+
+      const maxShift = 3;
+      const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
+
+      //take that bar and draw it again
+      ctx.drawImage(
+        canvas,
+        0, offsetY, canvas.width, offsetHight,
+        xOffset, offsetY, canvas.width, offsetHight
+      );
+    }
   }
 
   if (glitchyError) {
