@@ -876,10 +876,26 @@ function classicZampanioSimBasement() {
       return false;
     }
 
-    showExistingPopup(contentEle, "Leave. This Quest Leads To Nothing Good")
+    showExistingPopup(contentEle, "Leave. This Quest Leads To Nothing Good");
+
+
   }
 
+  //IC gave me this as the harvest's theme. its explicitly the same music i always use for gambling (including for the harvests head)
+  //just slow, and thoughful, like the harvest is
+  bgMusic.src = "music/everything turns to dust byIC.mp3";
+  bgMusic.onloadedmetadata = () => {
 
+    bgMusic.loadedmetadata = undefined;
+    tryPlayBgMusic();
+
+
+
+  }
+  return () => {
+    bgMusic.src = weird;
+    tryPlayBgMusic();
+  }
 }
 
 /*
@@ -1110,6 +1126,22 @@ function unlockDoorRight() {
   //some doors are left/right but this one is back
   const next_id = hallways[current_id].right;
   normalUnlockedDoor(current_id, next_id);
+}
+
+function lookAtHonorSign() {
+  const textEle = story.querySelector("#room-text");
+
+  const c = createElementWithClassAndParent("div", textEle);
+  const button = createElementWithClassAndParent("button", c);
+  button.innerText = "Look Closer?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `The walls are covered in similar words. <img style='max-height:100%' src='images/Diorama/Inside/Hallways/east_first_room1/this_is_not.png' >
+                                      <br>
+                                      This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here. What is here was dangerous and repulsive to us. This message is a warning about danger.`
+
+    showExistingPopup(contentEle, "Gotcha")
+  }
 }
 
 function lookCloserAtRules() {

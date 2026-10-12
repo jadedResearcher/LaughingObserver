@@ -1935,10 +1935,10 @@ const hallways = {
     "east_first_room1_right1": {
         "roomID": "east_first_room1",
         "src": "east_first_room1/right1",
-        "flavorText": "This place is not a place of honor... no highly esteemed deed is commemorated here... nothing valued is here. What is here was dangerous and repulsive to us. This message is a warning about danger.",
+        "flavorText": "Its hard to make out the sign in the dim moonlight.",
         "backwards": "east_first_room1_deep1",
         "left": "east_first_room1_deep1",
-        "functions": []
+        "functions": ["lookAtHonorSign"]
     },
     "east_first_room1_deep1": {
         "roomID": "east_first_room1",
