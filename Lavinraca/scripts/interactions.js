@@ -946,8 +946,12 @@ function censorRooms() {
         console.log("JR NOTE: ", value)
         if (censoredRoomIDs.includes(key)) {
           removeItemOnce(censoredRoomIDs, key)
+          if (key === hallways[globalDataObject.current_room_id].roomID) {
+            censorCurrentRoom = false;
+          }
         } else {
           censoredRoomIDs.push(key)
+          censorCurrentRoom = true;
 
         }
       }

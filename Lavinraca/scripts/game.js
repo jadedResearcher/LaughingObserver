@@ -22,7 +22,9 @@ let recursionLevel = 0;
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 
-let censoredRoomIDs = [];
+//the censored room is censored, but you can uncensor it
+let censoredRoomIDs = ["east_third_room1"];
+let censorCurrentRoom = false;
 
 const tryPlayBgMusic = async () => {
     if (bgMusic.paused) {
@@ -148,6 +150,11 @@ const renderRoom = (json, replacedAlready) => {
         globalDataObject.current_room_id = "OUTSIDE"
         outsideTheHouse();
         return;
+    }
+    if (censoredRoomIDs.includes(json.roomID)) {
+        censorCurrentRoom = true;
+    } else {
+        censorCurrentRoom = false;
     }
     roomID.innerText = globalDataObject.current_room_id;
     functionsList.innerText = JSON.stringify(json.functions);

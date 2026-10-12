@@ -2690,7 +2690,7 @@ const hallways = {
         "backwards": "east_third_room1_deep1",
         "left": "east_third_room1_deep1",
         "flavorText": "Suits of Armor stand ready for their Quest. The desk drawers are locked with a normal keyhole.",
-        "functions": ["tradeKeyForBook"]
+        "functions": ["censorRooms", "tradeKeyForBook"]
     },
     "east_third_room1_deep1": {
         "roomID": "east_third_room1",
@@ -2699,7 +2699,7 @@ const hallways = {
         "left": "east_third_room1_left1",
         "right": "east_third_room1_right1",
         "flavorText": "This room...Feels...Unknowable. Like no matter how hard you try, the words just won't fully come. You want to know.",
-        "functions": ["lookIntoTheMirror", "digDeeper"]
+        "functions": ["censorRooms", "lookIntoTheMirror", "digDeeper"]
     },
 
     "east_third_room1_deep1_secret": {
@@ -2709,7 +2709,7 @@ const hallways = {
         "left": "east_third_room1_left1",
         "right": "east_third_room1_right1",
         "flavorText": ["Your hunch was right. A trap door is exposed underneath the rug."],
-        "functions": ["lookIntoTheMirror", "digEvenDeeper"]
+        "functions": ["censorRooms", "lookIntoTheMirror", "digEvenDeeper"]
 
     },
 

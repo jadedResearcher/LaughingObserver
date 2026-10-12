@@ -25,6 +25,9 @@ let claimArray = [];
 const clownSignImage = new Image();
 clownSignImage.src = "images/Diorama/Inside/Hallways/clown_sign.png"
 
+const censoredImage = new Image();
+censoredImage.src = "images/Diorama/Inside/Hallways/censored.png"
+
 
 const wind = "images/Diorama/foley/ready_effects/Outdoor/quieter_wind_loop.mp3";
 const spooky_source = "images/Diorama/foley/ready_effects/Inside/wood_creaking.mp3";
@@ -172,6 +175,9 @@ const renderVideoToCanvas = () => {
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+
+
+
   //honestly i should make an engine at some point that just takes in
   // an array of things to render and sizes at which to render them
   //anwyays the door graphic WILL glitch cuz its meant to be part of the world
@@ -213,6 +219,10 @@ const renderVideoToCanvas = () => {
 
 
     ctx.restore();
+  }
+
+  if (censorCurrentRoom) {
+    ctx.drawImage(censoredImage, 0, 0, canvas.width, canvas.height);
   }
 
   if (glitchyError) {
