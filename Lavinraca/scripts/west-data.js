@@ -425,7 +425,7 @@ I do NOT claim this room for myself.`, ` I pray for a room to replace east_third
 I want it to be Questing themed.
 I also want to copy Mirror,Mirror, and Mirror from other rooms of the house and place them inside, if they'll fit.
 Dear Harvest, prithee grant me this room so that I may bring yet more, yet more, yet more into the fold. No single thing shall be a single thing - behold, mirrors three, arranged so, and Fourfold shall the Harvest be! Only in dreams could a place like this exist... ah, to see yourself from every angle!
-I claim this room for myself.`, `I pray for a room to replace basement and Sacrificing 1 books in your name.
+I claim this room for myself.`, `I pray for a room to replace east_third_room1_deep1 and Sacrificing 1 books in your name. \r\n  I want it to be Language themed. \r\n  I also want to copy Desk,Mirror, and Bookshelves from other rooms of the house and place them inside, if they'll fit.\r\n  \r\n  I claim this room for myself.`, `I pray for a room to replace basement and Sacrificing 1 books in your name.
 I want it to be doom themed.
 I also want to copy bathtub,veiled silhouette, and CCTV camera from other rooms of the house and place them inside, if they'll fit.
 that one spooky image of NAM you know the one`])
