@@ -951,8 +951,9 @@ function censorRooms() {
           }
         } else {
           censoredRoomIDs.push(key)
-          censorCurrentRoom = true;
-
+          if (key === hallways[globalDataObject.current_room_id].roomID) {
+            censorCurrentRoom = true;
+          }
         }
       }
       //censoredRoomIDs
