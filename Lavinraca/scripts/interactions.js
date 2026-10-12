@@ -306,7 +306,25 @@ function theEnd() {
   video.onended = () => {
     video.onended = undefined;
     textEle.innerText = "There is nothing else. You've reached the end."
+    //ic offered me even more music so tied it to this contemplatative room with a piano in it
+    bgMusic.src = "music/often such miserable things.mp3";
+    bgMusic.loop = false;
+    bgMusic.onloadedmetadata = () => {
+      bgMusic.loadedmetadata = undefined;
+      tryPlayBgMusic();
+    }
 
+    bgMusic.onended = () => {
+      bgMusic.onended = false;
+      textEle.innerText = "Even the music ends."
+
+    }
+  }
+
+  return () => {
+    bgMusic.src = weird;
+    bgMusic.loop = true;
+    tryPlayBgMusic();
   }
 }
 
@@ -895,6 +913,51 @@ function classicZampanioSimBasement() {
   return () => {
     bgMusic.src = weird;
     tryPlayBgMusic();
+  }
+}
+
+function censorRooms() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Censor"
+  lock.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `<h2>You Can Censor Any Room This Run, But Must Return Here If You Refresh/Load As Your Censorship Will Be Cleared</h2>`
+    showExistingPopup(contentEle, "Finish Browsing");
+
+
+    const row = createElementWithClassAndParent("div", contentEle, "rows");
+    const left = createElementWithClassAndParent("div", row);
+
+
+    for (let [key, value] of Object.entries(finishedRoomPrayers)) {
+
+      const claimCheck = createCheckboxInputWithLabelTurnways(left, key, key, censoredRoomIDs.includes(key))
+      claimCheck.input.oninput = () => {
+        details.innerText = "";
+        for (let v of value) {
+          const ele = createElementWithClassAndParent("div", details);
+          ele.innerText = v;
+          ele.style.border = "1px dotted red"
+          ele.style.margin = "3px";
+          ele.style.padding = "3px";
+
+        }
+        console.log("JR NOTE: ", value)
+        if (censoredRoomIDs.includes(key)) {
+          removeItemOnce(censoredRoomIDs, key)
+        } else {
+          censoredRoomIDs.push(key)
+
+        }
+      }
+      //censoredRoomIDs
+
+    }
+    const details = createElementWithClassAndParent("div", row);
+    details.style.border = "1px solid red";
+    details.style.padding = "3px";
+    details.innerText = "Click a room id to confirm what prayers created it.";
   }
 }
 

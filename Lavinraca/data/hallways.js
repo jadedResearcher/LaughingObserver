@@ -2682,7 +2682,7 @@ const hallways = {
         "right": "east_third_room1_deep1",
         "flavorText": "The Veiled Figure stares longingly at the Censored Books.",
 
-        "functions": ["bookGallery"]
+        "functions": ["bookGallery", "censorRooms"]
     },
     "east_third_room1_right1": {
         "roomID": "east_third_room1",

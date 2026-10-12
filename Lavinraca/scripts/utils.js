@@ -449,6 +449,23 @@ const createCheckboxInputWithLabel = (parent, id, labelText, initialValue) => {
   return { container, input, label };
 }
 
+const createCheckboxInputWithLabelTurnways = (parent, id, labelText, initialValue) => {
+  const container = createElementWithClassAndParent("div", parent, "form-container");
+
+
+
+  const input = createElementWithClassAndParent("input", container)
+  input.type = "checkbox";
+  input.checked = initialValue;
+
+  const label = createElementWithClassAndParent("label", container)
+  label.for = id;
+  label.innerText = labelText;
+
+
+  return { container, input, label };
+}
+
 //default zoom of 1.0 make ssense
 const addMapControls = (default_zoom, zoom_controls_parent, ele_to_zoom) => {
   let zoomLevel = default_zoom;

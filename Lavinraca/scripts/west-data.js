@@ -369,7 +369,7 @@ I also want to copy Bed,Harvest Head, and Mirror from other rooms of the house a
 a Map in the room if you would. it need not be truthful, it need not be not turthful, nor even NotaLie
 I do NOT claim this room for myself.`])
 
-addNewFinishedRoomPrayer("east_third_room2/Jar", ` Dear, Sweet, Precious Harvest, I pray for a room to replace east_third_room2_deep1 and Sacrificing 24 books in your name. 
+addNewFinishedRoomPrayer("east_third_room2/Jar", [` Dear, Sweet, Precious Harvest, I pray for a room to replace east_third_room2_deep1 and Sacrificing 24 books in your name. 
   I want it to be Spiral themed. 
   I also want to copy Masked Figure,Mirror, and Mirror from other rooms of the house and place them inside, if they'll fit.
   i pray for a room to reflect my  love of spirals and obsessive search for the self . c: maybe also cats . 
@@ -377,22 +377,22 @@ For framed photos , here are the links :
 https://file.garden/ar3vT1ueAwR8LMyN/approved_Me.png
 https://file.garden/ar3vT1ueAwR8LMyN/selfportrait.png
 https://file.garden/ar3vT1ueAwR8LMyN/spiral_lover.png
-  I claim this room for myself.`)
+  I claim this room for myself.`])
 
-addNewFinishedRoomPrayer("east_first_room1", `Dear, Sweet, Precious Harvest, I pray for a room to replace east_first_room1_deep1 and Sacrificing 1 books in your name.
+addNewFinishedRoomPrayer("east_first_room1", [`Dear, Sweet, Precious Harvest, I pray for a room to replace east_first_room1_deep1 and Sacrificing 1 books in your name.
 I want it to be Apocalypse themed.
 I also want to copy Harvest Head,Mirror, and Mirror from other rooms of the house and place them inside, if they'll fit.
 Hi please put this in a painting: https://numberonelabyrinthenjoyer.neocities.org/Resources/Lavinraca/CharmMyth.png
 
 It's my little Shrine Corner! ^w^
-I claim this room for myself.`)
+I claim this room for myself.`])
 
-addNewFinishedRoomPrayer("east_fourth_room2", `Dear, Sweet, Precious Harvest, I pray for a room to replace east_fourth_room2_deep1 and Sacrificing 34 books in your name.
+addNewFinishedRoomPrayer("east_fourth_room2", [`Dear, Sweet, Precious Harvest, I pray for a room to replace east_fourth_room2_deep1 and Sacrificing 34 books in your name.
 I want it to be Music themed.
 I also want to copy Bookshelves,Bookshelves, and Chair from other rooms of the house and place them inside, if they'll fit.
 A little library in this one, perhaps?
 Muse of Pages
-I do NOT claim this room for myself.`)
+I do NOT claim this room for myself.`])
 
 addNewFinishedRoomPrayer("east_main_room3", [`Dear, Sweet, Precious Harvest, I pray for a room to replace east_main_room3_deep1 and Sacrificing 1 books in your name.
 I want it to be Waste themed.

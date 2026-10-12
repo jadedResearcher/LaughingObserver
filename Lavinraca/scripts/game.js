@@ -22,6 +22,8 @@ let recursionLevel = 0;
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 
+let censoredRoomIDs = [];
+
 const tryPlayBgMusic = async () => {
     if (bgMusic.paused) {
         try {
