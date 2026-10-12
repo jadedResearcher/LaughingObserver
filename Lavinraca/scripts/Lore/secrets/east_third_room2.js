@@ -64,7 +64,7 @@ There is a jar.
 The Harvest looks within and impossibly there is CCTV footage inside.
 
 Her face displays blue spirals, strange figures, a mirror.
-
+e
 `;
 
     resultsEle.innerHTML = src.split("\n").join("<br>");

@@ -53,7 +53,7 @@ const calculateOddsSpooky = () => {
     oddsToBeat = 0;//its midnight, its spooky time, obviously, plus reminder to maybe take a break
   }
 
-  const hallwayCountMultiplier = 3;
+  const hallwayCountMultiplier = 4;
 
   if (globalDataObject.hallways_entered > 51 * hallwayCountMultiplier) {
     oddsToBeat += -.05;
@@ -82,10 +82,11 @@ const calculateOddsSpooky = () => {
   return Math.max(0, oddsToBeat);
 }
 
+const spookyEffects = ["tridoor", "bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
+const surpressedEffects = [];
 //separate function so i can write a debug script to look at them all and make sure they work
-const getSpookyEffects = () => {
-  const spookyEffects = ["tridoor", "tridoor", "tridoor", "tridoor", "tridoor", "bigchair", "bigclose", "bigfurniture", "itwrithes", "jars", "knives", "subtle", "theblackhall", "voiddoor", "upsidedown", "bride", "bride_and_mannequin", "bigroommannequin", "corridor", "hoon", "car", "river", "where", "stick", "hand", "lady", "pumpkins", "pumpkinroom", "foghorse", "bodies"];
-
+const initSpookyEffects = () => {
+  //console.log("JR NOTE: calling init spoooky effects a single time")
   if (globalDataObject.candy > globalDataObject.meat && globalDataObject.candy > 10) {
     spookyEffects.push("candy")
     spookyEffects.push("candy")
@@ -149,11 +150,18 @@ const getSpookyEffects = () => {
     spookyEffects.push("mirrorwave")
     spookyEffects.push("tentacles")
   }
+  //console.log("JR NOTE: spooky effects is", spookyEffects)
   return spookyEffects;
 }
 
 //any time you open a door it'll call this, when its done it'll do the callback
 const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGaslight) => {
+  const availableEffects = [...spookyEffects];
+  //let people censor
+  for (let e of surpressedEffects) {
+    removeItemOnce(availableEffects, e);
+  }
+  console.log("JR NOTE: availableEffects is", availableEffects)
   //do your best not to save while transitioning
   globalDataObject.current_room_id = originalDestination;
   save();
@@ -162,7 +170,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
   const odds = Math.random();
   const oddsToBeat = calculateOddsSpooky();
   if (canGaslight && odds > oddsToBeat) {
-    const choice = pickFrom(getSpookyEffects())
+    const choice = pickFrom(availableEffects)
     const dir = "images/Diorama/Inside/Hallways/ThisIsntReal/";
     video.pause();
     video.src = dir + choice + ".mp4";
@@ -918,12 +926,34 @@ function classicZampanioSimBasement() {
 
 function censorRooms() {
   const textEle = story.querySelector("#room-text");
+
+  const lock1 = createElementWithClassAndParent("button", textEle);
+  lock1.innerText = "Censor Unreality"
+  lock1.onclick = () => {
+    const contentEle = document.createElement("div");
+    //its interesting to me that in allowing censorship I'm forced to reveal information.
+    // Now you KNOW theres effects that unlock under certain conditions, and you also now KNOW the ids of all the prayed for rooms
+    contentEle.innerHTML = `<h2>You Can Censor Any Door Opening Unreality Effect You Have Unlocked Here, But If You Refresh/Load They Will Return</h2>`
+    for (let effect of spookyEffects) {
+      const claimCheck = createCheckboxInputWithLabelTurnways(contentEle, effect, effect, !surpressedEffects.includes(effect))
+      claimCheck.input.oninput = () => {
+        if (surpressedEffects.includes(effect)) {
+          removeItemOnce(surpressedEffects, effect)
+        } else {
+          surpressedEffects.push(effect)
+        }
+      }
+    }
+    showExistingPopup(contentEle, "I'm Done.");
+  }
+
+
   const lock = createElementWithClassAndParent("button", textEle);
-  lock.innerText = "Censor"
+  lock.innerText = "Censor Rooms"
   lock.onclick = () => {
     const contentEle = document.createElement("div");
     contentEle.innerHTML = `<h2>You Can Censor Any Room This Run, But Must Return Here If You Refresh/Load As Your Censorship Will Be Cleared</h2>`
-    showExistingPopup(contentEle, "Finish Browsing");
+    showExistingPopup(contentEle, "I'm Done.");
 
 
     const row = createElementWithClassAndParent("div", contentEle, "rows");

@@ -74,6 +74,8 @@ window.onload = async () => {
   clownsona = await makeSimpleDoll(); //loading will set its specifics
   alert("This game loads many short videos. If it seems to hang, a video may be loading.")
   load();
+  initSpookyEffects();
+
   if (seerOfVoidCheck()) {
     seerOfVoid = true;
   }
