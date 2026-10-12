@@ -525,7 +525,7 @@ const changeLog = () => {
     <li>Helped the Guests show off their short stories and pets!
     <li>Even more options are available for Clownsonas!</li>
     <li>Camellia will be pleased we're still managing a Room a day.</li>
-    <li>An Important Word is "time is stable".</li>
+    <li>An Important Word is "time is stable". And I suppose, since Important Words didn't exist last week, I'll give out two: "its not real".</li>
      
     <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
 
