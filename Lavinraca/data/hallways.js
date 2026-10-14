@@ -3501,7 +3501,7 @@ const hallways = {
     //east_fourth_room4 start
     "east_fourth_room4_enter": {
         "src": "open_the_door",
-        "forwards": "east_fourth_room4_deep1",
+        "forwards": "east_fourth_room4_deep0",
         "backwards": "east_fourth_4_deep2",
         "functions": [
             "unlockDoorForwards"
@@ -3509,21 +3509,54 @@ const hallways = {
     },
     "east_fourth_room4_backup": {
         "src": "open_the_door_but_backwards",
-        "forwards": "east_fourth_room4_deep1",
+        "forwards": "east_fourth_room4_deep0",
         "backwards": "east_fourth_4_deep2",
         "functions": [
             "unlockDoorBackwards"
         ]
     },
+
+    "east_fourth_room4_deep0": {
+        "roomID": "east_fourth_room4",
+        "forwards": "east_fourth_room4_deep1",
+        "flavorText": "A bare lightbulb glares out at you, illuminating newspaper clippings, missing person posters, sketchy website print outs, and a single empty chair.",
+        "src": "EyeKillerRoom/deep0_nobody",
+        "backwards": "east_fourth_room4_backup",
+    },
+
     "east_fourth_room4_deep1": {
         "roomID": "east_fourth_room4",
-        "flavorText": "This room is reserved for IC.",
-        "src": "Harvest/eyes",
-        "backwards": "east_fourth_room4_backup",
+        "flavorText": "Is that... A pinprick of purple light seems to be coming from the vent. A...voice? Seems to be coming from inside.",
+        "src": "EyeKillerRoom/deep1_nobody",
+        "backwards": "east_fourth_room4_deep0",
         "functions": [
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
+            "approachVent"
+        ]
+    },
+    "east_fourth_room4_deep0_body": {
+        "roomID": "east_fourth_room4",
+        "forwards": "east_fourth_room4_deep1_body",
+        "flavorText": "A bare lightbulb flickers, illuminating a Wanderer slumped in a chair, eyes staring blankly forward. Was it always here?",
+        "src": "EyeKillerRoom/deep0",
+        "backwards": "east_fourth_room4_backup",
+    },
+
+    "east_fourth_room4_deep1_body": {
+        "roomID": "east_fourth_room4",
+        "flavorText": "A knife juts out of the Wanderer's chest, dark stains pooling down its chest. Whatever this is, its dead. Was it always here?",
+        "src": "EyeKillerRoom/deep1",
+        "backwards": "east_fourth_room4_deep0_body",
+        "functions": [
+            "approachVent"
+        ]
+    },
+    "east_fourth_room4_vent": {
+        "roomID": "east_fourth_room4",
+        "flavorText": "There is a vent in the wall here. The only vent in the whole house, now that you think about it.",
+        "src": "EyeKillerRoom/deep2",
+        "backwards": "east_fourth_room4_deep1_body",
+        "functions": [
+            "turnYourBackOnTheBody"
         ]
     },
     //east_second_1 start

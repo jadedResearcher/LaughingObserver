@@ -924,6 +924,16 @@ function classicZampanioSimBasement() {
   }
 }
 
+function approachVent() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock1 = createElementWithClassAndParent("button", textEle);
+  lock1.innerText = "Approach Vent"
+  lock1.onclick = () => {
+    renderID("east_fourth_room4_vent");
+  }
+}
+
 function censorRooms() {
   const textEle = story.querySelector("#room-text");
 
