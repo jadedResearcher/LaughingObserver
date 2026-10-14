@@ -654,7 +654,7 @@ const filePattern = new RegExp('<a href="([^?]*?)">', 'g');
 const extensionPattern = new RegExp(`\\\.(${imageExtendsions.join("|")})\$`);
 
 const audioExtensions = [
-  "wav",
+  "mp3", "wav"
 ];
 const filePatternAudio = new RegExp('<a href="([^?]*?)">', 'g');
 
@@ -688,6 +688,7 @@ const addImageProcess = (src) => {
 }
 
 const getAudio = async (url) => {
+  //console.log("JR NOTE: getting audio for url", url)
   if (cachedAudio[url]) {
     return cachedAudio[url];
   }

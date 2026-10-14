@@ -924,6 +924,54 @@ function classicZampanioSimBasement() {
   }
 }
 
+//value, label pairs
+let eyeKillerDialogue = [];
+
+const eyeKillerExtravaganza = async (ele) => {
+  const first = window.location.href.includes("laughing") ? "" : "https://laughing.observer/Lavinraca/"
+
+  const dir = "images/Diorama/Inside/Hallways/EyeKillerRoom/Dialogue/";
+  const audio = new Audio()
+  audio.src = dir + "Why is there an empty chair in this room" + ".mp3";
+  audio.play();
+  if (eyeKillerDialogue.length === 0) {
+    console.log("JR NOTE: fetching recordings")
+    const tmp = await getAudio(first + dir);
+    eyeKillerDialogue = tmp.map((i) => { return { value: i, label: decodeURIComponent(i).replaceAll(".mp3", "?") } });
+  }
+  const form = createElementWithClassAndParent("form", ele);
+
+  const questionInput = createSelectInputWithLabel(form, "questionSelect", "", eyeKillerDialogue);
+
+
+
+  const lock1 = createElementWithClassAndParent("button", form);
+  lock1.innerText = "Ask"
+  lock1.type = "submit"
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    audio.src = dir + questionInput.input.value;
+    audio.play();
+    return false;
+  }
+
+
+}
+
+function turnYourBackOnTheBody() {
+  const textEle = story.querySelector("#room-text");
+
+  const lock1 = createElementWithClassAndParent("button", textEle);
+  lock1.innerText = "Crouch Down"
+  lock1.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `<img src ='images/Diorama/Inside/Hallways/EyeKillerRoom/vent.PNG'><Br>Is that...the sound of a tape recorder from deep within the vent?<br><Br>If you like, you can ask the Mysterious Figure in the vent questions.`;
+    showExistingPopup(contentEle, "Leave")
+    eyeKillerExtravaganza(contentEle);
+  }
+}
+
 function approachVent() {
   const textEle = story.querySelector("#room-text");
 
