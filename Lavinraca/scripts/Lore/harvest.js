@@ -1,6 +1,6 @@
 //figured out how to do this last lavinraca, very nice being able to do it again
 const runSecret = async (fileName) => {
-    fileName = fileName.toLowerCase(); //all lowercase
+    fileName = fileName.toLowerCase().trim(); //all lowercase
     console.log("JR NOTE: runSecret being called", fileName)
     const body = document.querySelector("body");
     const scriptTag = document.createElement("script")

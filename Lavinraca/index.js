@@ -591,6 +591,7 @@ const rollCredits = () => {
     "Flippet/flippetUrnways": "Eustace Poems",
     "KR": "Harvest Book Design/Binding",
     "The Catalyst/Defensive Lobster": "Clownsona Dollparts, Playtesting",
+    "Gowler Music": "<a target='_blank' href ='https://gowlermusic.bandcamp.com/album/movie-dialogue-vol-2-gm0052-free-sample-pack'>Movie Quote Sound Pack</a>",
     "Butlers/Cirky's": "Playtesting/Feedback",
     "The Lavinraca Community": "Sacrifices for the Harvest, Prayers to the Harvest, Halloween Celebrations. Join the <a target='_blank' href ='https://discord.gg/Unj4x2aCBa'>Discord</a>."
   }

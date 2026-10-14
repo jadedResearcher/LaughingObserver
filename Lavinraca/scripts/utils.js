@@ -28,6 +28,12 @@ const isItFriday = () => {
 const seerOfVoidCheck = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
+
+  //cannonized joke the medium ^2 of spiders made
+  if (urlParams.get("notLookerOfLight")) {
+    const body = document.querySelector("body");
+    body.style.display = "none";
+  }
   return urlParams.get('seerOfVoid'); //a classic
 }
 const jrDebugCheck = () => {
