@@ -3559,6 +3559,13 @@ const hallways = {
             "turnYourBackOnTheBody"
         ]
     },
+
+    "coffin": {
+        "roomID": "coffin",
+        "src": "coffin/deep1",
+        "backwards": "SecretPassageway_right2",
+        "functions": []
+    },
     //east_second_1 start
     "east_second_1_enter": {
         "src": "open_the_door",

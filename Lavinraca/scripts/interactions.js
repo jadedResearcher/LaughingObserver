@@ -161,7 +161,7 @@ const youKnowEternalDarknessDoThatThingForDoors = (originalDestination, canGasli
   for (let e of surpressedEffects) {
     removeItemOnce(availableEffects, e);
   }
-  console.log("JR NOTE: availableEffects is", availableEffects)
+  //console.log("JR NOTE: availableEffects is", availableEffects)
   //do your best not to save while transitioning
   globalDataObject.current_room_id = originalDestination;
   save();
