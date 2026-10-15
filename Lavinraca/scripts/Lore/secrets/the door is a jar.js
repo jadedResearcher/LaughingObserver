@@ -120,7 +120,8 @@
 
     const coffinTime = async () => {
         await sleep(3000);
-        alert("COFFIN TIME")
+        closeThePopup();
+        renderID("coffin")
     }
 
 

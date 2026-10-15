@@ -307,6 +307,16 @@ function gaslightEastFirstRoom3() {
 
 }
 
+function thereIsNothing() {
+  bgMusic.pause();
+  video.loop = false;
+  video.onended = () => {
+    video.onended = undefined;
+    textEle.innerText = "There is nothing left to give."
+
+  }
+}
+
 function theEnd() {
   const textEle = story.querySelector("#room-text");
 
