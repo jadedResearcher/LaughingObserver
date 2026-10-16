@@ -3013,14 +3013,11 @@ const hallways = {
     },
     "east_third_room3_deep1": {
         "roomID": "east_third_room3",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/fox",
+        "flavorText": "For some reason this random pile of technology and twisted cables reminds you of the Harvest.",
+        "src": "east_third_room3/deep1",
         "backwards": "east_third_room3_backup",
         "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
+            "technologyRoom"
         ]
     },
     //Stairs start

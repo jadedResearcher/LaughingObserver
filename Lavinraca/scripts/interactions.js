@@ -307,6 +307,8 @@ function gaslightEastFirstRoom3() {
 
 }
 
+
+
 //http://farragofiction.com/Gopher/NORTH/EAST/NORTH/NORTH/NORTH/NORTH/NORTH/SOUTH/NORTH/EAST/EAST/SOUTH/
 function thereIsNothing() {
   toggleVoid();
@@ -616,8 +618,67 @@ function tradeKeyForBook() {
   lock.onclick = () => {
     keyLose();
     bookGet();
+    renderID("east_third_room3_deep1")
+
   }
 }
+
+function technologyRoom() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Enter Safe Combo?"
+  lock.onclick = () => {
+    const win = async () => {
+      maskGet();
+    }
+    const contentEle = document.createElement("div");
+    contentEle.innerText = "The combination lock has four digits:"
+
+    showExistingPopup(contentEle, "I give up for now...");
+    //Z13 is the combo
+    comboLock(contentEle, win, 2, 6, 1, 3)
+  }
+
+  if (globalDataObject.keys > 0) {
+    const drawer = createElementWithClassAndParent("button", textEle);
+    drawer.innerText = "Use Key On Drawer?"
+    drawer.onclick = () => {
+      keyLose();
+      bookGet();
+      renderID("east_third_room3_deep1")
+    }
+  }
+
+  //this is the guts of the harvest head btw
+  if (globalDataObject.books > 0) {
+    const drawer = createElementWithClassAndParent("button", textEle);
+    drawer.innerText = "Sacrifice Book To View Prayers On Screen?"
+    drawer.onclick = () => {
+      bookLose();
+      const contentEle = document.createElement("div");
+      contentEle.innerText = "Prayers"
+      let commands = clean_answered_prayers;
+      commands = commands.reverse();
+      const ol = createElementWithClassAndParent("ol", contentEle);
+
+      for (let c of commands) {
+        //c.prayer, c.response
+        const prayer = createElementWithClassAndParent("li", ol);
+        prayer.style.marginBottom = "31px"
+        const p = createElementWithClassAndParent("div", prayer);
+        p.innerText = c.prayer;
+        const r = createElementWithClassAndParent("div", prayer, 'harvest');
+        r.innerText = c.response;
+      }
+
+      showExistingPopup(contentEle, "Gotcha");
+    }
+  } else {
+    const span = createElementWithClassAndParent("span", textEle);
+    span.innerText = "You wish you had a Book to sacrifice to the gutted Harvest screen."
+  }
+}
+
 
 function openSecretPassageSafe() {
   const textEle = story.querySelector("#room-text");

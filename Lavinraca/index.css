@@ -416,6 +416,11 @@ svg {
   font-family: gameboy;
 }
 
+.harvest {
+  color: #677221;
+  font-family: gameboy;
+}
+
 .god-dialog {
   background-color: #a1b234;
   color: black;

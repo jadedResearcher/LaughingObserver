@@ -238,3 +238,9 @@ const keyLose = () => {
   globalDataObject.keys += -1;
   save();
 }
+const bookLose = () => {
+  const audio = new Audio("images/Diorama/foley/ready_effects/Inside/key_use.mp3");
+  audio.play();
+  globalDataObject.books += -1;
+  save();
+}
