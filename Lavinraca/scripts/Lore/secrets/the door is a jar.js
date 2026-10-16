@@ -27,7 +27,7 @@
         hydration = "This is hydration text"
 
         constructor(text, m, e, t, a, l, h) {
-            console.log("JR NOTE: METALStory", { text, m, e, t, a, l, h })
+            //console.log("JR NOTE: METALStory", { text, m, e, t, a, l, h })
             this.text = text ? text : this.text;
             this.mind = m ? m : this.mind;
             this.eyes = e ? e : this.eyes;
@@ -315,7 +315,7 @@ You have 0 gopher gold! `;
     //so #results is results
     const renderDoors = () => {
         room.innerHTML = '';
-        console.log("JR NOTE: rendering things.")
+        //console.log("JR NOTE: rendering things.")
 
 
 
@@ -353,7 +353,7 @@ You have 0 gopher gold! `;
         //and yeah, helen distortion, aka door waifu
         //is the best character in all of magnus archives
 
-        console.log("JR NOTE: numDoors is", numDoors)
+        //console.log("JR NOTE: numDoors is", numDoors)
         const buttonContainer = createElementWithClassAndParent("div", storyEle, 'button-container');
 
         const dir_array = ["WEST", "NORTH", "EAST"]

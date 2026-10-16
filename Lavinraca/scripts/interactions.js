@@ -307,12 +307,14 @@ function gaslightEastFirstRoom3() {
 
 }
 
+//http://farragofiction.com/Gopher/NORTH/EAST/NORTH/NORTH/NORTH/NORTH/NORTH/SOUTH/NORTH/EAST/EAST/SOUTH/
 function thereIsNothing() {
+  toggleVoid();
   bgMusic.pause();
   video.loop = false;
   video.onended = () => {
     video.onended = undefined;
-    textEle.innerText = "There is nothing left to give."
+    textEle.innerHTML = "There is <a target='_blank' href='http://farragofiction.com/Gopher/NORTH/EAST/NORTH/NORTH/NORTH/NORTH/NORTH/SOUTH/NORTH/EAST/EAST/SOUTH/'>nothing</a> left to give."
 
   }
 }
@@ -622,18 +624,27 @@ function openSecretPassageSafe() {
   const lock = createElementWithClassAndParent("button", textEle);
   lock.innerText = "Enter Safe Combo?"
   lock.onclick = () => {
-    const win = () => {
-      const myID = "SecretPassageway_right2";
-      const newID = "SecretPassageway_right2_safe_plundered"
+    const win = async () => {
+      //you can open it as many times as you want now
+      //const myID = "SecretPassageway_right2";
+      //const newID = "SecretPassageway_right2_safe_plundered"
 
       //because i had to be fancy and make the secret passage way reversable
-      const myIDBackwards = "SecretPassagewayWest_left1";
-      const newIDBackwards = "SecretPassagewayWest_left1_plundered";
-      globalDataObject.state_changes[myID] = newID;
-      globalDataObject.state_changes[myIDBackwards] = newIDBackwards;
+      //const myIDBackwards = "SecretPassagewayWest_left1";
+      //const newIDBackwards = "SecretPassagewayWest_left1_plundered";
+      //globalDataObject.state_changes[myID] = newID;
+      //globalDataObject.state_changes[myIDBackwards] = newIDBackwards;
 
-      alert("Do you understand why wasted is 13?")
-      maskGet();
+      textEle.innerText = "Space itself seems to fold around you, revealing previously hidden dimensions to this room."
+      await sleep(3000);
+
+      const contentEle = document.createElement("div");
+      contentEle.style.color = "red";
+      contentEle.innerHTML = `<h2>The Parable of the Wanderer</h2><Br>`;
+      const resultsEle = createElementWithClassAndParent("div", contentEle);
+      resultsEle.id = "resultsEle";
+      showExistingPopup(contentEle, "Leave")
+      runSecret("the door is a jar");
       renderID(newID);
     }
     const contentEle = document.createElement("div");
