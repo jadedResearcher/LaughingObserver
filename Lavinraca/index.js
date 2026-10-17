@@ -22,8 +22,15 @@ let renderingClownsona = undefined; //will be the sprite buffer to render someti
 
 //this is for rendering the clowns who prayed for a particular room (should only be populated if you're facing a door that leads to their room)
 let claimArray = [];
+
+//will be 1-5 for the main halls, but in theory could be other things, similar to claimArray (the object that controls this lives elsewhere, game will add the curren tlabel to this object, should just have a string in it)
+let doorLabel;
+
+
+
 const clownSignImage = new Image();
 clownSignImage.src = "images/Diorama/Inside/Hallways/clown_sign.png"
+
 
 const censoredImage = new Image();
 censoredImage.src = "images/Diorama/Inside/Hallways/censored.png"
@@ -178,6 +185,13 @@ const renderVideoToCanvas = () => {
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
 
+
+  if (doorLabel) {
+    const size = 100;
+    const x = (canvas.width - size) / 2 - size / 3;
+    const y = (canvas.height - size) / 2 - size / 2;
+    ctx.drawImage(doorLabel, x, y, 158, 122);
+  }
 
 
   //honestly i should make an engine at some point that just takes in
@@ -532,13 +546,11 @@ const theHarvest = () => {
 /*
 pending changes: 
 
-* Moon Room
-* Feast Room
-* Split Bathroom
-* Attic
-* more clowndoll parts
-* Bug Wedding
-* Censored Room along with [REDACTED]
+* the killer has a room (and someone has been killed!)Dear Guests, we have had a MURDER!! Camellia says that it was "meant to be" and that any sufficiently large maze "invites a Wanderer", but I'm just glad it wasnt one of our Guests!
+* theres a mysterious coffin deep underground
+* Technology Room
+* Piano Guidepost Hallway
+* Eustace insisted I label all the hall doors in the East Wing because 'not everyone likes being lost as much as you, Terri'
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
 const changeLog = () => {

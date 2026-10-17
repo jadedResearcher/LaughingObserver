@@ -1769,11 +1769,263 @@ const hallways = {
     "east_main_8_deep2": {
         "roomID": "east_main_8",
         "src": "CopyOfACopy/RightDoorDeep2",
-        "forwards": null,
+        "forwards": "east_main_9_enter",
         "left": "east_main_8_left2",
         "right": "east_main_8_right2",
         "backwards": "east_main_8_deep1",
         "functions": []
+    },
+
+    //east_main_9 start
+    "east_main_9_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_9_deep1",
+        "backwards": "east_main_8_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_9_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_9_deep1",
+        "backwards": "east_main_8_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_9_deep1": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/ADeep1",
+        "forwards": "east_main_9_deep2",
+        "left": "east_main_9_left1",
+        "right": "east_main_9_right1",
+        "backwards": "east_main_9_backup",
+        "functions": []
+    },
+    "east_main_9_left1": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_9_deep1",
+        "backwards": "east_main_9_deep1",
+        "functions": []
+    },
+    "east_main_9_right1": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": "east_main_9_deep1",
+        "right": null,
+        "backwards": "east_main_9_deep1",
+        "functions": []
+    },
+    "east_main_9_left2": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_9_deep2",
+        "backwards": "east_main_9_deep2",
+        "functions": []
+    },
+    "east_main_9_right2": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_9_deep2",
+        "right": null,
+        "backwards": "east_main_9_deep2",
+        "functions": []
+    },
+    "east_main_9_deep2": {
+        "roomID": "east_main_9",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "east_main_10_enter",
+        "left": "east_main_9_left2",
+        "right": "east_main_9_right2",
+        "backwards": "east_main_9_deep1",
+        "functions": []
+    },
+
+    //east_main_10 start
+    "east_main_10_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_main_10_deep1",
+        "backwards": "east_main_9_deep2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_main_10_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_main_10_deep1",
+        "backwards": "east_main_9_deep2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_main_10_deep1": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/RightDoorDeep1",
+        "forwards": "east_main_10_deep2",
+        "left": "east_main_10_left1",
+        "right": "east_main_10_right1",
+        "backwards": "east_main_10_backup",
+        "functions": []
+    },
+    "east_main_10_left1": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_10_deep1",
+        "backwards": "east_main_10_deep1",
+        "functions": []
+    },
+    "east_main_10_right1": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_main_10_deep1",
+        "right": null,
+        "backwards": "east_main_10_deep1",
+        "functions": []
+    },
+    "east_main_10_left2": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": null,
+        "right": "east_main_10_deep2",
+        "backwards": "east_main_10_deep2",
+        "functions": []
+    },
+    "east_main_10_right2": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_fifth_1_enter",
+        "left": "east_main_10_deep2",
+        "right": null,
+        "backwards": "east_main_10_deep2",
+        "functions": []
+    },
+    "east_main_10_deep2": {
+        "roomID": "east_main_10",
+        "src": "CopyOfACopy/RightDoorDeep2",
+        "forwards": null,
+        "left": "east_main_10_left2",
+        "right": "east_main_10_right2",
+        "backwards": "east_main_10_deep1",
+        "functions": []
+    },
+
+    //east_fifth_1 start
+    "east_fifth_1_enter": {
+        "src": "open_the_door",
+        "flavorText": "",
+        "forwards": "east_fifth_1_deep1",
+        "backwards": "east_main_10_right2",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fifth_1_backup": {
+        "src": "open_the_door_but_backwards",
+        "flavorText": "",
+        "forwards": "east_fifth_1_deep1",
+        "backwards": "east_main_10_right2",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fifth_1_deep1": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/LeftDoorDeep1",
+        "forwards": "east_fifth_1_deep2",
+        "left": "east_fifth_1_left1",
+        "right": "east_fifth_1_right1",
+        "backwards": "east_fifth_1_backup",
+        "functions": []
+    },
+    "east_fifth_1_left1": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/FlatDoor",
+        "forwards": "east_fifth_room1_enter",
+        "left": null,
+        "right": "east_fifth_1_deep1",
+        "backwards": "east_fifth_1_deep1",
+        "functions": []
+    },
+    "east_fifth_1_right1": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/AFlatLight",
+        "forwards": null,
+        "left": "east_fifth_1_deep1",
+        "right": null,
+        "backwards": "east_fifth_1_deep1",
+        "functions": []
+    },
+    "east_fifth_1_left2": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/FlatWall",
+        "forwards": null,
+        "left": null,
+        "right": "east_fifth_1_deep2",
+        "backwards": "east_fifth_1_deep2",
+        "functions": []
+    },
+    "east_fifth_1_right2": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/BFlatLight",
+        "forwards": null,
+        "left": "east_fifth_1_deep2",
+        "right": null,
+        "backwards": "east_fifth_1_deep2",
+        "functions": []
+    },
+    "east_fifth_1_deep2": {
+        "roomID": "east_fifth_1",
+        "src": "CopyOfACopy/ADeep2",
+        "forwards": "TODO",
+        "left": "east_fifth_1_left2",
+        "right": "east_fifth_1_right2",
+        "backwards": "east_fifth_1_deep1",
+        "functions": []
+    },
+
+    //east_fifth_room1 start
+    "east_fifth_room1_enter": {
+        "src": "open_the_door",
+        "forwards": "east_fifth_room1_deep1",
+        "backwards": "east_fifth_1_left1",
+        "functions": [
+            "unlockDoorForwards"
+        ]
+    },
+    "east_fifth_room1_backup": {
+        "src": "open_the_door_but_backwards",
+        "forwards": "east_fifth_room1_deep1",
+        "backwards": "east_fifth_1_left1",
+        "functions": [
+            "unlockDoorBackwards"
+        ]
+    },
+    "east_fifth_room1_deep1": {
+        "roomID": "east_fifth_room1",
+        "flavorText": "A statue of the Harvest's Head looms over you.",
+        "src": "Harvest/stop",
+        "backwards": "east_fifth_room1_backup",
+        "functions": [
+            "prayForRoom",
+            "letsGoGamble1",
+            "letsGoGamble10",
+            "letsGoGamble100"
+        ]
     },
     //east_main_room1 start
     "east_main_room1_enter": {
@@ -1824,6 +2076,7 @@ const hallways = {
     "east_first_1_locked": {
         "src": "open_the_door",
         "flavorText": "",
+        "forwards": "east_first_1_enter",
         "backwards": "east_main_2_right2",
         "functions": [
             "openDoorEastFirstLocked"

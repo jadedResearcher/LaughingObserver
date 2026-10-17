@@ -177,14 +177,14 @@ const handlePrayingForRoom = () => {
   }
   const contentEle = document.createElement("div");
 
-  contentEle.innerHTML = "<h2>Prayer for a Room</h2>"
+  contentEle.innerHTML = "<h2>Prayer for a Room</h2><h3>Try to Reserve Rooms For Those Who Have Never Prayed Before (Rooms in Hall 5 or above may not be complete by Halloween, but they WILL be created)</h3>"
   const prayerEle = createElementWithClassAndParent("div", contentEle);
   let theme = "Clowns;"
   let item1 = "Bed";
   let item2 = "Toilet";
   let item3 = "Drawers";
   let sentences = "";
-  let claimed = false;
+  let claimed = true;
   prayerEle.innerHTML = `
       Dear, Sweet, Precious Harvest, I pray for a room to replace this location and I am willing to Sacrifice ${globalDataObject.harvestPoints} books in Prayer. I understand that even with my Sacrifice my Prayer may go unanswered, and even if answered, may take a long time.  I want the room built from my Sacrifice to be `;
   const themes = ['Clowns', "Identity", "Dolls", "Halloween", 'Waste', 'Technology', 'Art', 'Space', 'Time', 'Flesh', 'Buried', 'Stealing', 'Freedom', 'Fire', 'Lonely', 'Ocean', 'Science', 'Math', 'Spiral', 'Death', 'Apocalypse', 'Service', 'Family', 'Magic', 'Angels', 'Light', 'Hunting', 'Plants', 'Decay', 'Choices', 'Zap', 'Love', 'Soul', 'Anger', 'Web', 'Royalty', 'Endings', 'Knowing', 'Guiding', 'Crafting', 'Addiction', 'Spying', 'Healing', 'Obfuscation', 'Censorship', 'Darkness', 'Killing', 'Music', 'Defense', 'Questing', 'Bugs', 'Language'];
@@ -196,7 +196,7 @@ const handlePrayingForRoom = () => {
   const prayerEle2 = createElementWithClassAndParent("span", prayerEle);
   prayerEle2.innerHTML += " themed. I also want to copy these items from other rooms of the house and place them inside, if they'll fit."
 
-  const items = ["Nothing", "Bed", "Toilet", "Desk", "Pool Table", "Piano", "Banquet Table", "Mannequin Vat", "Bookshelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Veiled Figure"]
+  const items = ["Nothing", "Knights", "Bed", "Toilet", "Desk", "Pool Table", "Piano", "Banquet Table", "Mannequin Vat", "Bookshelves", "Knick Knack Shelves", "Mirror", "Harvest Head", "Safe", "Bench", "Table", "Chair", "Potted Plants", "Drawers", "Masked Figure", "Veiled Figure"]
 
 
 
@@ -239,13 +239,7 @@ const handlePrayingForRoom = () => {
   textAreaInput.container.style.marginTop = "13px";
   textAreaInput.input.style.width = "97%"
 
-  const claimCheck = createCheckboxInputWithLabel(prayerEle, "claim-check", "I want to Claim This Room*:", claimed)
-  claimCheck.input.oninput = () => {
-    claimed = !claimed;
-  }
 
-  const asterisk = createElementWithClassAndParent("div", prayerEle, "clarification");
-  asterisk.innerHTML += "* You can think of a Claimed Room as being like your personal room in the mansion. You can't keep other Guests out, but your clownsona will be associated with it so everyone knows where you are. Try to have only one claimed room, okay?";
 
 
   const sendPrayerButton = createElementWithClassAndParent("button", prayerEle);

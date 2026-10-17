@@ -22,6 +22,24 @@ let recursionLevel = 0;
 //if a function has event handling or timers or whatever they need to know when its time to cleanup
 let cleanupFunctions = [];
 
+const firstLabel = new Image();
+firstLabel.src = "images/Diorama/Inside/Hallways/1.png"
+
+const secondLabel = new Image();
+secondLabel.src = "images/Diorama/Inside/Hallways/2.png"
+
+const thirdLabel = new Image();
+thirdLabel.src = "images/Diorama/Inside/Hallways/3.png"
+
+const fourthLabel = new Image();
+fourthLabel.src = "images/Diorama/Inside/Hallways/4.png"
+
+const fifthLabel = new Image();
+fifthLabel.src = "images/Diorama/Inside/Hallways/5.png"
+
+//first is a locked door so needs a different key
+const labeledHalls = { "east_first_1_enter": firstLabel, "east_second_1_deep1": secondLabel, "east_third_1_deep1": thirdLabel, "east_fourth_1_deep1": fourthLabel, "east_fifth_1_deep1": fifthLabel };
+
 //the censored room is censored, but you can uncensor it
 let censoredRoomIDs = ["east_third_room1"];
 let censorCurrentRoom = false;
@@ -203,7 +221,7 @@ const renderRoom = (json, replacedAlready) => {
 }
 
 const handleRenderingClaims = (json) => {
-    //console.log("JR NOTE: handleRenderingClaims", json)
+    console.log("JR NOTE: handleRenderingClaims", json)
     if (!json.forwards) {
         return;
     }
@@ -228,6 +246,14 @@ const handleRenderingClaims = (json) => {
             claimArray.push(tmp)
         }
 
+    }
+
+    if (labeledHalls[forwards]) {
+        //console.log("JR NOTE: found a door label", labeledHalls[forwards])
+        doorLabel = labeledHalls[forwards];
+    } else {
+        //console.log("JR NOTE: there is no door label for ", forwards)
+        doorLabel = undefined;
     }
 }
 
