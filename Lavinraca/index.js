@@ -544,12 +544,18 @@ const theHarvest = () => {
 }
 
 /*
+After Halloween: 
+* wire this into zampanio east (the mall was last years epilogue, zampanio and lavinraca twine ever tighter around each other
+* and this year, this year zampanio refuses to let lavinraca fully die. the god will no longer be in the house
+* but the house sleeps fitfully)
+
 pending changes: 
 
 * the killer has a room (and someone has been killed!)Dear Guests, we have had a MURDER!! Camellia says that it was "meant to be" and that any sufficiently large maze "invites a Wanderer", but I'm just glad it wasnt one of our Guests!
 * theres a mysterious coffin deep underground
 * Technology Room
 * Piano Guidepost Hallway
+* the entire fifth hall is now available for Guests to reserve
 * Eustace insisted I label all the hall doors in the East Wing because 'not everyone likes being lost as much as you, Terri'
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
