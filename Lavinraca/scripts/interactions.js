@@ -876,6 +876,7 @@ function xcom() {
 
   }
 }
+//https://www.tumblr.com/jadedresearcher/830943681150337024/yessssssss-i-had-so-many-thoughts-about-this?source=share
 
 //from the corn maze in year 1 of my participation in lavinraca
 function crickets() {

@@ -1929,7 +1929,7 @@ const hallways = {
         "src": "open_the_door",
         "flavorText": "",
         "forwards": "east_fifth_1_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_10_right2",
         "functions": [
             "unlockDoorForwards"
         ]
@@ -1938,7 +1938,7 @@ const hallways = {
         "src": "open_the_door_but_backwards",
         "flavorText": "",
         "forwards": "east_fifth_1_deep1",
-        "backwards": "TODO",
+        "backwards": "east_main_10_right2",
         "functions": [
             "unlockDoorBackwards"
         ]
