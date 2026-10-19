@@ -113,6 +113,14 @@ const debugSpecificReflection = (ele, prayer) => {
 
   try {
     const data = JSON.parse(prayer["save-data"]);
+
+    const clown_preview = data.clownsona.map((c) => `${doll_base}${c}`);
+    const img_container = createElementWithClassAndParent("div", ele, "sample-doll-container");
+
+    for (let layer of clown_preview) {
+      const i = createElementWithClassAndParent("img", img_container, "doll-img");
+      i.src = layer;
+    }
     const makePair = (parent, left, right) => {
       const pair = createElementWithClassAndParent("div", parent, "collated-stat-pair");
       const leftEle = createElementWithClassAndParent("div", pair, "collated-stat-left");
