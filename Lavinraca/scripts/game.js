@@ -221,8 +221,9 @@ const renderRoom = (json, replacedAlready) => {
 }
 
 const handleRenderingClaims = (json) => {
-    console.log("JR NOTE: handleRenderingClaims", json)
+    //console.log("JR NOTE: handleRenderingClaims", json)
     if (!json.forwards) {
+        doorLabel = undefined;
         return;
     }
     //a current location leads to a room if its forwards' forwards leads to that room 

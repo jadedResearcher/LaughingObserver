@@ -545,6 +545,7 @@ const theHarvest = () => {
 
 /*
 After Halloween: 
+* turn off reflections being sent the the harvest, disable ALL prayers
 * wire this into zampanio east (the mall was last years epilogue, zampanio and lavinraca twine ever tighter around each other
 * and this year, this year zampanio refuses to let lavinraca fully die. the god will no longer be in the house
 * but the house sleeps fitfully)
@@ -555,6 +556,7 @@ pending changes:
 * theres a mysterious coffin deep underground
 * Technology Room
 * Piano Guidepost Hallway
+* Traffic Cone Break Room
 * the entire fifth hall is now available for Guests to reserve
 * Eustace insisted I label all the hall doors in the East Wing because 'not everyone likes being lost as much as you, Terri'
 */

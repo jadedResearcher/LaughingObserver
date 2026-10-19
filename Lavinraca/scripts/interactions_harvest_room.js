@@ -30,6 +30,62 @@ function cantAffordPrayer() {
   showExistingPopup(contentEle, "I don't need charity.");
 }
 
+//this is how new Guests would find out reflections are other players
+function pickSpecificReflection() {
+  const textEle = story.querySelector("#room-text");
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Show What I Could Become";
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = "<h1>Trapped Reflections</h1><h3>These are other players saves that became trapped by looking into mirrors. You can become one at random by looking into any mirror, but wouldn't you rather pick out a nice one?</h3><div>(NOTE: JR must choose to add a reflection to this list, you become a Candidate when you look into a mirror during October, but there is no Guarantee you will be Remembered)</div>"
+    const containerGallery = createElementWithClassAndParent("div", contentEle)
+
+
+    showExistingPopup(contentEle, "Neat")
+    const reflections = getWaitingReflections();
+    for (let r of reflections) {
+      const r_container = createElementWithClassAndParent("div", containerGallery);
+      r_container.style.marginBottom = "31px"
+
+      const another_you_from_another_world = JSON.parse(r);
+      const clown_preview = another_you_from_another_world.clownsona.map((c) => `${doll_base}${c}`);
+      const img_container = createElementWithClassAndParent("div", r_container, "sample-doll-container");
+
+      for (let layer of clown_preview) {
+        const i = createElementWithClassAndParent("img", img_container, "doll-img");
+        i.src = layer;
+      }
+      const stat_ele = createElementWithClassAndParent("div", r_container);
+      createTwoSpansNearEachOtherWithText(stat_ele, " Prayers Sent: ", another_you_from_another_world.prayers_sent, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Location: ", another_you_from_another_world.current_room_id, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Books: ", another_you_from_another_world.books, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Keys: ", another_you_from_another_world.keys, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Masks: ", another_you_from_another_world.masks, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Meat: ", another_you_from_another_world.meat, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Candy: ", another_you_from_another_world.candy, "bold");
+      createTwoSpansNearEachOtherWithText(stat_ele, " Steps Taken: ", another_you_from_another_world.hallways_entered, "bold");
+
+      const becomeButton = createElementWithClassAndParent("button", r_container);
+      becomeButton.innerText = "Become Them"
+      becomeButton.onclick = () => {
+        globalDataObject = another_you_from_another_world;
+        globalDataObject.stranger = true;
+        //your face is not your face your you is not your you
+        clownsona.fromJSON(globalDataObject.clownsona)
+        clownsona.rerenderBuffer();
+        save();
+        load();//sets defaults if whoevers save doesnt have them
+        closeThePopup();
+        setTimeout(() => {
+          renderID(globalDataObject.current_room_id);
+        }, 2000)
+      }
+
+    }
+
+  }
+}
+
 function showPetGuestList() {
   const textEle = story.querySelector("#room-text");
   const button = createElementWithClassAndParent("button", textEle);

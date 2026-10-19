@@ -416,6 +416,11 @@ svg {
   font-family: gameboy;
 }
 
+.bold {
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
 .harvest {
   color: #677221;
   font-family: gameboy;

@@ -4425,14 +4425,11 @@ const hallways = {
     },
     "east_second_room2_deep1": {
         "roomID": "east_second_room2",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/fox",
+        "flavorText": "You get the distinct sense that everything in this room has turned to stare at you.. Judging you.. Are you sure this is what you want to be?",
+        "src": "east_second_room2/deep1",
         "backwards": "east_second_room2_backup",
         "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
+            "pickSpecificReflection"
         ]
     },
     //east_second_4 start

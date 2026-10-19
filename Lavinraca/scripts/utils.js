@@ -543,6 +543,15 @@ const addMapControls = (default_zoom, zoom_controls_parent, ele_to_zoom) => {
   syncPan();
 }
 
+const createTwoSpansNearEachOtherWithText = (parent, text1, text2, class1, class2) => {
+  const span1 = createElementWithClassAndParent("span", parent, class1);
+  span1.innerText = text1;
+  const span2 = createElementWithClassAndParent("span", parent, class2);
+  span2.innerText = text2;
+  return { span1, span2 }
+
+}
+
 
 const createElementWithClassAndParent = (eleName, parent, className) => {
   const ele = createElementWithClass(eleName, className);
