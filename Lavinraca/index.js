@@ -566,6 +566,23 @@ const changeLog = () => {
   contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.
     <br><Br>
     Instead you catch a fluttering paper on the breeze, on fancy Halloween Stationary, which contains a list of all recent Changes to the house.
+        <div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+
+    <h2>Week 2 (Ended October 19th, 2026)</h2>
+    <li>Technology and Break rooms are finalized!</li>
+    <li>Pianos have helpefully been provided to help Guests navigate the tricky halls.</li>
+    <li>Eustace insisted that 'holy shit Terri, pianos are NOT as helpful as you think, not everyone likes being lost as much as you do' and taped up labels for the 5 main halls of the East Wing!</li>
+    <li>Speaking Of!! There's now a fifth hall opened up in the East Wing!</li>
+     <li>Dear Guests, we have had a MURDER!! Camellia says that it was "meant to be" and that any sufficiently large maze "invites a Wanderer", but I'm just glad it wasnt one of our Guests!</li>
+  <li>There's a mysterious coffin deep underground. How exciting!</li> 
+  <li>This weeks free Important Word is: invites a wanderer</li>
+
+    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+
+    </div>
+    <br><Br>
+    
     <div class='terri'>
     <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
