@@ -33,6 +33,10 @@ function cantAffordPrayer() {
 //this is how new Guests would find out reflections are other players
 function pickSpecificReflection() {
   const textEle = story.querySelector("#room-text");
+  if (globalDataObject.clownsona.join("").toLowerCase().includes("cone") || globalDataObject.clownsona.join("").includes("ISureHopeItDoes")) {
+    textEle.innerText = "The Council of Judgement approves of your clownsona."
+
+  }
   const button = createElementWithClassAndParent("button", textEle);
   button.innerText = "Show What I Could Become";
   button.onclick = () => {
