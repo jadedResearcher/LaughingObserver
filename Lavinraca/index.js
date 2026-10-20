@@ -577,6 +577,7 @@ const changeLog = () => {
      <li>Dear Guests, we have had a MURDER!! Camellia says that it was "meant to be" and that any sufficiently large maze "invites a Wanderer", but I'm just glad it wasnt one of our Guests!</li>
   <li>There's a mysterious coffin deep underground. How exciting!</li> 
   <li>This weeks free Important Word is: invites a wanderer</li>
+  <li>Even more options are available for Clownsonas!</li>
 
     <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
 
