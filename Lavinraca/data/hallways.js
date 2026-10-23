@@ -4522,17 +4522,30 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_second_room3_left1": {
+        "roomID": "east_second_room3",
+        "src": "east_second_room3/left1",
+        "backwards": "east_second_room3_deep1",
+        "right": "east_second_room3_deep1",
+        "flavorText": "Broken 8 balls are scattered all over this bed.",
+        "functions": []
+    },
+    "east_second_room3_right1": {
+        "roomID": "east_second_room3",
+        "src": "east_second_room3/right1",
+        "backwards": "east_second_room3_deep1",
+        "left": "east_second_room3_deep1",
+        "flavorText": "Broken shards of mirror litter this floor. Someone had bad luck here, you can feel it.",
+        "functions": ["lookIntoTheMirror", "editClownsona", "showClownsonaInVideo"]
+    },
     "east_second_room3_deep1": {
         "roomID": "east_second_room3",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/fox",
+        "src": "east_second_room3/deep1",
         "backwards": "east_second_room3_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "flavorText": "Soothing music loops from scattered glowing speakers while dolls stare curiously at you. Broken glass and 8 balls are strewn everywhere.",
+        "left": "east_second_room3_left1",
+        "right": "east_second_room3_right1",
+        "functions": []
     }
 
 
