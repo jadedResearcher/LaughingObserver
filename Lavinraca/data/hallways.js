@@ -4321,17 +4321,31 @@ const hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_second_room1_left1": {
+        "roomID": "east_second_room1",
+        "src": "east_second_room1/left1",
+        "backwards": "east_second_room1_deep1",
+        "right": "east_second_room1_deep1",
+        "flavorText": "As you get closer, the mound of flesh appears to have shifting faces pressing through the thin skin. The Earl asks if you want to hear a joke.",
+        "functions": ["theEarl"]
+    },
+    "east_second_room1_right1": {
+        "roomID": "east_second_room1",
+        "src": "east_second_room1/right1",
+        "backwards": "east_second_room1_deep1",
+        "left": "east_second_room1_deep1",
+        "flavorText": "You can just barely squeeze past the Earl to look into the mirror. ",
+
+        "functions": ["lookIntoTheMirror"]
+    },
     "east_second_room1_deep1": {
         "roomID": "east_second_room1",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/bride",
+        "src": "east_second_room1/deep1",
         "backwards": "east_second_room1_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_second_room1_left1",
+        "right": "east_second_room1_right1",
+        "flavorText": "A mound of flesh rests gently on the bed. A cheerfully glowing tube contains mannequin parts and some kind of pink goo. The walls seem to be made of circus tent material.",
+        "functions": []
     },
     //east_second_3 start
     "east_second_3_enter": {

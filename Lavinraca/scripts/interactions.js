@@ -860,6 +860,60 @@ function unjustifyRecursion() {
   recursionLevel = 0;
 }
 
+function deployJoke() {
+  faceMoundLoop();
+  const textEle = story.querySelector("#room-text");
+  const jokesRaw = `Did you hear about how the Eye Killer attended a fancy costume party? She absolutely slayed!
+  Did you hear about the Knight of Fated End let herself get attached to a Cult member?  She really lost her head!
+  What's worse than one Echidna? Two Echidnas!
+  Did you hear that a thief broke into Twig's Warehouse last night?  They never found the body!
+  What do you call an alligator in a vest? An Investigator!
+  Why is there a fence around the Harvest's House? Because people are dying to get in.
+  Why is there a fence around a graveyard? Because people are dying to get in!
+  How do you make an octopus laugh? You give her Ten Tickles!
+  What did the Bufallo say to his son when he went away to college?  Bison!
+  What do you call a happy cowboy? A jolly rancher?
+  Why did the ghost cross the road? To get to the other side!
+  What's a dentist's favorite time? Tooth Hurty!
+  How do you fix a leaky pumpkin? With a pumpkin patch!
+  Why did the scarecrow win an award? He was outstanding in his field!
+  Why are ghosts such bad liars? You can see right through them!
+  What kind of ship does Dracula have? A blood vessel!
+  Why did the vampire need mouth wash? Because he had bat-breath!
+  Why couldn't the skeleton cross the road? He didn't have the guts!
+  How do you know if Camille is feeling unwell? She's coffin!
+  What's a witches favorite class in school? Spelling!
+  Why didn't the ghost attend the dance? Because he had no body to dance with!
+  What runs around a cemetary but never moves?  A fence!
+  Did you hear about the pile of flesh created to provide body parts for the ever fickle whims of Observers wishing to be embodied in a Universe inimical to their very existence? He said 'Nice to meat you!'
+  What did the butcher say to the cow? Nice to meat you!
+  What did the Sheep say to the Hund who asked her to repeat herself? You herd me!
+  `;
+  const jokes = jokesRaw.split("\n")
+  textEle.innerText = pickFrom(jokes);
+  const button = createElementWithClassAndParent("button", textEle);
+  button.style.display = "block"
+  button.innerText = "Tell Me Another Joke"
+  button.onclick = () => {
+    deployJoke();
+  }
+}
+
+
+function theEarl() {
+  const textEle = story.querySelector("#room-text");
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Of Course!"
+  button.onclick = () => {
+    deployJoke();
+  }
+  faceMoundLoop();
+  return () => {
+    faceArray = [];
+  }
+
+}
+
 function xcom() {
   const textEle = story.querySelector("#room-text");
 

@@ -23,6 +23,8 @@ let renderingClownsona = undefined; //will be the sprite buffer to render someti
 //this is for rendering the clowns who prayed for a particular room (should only be populated if you're facing a door that leads to their room)
 let claimArray = [];
 
+let faceArray = [];
+
 //will be 1-5 for the main halls, but in theory could be other things, similar to claimArray (the object that controls this lives elsewhere, game will add the curren tlabel to this object, should just have a string in it)
 let doorLabel;
 
@@ -179,6 +181,26 @@ const glitchLoop = async () => {
 
 }
 
+const faceMoundLoop = async () => {
+  faceArray = [];
+
+
+
+  const minX = (-10 * canvas.width / 100);
+  const minY = (1 * canvas.height / 100);
+  const maxX = (50 * canvas.width / 100);
+  const maxY = (40 * canvas.height / 100);
+  const parts = ["EYE.png", "HarvestsTV.png", "I_I.png", "I_Iwithmakeup.png", "JRface.png", "O.png", "REALLYfriendly.png", "SlightlyEvilFace.png", "TVhead.png", "birdSkull.png", "bloody.png", "blueEye.png", "censoredEyes.png", "circuits.png", "circuitsHappy.png", "crowscare.png", "doubleSmileyMakeup.png", "eustaceEyes.png", "eyekilleractualEye.png", "face0.png", "face1.png", "face2.png", "face3.png", "face4.png", "face5.png", "face6.png", "face7.png", "face8.png", "face9.png", "face10.png", "face12.png", "face17.png", "face18.png", "face19.png", "face20.png", "face21.png", "face22.png", "face23.png", "face24.png", "face25.png", "face26.png", "faceDripping.png", "facewithRhombuses.png", "fish.png", "flesh.png", "grumpy.png", "hundHead.png", "leGrowth.png", "lobcorpStitches.png", "lobsterhead.png", "lotOfTeeth.png", "mazeAntialiased.png", "mazeNOTantialiased.png", "nullsadEyes.png", "orange.png", "pentagram.png", "realEye.png", "scarecrowPumpkinHead.png", "simple2.png", "simple3.png", "simpleFace.png", "slime.png", "smileyMask.png", "smileyWithNose.png", "spiralFancy.png", "stitches.png", "teeeeeeeeeeeeth.png", "terriFace.png", "tooManyEyes.png", "tooManyStitches.png", "twigscobweb.png", "tworealEyes.png"]
+  const amount = 31;
+  for (let i = 0; i < amount; i++) {
+    const img = document.createElement("img");
+    img.src = "images/ClownDollParts/face/" + pickFrom(parts);
+
+    faceArray.push({ img, x: getRandomNumberBetween(minX, maxX), y: getRandomNumberBetween(minY, maxY) });
+  }
+
+}
+
 const renderVideoToCanvas = () => {
 
   const ctx = canvas.getContext("2d");
@@ -191,6 +213,26 @@ const renderVideoToCanvas = () => {
     const x = (canvas.width - size) / 2 - size / 3;
     const y = (canvas.height - size) / 2 - size / 2;
     ctx.drawImage(doorLabel, x, y, 158, 122);
+  }
+
+  if (faceArray.length > 0) {
+
+    ctx.save();
+    ctx.globalAlpha = 0.51;
+    ctx.globalCompositeOperation = 'overlay' //make the faces look more natural on the flesh, i learned about this from css
+
+    let size;
+
+    for (let part of faceArray) {
+      if (part.img.src.length % 2 === 0) {
+        size = 300 + Math.sin(performance.now() * 0.003) * 5 * Math.random();
+      } else {
+        size = 300 + Math.cos(performance.now() * 0.003) * 5 * Math.random();
+      }
+      ctx.drawImage(part.img, part.x, part.y, size, size);
+    }
+    ctx.restore();
+
   }
 
 
@@ -543,7 +585,8 @@ const theHarvest = () => {
   }
 }
 
-/*
+/* 
+https://www.tumblr.com/hollyhockash/831320085624930304/a-users-guide-to-the-apocalypse-2017-by?source=share
 After Halloween: 
 * turn off reflections being sent the the harvest, disable ALL prayers
 * wire this into zampanio east (the mall was last years epilogue, zampanio and lavinraca twine ever tighter around each other
@@ -552,13 +595,10 @@ After Halloween:
 
 pending changes: 
 
-* the killer has a room (and someone has been killed!)Dear Guests, we have had a MURDER!! Camellia says that it was "meant to be" and that any sufficiently large maze "invites a Wanderer", but I'm just glad it wasnt one of our Guests!
-* theres a mysterious coffin deep underground
-* Technology Room
-* Piano Guidepost Hallway
-* Traffic Cone Break Room
-* the entire fifth hall is now available for Guests to reserve
-* Eustace insisted I label all the hall doors in the East Wing because 'not everyone likes being lost as much as you, Terri'
+* a Change has rent the air in two. Butlerbot and Harvestbot have died and the Harvest barely defended the Realm from invaders. (JR NOTE: the php exploit took up way too much of my time this week AND attackers got into heartless bot and kept crashing him so i had to turn him off permanently)
+* A strange bedroom of Dolls and Music has been completed.
+* A room of Flesh and Clowns has a wonderful joke teller named Earl.
+* 
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
 const changeLog = () => {
