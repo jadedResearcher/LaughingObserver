@@ -915,6 +915,17 @@ function theEarl() {
 
 }
 
+//its extremely funny to me that we we DO have multiple pool rooms. No, not that one. Not that one either. Billiards.
+function poolRooms() {
+  const textEle = story.querySelector("#room-text");
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Play Pool"
+  button.onclick = () => {
+    renderID("pool")
+  }
+
+}
+
 function xcom() {
   const textEle = story.querySelector("#room-text");
 

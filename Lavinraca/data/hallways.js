@@ -4077,18 +4077,41 @@ const hallways = {
         "functions": [
             "unlockDoorBackwards"
         ]
+    }
+    ,
+    "east_fourth_room3_left1": {
+        "roomID": "east_fourth_room3",
+        "src": "east_fourth_room3/left1",
+        "backwards": "east_fourth_room3_deep1",
+        "right": "east_fourth_room3_deep1",
+        "flavorText": "Various medical supplies are piled on the tables. The room feels cramped.",
+        "functions": []
+    },
+    "east_fourth_room3_right1": {
+        "roomID": "east_fourth_room3",
+        "src": "east_fourth_room3/right1",
+        "backwards": "east_fourth_room3_deep1",
+        "left": "east_fourth_room3_deep1",
+        "flavorText": "An uncomfortable looking wheelchair, crutches and a rusty first aid kit.",
+        "functions": []
     },
     "east_fourth_room3_deep1": {
         "roomID": "east_fourth_room3",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/take_one",
+        "src": "east_fourth_room3/deep1",
         "backwards": "east_fourth_room3_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fourth_room3_left1",
+        "right": "east_fourth_room3_right1",
+        "flavorText": "You get the strong feeling that you want to play pool with this Mannequin in a Vat. It would be...healing.",
+        "functions": ["poolRooms"]
+    },
+
+
+    "pool": {
+        "roomID": "east_fourth_room3",
+        "src": "east_fourth_room3/pool",
+        "backwards": "east_fourth_room3_deep1",
+        "flavorText": "You have to make the moves for the mannequin, but you have a good time playing pool with it. +10 HP.",
+        "functions": []
     },
     //east_fourth_room4 start
     "east_fourth_room4_enter": {
