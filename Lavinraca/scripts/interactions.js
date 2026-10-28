@@ -873,6 +873,7 @@ function deployJoke() {
   How do you make an octopus laugh? You give her Ten Tickles!
   What did the Bufallo say to his son when he went away to college?  Bison!
   What do you call a happy cowboy? A jolly rancher?
+  Why am I in bed? Because I want to go to bed EARLy!
   Why did the ghost cross the road? To get to the other side!
   What's a dentist's favorite time? Tooth Hurty!
   How do you fix a leaky pumpkin? With a pumpkin patch!

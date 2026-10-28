@@ -606,10 +606,21 @@ const changeLog = () => {
   contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.
     <br><Br>
     Instead you catch a fluttering paper on the breeze, on fancy Halloween Stationary, which contains a list of all recent Changes to the house.
-        <div class='terri'>
+               <div class='terri'>
     <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
-    <h2>Week 2 (Ended October 19th, 2026)</h2>
+    <h2>Week 3 (Ended October 25th, 2026)</h2>
+    <li>Oh no! And unsettling and malevolent force killed Butlerbot and Harvestbot! Luckily the Harvest was able to defend the Realm in the end (JR NOTE: the php and certificate athority exploits took up way too much of my time this week AND attackers got into heartless bot and kept crashing him so i had to turn him off permanently)</li>
+    <li>A strange bedroom of Dolls and Music has been completed, as well as a room of Flesh and Clowns with a wonderful joke teller named Earl. Or was it 'The Earl'?</li>
+    <li>An important word is 'the killer is me'</li>
+    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+
+    </div>
+    <br><br>
+    <div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+
+    <h2>Week 2 (Ended October 18th, 2026)</h2>
     <li>Technology and Break rooms are finalized!</li>
     <li>Pianos have helpefully been provided to help Guests navigate the tricky halls.</li>
     <li>Eustace insisted that 'holy shit Terri, pianos are NOT as helpful as you think, not everyone likes being lost as much as you do' and taped up labels for the 5 main halls of the East Wing!</li>
@@ -622,6 +633,8 @@ const changeLog = () => {
     <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
 
     </div>
+
+
     <br><Br>
     
     <div class='terri'>
