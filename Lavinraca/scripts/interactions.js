@@ -217,6 +217,10 @@ const fillGalleryWithBTS = async (contentEle) => {
 
 function jrsHighlySelfIndulgentSpiel() {
   const chosenId = getRandomHallwayID();
+  if (chosenId === globalDataObject.current_room_id) {
+    const textEle = story.querySelector("#room-text");
+    textEle.innerText += "Oh. Uh! Sorry about that. Dream JR gets a little...aggressive. Try refreshing the page if you want to escape."
+  }
   hallways[globalDataObject.current_room_id].backwards = chosenId;
   //this ALSO ominously fades to black when it ends, but thats because
   //looping dialogue is a sin

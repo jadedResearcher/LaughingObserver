@@ -25,6 +25,16 @@ const isItFriday = () => {
 
 }
 
+//if its not october, the harvest Dreams
+const handleDream = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  if (new Date().getMonth() !== 9 || urlParams.get('dream')) {
+    dreaming = true;
+  }
+}
+
 const seerOfVoidCheck = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);

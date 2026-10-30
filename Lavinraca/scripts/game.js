@@ -65,6 +65,9 @@ const tryPlayBgMusic = async () => {
 }
 
 const beginGameplayLoop = () => {
+    if (dreaming) {
+        theHarvestDreams();
+    }
     if (globalDataObject.wasted) {
         wireUpWasteControls();
     }
@@ -118,10 +121,10 @@ const beginGameplayLoop = () => {
     check.container.onclick = () => {
         globalDataObject.button_controls = !globalDataObject.button_controls;
         save();
-        renderRoom(hallways[globalDataObject.current_room_id]);
+        renderID(globalDataObject.current_room_id);
 
     }
-    renderRoom(hallways[globalDataObject.current_room_id])
+    renderID(globalDataObject.current_room_id)
 
 
     const jrnote = createElementWithClassAndParent("div", popupContents);
@@ -131,6 +134,7 @@ const beginGameplayLoop = () => {
 }
 
 const renderID = (id) => {
+
     globalDataObject.current_room_id = id;
     const json = hallways[id]
     renderRoom(json);
@@ -140,10 +144,6 @@ const renderRoom = (json, replacedAlready) => {
 
     renderingClownsona = undefined;//clear it out
     claimArray = [];
-
-
-    //console.log("JR NOTE: renderRoom json is", json)
-
 
     tryPlayBgMusic();
     const me = globalDataObject.current_room_id;
@@ -157,16 +157,20 @@ const renderRoom = (json, replacedAlready) => {
     //(jr i know you think you can save it by limiting recursion but you cant we tried on 9/10/26 and regretted it)
     if (replacement_id && !replacedAlready) {
         globalDataObject.current_room_id = replacement_id
-        renderRoom(hallways[replacement_id], true)
+        renderID(replacement_id, true)
         return;
     }
 
     fuckWithAudioVolume();
 
-    //console.log("JR NOTE: renderRoom with json", json)
-    if (!json) {//id of -1 will get you there, need ways to leave
+
+    if (!json && !dreaming) {//id of -1 will get you there, need ways to leave
         globalDataObject.current_room_id = "OUTSIDE"
         outsideTheHouse();
+        return;
+    } else if (dreaming && !json) {
+        //dreams are just like reality except that space no longer has to make sense, how relaxing
+        handleDreamLogic();
         return;
     }
     if (censoredRoomIDs.includes(json.roomID)) {
@@ -258,7 +262,7 @@ const handleRenderingClaims = (json) => {
     }
 }
 
-
+//movement will be the same even in dreams
 const moveForwards = () => {
     const json = hallways[globalDataObject.current_room_id];
 

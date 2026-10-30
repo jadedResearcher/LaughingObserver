@@ -17,6 +17,7 @@ no preloading assets.
 future me, don't get tempted
 */
 
+
 //this is for rendering YOU (prebuffered, etc)
 let renderingClownsona = undefined; //will be the sprite buffer to render sometimes
 
@@ -28,6 +29,9 @@ let faceArray = [];
 //will be 1-5 for the main halls, but in theory could be other things, similar to claimArray (the object that controls this lives elsewhere, game will add the curren tlabel to this object, should just have a string in it)
 let doorLabel;
 
+
+const mistImage = new Image();
+mistImage.src = "images/mist.png"
 
 
 const clownSignImage = new Image();
@@ -84,6 +88,7 @@ window.onload = async () => {
   alert("This game loads many short videos. If it seems to hang, a video may be loading.")
   load();
   initSpookyEffects();
+  handleDream();
 
   if (seerOfVoidCheck()) {
     seerOfVoid = true;
@@ -201,6 +206,7 @@ const faceMoundLoop = async () => {
 
 }
 
+//future jr i'm so sorry this is a mess, i was going fast, its lavinraca season, i know i should have refactored this, good luck
 const renderVideoToCanvas = () => {
 
   const ctx = canvas.getContext("2d");
@@ -298,6 +304,23 @@ const renderVideoToCanvas = () => {
         xOffset, offsetY, canvas.width, offsetHight
       );
     }
+  }
+
+  if (dreaming) {
+    ctx.save();
+    ctx.globalAlpha = 0.1;
+    const mistWidth = canvas.width * 3;
+    //ctx.globalCompositeOperation = 'screen';
+    const maxScrollableWidth = canvas.width - mistWidth;
+
+    //wibby is sweating
+    const normalizedSin = (Math.sin(performance.now() * 0.0001) + 1) / 2;
+    const x = canvas.width - (normalizedSin * maxScrollableWidth) - mistWidth;
+    ctx.drawImage(
+      mistImage,
+      x, 0, mistWidth, canvas.height
+    );
+    ctx.restore;
   }
 
   if (glitchyError) {
@@ -595,9 +618,7 @@ After Halloween:
 
 pending changes: 
 
-* a Change has rent the air in two. Butlerbot and Harvestbot have died and the Harvest barely defended the Realm from invaders. (JR NOTE: the php exploit took up way too much of my time this week AND attackers got into heartless bot and kept crashing him so i had to turn him off permanently)
-* A strange bedroom of Dolls and Music has been completed.
-* A room of Flesh and Clowns has a wonderful joke teller named Earl.
+* Final room of the East Wing's 4 main halls is complete. You can restore HP by taking a break with a friend.
 * 
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here

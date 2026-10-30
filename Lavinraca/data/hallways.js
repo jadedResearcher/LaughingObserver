@@ -15,7 +15,7 @@ const getRandomHallwayID = () => {
 
 //i changed conventions shorly after flushing out the first room, to make it easier to template
 //so first room is the most confusing one
-const hallways = {
+let hallways = {
     //hallway 1, sunset
     "1": {
         "roomID": '1', //how we know all these are in the same 'room'
