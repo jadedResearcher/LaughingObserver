@@ -4592,6 +4592,54 @@ let hallways = {
         "backwards": "east_first_room3_deep1",
         "functions": ["playDream"],
         "flavorText": "The Harvest lies Dreaming of all the things she saw this Lavinraca. You can join her. Perhaps you can find a way to wake her, if Candy is more your speed."
+    },
+    //Cafe start
+    "Cafe_deep1": {
+        "roomID": "Cafe1",
+        "src": "Cafe/1",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. You can feel a story pressing against the back of your eyes."
+    },
+    "Cafe_deep2": {
+        "roomID": "Cafe2",
+        "src": "Cafe/2",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. Your head aches with the pressure of the story within."
+
+    },
+    "Cafe_deep3": {
+        "roomID": "Cafe3",
+        "src": "Cafe/3",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. Your body is filled to bursting with a story."
+
+    },
+    "Cafe_deep4": {
+        "roomID": "Cafe4",
+        "src": "Cafe/4",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. There is a story you need to tell."
+
+    },
+    "Cafe_deep5": {
+        "roomID": "Cafe5",
+        "src": "Cafe/5",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. The story inside of you yearns to be free."
+
+    },
+    "Cafe_deep6": {
+        "roomID": "Cafe6",
+        "src": "Cafe/6",
+        "backwards": "east_first_room3_deep1",
+        "functions": [],
+        "flavorText": "You find that you can not move at all. It hurts to hold the story within you back."
+
     }
 
 
