@@ -171,6 +171,11 @@ const meatGet = (event, index) => {
 //candy is simple-terri or simple-camellia (camellia will be in the lore itself, overriding the terri class)
 //even tho the event is never used need to hold it cuz events can call this and if i do the event will be considered an indexa nd it crashes whoops, thanks catalyst for catching this
 const candyGet = (event, index) => {
+  //candy cultsists never let her sleep
+  if (dreaming) {
+    dreaming = false;
+    hallways = { ...backup_hallways }
+  }
 
   closeThePopup();
   const contentEle = document.createElement("div");

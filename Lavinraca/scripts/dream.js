@@ -31,7 +31,7 @@ const theHarvestDreams = () => {
 
     //JR NOTE: todo, once i have dream logic fully up, my goal is to rewrite ids and have things be somewhat stable
     //but every so often the hallway clears itself out
-    handleDreamLogic();
+    handleDreamLogic(true);
 
 }
 
@@ -40,8 +40,12 @@ const theHarvestDreams = () => {
 //it doesn't just render a new room, it makes it the whole hallway.
 //nothing exists but it
 //so that if you try to leave 'reality' you get a new room
-const handleDreamLogic = () => {
-    hallways = pickFrom(Object.values(dreamMansionRooms));
+const handleDreamLogic = (first = false) => {
+    if (first) {
+        hallways = dreamMansionRooms["TheHarvestDreams"]
+    } else {
+        hallways = pickFrom(Object.values(dreamMansionRooms));
+    }
     const target = Object.keys(hallways)[0]
     if (hallways[target].flavorText) {
         hallways[target].flavorText += " You are dreaming...the mist is so peaceful. Like you're floating."

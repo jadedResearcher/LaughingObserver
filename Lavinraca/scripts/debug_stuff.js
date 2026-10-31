@@ -374,6 +374,28 @@ const debugGenerateLeftDoorHallway = (id) => {
   debugGenerateCopiedHallwayWithVersions(id, versions)
 }
 
+//nothing leads to it, it exits in the harvests favorite room (but only as a safety measure, in the dream it can exit anywhere)
+const debugGenerateDreamRoom = (id) => {
+
+  const map_template = `"${id}_deep1": {
+      "roomID": "${id}",
+      "src": "${id}/deep1",
+      "backwards": "east_first_room3_deep1",
+      "functions": []
+    }`;
+
+  //trust me on this, outputs something i can copy and paste into the json
+  const massaged_map_template = `{${map_template}}`;
+
+  //console.log("JR NOTE: ", massaged_map_template);
+
+  const data = JSON.parse(massaged_map_template)
+  //const outputEle = createTextAreaInputWithLabel();
+  const str = (JSON.stringify(data, null, 4));
+  //gets rid of first and last curly braces, not supposed to copy
+  console.log(`//${id} start${str.slice(1, -1)}`)
+
+}
 
 const debugGenerateRoomWithSingleDoorBehindYou = (id) => {
 

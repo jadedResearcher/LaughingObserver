@@ -4583,6 +4583,15 @@ let hallways = {
         "left": "east_second_room3_left1",
         "right": "east_second_room3_right1",
         "functions": []
+    },
+
+
+    "TheHarvestDreams_deep1": {
+        "roomID": "TheHarvestDreams",
+        "src": "TheHarvestDreams/deep1",
+        "backwards": "east_first_room3_deep1",
+        "functions": ["playDream"],
+        "flavorText": "The Harvest lies Dreaming of all the things she saw this Lavinraca. You can join her. Perhaps you can find a way to wake her, if Candy is more your speed."
     }
 
 
@@ -4634,3 +4643,5 @@ but not sure how i'll handle 'back' between rooms
 added roomID to json to help me understand when we're leaving
 */
 const floor_2_hallways = {}
+
+const backup_hallways = { ...hallways }

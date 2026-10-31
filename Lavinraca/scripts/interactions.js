@@ -215,6 +215,10 @@ const fillGalleryWithBTS = async (contentEle) => {
   }
 }
 
+function playDream() {
+  video.play();
+}
+
 function jrsHighlySelfIndulgentSpiel() {
   const chosenId = getRandomHallwayID();
   if (chosenId === globalDataObject.current_room_id) {
