@@ -4178,7 +4178,7 @@ let hallways = {
     "coffin": {
         "roomID": "coffin",
         "src": "coffin/coffin",
-        "backwards": "SecretPassageway_right2",
+        "backwards": "Peace",
         "functions": ["thereIsNothing"]
     },
     //east_second_1 start
@@ -4640,6 +4640,14 @@ let hallways = {
         "functions": [],
         "flavorText": "You find that you can not move at all. It hurts to hold the story within you back."
 
+    },
+    "Peace": {
+        "roomID": "coffin",
+        "src": "Peace/peace",
+        "backwards": "SecretPassageway_right2",
+        "forwards": "coffin",
+        "flavorText": "Do you dare go down?",
+        "functions": []
     }
 
 

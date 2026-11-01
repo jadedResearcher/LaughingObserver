@@ -121,7 +121,7 @@
     const coffinTime = async () => {
         await sleep(3000);
         closeThePopup();
-        renderID("coffin")
+        renderID("Peace")
     }
 
 
