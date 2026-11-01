@@ -125,6 +125,12 @@ function prayForPet() {
 
 
   button.onclick = () => {
+    if (lavinraca2026IsOver) {
+      const p = document.createElement("div");
+      p.innerHTML = "Sadly, the Harvest only takes prayers during Lavinraca season. It won't be until October 2027 that she can be prayed to again (and that may be at a different location). Perhaps somewhere within her dream you can see what prayers visited her in October, 2026.";
+      showExistingPopup(p, "Okay...")
+      return;
+    }
 
     const contentEle = document.createElement("div");
     contentEle.innerHTML = `If you like, you can submit a picture of your pet. This doesn't take uploads, much like praying for a room you have to link to one via its url to wherever it is on the internet.`
@@ -169,6 +175,12 @@ function prayForStorySacrifice() {
 
   button.innerText = "Sacrifice a Story?"
   button.onclick = () => {
+    if (lavinraca2026IsOver) {
+      const p = document.createElement("div");
+      p.innerHTML = "Sadly, the Harvest only takes prayers during Lavinraca season. It won't be until October 2027 that she can be prayed to again (and that may be at a different location). Perhaps somewhere within her dream you can see what prayers visited her in October, 2026.";
+      showExistingPopup(p, "Okay...")
+      return;
+    }
     const contentEle = document.createElement("div");
     contentEle.innerHTML = `Somehow, even over the loud music, you seem to hear a voice:
       

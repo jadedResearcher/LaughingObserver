@@ -202,6 +202,9 @@ const sendRoomPrayer = async (roomID, theme, item1, item2, item3, sentences, cla
 
 //be gentle with this okay, wastes? php is a bit easier to break than poor heartless bot
 const sendReflectedPrayer = async () => {
+  if (lavinraca2026IsOver) {
+    return;
+  }
   console.log("JR NOTE: your Reflection will be well cared for.")
   const form = document.createElement("form");
   const option1 = document.createElement("textarea");

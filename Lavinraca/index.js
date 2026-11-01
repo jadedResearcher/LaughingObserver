@@ -16,7 +16,7 @@ no preloading assets.
 
 future me, don't get tempted
 */
-
+let lavinraca2026IsOver = true;
 
 //this is for rendering YOU (prebuffered, etc)
 let renderingClownsona = undefined; //will be the sprite buffer to render sometimes
@@ -537,6 +537,12 @@ const candyPamphlet = () => {
 }
 
 const prayHarvest = () => {
+  if (lavinraca2026IsOver) {
+    const p = document.createElement("div");
+    p.innerHTML = "Sadly, the Harvest only takes prayers during Lavinraca season. It won't be until October 2027 that she can be prayed to again (and that may be at a different location). Perhaps somewhere within her dream you can see what prayers visited her in October, 2026.";
+    showExistingPopup(p, "Okay...")
+    return;
+  }
   popup.style.display = "block"
 
   popupContents.innerHTML = "As you focus deeply on the statue of the Harvest, the god of Libraries, of Mysteries, of Potential, you become aware of her words."
@@ -562,6 +568,13 @@ const prayHarvest = () => {
 
 
 const viewMail = () => {
+
+  if (lavinraca2026IsOver) {
+    const p = document.createElement("div");
+    p.innerHTML = "Sadly, the Harvest only takes prayers during Lavinraca season. It won't be until October 2027 that she can be prayed to again (and that may be at a different location). Perhaps somewhere within her dream you can see what prayers visited her in October, 2026.";
+    showExistingPopup(p, "Okay...")
+    return;
+  }
   const mail = fetchPendingMail();
   console.log("JR NOTE: here's the mail it never fails", mail);
   //alert("JR NOTE: todo display " + mail.length + mail);
