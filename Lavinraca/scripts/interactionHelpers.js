@@ -172,13 +172,15 @@ const meatGet = (event, index) => {
 //even tho the event is never used need to hold it cuz events can call this and if i do the event will be considered an indexa nd it crashes whoops, thanks catalyst for catching this
 const candyGet = (event, index) => {
   //candy cultsists never let her sleep
+  const contentEle = document.createElement("div");
+
   if (dreaming) {
     dreaming = false;
     hallways = { ...backup_hallways }
+    contentEle.innerText = "You wake from the dream with a sickly sweet taste on your lips."
   }
 
   closeThePopup();
-  const contentEle = document.createElement("div");
   //{comment, lore}
   let lore = candy_lore[(globalDataObject.candy) % candy_lore.length];
   //console.log("JR NOTE: candy lore is", lore)

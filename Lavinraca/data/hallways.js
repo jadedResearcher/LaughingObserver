@@ -2865,6 +2865,7 @@ let hallways = {
         "right": "east_first_room3_deep1",
         "backwards": "east_first_room3_deep1",
         "functions": [
+            "freeBook",
             "letsGoGamble1",
             "letsGoGamble10",
             "letsGoGamble100"
