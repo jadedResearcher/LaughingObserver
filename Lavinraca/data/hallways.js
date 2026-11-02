@@ -3647,7 +3647,7 @@ let hallways = {
         "src": "Stairs/right1",
         "backwards": "Stairs_deep1",
         "left": "Stairs_deep1",
-        "functions": []
+        "functions": ["tradeKeyForBook"]
     },
     "Stairs_deep1": {
         "roomID": "Stairs",

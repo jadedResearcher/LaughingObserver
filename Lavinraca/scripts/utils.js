@@ -30,8 +30,11 @@ const handleDream = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
-  if (new Date().getMonth() !== 9 || urlParams.get('dream')) {
+  if (new Date().getMonth() !== 9 || urlParams.get('dream') === "true") {
     dreaming = true;
+  }
+  if (urlParams.get('dream') === "false") {
+    dreaming = false;
   }
 }
 

@@ -206,13 +206,176 @@ const faceMoundLoop = async () => {
 
 }
 
-//future jr i'm so sorry this is a mess, i was going fast, its lavinraca season, i know i should have refactored this, good luck
+
+const handleFacesCanvas = (ctx) => {
+  ctx.save();
+  ctx.globalAlpha = 0.51;
+  ctx.globalCompositeOperation = 'overlay' //make the faces look more natural on the flesh, i learned about this from css
+
+  let size;
+
+  for (let part of faceArray) {
+    if (part.img.src.length % 2 === 0) {
+      size = 300 + Math.sin(performance.now() * 0.003) * 5 * Math.random();
+    } else {
+      size = 300 + Math.cos(performance.now() * 0.003) * 5 * Math.random();
+    }
+    ctx.drawImage(part.img, part.x, part.y, size, size);
+  }
+  ctx.restore();
+}
+
+const handleClaimsCanvas = (ctx) => {
+  ctx.save();
+  ctx.globalAlpha = 0.85;
+  //base location and size
+  const size = 100;
+  const x = (canvas.width - size) / 2 - size / 3;
+  const y = (canvas.height - size) / 2 - size / 2;
+  ctx.drawImage(clownSignImage, x, y, 158, 122);
+
+  if (claimArray.length === 1) {
+    //center the clown
+    for (let part of claimArray[0]) {
+      ctx.drawImage(part, x + size / 3, y, size, size);
+    }
+  } else if (claimArray.length === 2) {
+    let offset = 0;
+    for (let clownsona of claimArray) {
+
+      //each element in the array is a list of things to draw. 
+      for (let part of clownsona) {
+        ctx.drawImage(part, x + offset, y, size, size);
+      }
+      offset += 67;
+    }
+  } else {
+    let offset = 0;
+    for (let clownsona of claimArray) {
+
+      //each element in the array is a list of things to draw. 
+      for (let part of clownsona) {
+        ctx.drawImage(part, x + offset, y, size, size);
+      }
+      offset += 31;
+    }
+  }
+
+
+  ctx.restore();
+}
+
+const handleDreamCanvas = (ctx) => {
+  ctx.save();
+  ctx.globalAlpha = 0.1;
+  const mistWidth = canvas.width * 3;
+  //ctx.globalCompositeOperation = 'screen';
+  const maxScrollableWidth = canvas.width - mistWidth;
+
+  //wibby is sweating
+  const normalizedSin = (Math.sin(performance.now() * 0.0001) + 1) / 2;
+  const x = canvas.width - (normalizedSin * maxScrollableWidth) - mistWidth;
+  ctx.drawImage(
+    mistImage,
+    x, 0, mistWidth, canvas.height
+  );
+  ctx.restore();
+}
+
+const handleCensorCanvas = (ctx) => {
+  ctx.drawImage(censoredImage, 0, 0, canvas.width, canvas.height);
+  //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
+  const slices = Math.floor(Math.random() * 4) + 2;
+  for (let i = 0; i < slices; i++) {
+
+    const offsetY = Math.random() * canvas.height;
+    const offsetHight = Math.random() * (canvas.height / 4);
+
+    const maxShift = 3;
+    const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
+
+    //take that bar and draw it again
+    ctx.drawImage(
+      canvas,
+      0, offsetY, canvas.width, offsetHight,
+      xOffset, offsetY, canvas.width, offsetHight
+    );
+  }
+}
+
+const handleGlitchCanvas = (ctx) => {
+  //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
+  const slices = Math.floor(Math.random() * 4) + 2;
+  for (let i = 0; i < slices; i++) {
+
+    const offsetY = Math.random() * canvas.height;
+    const offsetHight = Math.random() * (canvas.height / 4);
+
+    const maxShift = 15;
+    const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
+
+    //take that bar and draw it again
+    ctx.drawImage(
+      canvas,
+      0, offsetY, canvas.width, offsetHight,
+      xOffset, offsetY, canvas.width, offsetHight
+    );
+  }
+}
+
+const handleRecursiveCanvas = (ctx) => {
+  let scale = 0.9
+  const recursions = recursionLevel;
+  let width = canvas.width;
+  let height = canvas.height;
+  for (let i = 0; i < recursions; i++) {
+    width = width * scale;
+    height = height * scale;
+    ctx.drawImage(
+      video,
+      0, 0, width, height,
+    );
+  }
+}
+
+const handleMirrorCanvas = (ctx) => {
+  const recursions = mirrorShards;
+  const angle = (Math.PI * 2) / recursions;
+  const centerX = canvas.width * mirrorCenter;
+  const centerY = canvas.height * mirrorCenter;
+  for (let i = 0; i < recursions; i++) {
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.rotate(i * angle);
+
+    // Mirror every alternating slice
+    if (i % 2 === 1) {
+      ctx.scale(-1, 1);
+    }
+
+    // Draw the wedge from an offscreen/source canvas
+    ctx.drawImage(video, 0, 0);
+    ctx.restore();
+  }
+}
+
+const handleClownsonaCanvas = (ctx) => {
+  ctx.save();
+
+  ctx.globalAlpha = 0.5;
+  const size = 810;
+  //fiddling till it kinda looks like its in the mirror
+  const x = (canvas.width - size) / 2 + size / 7;
+  const y = (canvas.height - size) / 2;
+  ctx.drawImage(renderingClownsona, x, y, size, size);
+  ctx.restore();
+}
+
+//for some reason dreams break opacity and compositing, finding out why, starting with refactoring
 const renderVideoToCanvas = () => {
 
   const ctx = canvas.getContext("2d");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-
 
   if (doorLabel) {
     const size = 100;
@@ -222,177 +385,41 @@ const renderVideoToCanvas = () => {
   }
 
   if (faceArray.length > 0) {
-
-    ctx.save();
-    ctx.globalAlpha = 0.51;
-    ctx.globalCompositeOperation = 'overlay' //make the faces look more natural on the flesh, i learned about this from css
-
-    let size;
-
-    for (let part of faceArray) {
-      if (part.img.src.length % 2 === 0) {
-        size = 300 + Math.sin(performance.now() * 0.003) * 5 * Math.random();
-      } else {
-        size = 300 + Math.cos(performance.now() * 0.003) * 5 * Math.random();
-      }
-      ctx.drawImage(part.img, part.x, part.y, size, size);
-    }
-    ctx.restore();
-
+    handleFacesCanvas(ctx);
   }
-
 
   //honestly i should make an engine at some point that just takes in
   // an array of things to render and sizes at which to render them
   //anwyays the door graphic WILL glitch cuz its meant to be part of the world
   if (claimArray.length > 0) {
-    ctx.save();
-    ctx.globalAlpha = 0.85;
-    //base location and size
-    const size = 100;
-    const x = (canvas.width - size) / 2 - size / 3;
-    const y = (canvas.height - size) / 2 - size / 2;
-    ctx.drawImage(clownSignImage, x, y, 158, 122);
-
-    if (claimArray.length === 1) {
-      //center the clown
-      for (let part of claimArray[0]) {
-        ctx.drawImage(part, x + size / 3, y, size, size);
-      }
-    } else if (claimArray.length === 2) {
-      let offset = 0;
-      for (let clownsona of claimArray) {
-
-        //each element in the array is a list of things to draw. 
-        for (let part of clownsona) {
-          ctx.drawImage(part, x + offset, y, size, size);
-        }
-        offset += 67;
-      }
-    } else {
-      let offset = 0;
-      for (let clownsona of claimArray) {
-
-        //each element in the array is a list of things to draw. 
-        for (let part of clownsona) {
-          ctx.drawImage(part, x + offset, y, size, size);
-        }
-        offset += 31;
-      }
-    }
-
-
-    ctx.restore();
+    handleClaimsCanvas(ctx);
   }
 
   if (censorCurrentRoom) {
-    ctx.drawImage(censoredImage, 0, 0, canvas.width, canvas.height);
-    //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
-    const slices = Math.floor(Math.random() * 4) + 2;
-    for (let i = 0; i < slices; i++) {
-
-      const offsetY = Math.random() * canvas.height;
-      const offsetHight = Math.random() * (canvas.height / 4);
-
-      const maxShift = 3;
-      const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
-
-      //take that bar and draw it again
-      ctx.drawImage(
-        canvas,
-        0, offsetY, canvas.width, offsetHight,
-        xOffset, offsetY, canvas.width, offsetHight
-      );
-    }
+    handleCensorCanvas(ctx);
   }
 
   if (dreaming) {
-    ctx.save();
-    ctx.globalAlpha = 0.1;
-    const mistWidth = canvas.width * 3;
-    //ctx.globalCompositeOperation = 'screen';
-    const maxScrollableWidth = canvas.width - mistWidth;
-
-    //wibby is sweating
-    const normalizedSin = (Math.sin(performance.now() * 0.0001) + 1) / 2;
-    const x = canvas.width - (normalizedSin * maxScrollableWidth) - mistWidth;
-    ctx.drawImage(
-      mistImage,
-      x, 0, mistWidth, canvas.height
-    );
-    ctx.restore;
+    handleDreamCanvas(ctx)
   }
 
   if (glitchyError) {
-    //weird horizontal bars SHOULD be performant and not seizure inducing as a glitch
-    const slices = Math.floor(Math.random() * 4) + 2;
-    for (let i = 0; i < slices; i++) {
-
-      const offsetY = Math.random() * canvas.height;
-      const offsetHight = Math.random() * (canvas.height / 4);
-
-      const maxShift = 15;
-      const xOffset = (Math.random() - 0.5) * maxShift * 2; // its 15 either direction
-
-      //take that bar and draw it again
-      ctx.drawImage(
-        canvas,
-        0, offsetY, canvas.width, offsetHight,
-        xOffset, offsetY, canvas.width, offsetHight
-      );
-    }
+    handleGlitchCanvas(ctx);
   }
 
   if (justifedRecursion) {
-    let scale = 0.9
-    const recursions = recursionLevel;
-    let width = canvas.width;
-    let height = canvas.height;
-    for (let i = 0; i < recursions; i++) {
-      width = width * scale;
-      height = height * scale;
-      ctx.drawImage(
-        video,
-        0, 0, width, height,
-      );
-    }
+    handleRecursiveCanvas(ctx);
 
   }
 
   if (hallOfMirrors) {
-    const recursions = mirrorShards;
-    const angle = (Math.PI * 2) / recursions;
-    const centerX = canvas.width * mirrorCenter;
-    const centerY = canvas.height * mirrorCenter;
-    for (let i = 0; i < recursions; i++) {
-      ctx.save();
-      ctx.translate(centerX, centerY);
-      ctx.rotate(i * angle);
-
-      // Mirror every alternating slice
-      if (i % 2 === 1) {
-        ctx.scale(-1, 1);
-      }
-
-      // Draw the wedge from an offscreen/source canvas
-      ctx.drawImage(video, 0, 0);
-      ctx.restore();
-    }
+    handleMirrorCanvas(ctx);
 
   }
 
-
   //your clownsona won't glitch, its the most true thing here
   if (renderingClownsona) {
-    ctx.save();
-
-    ctx.globalAlpha = 0.5;
-    const size = 810;
-    //fiddling till it kinda looks like its in the mirror
-    const x = (canvas.width - size) / 2 + size / 7;
-    const y = (canvas.height - size) / 2;
-    ctx.drawImage(renderingClownsona, x, y, size, size);
-    ctx.restore();
+    handleClownsonaCanvas(ctx)
   }
 
   requestAnimationFrame(renderVideoToCanvas);
