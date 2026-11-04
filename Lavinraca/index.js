@@ -667,7 +667,21 @@ const changeLog = () => {
   contentEle.innerHTML = `You fail to check the log as you see no logs, and indeed no trees of any kind, near the Harvest's Happy Home.
     <br><Br>
     Instead you catch a fluttering paper on the breeze, on fancy Halloween Stationary, which contains a list of all recent Changes to the house.
-               <div class='terri'>
+                   <div class='terri'>
+    <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
+
+    <h2>Week 4 (Ended October 31st, 2026)</h2>
+    <li>The Harvest is Dreaming once more! At least until we Candy Cultists wake her back up! Why should the fun ever end??</li>
+    <li>You can restore HP by taking a break with a friend!</li>
+    <li>It looks like our very own Wanderer has plans for making the Dreaming House a bit more comfortable? What fun!</li>
+    <li>Hall 5 will be completed as the Harvest Dreams.</li>
+    <li>Alright people! We only have a year to find a way to make sure the Harvest never has to leave us again. Get to it!</li>
+    <img class='pumpkin3' src='images/pumpkinstamp.PNG'>    <img class='pumpkin4' src='images/pumpkinstamp.PNG'>
+
+    </div>
+    <br><br>    
+    
+    <div class='terri'>
     <img class='pumpkin1' src='images/pumpkinstamp.PNG'>    <img class='pumpkin2' src='images/pumpkinstamp.PNG'>
 
     <h2>Week 3 (Ended October 25th, 2026)</h2>
