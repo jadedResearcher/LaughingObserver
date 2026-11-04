@@ -267,7 +267,7 @@ const handleClaimsCanvas = (ctx) => {
 
 const handleDreamCanvas = (ctx) => {
   ctx.save();
-  ctx.globalAlpha = 0.1;
+  ctx.globalAlpha = 0.5;
   const mistWidth = canvas.width * 3;
   //ctx.globalCompositeOperation = 'screen';
   const maxScrollableWidth = canvas.width - mistWidth;

@@ -631,6 +631,23 @@ function tradeKeyForBook() {
   }
 }
 
+function fireSafe() {
+  const textEle = story.querySelector("#room-text");
+  const lock = createElementWithClassAndParent("button", textEle);
+  lock.innerText = "Enter Safe Combo?"
+  lock.onclick = () => {
+    const win = async () => {
+      maskGet();
+    }
+    const contentEle = document.createElement("div");
+    contentEle.innerText = "The combination lock has four digits:"
+
+    showExistingPopup(contentEle, "I give up for now...");
+    //the room number we are in, fifth hall, third room, left 1
+    comboLock(contentEle, win, 0, 5, 3, 1)
+  }
+}
+
 function technologyRoom() {
   const textEle = story.querySelector("#room-text");
   const lock = createElementWithClassAndParent("button", textEle);

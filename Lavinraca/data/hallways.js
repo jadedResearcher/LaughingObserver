@@ -2223,17 +2223,32 @@ let hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_fifth_room3_left1": {
+        "roomID": "east_fifth_room3",
+        "src": "east_fifth_room3/left1",
+        "backwards": "east_fifth_room3_deep1",
+        "right": "east_fifth_room3_deep1",
+        "functions": ["fireSafe"],
+        "flavorText": "The metal of the safe is hot to the touch.",
+
+    },
+    "east_fifth_room3_right1": {
+        "roomID": "east_fifth_room3",
+        "src": "east_fifth_room3/right1",
+        "backwards": "east_fifth_room3_deep1",
+        "left": "east_fifth_room3_deep1",
+        "flavorText": "This portrait of a Savior is singed.",
+
+        "functions": []
+    },
     "east_fifth_room3_deep1": {
         "roomID": "east_fifth_room3",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/spin",
+        "src": "east_fifth_room3/deep1",
         "backwards": "east_fifth_room3_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fifth_room3_left1",
+        "right": "east_fifth_room3_right1",
+        "flavorText": "The heat is opressive here, despite the sense of the divine.",
+        "functions": []
     },
 
     //east_fifth_4 start
