@@ -2318,7 +2318,7 @@ let hallways = {
     "east_fifth_4_deep2": {
         "roomID": "east_fifth_4",
         "src": "CopyOfACopy/ADeep2",
-        "forwards": "east_fifth_room5_deep1",
+        "forwards": "east_fifth_room5_enter",
         "left": "east_fifth_4_left2",
         "right": "east_fifth_4_right2",
         "backwards": "east_fifth_4_deep1",
@@ -2370,18 +2370,29 @@ let hallways = {
         "functions": [
             "unlockDoorBackwards"
         ]
+    }
+    ,
+    "east_fifth_room5_left1": {
+        "roomID": "east_fifth_room5",
+        "src": "east_fifth_room5/left1",
+        "backwards": "east_fifth_room5_deep1",
+        "right": "east_fifth_room5_deep1",
+        "functions": []
+    },
+    "east_fifth_room5_right1": {
+        "roomID": "east_fifth_room5",
+        "src": "east_fifth_room5/right1",
+        "backwards": "east_fifth_room5_deep1",
+        "left": "east_fifth_room5_deep1",
+        "functions": ["restedGaslight"]
     },
     "east_fifth_room5_deep1": {
         "roomID": "east_fifth_room5",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/fox",
+        "src": "east_fifth_room5/deep1",
         "backwards": "east_fifth_room5_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fifth_room5_left1",
+        "right": "east_fifth_room5_right1",
+        "functions": []
     },
 
     //east_main_room1 start

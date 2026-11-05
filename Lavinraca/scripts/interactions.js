@@ -631,6 +631,13 @@ function tradeKeyForBook() {
   }
 }
 
+function restedGaslight() {
+  const options = ["east_fifth_room5/right1.mp4", "east_fifth_room5/right1_gaslight_strong.mp4", "east_fifth_room5/right1_gaslight_weak.mp4"]
+  video.src = hallwayDir + pickFrom(options);
+  video.play();
+
+}
+
 function fireSafe() {
   const textEle = story.querySelector("#room-text");
   const lock = createElementWithClassAndParent("button", textEle);
