@@ -82,10 +82,15 @@ window.onunhandledrejection = () => {
   setTimeout(() => { glitchyError = false }, 3000)
 }
 
+const roomTeleportCheck = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get('teleportID');
+}
 
 window.onload = async () => {
-  clownsona = await makeSimpleDoll(); //loading will set its specifics
   alert("This game loads many short videos. If it seems to hang, a video may be loading.")
+  clownsona = await makeSimpleDoll(); //loading will set its specifics
   load();
   initSpookyEffects();
   handleDream();
@@ -98,12 +103,21 @@ window.onload = async () => {
     debugPendingPrayers();
     return;
   }
+
+
   wireUpVisionControl();
   addIDToHallways();
   wireUpPopupClose();
   //video ele handles decoding and audio playing AND loading the buffer
   //but the canvas element should be the visible thing (prevents flicker)
   video.addEventListener("loadedmetadata", wireUpCanvas);
+  const roomID = roomTeleportCheck();
+  if (roomID) {
+    beginGameplayLoop();
+    await sleep(1000);
+    renderID(roomID);
+    return;
+  }
   if (globalDataObject.current_room_id && globalDataObject.current_room_id != "OUTSIDE") {
     beginGameplayLoop();
   } else {
