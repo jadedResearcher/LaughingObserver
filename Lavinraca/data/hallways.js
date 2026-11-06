@@ -2015,17 +2015,32 @@ let hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_fifth_room1_left1": {
+        "roomID": "east_fifth_room1",
+        "src": "east_fifth_room1/left1",
+        "backwards": "east_fifth_room1_deep1",
+        "right": "east_fifth_room1_deep1",
+        "functions": ["lookIntoTheMirror"],
+        "flavorText": "The spotlight reveals a cozy bed. The mirror behind it makes you consider who you really are. ",
+
+    },
+    "east_fifth_room1_right1": {
+        "roomID": "east_fifth_room1",
+        "src": "east_fifth_room1/right1",
+        "backwards": "east_fifth_room1_deep1",
+        "left": "east_fifth_room1_deep1",
+        "functions": [],
+        "flavorText": "The spotlight reveals strange, food, obviously plastic ...doll like. And a strange pile of flesh spilled onto the table ...distressingly realistic. ",
+
+    },
     "east_fifth_room1_deep1": {
         "roomID": "east_fifth_room1",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/stop",
+        "src": "east_fifth_room1/deep1",
         "backwards": "east_fifth_room1_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fifth_room1_left1",
+        "right": "east_fifth_room1_right1",
+        "flavorText": "A spotlight roams the room, revealing various elements.",
+        "functions": []
     },
 
     //east_fifth_2 start
@@ -2392,6 +2407,7 @@ let hallways = {
         "backwards": "east_fifth_room5_backup",
         "left": "east_fifth_room5_left1",
         "right": "east_fifth_room5_right1",
+        "flavorText": "You feel rested.",
         "functions": []
     },
 
