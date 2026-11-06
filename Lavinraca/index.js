@@ -672,7 +672,9 @@ After Halloween:
 
 pending changes: 
 
-* Final room of the East Wing's 4 main halls is complete. You can restore HP by taking a break with a friend.
+* A strange room of flesh and identity and dolls and spotlights has appeared, even as the Harvest slumbers.
+* Next to the sleeping Harvest a msyterious bed has arrived, but only if you look from certain angles.
+* A room of fire and trains and angels and art manifests through the Harvest's dreams.
 * 
 */
 //http://knucklessux.com/PuzzleBox/Secrets/Gopher%20Hole%20CYOA_by_Guide_of_Hunters.pdf  killer story is in here
