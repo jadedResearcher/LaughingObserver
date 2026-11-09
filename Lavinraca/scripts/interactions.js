@@ -1358,6 +1358,44 @@ function eatHarvestFruit() {
   }
 }
 
+function microtransaction() {
+  const textEle = story.querySelector("#room-text");
+
+  const button = createElementWithClassAndParent("button", textEle);
+  button.innerText = "Partake of the Feast?"
+  button.onclick = () => {
+    const contentEle = document.createElement("div");
+    contentEle.innerHTML = `No matter how you stretch, how you yearn, its like your hand never quite reaches the feast. Instead a voice rings out in your brain, as if it had been there all along:
+      
+      <div class='scarecrow'>im so hungry</div>
+      <div class='truth'>It seems you wish to partake of a feast that is by right the meal of our Lady Of Perpetual Hunger.
+      <br><Br>
+      This can be arranged.
+      <br><Br>
+      But you must offer something in return.
+      <br><Br>
+      Shards of your Identity will suffice.
+      <br><Br>
+      </div>
+      `
+    if (globalDataObject.masks > 0) {
+      const maskButton = createElementWithClassAndParent("button", contentEle);
+      maskButton.innerText = "Offer 1 Mask";
+      maskButton.onclick = () => {
+        maskLose();
+        fruitGet();
+      }
+
+    } else {
+      const maskButton = createElementWithClassAndParent("div", contentEle, 'truth');
+      maskButton.innerText = "It is Truly a shame it seems you have no Masks to offer. Go find some. Consider this your...Quest."
+    }
+
+
+    showExistingPopup(contentEle, "Leave")
+  }
+}
+
 //note to future jr....the mirrors keep corrupting players and i literally can't make this up
 //right now its because the json save data is getting truncated (so its not too spammy)
 //but that means that STATE changes (like picking a mask up) get truncated so you might get yeeted to the OUTSIDE at random

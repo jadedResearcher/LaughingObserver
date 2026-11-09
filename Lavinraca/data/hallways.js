@@ -2134,17 +2134,32 @@ let hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_fifth_room2_left1": {
+        "roomID": "east_fifth_room2",
+        "src": "east_fifth_room2/left1",
+        "backwards": "east_fifth_room2_deep1",
+        "right": "east_fifth_room2_deep1",
+        "functions": [],
+        "flavorText": "You're rocked with vertigo as you somehow step left but move right."
+
+    },
+    "east_fifth_room2_right1": {
+        "roomID": "east_fifth_room2",
+        "src": "east_fifth_room2/right1",
+        "backwards": "east_fifth_room2_deep1",
+        "left": "east_fifth_room2_deep1",
+        "functions": [],
+        "flavorText": "Nothing is what it is. Nothing. You don't understand."
+
+    },
     "east_fifth_room2_deep1": {
         "roomID": "east_fifth_room2",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/take_one",
+        "src": "east_fifth_room2/deep1",
         "backwards": "east_fifth_room2_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fifth_room2_left1",
+        "right": "east_fifth_room2_right1",
+        "functions": [],
+        "flavorText": "Something seems....wrong here. Is that...is that SKIN on that far shelf?"
     },
     //east_fifth_3 start
     "east_fifth_3_enter": {
@@ -2357,17 +2372,28 @@ let hallways = {
             "unlockDoorBackwards"
         ]
     },
+    "east_fifth_room4_left1": {
+        "roomID": "east_fifth_room4",
+        "src": "east_fifth_room4/left1",
+        "backwards": "east_fifth_room4_deep1",
+        "right": "east_fifth_room4_deep1",
+        "functions": []
+    },
+    "east_fifth_room4_right1": {
+        "roomID": "east_fifth_room4",
+        "src": "east_fifth_room4/right1",
+        "backwards": "east_fifth_room4_deep1",
+        "left": "east_fifth_room4_deep1",
+        "functions": []
+    },
     "east_fifth_room4_deep1": {
         "roomID": "east_fifth_room4",
-        "flavorText": "A statue of the Harvest's Head looms over you.",
-        "src": "Harvest/take_one",
+        "src": "east_fifth_room4/deep1",
         "backwards": "east_fifth_room4_backup",
-        "functions": [
-            "prayForRoom",
-            "letsGoGamble1",
-            "letsGoGamble10",
-            "letsGoGamble100"
-        ]
+        "left": "east_fifth_room4_left1",
+        "right": "east_fifth_room4_right1",
+        "functions": ["microtransaction"],
+        "flavorText": "A grand feast is laid out before you, laden with Harvest Fruit, Masks, Keys and gold beyond your wildest dreams."
     },
     //east_fifth_room5 start
     "east_fifth_room5_enter": {

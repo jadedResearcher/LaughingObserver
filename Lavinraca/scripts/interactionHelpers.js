@@ -124,6 +124,42 @@ const maskGet = (amount = 1) => {
 }
 
 
+const fruitGet = () => {
+  const contentEle = document.createElement("div");
+  const filters = ["grayscale(1)", "blur(3px)", "blur(13px)", "brightness(2.2)", "brightness(10.2)", "brightness(0.2)", "hue-rotate(180deg)", "contrast(0.5)", "contrast(1.5)", "sepia()", "invert(1)", "saturate(0.3)", "saturate(4.13)", "saturate(10.5)"]
+
+  const banana = () => {
+    //true random pick of seeds but the seeds themselves are limited. lets us have a few possible options and weighting
+    const seeds = [1031, 413, 113, 13, 11082026, 10312026]
+    const r = new SeededRandom(pickFrom(seeds));
+    contentEle.innerHTML = `You got a tantalizing taste of HARVEST FRUIT! (not enough to get you fully Wasted, just enough to see Beyond the Veil)<br><br><img src='images/Diorama/Inside/Hallways/banana.gif'>`;
+    canvas.style.filter = r.pickFrom(filters);
+  }
+
+  const strawberry = () => {
+    const seeds = [stringtoseed("strawberry"), stringtoseed("strazzleberry"), stringtoseed("scarecrow"), stringtoseed("harvest")]
+    const r = new SeededRandom(pickFrom(seeds));
+    contentEle.innerHTML = `You got a miniscule taste of HARVEST FRUIT! (not enough to get you fully Wasted, just enough to see Beyond the Veil)<br><br><img src='images/Diorama/Inside/Hallways/strawberry.gif'>`;
+    canvas.style.filter = r.pickFrom(filters);
+  }
+
+  const apple = () => {
+    const seeds = [stringtoseed("apples are so derivative"), stringtoseed("seriously"), stringtoseed("didn't mean to invoke the bible"), stringtoseed("and teh forbidden fruit"), stringtoseed("but here we are"), stringtoseed("i worked my ass off so nidhogg wouldn't be the serpant int eh garden too", stringtoseed("oh well"))]
+    const r = new SeededRandom(pickFrom(seeds));
+    contentEle.innerHTML = `You got a tiny taste of HARVEST FRUIT (not enough to get you fully Wasted, just enough to see Beyond the Veil)!<br><br><img src='images/Diorama/Inside/Hallways/apple_pixel.gif'>`;
+    canvas.style.filter = r.pickFrom(filters);
+
+  }
+
+  //different fruit offer differet options cuz of thei rseed. and different odds
+  const options = [banana, strawberry, apple, banana, strawberry, banana]
+  pickFrom(options)();
+
+
+  showExistingPopup(contentEle, "Gotcha")
+}
+
+
 
 //meat is simple-eustace
 ////even tho the event is never used need to hold it cuz events can call this and if i do the event will be considered an indexa nd it crashes whoops, thanks catalyst for catching this
