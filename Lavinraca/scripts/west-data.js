@@ -468,7 +468,7 @@ I want it to be doom themed.
 I also want to copy bathtub,veiled silhouette, and CCTV camera from other rooms of the house and place them inside, if they'll fit.
 that one spooky image of NAM you know the one`])
 
-addNewFinishedRoomPrayer("east_fourth_room4", `I pray for a room to replace THE ROOM and Sacrificing 4 books in your name.
+addNewFinishedRoomPrayer("east_fourth_room4", [`I pray for a room to replace THE ROOM and Sacrificing 4 books in your name.
 
 I want it to be Slaughter themed.
 
@@ -476,21 +476,21 @@ I also want to copy Chair and Table from other rooms of the house and place them
 
 I pray for a room that's filled head to toe in newspaper clippings, with only a little bit of blood. Preferably there is a vent, even though there doesn't seem like there's a single other vent in the entire house. This is all that I would need for its inhabitant has simple needs. This is, of course, all in the means of the holiday spirit.
 
-I claim this room for the killer.`)
+I claim this room for the killer.`])
 
-addNewFinishedRoomPrayer("east_third_room3", `I pray for a room to replace east_third_room3_deep1 and Sacrificing 1 books in your name.
+addNewFinishedRoomPrayer("east_third_room3", [`I pray for a room to replace east_third_room3_deep1 and Sacrificing 1 books in your name.
 I want it to be Technology themed.
 I also want to copy Safe,Mannequin Vat, and Drawers from other rooms of the house and place them inside, if they'll fit.
 the amazing scp site Z13 would like to be included
 uhh here are the guys
 https://ibb.co/N5tNrWC
-I claim this room for myself.`)
+I claim this room for myself.`])
 
-addNewFinishedRoomPrayer("east_third_1", `I pray for a room to replace east_third_1_deep2 and Sacrificing 24 books in your name.
+addNewFinishedRoomPrayer("east_third_1", [`I pray for a room to replace east_third_1_deep2 and Sacrificing 24 books in your name.
 I want it to be Guiding themed.
 I also want to copy Piano,Piano, and Piano from other rooms of the house and place them inside, if they'll fit.
 Hi, Catalyst here just messing with the waste controls. I THINK this is me claiming a hallway? Well, have an nice day!
-I do NOT claim this room for myself.`)
+I do NOT claim this room for myself.`])
 
 //dont forget to add more harvest rambles in the basement
 
